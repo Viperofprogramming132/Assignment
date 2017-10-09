@@ -10,21 +10,11 @@ using System.Windows.Forms;
 
 namespace SoftwareEngineeringAssignment
 {
-    public partial class frmQueryPatient : Form
+    public partial class frmQueryPerscription : Form
     {
-        public frmQueryPatient()
+        public frmQueryPerscription()
         {
             InitializeComponent();
-        }
-
-        private void btnReturn_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            //database query this info
         }
     }
 }

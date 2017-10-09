@@ -50,7 +50,7 @@ namespace SoftwareEngineeringAssignment
 
         public void addPatient()
         {
-            
+            throw new NotImplementedException();
         }
 
         public bool queryStaff(string username, string password)
@@ -60,7 +60,7 @@ namespace SoftwareEngineeringAssignment
 
         public void addStaff(string username, string password)
         {
-
+            throw new NotImplementedException();
         }
     }
 }

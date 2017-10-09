@@ -31,7 +31,6 @@
             this.btnBookAppointment = new System.Windows.Forms.Button();
             this.btnSeachPatients = new System.Windows.Forms.Button();
             this.btnAddPatient = new System.Windows.Forms.Button();
-            this.btnAddStaff = new System.Windows.Forms.Button();
             this.btnEditPerscription = new System.Windows.Forms.Button();
             this.btnAddPerscription = new System.Windows.Forms.Button();
             this.btnAdmin = new System.Windows.Forms.Button();
@@ -69,16 +68,6 @@
             this.btnAddPatient.UseVisualStyleBackColor = true;
             this.btnAddPatient.Click += new System.EventHandler(this.btnAddPatient_Click);
             // 
-            // btnAddStaff
-            // 
-            this.btnAddStaff.Location = new System.Drawing.Point(148, 53);
-            this.btnAddStaff.Name = "btnAddStaff";
-            this.btnAddStaff.Size = new System.Drawing.Size(124, 42);
-            this.btnAddStaff.TabIndex = 2;
-            this.btnAddStaff.Text = "Add Staff";
-            this.btnAddStaff.UseVisualStyleBackColor = true;
-            this.btnAddStaff.Click += new System.EventHandler(this.btnAddStaff_Click);
-            // 
             // btnEditPerscription
             // 
             this.btnEditPerscription.Location = new System.Drawing.Point(148, 149);
@@ -101,7 +90,7 @@
             // 
             // btnAdmin
             // 
-            this.btnAdmin.Location = new System.Drawing.Point(148, 197);
+            this.btnAdmin.Location = new System.Drawing.Point(80, 197);
             this.btnAdmin.Name = "btnAdmin";
             this.btnAdmin.Size = new System.Drawing.Size(124, 42);
             this.btnAdmin.TabIndex = 7;
@@ -111,7 +100,7 @@
             // 
             // btnLogOff
             // 
-            this.btnLogOff.Location = new System.Drawing.Point(12, 197);
+            this.btnLogOff.Location = new System.Drawing.Point(148, 53);
             this.btnLogOff.Name = "btnLogOff";
             this.btnLogOff.Size = new System.Drawing.Size(124, 42);
             this.btnLogOff.TabIndex = 6;
@@ -140,7 +129,6 @@
             this.Controls.Add(this.btnEditPerscription);
             this.Controls.Add(this.btnAddPerscription);
             this.Controls.Add(this.btnAddPatient);
-            this.Controls.Add(this.btnAddStaff);
             this.Controls.Add(this.btnSeachPatients);
             this.Controls.Add(this.btnBookAppointment);
             this.Name = "frmMain";
@@ -155,7 +143,6 @@
         private System.Windows.Forms.Button btnBookAppointment;
         private System.Windows.Forms.Button btnSeachPatients;
         private System.Windows.Forms.Button btnAddPatient;
-        private System.Windows.Forms.Button btnAddStaff;
         private System.Windows.Forms.Button btnEditPerscription;
         private System.Windows.Forms.Button btnAddPerscription;
         private System.Windows.Forms.Button btnAdmin;
