@@ -20,12 +20,18 @@ namespace SoftwareEngineeringAssignment
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
+
             Database conn = Database.getInstance();
 
-            frmMain Main = new frmMain(new Staff(1,"Bill","Billy","Bill 1 Billy", 50));
-            this.Hide();
-            Main.ShowDialog();
-            this.Show();
+            conn.addStaff(txtUsername.Text, txtPassword.Text);
+
+            if (conn.queryStaff(txtUsername.Text, txtPassword.Text))
+            {
+                frmMain Main = new frmMain(new Staff(1, "Bill", "Billy", "Bill 1 Billy", 50));
+                this.Hide();
+                Main.ShowDialog();
+                this.Show();
+            }
         }
     }
 }

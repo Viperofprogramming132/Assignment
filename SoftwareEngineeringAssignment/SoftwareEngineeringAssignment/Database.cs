@@ -14,6 +14,7 @@ namespace SoftwareEngineeringAssignment
         SqlConnection con;
         SqlCommand cmd;
         private static Database m_uniqueInstance = null;
+        programming_databaseDataSet conn = new programming_databaseDataSet();
 
         public static Database getInstance()
         {
@@ -31,14 +32,14 @@ namespace SoftwareEngineeringAssignment
 
         private void connect()
         {
-                try
-                {
-                    con.Open();
-                }
-                catch
-                {
-
-                }
+            try
+            {
+                con.Open();
+            }
+            catch(Exception e)
+            {
+                Debug.WriteLine(e);
+            }
             Debug.WriteLine("Connected");
         }
 
@@ -50,17 +51,51 @@ namespace SoftwareEngineeringAssignment
 
         public void addPatient()
         {
-            throw new NotImplementedException();
+            
         }
 
         public bool queryStaff(string username, string password)
         {
-            throw new NotImplementedException();
+            System.Security.SecureString test = new System.Security.SecureString();
+            test.IsReadOnly();
+
+            SqlCredential sqlCredential = new SqlCredential("root",test);
+            con = new SqlConnection("server=localhost;user id=root;database=test;Trusted_Connection=true;",sqlCredential);
+            connect();
+            Debug.WriteLine(con.Credential);
+
+            Debug.WriteLine(con.Database);
+
+            cmd = con.CreateCommand();
+
+            cmd.CommandText = "SELECT * FROM staffMembers WHERE UserName='@UN' AND Password='@Pass';";
+            cmd.Parameters.AddWithValue("@UN", username);
+            cmd.Parameters.AddWithValue("@Name", password);
+            
+            if (true)
+            {
+                return true;
+            }
+            return false;
         }
 
         public void addStaff(string username, string password)
         {
-            throw new NotImplementedException();
+            System.Security.SecureString test = new System.Security.SecureString();
+            test.MakeReadOnly();
+
+            SqlCredential sqlCredential = new SqlCredential("root", test);
+            con = new SqlConnection("server=localhost;database=test;", sqlCredential);
+            connect();
+
+            cmd = con.CreateCommand();
+
+            cmd.CommandText = "INSERT INTO `staffMembers` (`staffID`, `StaffFirstName`, `StaffLastName`, `UserName`, `Password`) VALUES (NULL, 'Bob', 'Bill', 'Hello', 'Password')";
+            int i = cmd.ExecuteNonQuery();
+
+            Debug.WriteLine(i.ToString() + " Rows affected");
+
+
         }
     }
 }
