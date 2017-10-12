@@ -14,7 +14,6 @@ namespace SoftwareEngineeringAssignment
         SqlConnection con;
         SqlCommand cmd;
         private static Database m_uniqueInstance = null;
-        programming_databaseDataSet conn = new programming_databaseDataSet();
 
         public static Database getInstance()
         {

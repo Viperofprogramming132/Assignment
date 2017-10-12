@@ -23,15 +23,15 @@ namespace SoftwareEngineeringAssignment
 
             Database conn = Database.getInstance();
 
-            conn.addStaff(txtUsername.Text, txtPassword.Text);
+            //conn.addStaff(txtUsername.Text, txtPassword.Text);
 
-            if (conn.queryStaff(txtUsername.Text, txtPassword.Text))
-            {
+            //if (conn.queryStaff(txtUsername.Text, txtPassword.Text))
+            //{
                 frmMain Main = new frmMain(new Staff(1, "Bill", "Billy", "Bill 1 Billy", 50));
                 this.Hide();
                 Main.ShowDialog();
                 this.Show();
-            }
+            //}
         }
     }
 }
