@@ -64,10 +64,10 @@ namespace SoftwareEngineeringAssignment
         /// <param name="e"></param>
         private void btnSeachPatients_Click(object sender, EventArgs e)
         {
-            frmQueryPatient queryPatient = new frmQueryPatient();
+            /*frmQueryPatient queryPatient = new frmQueryPatient();
             this.Hide();
             queryPatient.ShowDialog();
-            this.Show();
+            this.Show();*/
         }
 
 

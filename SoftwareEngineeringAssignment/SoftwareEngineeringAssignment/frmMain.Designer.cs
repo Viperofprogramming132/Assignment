@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.btnBookAppointment = new System.Windows.Forms.Button();
-            this.btnSeachPatients = new System.Windows.Forms.Button();
+            this.btnViewAppointments = new System.Windows.Forms.Button();
             this.btnAddPatient = new System.Windows.Forms.Button();
             this.btnEditPerscription = new System.Windows.Forms.Button();
             this.btnAddPerscription = new System.Windows.Forms.Button();
@@ -48,15 +48,15 @@
             this.btnBookAppointment.UseVisualStyleBackColor = true;
             this.btnBookAppointment.Click += new System.EventHandler(this.btnBookAppointment_Click);
             // 
-            // btnSeachPatients
+            // btnViewAppointments
             // 
-            this.btnSeachPatients.Location = new System.Drawing.Point(12, 101);
-            this.btnSeachPatients.Name = "btnSeachPatients";
-            this.btnSeachPatients.Size = new System.Drawing.Size(124, 42);
-            this.btnSeachPatients.TabIndex = 1;
-            this.btnSeachPatients.Text = "Search Patients";
-            this.btnSeachPatients.UseVisualStyleBackColor = true;
-            this.btnSeachPatients.Click += new System.EventHandler(this.btnSeachPatients_Click);
+            this.btnViewAppointments.Location = new System.Drawing.Point(12, 101);
+            this.btnViewAppointments.Name = "btnViewAppointments";
+            this.btnViewAppointments.Size = new System.Drawing.Size(124, 42);
+            this.btnViewAppointments.TabIndex = 1;
+            this.btnViewAppointments.Text = "View Appointments";
+            this.btnViewAppointments.UseVisualStyleBackColor = true;
+            this.btnViewAppointments.Click += new System.EventHandler(this.btnSeachPatients_Click);
             // 
             // btnAddPatient
             // 
@@ -129,7 +129,7 @@
             this.Controls.Add(this.btnEditPerscription);
             this.Controls.Add(this.btnAddPerscription);
             this.Controls.Add(this.btnAddPatient);
-            this.Controls.Add(this.btnSeachPatients);
+            this.Controls.Add(this.btnViewAppointments);
             this.Controls.Add(this.btnBookAppointment);
             this.Name = "frmMain";
             this.Text = "frmMain";
@@ -141,7 +141,7 @@
         #endregion
 
         private System.Windows.Forms.Button btnBookAppointment;
-        private System.Windows.Forms.Button btnSeachPatients;
+        private System.Windows.Forms.Button btnViewAppointments;
         private System.Windows.Forms.Button btnAddPatient;
         private System.Windows.Forms.Button btnEditPerscription;
         private System.Windows.Forms.Button btnAddPerscription;

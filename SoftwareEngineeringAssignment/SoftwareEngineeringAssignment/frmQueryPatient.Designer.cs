@@ -46,13 +46,17 @@
             this.lblPerscriptions = new System.Windows.Forms.Label();
             this.lsvPerscriptions = new System.Windows.Forms.ListView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lsvAppointments = new System.Windows.Forms.ListView();
+            this.lblAppointments = new System.Windows.Forms.Label();
+            this.btnForward = new System.Windows.Forms.Button();
+            this.btnBack = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSearch
             // 
             this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.btnSearch.Location = new System.Drawing.Point(114, 329);
+            this.btnSearch.Location = new System.Drawing.Point(109, 507);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(87, 37);
             this.btnSearch.TabIndex = 0;
@@ -184,7 +188,7 @@
             // btnReturn
             // 
             this.btnReturn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.btnReturn.Location = new System.Drawing.Point(12, 329);
+            this.btnReturn.Location = new System.Drawing.Point(7, 507);
             this.btnReturn.Name = "btnReturn";
             this.btnReturn.Size = new System.Drawing.Size(96, 37);
             this.btnReturn.TabIndex = 24;
@@ -225,11 +229,58 @@
             this.pictureBox1.TabIndex = 27;
             this.pictureBox1.TabStop = false;
             // 
+            // lsvAppointments
+            // 
+            this.lsvAppointments.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.lsvAppointments.Location = new System.Drawing.Point(12, 361);
+            this.lsvAppointments.Name = "lsvAppointments";
+            this.lsvAppointments.Size = new System.Drawing.Size(586, 140);
+            this.lsvAppointments.TabIndex = 29;
+            this.lsvAppointments.UseCompatibleStateImageBehavior = false;
+            // 
+            // lblAppointments
+            // 
+            this.lblAppointments.AutoSize = true;
+            this.lblAppointments.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.lblAppointments.Location = new System.Drawing.Point(12, 330);
+            this.lblAppointments.Name = "lblAppointments";
+            this.lblAppointments.Size = new System.Drawing.Size(132, 25);
+            this.lblAppointments.TabIndex = 28;
+            this.lblAppointments.Text = "Appointments";
+            // 
+            // btnForward
+            // 
+            this.btnForward.Enabled = false;
+            this.btnForward.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.btnForward.Location = new System.Drawing.Point(559, 507);
+            this.btnForward.Name = "btnForward";
+            this.btnForward.Size = new System.Drawing.Size(40, 40);
+            this.btnForward.TabIndex = 30;
+            this.btnForward.Text = ">";
+            this.btnForward.UseVisualStyleBackColor = true;
+            this.btnForward.Click += new System.EventHandler(this.btnForward_Click);
+            // 
+            // btnBack
+            // 
+            this.btnBack.Enabled = false;
+            this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.btnBack.Location = new System.Drawing.Point(513, 507);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(40, 40);
+            this.btnBack.TabIndex = 31;
+            this.btnBack.Text = "<";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
             // frmQueryPatient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(613, 370);
+            this.ClientSize = new System.Drawing.Size(613, 556);
+            this.Controls.Add(this.btnBack);
+            this.Controls.Add(this.btnForward);
+            this.Controls.Add(this.lsvAppointments);
+            this.Controls.Add(this.lblAppointments);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lsvPerscriptions);
             this.Controls.Add(this.lblPerscriptions);
@@ -250,6 +301,8 @@
             this.Controls.Add(this.btnSearch);
             this.Name = "frmQueryPatient";
             this.Text = "frmQueryPatient";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmQueryPatient_FormClosing);
+            this.Load += new System.EventHandler(this.frmQueryPatient_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -276,5 +329,9 @@
         private System.Windows.Forms.Label lblPerscriptions;
         private System.Windows.Forms.ListView lsvPerscriptions;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ListView lsvAppointments;
+        private System.Windows.Forms.Label lblAppointments;
+        private System.Windows.Forms.Button btnForward;
+        private System.Windows.Forms.Button btnBack;
     }
 }
