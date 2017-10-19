@@ -24,15 +24,14 @@ namespace SoftwareEngineeringAssignment
             BusinessLayer ml = BusinessLayer.instance();
             m_patients = ml.getPatients();
 
-            //conn.addStaff(txtUsername.Text, txtPassword.Text);
+            //do for each for every staff
+            //if(m_staff.username == txtUsername.Text && m_staff.password == txtPassword.Text)
+            //open main form sending that staff member
 
-            //if (conn.queryStaff(txtUsername.Text, txtPassword.Text))
-            //{
             frmMain Main = new frmMain(new Staff(1, "Bill", "Billy", "Bill 1 Billy", 50));
-                this.Hide();
-                Main.ShowDialog();
-                this.Show();
-            //}
+            this.Hide();
+            Main.ShowDialog();
+            this.Show();
         }
     }
 }

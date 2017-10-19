@@ -11,7 +11,7 @@ namespace SoftwareEngineeringAssignment
         int m_StaffID,m_AuthLevel;
         string m_FName, m_LName, m_UserName;
 
-        public string FName { get { return m_FName; } }
+        public string FName { get { return m_FName; } set { m_FName = value; } }
         public string LName { get { return m_LName; } }
         public int StaffID { get { return m_StaffID; } }
         public string UserName { get { return m_UserName; } }
