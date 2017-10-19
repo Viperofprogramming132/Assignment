@@ -21,7 +21,6 @@ namespace SoftwareEngineeringAssignment
         private void btnSubmit_Click(object sender, EventArgs e)
         {
 
-            Database conn = Database.getInstance();
 
             //conn.addStaff(txtUsername.Text, txtPassword.Text);
 
