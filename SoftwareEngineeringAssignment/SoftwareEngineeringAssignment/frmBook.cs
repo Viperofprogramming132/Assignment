@@ -21,10 +21,6 @@ namespace SoftwareEngineeringAssignment
             InitializeComponent();
 
             this.WindowState = FormWindowState.Maximized;
-            for (int i = 1; i <= 30; i++)
-            {
-                pList.Add(new Patient("1", "2", "3", "4", i.ToString() + 12345, "Bob", i + 54321.ToString(), "something", DateTime.UtcNow));
-            }
 
             for (int i = 1; i <= 31; i++)
             {

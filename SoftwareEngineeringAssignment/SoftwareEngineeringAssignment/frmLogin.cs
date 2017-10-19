@@ -13,6 +13,7 @@ namespace SoftwareEngineeringAssignment
 {
     public partial class frmLogin : Form
     {
+        List<Patient> m_patients;
         public frmLogin()
         {
             InitializeComponent();
@@ -20,13 +21,14 @@ namespace SoftwareEngineeringAssignment
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-
+            BusinessLayer ml = BusinessLayer.instance();
+            m_patients = ml.getPatients();
 
             //conn.addStaff(txtUsername.Text, txtPassword.Text);
 
             //if (conn.queryStaff(txtUsername.Text, txtPassword.Text))
             //{
-                frmMain Main = new frmMain(new Staff(1, "Bill", "Billy", "Bill 1 Billy", 50));
+            frmMain Main = new frmMain(new Staff(1, "Bill", "Billy", "Bill 1 Billy", 50));
                 this.Hide();
                 Main.ShowDialog();
                 this.Show();

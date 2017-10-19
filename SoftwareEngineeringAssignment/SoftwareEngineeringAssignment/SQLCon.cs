@@ -53,7 +53,16 @@ namespace SoftwareEngineeringAssignment
 
         public bool CloseConnection()
         {
-            throw new NotImplementedException();
+            try
+            {
+                connection.Close();
+                return true;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
         }
 
         public int Count()
@@ -68,7 +77,15 @@ namespace SoftwareEngineeringAssignment
 
         public DataSet getDataSet(string sqlStatement)
         {
-            throw new NotImplementedException();
+            DataSet dataSet;
+
+            // create the object dataAdapter to manipulate a table from the database StudentDissertations specified by connectionToDB
+            MySqlDataAdapter dataAdapter = new MySqlDataAdapter(sqlStatement, connection);
+            // create the dataset
+            dataSet = new System.Data.DataSet();
+            dataAdapter.Fill(dataSet);
+            //return the dataSet
+            return dataSet;
         }
 
         public void Insert()
@@ -78,7 +95,33 @@ namespace SoftwareEngineeringAssignment
 
         public bool OpenConnection()
         {
-            throw new NotImplementedException();
+            try
+            {
+                connection.Open();
+            }
+            catch (MySqlException ex)
+            {
+                //When handling errors, you can your application's response based 
+                //on the error number.
+                //The two most common error numbers when connecting are as follows:
+                //0: Cannot connect to server.
+                //1045: Invalid user name and/or password.
+                switch (ex.Number)
+                {
+                    case 0:
+                        MessageBox.Show("Cannot connect to server.  Contact administrator\n" + ex.Message);
+                        break;
+
+                    case 1045:
+                        MessageBox.Show("Invalid username/password, please try again\n" + ex.Message);
+                        break;
+                    default:
+                        MessageBox.Show("Unable to connect to database exception:\n" + ex.Message);
+                        break;
+                }
+                return false;
+            }
+            return true;
         }
 
         public void Restore()
@@ -88,7 +131,17 @@ namespace SoftwareEngineeringAssignment
 
         public DbDataReader Select(string query)
         {
-            throw new NotImplementedException();
+            DbDataReader dr = null;
+
+            if (null != connection)
+            {
+                //Create Command
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                //Create a data reader and Execute the command
+                //MySqlDataReader dataReader = cmd.ExecuteReader();
+                dr = cmd.ExecuteReader();
+            }
+            return dr;
         }
 
         public void Update()
