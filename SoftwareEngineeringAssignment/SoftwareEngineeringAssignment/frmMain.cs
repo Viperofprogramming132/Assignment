@@ -125,8 +125,12 @@ namespace SoftwareEngineeringAssignment
             admin.ShowDialog();
             this.Show();
         }
+
         #endregion
 
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }

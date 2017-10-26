@@ -36,11 +36,13 @@
             this.btnAdmin = new System.Windows.Forms.Button();
             this.btnLogOff = new System.Windows.Forms.Button();
             this.lblWelcome = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnBookAppointment
             // 
-            this.btnBookAppointment.Location = new System.Drawing.Point(12, 53);
+            this.btnBookAppointment.Location = new System.Drawing.Point(15, 93);
             this.btnBookAppointment.Name = "btnBookAppointment";
             this.btnBookAppointment.Size = new System.Drawing.Size(124, 42);
             this.btnBookAppointment.TabIndex = 0;
@@ -50,7 +52,7 @@
             // 
             // btnViewAppointments
             // 
-            this.btnViewAppointments.Location = new System.Drawing.Point(12, 101);
+            this.btnViewAppointments.Location = new System.Drawing.Point(15, 141);
             this.btnViewAppointments.Name = "btnViewAppointments";
             this.btnViewAppointments.Size = new System.Drawing.Size(124, 42);
             this.btnViewAppointments.TabIndex = 1;
@@ -60,7 +62,7 @@
             // 
             // btnAddPatient
             // 
-            this.btnAddPatient.Location = new System.Drawing.Point(148, 101);
+            this.btnAddPatient.Location = new System.Drawing.Point(148, 141);
             this.btnAddPatient.Name = "btnAddPatient";
             this.btnAddPatient.Size = new System.Drawing.Size(124, 42);
             this.btnAddPatient.TabIndex = 3;
@@ -70,7 +72,7 @@
             // 
             // btnEditPerscription
             // 
-            this.btnEditPerscription.Location = new System.Drawing.Point(148, 149);
+            this.btnEditPerscription.Location = new System.Drawing.Point(148, 189);
             this.btnEditPerscription.Name = "btnEditPerscription";
             this.btnEditPerscription.Size = new System.Drawing.Size(124, 42);
             this.btnEditPerscription.TabIndex = 5;
@@ -80,7 +82,7 @@
             // 
             // btnAddPerscription
             // 
-            this.btnAddPerscription.Location = new System.Drawing.Point(12, 149);
+            this.btnAddPerscription.Location = new System.Drawing.Point(15, 189);
             this.btnAddPerscription.Name = "btnAddPerscription";
             this.btnAddPerscription.Size = new System.Drawing.Size(124, 42);
             this.btnAddPerscription.TabIndex = 4;
@@ -90,7 +92,7 @@
             // 
             // btnAdmin
             // 
-            this.btnAdmin.Location = new System.Drawing.Point(80, 197);
+            this.btnAdmin.Location = new System.Drawing.Point(80, 237);
             this.btnAdmin.Name = "btnAdmin";
             this.btnAdmin.Size = new System.Drawing.Size(124, 42);
             this.btnAdmin.TabIndex = 7;
@@ -100,7 +102,7 @@
             // 
             // btnLogOff
             // 
-            this.btnLogOff.Location = new System.Drawing.Point(148, 53);
+            this.btnLogOff.Location = new System.Drawing.Point(148, 93);
             this.btnLogOff.Name = "btnLogOff";
             this.btnLogOff.Size = new System.Drawing.Size(124, 42);
             this.btnLogOff.TabIndex = 6;
@@ -111,18 +113,32 @@
             // lblWelcome
             // 
             this.lblWelcome.AutoSize = true;
-            this.lblWelcome.Location = new System.Drawing.Point(12, 13);
+            this.lblWelcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWelcome.Location = new System.Drawing.Point(75, 29);
             this.lblWelcome.Name = "lblWelcome";
-            this.lblWelcome.Size = new System.Drawing.Size(35, 13);
+            this.lblWelcome.Size = new System.Drawing.Size(137, 25);
             this.lblWelcome.TabIndex = 8;
-            this.lblWelcome.Text = "label1";
+            this.lblWelcome.Text = "Home Menu";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.pictureBox1.ErrorImage = global::SoftwareEngineeringAssignment.Properties.Resources.nhs;
+            this.pictureBox1.Image = global::SoftwareEngineeringAssignment.Properties.Resources.nhs;
+            this.pictureBox1.InitialImage = global::SoftwareEngineeringAssignment.Properties.Resources.nhs;
+            this.pictureBox1.Location = new System.Drawing.Point(307, 29);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(219, 219);
+            this.pictureBox1.TabIndex = 30;
+            this.pictureBox1.TabStop = false;
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(284, 249);
+            this.ClientSize = new System.Drawing.Size(1137, 450);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lblWelcome);
             this.Controls.Add(this.btnAdmin);
             this.Controls.Add(this.btnLogOff);
@@ -133,6 +149,7 @@
             this.Controls.Add(this.btnBookAppointment);
             this.Name = "frmMain";
             this.Text = "frmMain";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -148,5 +165,6 @@
         private System.Windows.Forms.Button btnAdmin;
         private System.Windows.Forms.Button btnLogOff;
         private System.Windows.Forms.Label lblWelcome;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

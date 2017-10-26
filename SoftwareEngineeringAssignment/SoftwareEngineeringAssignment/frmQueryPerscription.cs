@@ -16,5 +16,10 @@ namespace SoftwareEngineeringAssignment
         {
             InitializeComponent();
         }
+
+        private void frmQueryPerscription_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

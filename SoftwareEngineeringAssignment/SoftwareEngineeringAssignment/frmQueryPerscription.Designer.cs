@@ -44,12 +44,14 @@
             this.btnFindUser = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
             this.button1 = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(165, 87);
+            this.label3.Location = new System.Drawing.Point(201, 99);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(29, 13);
             this.label3.TabIndex = 36;
@@ -58,7 +60,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(119, 87);
+            this.label4.Location = new System.Drawing.Point(139, 99);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(37, 13);
             this.label4.TabIndex = 35;
@@ -67,7 +69,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(73, 87);
+            this.label5.Location = new System.Drawing.Point(85, 99);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(26, 13);
             this.label5.TabIndex = 34;
@@ -76,7 +78,7 @@
             // cmbYear
             // 
             this.cmbYear.FormattingEnabled = true;
-            this.cmbYear.Location = new System.Drawing.Point(168, 103);
+            this.cmbYear.Location = new System.Drawing.Point(192, 115);
             this.cmbYear.Name = "cmbYear";
             this.cmbYear.Size = new System.Drawing.Size(53, 21);
             this.cmbYear.TabIndex = 33;
@@ -84,7 +86,7 @@
             // cmbMonth
             // 
             this.cmbMonth.FormattingEnabled = true;
-            this.cmbMonth.Location = new System.Drawing.Point(122, 103);
+            this.cmbMonth.Location = new System.Drawing.Point(136, 115);
             this.cmbMonth.Name = "cmbMonth";
             this.cmbMonth.Size = new System.Drawing.Size(40, 21);
             this.cmbMonth.TabIndex = 32;
@@ -92,7 +94,7 @@
             // cmbDay
             // 
             this.cmbDay.FormattingEnabled = true;
-            this.cmbDay.Location = new System.Drawing.Point(76, 103);
+            this.cmbDay.Location = new System.Drawing.Point(84, 115);
             this.cmbDay.Name = "cmbDay";
             this.cmbDay.Size = new System.Drawing.Size(40, 21);
             this.cmbDay.TabIndex = 31;
@@ -100,7 +102,7 @@
             // lblDoB
             // 
             this.lblDoB.AutoSize = true;
-            this.lblDoB.Location = new System.Drawing.Point(4, 106);
+            this.lblDoB.Location = new System.Drawing.Point(12, 115);
             this.lblDoB.Name = "lblDoB";
             this.lblDoB.Size = new System.Drawing.Size(66, 13);
             this.lblDoB.TabIndex = 30;
@@ -110,7 +112,7 @@
             // 
             this.textBox2.Location = new System.Drawing.Point(78, 64);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.Size = new System.Drawing.Size(294, 20);
             this.textBox2.TabIndex = 29;
             // 
             // lblLastName
@@ -126,7 +128,7 @@
             // 
             this.textBox1.Location = new System.Drawing.Point(78, 38);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.Size = new System.Drawing.Size(294, 20);
             this.textBox1.TabIndex = 27;
             // 
             // lblFirstName
@@ -142,13 +144,13 @@
             // 
             this.txtID.Location = new System.Drawing.Point(78, 12);
             this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(100, 20);
+            this.txtID.Size = new System.Drawing.Size(294, 20);
             this.txtID.TabIndex = 25;
             // 
             // lblID
             // 
             this.lblID.AutoSize = true;
-            this.lblID.Location = new System.Drawing.Point(13, 15);
+            this.lblID.Location = new System.Drawing.Point(12, 15);
             this.lblID.Name = "lblID";
             this.lblID.Size = new System.Drawing.Size(54, 13);
             this.lblID.TabIndex = 24;
@@ -180,11 +182,25 @@
             this.button1.Text = "Search";
             this.button1.UseVisualStyleBackColor = true;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.pictureBox1.ErrorImage = global::SoftwareEngineeringAssignment.Properties.Resources.nhs;
+            this.pictureBox1.Image = global::SoftwareEngineeringAssignment.Properties.Resources.nhs;
+            this.pictureBox1.InitialImage = global::SoftwareEngineeringAssignment.Properties.Resources.nhs;
+            this.pictureBox1.Location = new System.Drawing.Point(415, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(219, 219);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 40;
+            this.pictureBox1.TabStop = false;
+            // 
             // frmQueryPerscription
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 296);
+            this.ClientSize = new System.Drawing.Size(1138, 442);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.btnFindUser);
@@ -203,6 +219,8 @@
             this.Controls.Add(this.lblID);
             this.Name = "frmQueryPerscription";
             this.Text = "frmQueryPerscription";
+            this.Load += new System.EventHandler(this.frmQueryPerscription_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -226,5 +244,6 @@
         private System.Windows.Forms.Button btnFindUser;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
