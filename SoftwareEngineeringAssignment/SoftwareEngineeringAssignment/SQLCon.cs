@@ -88,9 +88,12 @@ namespace SoftwareEngineeringAssignment
             return dataSet;
         }
 
-        public void Insert()
+        public int Insert(string query)
         {
-            throw new NotImplementedException();
+            //Create Command
+            MySqlCommand cmd = new MySqlCommand(query, connection);
+            int i = cmd.ExecuteNonQuery();
+            return i;
         }
 
         public bool OpenConnection()

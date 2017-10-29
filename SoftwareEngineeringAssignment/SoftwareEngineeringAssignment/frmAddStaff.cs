@@ -16,5 +16,12 @@ namespace SoftwareEngineeringAssignment
         {
             InitializeComponent();
         }
+
+        private void btnGo_Click(object sender, EventArgs e)
+        {
+            BusinessLayer bl = BusinessLayer.instance();
+
+            bl.addStaff(txtFirstName.Text, txtLastName.Text, txtUserName.Text, txtPassword.Text, Convert.ToInt32(txtAuthLevel.Text));
+        }
     }
 }

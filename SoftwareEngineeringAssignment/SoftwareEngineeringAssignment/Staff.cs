@@ -8,21 +8,14 @@ namespace SoftwareEngineeringAssignment
 {
     public class Staff
     {
-        int m_StaffID,m_AuthLevel;
-        string m_FName, m_LName, m_UserName;
+        int m_AuthLevel;
+        string m_FName, m_LName, m_UserName, m_StaffID, m_Password;
 
         public string FName { get { return m_FName; } set { m_FName = value; } }
-        public string LName { get { return m_LName; } }
-        public int StaffID { get { return m_StaffID; } }
-        public string UserName { get { return m_UserName; } }
-
-        public Staff(int p_StaffID, string p_FName, string p_LName, string p_UserName, int p_AuthLevel)
-        {
-            m_StaffID = p_StaffID;
-            m_FName = p_FName;
-            m_LName = p_LName;
-            m_UserName = p_UserName;
-            m_AuthLevel = p_AuthLevel;
-        }
+        public string LName { get { return m_LName; } set { m_LName = value; } }
+        public string StaffID { get { return m_StaffID; } set { m_StaffID = value; } }
+        public string UserName { get { return m_UserName; } set { m_UserName = value; } }
+        public int AuthLevel { get { return m_AuthLevel; } set { m_AuthLevel = value; } }
+        public string Password { get { return m_Password; } set { m_Password = value; } }
     }
 }
