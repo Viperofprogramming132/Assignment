@@ -126,7 +126,7 @@
             this.pictureBox1.ErrorImage = global::SoftwareEngineeringAssignment.Properties.Resources.nhs;
             this.pictureBox1.Image = global::SoftwareEngineeringAssignment.Properties.Resources.nhs;
             this.pictureBox1.InitialImage = global::SoftwareEngineeringAssignment.Properties.Resources.nhs;
-            this.pictureBox1.Location = new System.Drawing.Point(307, 29);
+            this.pictureBox1.Location = new System.Drawing.Point(294, 60);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(219, 219);
             this.pictureBox1.TabIndex = 30;

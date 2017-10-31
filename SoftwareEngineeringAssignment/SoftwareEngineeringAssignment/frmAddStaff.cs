@@ -21,7 +21,7 @@ namespace SoftwareEngineeringAssignment
         {
             BusinessLayer bl = BusinessLayer.instance();
 
-            bl.addStaff(txtFirstName.Text, txtLastName.Text, txtUserName.Text, txtPassword.Text, Convert.ToInt32(txtAuthLevel.Text));
+            bl.addStaff(txtFirstName.Text, txtLastName.Text, txtUserName.Text, txtPassword.Text, Convert.ToInt32(txtAuthLevel.Text),1,DateTime.Now);
         }
     }
 }

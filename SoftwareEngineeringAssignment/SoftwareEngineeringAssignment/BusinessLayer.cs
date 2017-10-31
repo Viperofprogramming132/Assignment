@@ -78,7 +78,7 @@ namespace SoftwareEngineeringAssignment
             DbConection con = DbFactory.instance();
             if (con.OpenConnection())
             {
-                DbDataReader dr = con.Select("SELECT StaffID, StaffFirstName, StaffLastName, UserName, Password, authLevel FROM staffmember;");
+                DbDataReader dr = con.Select("SELECT StaffID, FirstName, LastName, UserName, Password, authLevel FROM staff;");
 
                 //Read the data and store them in the list
                 while (dr.Read())
@@ -110,12 +110,12 @@ namespace SoftwareEngineeringAssignment
         /// <param name="Password"></param>
         /// <param name="AuthLevel"></param>
         /// <returns></returns>
-        public bool addStaff(string FirstName, string LastName, string UserName, string Password, int AuthLevel)
+        public bool addStaff(string FirstName, string LastName, string UserName, string Password, int AuthLevel, int AddressID, DateTime DoB)
         {
             DbConection con = DbFactory.instance();
             if(con.OpenConnection())
             {
-                string insertString = "INSERT INTO `staffmember` (`staffID`, `StaffFirstName`, `StaffLastName`, `UserName`, `Password`, `authLevel`) VALUES (NULL, '"+ EncryptString(aesCSP, FirstName) + "', '"+ EncryptString(aesCSP, LastName) + "', '"+ EncryptString(aesCSP, UserName) + "', '"+ EncryptString(aesCSP, Password) + "', '"+ AuthLevel + "');";
+                string insertString = "INSERT INTO staff (StaffID, AddressID, FirstName, LastName, UserName, Password, authLevel,DoB) VALUES (NULL, '" + AddressID + "' ,'" + EncryptString(aesCSP, FirstName) + "', '" + EncryptString(aesCSP, LastName) + "', '" + EncryptString(aesCSP, UserName) + "', '" + EncryptString(aesCSP, Password) + "', '" + AuthLevel + "', '" + EncryptString(aesCSP, DoB.ToString()) + "');";
                 if (con.Insert(insertString) != 0)
                 {
                     con.CloseConnection();
@@ -126,6 +126,25 @@ namespace SoftwareEngineeringAssignment
                 
             }
             
+            return false;
+        }
+
+        public bool addPatient(string FirstName, string LastName, string UserName, string Password, int AuthLevel)
+        {
+            DbConection con = DbFactory.instance();
+            if (con.OpenConnection())
+            {
+                string insertString = "INSERT INTO `staff` (`staffID`, `StaffFirstName`, `StaffLastName`, `UserName`, `Password`, `authLevel`) VALUES (NULL, '" + EncryptString(aesCSP, FirstName) + "', '" + EncryptString(aesCSP, LastName) + "', '" + EncryptString(aesCSP, UserName) + "', '" + EncryptString(aesCSP, Password) + "', '" + AuthLevel + "');";
+                if (con.Insert(insertString) != 0)
+                {
+                    con.CloseConnection();
+
+                    return true;
+                }
+
+
+            }
+
             return false;
         }
 
@@ -171,6 +190,25 @@ namespace SoftwareEngineeringAssignment
             byte[] outBlock = xfrm.TransformFinalBlock(inBytes.ToArray(), 0, inBytes.Count);
 
             return UnicodeEncoding.UTF32.GetString(outBlock);
+        }
+
+        public bool addStaff(string FirstName, string LastName, string UserName, string Password, int AuthLevel)
+        {
+            DbConection con = DbFactory.instance();
+            if (con.OpenConnection())
+            {
+                string insertString = "INSERT INTO staff (staffID, FirstName, LastName, UserName, Password, authLevel) VALUES (NULL, '" + EncryptString(aesCSP, FirstName) + "', '" + EncryptString(aesCSP, LastName) + "', '" + EncryptString(aesCSP, UserName) + "', '" + EncryptString(aesCSP, Password) + "', '" + AuthLevel + "');";
+                if (con.Insert(insertString) != 0)
+                {
+                    con.CloseConnection();
+
+                    return true;
+                }
+
+
+            }
+
+            return false;
         }
     }
 }

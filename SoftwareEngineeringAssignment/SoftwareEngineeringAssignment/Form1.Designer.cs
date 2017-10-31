@@ -71,6 +71,7 @@
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(100, 20);
             this.txtUsername.TabIndex = 3;
+            this.txtUsername.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtUsername_KeyDown);
             // 
             // txtPassword
             // 
@@ -79,6 +80,7 @@
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(100, 20);
             this.txtPassword.TabIndex = 4;
+            this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyDown);
             // 
             // picNHS
             // 
@@ -108,6 +110,8 @@
             this.MinimizeBox = false;
             this.Name = "frmLogin";
             this.Text = "Login Form";
+            this.VisibleChanged += new System.EventHandler(this.frmLogin_VisibleChanged);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmLogin_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.picNHS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
