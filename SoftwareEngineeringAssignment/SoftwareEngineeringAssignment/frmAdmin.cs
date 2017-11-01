@@ -15,6 +15,13 @@ namespace SoftwareEngineeringAssignment
         public frmAdmin()
         {
             InitializeComponent();
+            this.WindowState = FormWindowState.Maximized;
+        }
+
+        private void frmAdmin_Load(object sender, EventArgs e)
+        {
+            this.MinimumSize = this.Size;
+            this.MaximumSize = this.Size;
         }
     }
 }

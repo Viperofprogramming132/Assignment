@@ -15,11 +15,14 @@ namespace SoftwareEngineeringAssignment
         public frmQueryPerscription()
         {
             InitializeComponent();
+            this.WindowState = FormWindowState.Maximized;
         }
 
         private void frmQueryPerscription_Load(object sender, EventArgs e)
         {
-
+            this.MinimumSize = this.Size;
+            this.MaximumSize = this.Size;
         }
+
     }
 }

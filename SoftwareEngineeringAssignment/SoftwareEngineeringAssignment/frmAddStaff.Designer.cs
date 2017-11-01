@@ -94,6 +94,7 @@
             this.Controls.Add(this.txtFirstName);
             this.Name = "frmAddStaff";
             this.Text = "frmAddStaff";
+            this.Load += new System.EventHandler(this.frmAddStaff_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

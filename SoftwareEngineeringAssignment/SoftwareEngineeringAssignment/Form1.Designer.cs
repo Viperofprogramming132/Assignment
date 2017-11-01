@@ -110,6 +110,7 @@
             this.MinimizeBox = false;
             this.Name = "frmLogin";
             this.Text = "Login Form";
+            this.Load += new System.EventHandler(this.frmLogin_Load);
             this.VisibleChanged += new System.EventHandler(this.frmLogin_VisibleChanged);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmLogin_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.picNHS)).EndInit();
