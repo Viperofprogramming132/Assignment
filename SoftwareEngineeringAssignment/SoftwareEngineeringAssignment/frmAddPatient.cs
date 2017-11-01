@@ -15,6 +15,13 @@ namespace SoftwareEngineeringAssignment
         public frmAddPatient()
         {
             InitializeComponent();
+            this.WindowState = FormWindowState.Maximized;
+        }
+
+        private void frmAddPatient_Load(object sender, EventArgs e)
+        {
+            this.MinimumSize = this.Size;
+            this.MaximumSize = this.Size;
         }
     }
 }

@@ -21,6 +21,7 @@ namespace SoftwareEngineeringAssignment
             cmbAuthLevel.Items.Add("Receptionist");
             cmbAuthLevel.Items.Add("General Staff");
             cmbAuthLevel.Items.Add("Manager");
+            this.WindowState = FormWindowState.Maximized;
         }
 
         private void btnGo_Click(object sender, EventArgs e)
@@ -54,6 +55,12 @@ namespace SoftwareEngineeringAssignment
             }
 
             bl.addStaff(txtFirstName.Text, txtLastName.Text, txtUserName.Text, txtPassword.Text, authL ,1,DateTime.Now);
+        }
+
+        private void frmAddStaff_Load(object sender, EventArgs e)
+        {
+            this.MinimumSize = this.Size;
+            this.MaximumSize = this.Size;
         }
     }
 }

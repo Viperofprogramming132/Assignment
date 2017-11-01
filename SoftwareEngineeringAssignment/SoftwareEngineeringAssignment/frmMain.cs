@@ -15,6 +15,7 @@ namespace SoftwareEngineeringAssignment
         public frmMain(Staff member)
         {
             InitializeComponent();
+            this.WindowState = FormWindowState.Maximized;
             lblWelcome.Text = "Welcome " + member.FName + " " + member.LName;
         }
 
@@ -131,6 +132,12 @@ namespace SoftwareEngineeringAssignment
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            this.MinimumSize = this.Size;
+            this.MaximumSize = this.Size;
         }
     }
 }

@@ -14,12 +14,15 @@ namespace SoftwareEngineeringAssignment
 {
     public partial class frmLogin : Form
     {
+
         List<Staff> m_staff;
         public frmLogin()
         {
             InitializeComponent();
+            this.WindowState = FormWindowState.Maximized;
         }
 
+    
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             BusinessLayer ml = BusinessLayer.instance();
@@ -38,6 +41,13 @@ namespace SoftwareEngineeringAssignment
 
 
         }
+
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+            this.MinimumSize = this.Size;
+            this.MaximumSize = this.Size;
+        }
+
 
         private void frmLogin_VisibleChanged(object sender, EventArgs e)
         {
@@ -69,9 +79,6 @@ namespace SoftwareEngineeringAssignment
             }
         }
 
-        private void frmLogin_Load(object sender, EventArgs e)
-        {
-
-        }
+       
     }
 }
