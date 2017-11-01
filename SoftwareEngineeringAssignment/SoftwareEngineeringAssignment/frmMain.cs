@@ -64,10 +64,10 @@ namespace SoftwareEngineeringAssignment
         /// <param name="e"></param>
         private void btnSeachPatients_Click(object sender, EventArgs e)
         {
-            /*frmQueryPatient queryPatient = new frmQueryPatient();
+            frmAddStaff queryPatient = new frmAddStaff();
             this.Hide();
             queryPatient.ShowDialog();
-            this.Show();*/
+            this.Show();
         }
 
 
@@ -125,8 +125,12 @@ namespace SoftwareEngineeringAssignment
             admin.ShowDialog();
             this.Show();
         }
+
         #endregion
 
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }

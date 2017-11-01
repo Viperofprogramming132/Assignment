@@ -118,6 +118,9 @@
     </Compile>
     <Compile Include="SQLCon.cs" />
     <Compile Include="Staff.cs" />
+    <EmbeddedResource Include="frmAddStaff.resx">
+      <DependentUpon>frmAddStaff.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmBook.resx">
       <DependentUpon>frmBook.cs</DependentUpon>
     </EmbeddedResource>

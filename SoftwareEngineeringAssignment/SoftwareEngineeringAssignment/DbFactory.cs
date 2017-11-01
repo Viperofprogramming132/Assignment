@@ -92,9 +92,9 @@ namespace SoftwareEngineeringAssignment
 
         bool CloseConnection();
 
-        
+
         //Insert statement
-        void Insert(); 
+        int Insert(string insertString); 
         //Update statement
         void Update();
         //Delete statement
