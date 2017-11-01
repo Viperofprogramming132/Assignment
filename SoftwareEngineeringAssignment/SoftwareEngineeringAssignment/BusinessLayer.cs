@@ -102,6 +102,41 @@ namespace SoftwareEngineeringAssignment
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public List<Appointment> getAppointments()
+        {
+            List<Appointment> appointments = new List<Appointment>();
+
+            DbConection con = DbFactory.instance();
+            if (con.OpenConnection())
+            {
+                DbDataReader dr = con.Select("SELECT * FROM appointment;");
+
+                //Read the data and store them in the list
+                while (dr.Read())
+                {
+                    Appointment appointment = new Appointment();
+                    appointment. = dr.GetInt32(0).ToString();
+                    appointment. = DecryptBytes(aesCSP, dr.GetString(1));
+                    appointment. = DecryptBytes(aesCSP, dr.GetString(2));
+                    appointment. = DecryptBytes(aesCSP, dr.GetString(3));
+                    appointment. = DecryptBytes(aesCSP, dr.GetString(4));
+                    appointment. = dr.GetInt32(5);
+                    appointments.Add(appointment);
+                }
+
+                //close Data Reader
+                dr.Close();
+                con.CloseConnection();
+            }
+
+            return appointments;
+        }
+
+
+        /// <summary>
         /// Adds a staff member and returns true if it added the member
         /// </summary>
         /// <param name="FirstName"></param>
