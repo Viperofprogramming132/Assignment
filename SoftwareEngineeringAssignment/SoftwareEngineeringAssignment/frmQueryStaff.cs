@@ -10,15 +10,15 @@ using System.Windows.Forms;
 
 namespace SoftwareEngineeringAssignment
 {
-    public partial class frmAddPerscription : Form
+    public partial class frmQueryStaff : Form
     {
-        public frmAddPerscription()
+        public frmQueryStaff()
         {
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
         }
 
-        private void frmAddPerscription_Load(object sender, EventArgs e)
+        private void frmQueryStaff_Load(object sender, EventArgs e)
         {
             this.MinimumSize = this.Size;
             this.MaximumSize = this.Size;

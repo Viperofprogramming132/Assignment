@@ -1,6 +1,6 @@
 ﻿namespace SoftwareEngineeringAssignment
 {
-    partial class frmAddPatient
+    partial class frmQueryStaff
     {
         /// <summary>
         /// Required designer variable.
@@ -30,14 +30,14 @@
         {
             this.SuspendLayout();
             // 
-            // frmAddPatient
+            // frmQueryStaff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Name = "frmAddPatient";
-            this.Text = "frmAddPatient";
-            this.Load += new System.EventHandler(this.frmAddPatient_Load);
+            this.Name = "frmQueryStaff";
+            this.Text = "frmQueryStaff";
+            this.Load += new System.EventHandler(this.frmQueryStaff_Load);
             this.ResumeLayout(false);
 
         }
