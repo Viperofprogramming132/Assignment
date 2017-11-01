@@ -121,6 +121,9 @@
     <EmbeddedResource Include="frmAddStaff.resx">
       <DependentUpon>frmAddStaff.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAdmin.resx">
+      <DependentUpon>frmAdmin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmBook.resx">
       <DependentUpon>frmBook.cs</DependentUpon>
     </EmbeddedResource>
@@ -141,6 +144,7 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="bin\Debug\properties-mysql.dat" />
     <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

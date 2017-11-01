@@ -16,5 +16,18 @@ namespace SoftwareEngineeringAssignment
         {
             InitializeComponent();
         }
+
+        private void btnAddStaff_Click(object sender, EventArgs e)
+        {
+            frmAddStaff addStaff = new frmAddStaff();
+            this.Hide();
+            addStaff.ShowDialog();
+            this.Show();
+        }
+
+        private void btnFindStaff_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
