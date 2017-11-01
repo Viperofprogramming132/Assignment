@@ -108,6 +108,7 @@
             this.MinimizeBox = false;
             this.Name = "frmLogin";
             this.Text = "Login Form";
+            this.Load += new System.EventHandler(this.frmLogin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picNHS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
