@@ -12,7 +12,7 @@ namespace SoftwareEngineeringAssignment
 {
     public partial class frmQueryPatient : Form
     {
-        List<Patient> p = new List<Patient>();
+        List<Patient> patients = new List<Patient>();
 
         List<Patient> finP = new List<Patient>();
 
@@ -62,8 +62,11 @@ namespace SoftwareEngineeringAssignment
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            BusinessLayer ml = BusinessLayer.instance();
+
+            patients = ml.getPatients();
             //database query this info
-            foreach(Patient pa in p)
+            foreach(Patient pa in patients)
             {
                 if(((txtFirstName.Text != "" || txtFirstName.Text == null) && pa.FirstName == txtFirstName.Text) || ((txtLastName.Text != "" || txtLastName.Text == null) && pa.LastName == txtLastName.Text) || ((txtID.Text != "" || txtID.Text == null) && pa.PatientID == txtID.Text)) 
                 {
@@ -93,7 +96,7 @@ namespace SoftwareEngineeringAssignment
 
         public void takePatient(List<Patient> p)
         {
-            this.p = p;
+            this.patients = p;
         }
         private void populate(Patient patient)
         {
@@ -178,7 +181,14 @@ namespace SoftwareEngineeringAssignment
 
         private void frmQueryPatient_FormClosing(object sender, FormClosingEventArgs e)
         {
-            m_FB.takePatient(finP[showing]);
+            if(finP != null || finP.Count == 0)
+            {
+                m_FB.takePatient(finP[showing]);
+            }
+            else
+            {
+                MessageBox.Show("No user was selected. Returning to Booking");
+            }
         }
     }
 }

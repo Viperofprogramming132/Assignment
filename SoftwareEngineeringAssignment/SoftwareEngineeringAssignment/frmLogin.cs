@@ -28,16 +28,16 @@ namespace SoftwareEngineeringAssignment
             BusinessLayer ml = BusinessLayer.instance();
             m_staff = ml.getStaff();
 
-            foreach(Staff s in m_staff)
-            {
-                if (s.UserName == txtUsername.Text && s.Password == txtPassword.Text)
-                {
-                    frmMain Main = new frmMain(s);
+            //foreach(Staff s in m_staff)
+            //{
+                //if (s.UserName == txtUsername.Text && s.Password == txtPassword.Text)
+                //{
+                    frmMain Main = new frmMain(new Staff());
                     this.Hide();
                     Main.ShowDialog();
                     this.Show();
-                }
-            }
+                //}
+            //}
 
 
         }
