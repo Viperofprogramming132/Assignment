@@ -129,6 +129,25 @@ namespace SoftwareEngineeringAssignment
             return false;
         }
 
+        public bool addPatient(string FirstName, string LastName, string UserName, string Password, int AuthLevel)
+        {
+            DbConection con = DbFactory.instance();
+            if (con.OpenConnection())
+            {
+                string insertString = "INSERT INTO `staffmember` (`staffID`, `StaffFirstName`, `StaffLastName`, `UserName`, `Password`, `authLevel`) VALUES (NULL, '" + EncryptString(aesCSP, FirstName) + "', '" + EncryptString(aesCSP, LastName) + "', '" + EncryptString(aesCSP, UserName) + "', '" + EncryptString(aesCSP, Password) + "', '" + AuthLevel + "');";
+                if (con.Insert(insertString) != 0)
+                {
+                    con.CloseConnection();
+
+                    return true;
+                }
+
+
+            }
+
+            return false;
+        }
+
 
         /// <summary>
         /// encrypts the given string using the SymmetricAlgorithm given
@@ -160,6 +179,7 @@ namespace SoftwareEngineeringAssignment
         /// <returns></returns>
         public string DecryptBytes(SymmetricAlgorithm symAlg, string inString)
         {
+            byte[] outBlock = null;
             List<byte> inBytes = new List<byte>();
             List<string> inListString = new List<string>();
             inListString = inString.Split(',').ToList();
@@ -168,7 +188,14 @@ namespace SoftwareEngineeringAssignment
                 inBytes.Add(Convert.ToByte(inListString[i]));
             }
             ICryptoTransform xfrm = symAlg.CreateDecryptor();
-            byte[] outBlock = xfrm.TransformFinalBlock(inBytes.ToArray(), 0, inBytes.Count);
+            try
+            {
+                outBlock = xfrm.TransformFinalBlock(inBytes.ToArray(), 0, inBytes.Count);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("" + e);
+            }
 
             return UnicodeEncoding.UTF32.GetString(outBlock);
         }
