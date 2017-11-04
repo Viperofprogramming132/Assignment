@@ -15,6 +15,13 @@ namespace SoftwareEngineeringAssignment
         public frmAddPerscription()
         {
             InitializeComponent();
+            this.WindowState = FormWindowState.Maximized;
+        }
+
+        private void frmAddPerscription_Load(object sender, EventArgs e)
+        {
+            this.MinimumSize = this.Size;
+            this.MaximumSize = this.Size;
         }
     }
 }

@@ -21,8 +21,7 @@ namespace SoftwareEngineeringAssignment
 
             aesCSP.Key = new byte[32] { 2, 254, 44, 83, 232, 130, 185, 243, 187, 155, 219, 136, 198, 231, 16, 214, 20, 237, 205, 166, 157, 82, 255, 242, 140, 191, 104, 55, 188, 69, 247, 114 };
             aesCSP.IV = new byte[16] { 81, 117, 207, 183, 191, 235, 72, 140, 140, 2, 226, 123, 239, 207, 58, 113 };
-
-
+            aesCSP.Padding = PaddingMode.PKCS7;
         }
 
         static public BusinessLayer instance()
@@ -45,16 +44,17 @@ namespace SoftwareEngineeringAssignment
             DbConection con = DbFactory.instance();
             if (con.OpenConnection())
             {
-                DbDataReader dr = con.Select("SELECT PatientID, FirstName, LastName, DateOfBirth FROM patient;");
+                DbDataReader dr = con.Select("SELECT PatientID, FirstName, LastName, DateOfBirth, Religeon FROM patient;");
 
                 //Read the data and store them in the list
                 while (dr.Read())
                 {
                     Patient patient = new Patient();
                     patient.PatientID = dr.GetInt32(0).ToString();
-                    patient.FirstName = dr.GetString(1);
-                    patient.LastName = dr.GetString(2);
-                    patient.DoB = dr.GetDateTime(3);
+                    patient.FirstName = DecryptBytes(aesCSP, dr.GetString(1));
+                    patient.LastName = DecryptBytes(aesCSP, dr.GetString(2));
+                    patient.DoB = Convert.ToDateTime(DecryptBytes(aesCSP, dr.GetString(3)));
+                    patient.Religeon = DecryptBytes(aesCSP, dr.GetString(4));
                     patients.Add(patient);
                 }
 
@@ -78,7 +78,7 @@ namespace SoftwareEngineeringAssignment
             DbConection con = DbFactory.instance();
             if (con.OpenConnection())
             {
-                DbDataReader dr = con.Select("SELECT StaffID, StaffFirstName, StaffLastName, UserName, Password, authLevel FROM staffmember;");
+                DbDataReader dr = con.Select("SELECT StaffID, FirstName, LastName, UserName, Password, authLevel FROM staff;");
 
                 //Read the data and store them in the list
                 while (dr.Read())
@@ -102,6 +102,41 @@ namespace SoftwareEngineeringAssignment
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public List<Appointment> getAppointments()
+        {
+            List<Appointment> appointments = new List<Appointment>();
+
+            DbConection con = DbFactory.instance();
+            if (con.OpenConnection())
+            {
+                DbDataReader dr = con.Select("SELECT * FROM appointment;");
+
+                //Read the data and store them in the list
+                while (dr.Read())
+                {
+                    Appointment appointment = new Appointment();
+                    appointment.appointmentID = dr.GetInt32(0);
+                    appointment.patientID = dr.GetInt32(1);
+                    appointment.staffID = dr.GetInt32(2);
+                    appointment.appointmentTime = Convert.ToDateTime(DecryptBytes(aesCSP, dr.GetString(3)));
+                    appointment.endTime = Convert.ToDateTime(DecryptBytes(aesCSP, dr.GetString(4)));
+                    appointment.description = dr.GetString(5);
+                    appointments.Add(appointment);
+                }
+
+                //close Data Reader
+                dr.Close();
+                con.CloseConnection();
+            }
+
+            return appointments;
+        }
+
+
+        /// <summary>
         /// Adds a staff member and returns true if it added the member
         /// </summary>
         /// <param name="FirstName"></param>
@@ -110,12 +145,12 @@ namespace SoftwareEngineeringAssignment
         /// <param name="Password"></param>
         /// <param name="AuthLevel"></param>
         /// <returns></returns>
-        public bool addStaff(string FirstName, string LastName, string UserName, string Password, int AuthLevel)
+        public bool addStaff(string FirstName, string LastName, string UserName, string Password, int AuthLevel, int AddressID, DateTime DoB)
         {
             DbConection con = DbFactory.instance();
             if(con.OpenConnection())
             {
-                string insertString = "INSERT INTO `staffmember` (`staffID`, `StaffFirstName`, `StaffLastName`, `UserName`, `Password`, `authLevel`) VALUES (NULL, '"+ EncryptString(aesCSP, FirstName) + "', '"+ EncryptString(aesCSP, LastName) + "', '"+ EncryptString(aesCSP, UserName) + "', '"+ EncryptString(aesCSP, Password) + "', '"+ AuthLevel + "');";
+                string insertString = "INSERT INTO staff (StaffID, AddressID, FirstName, LastName, UserName, Password, authLevel,DoB) VALUES (NULL, '" + AddressID + "' ,'" + EncryptString(aesCSP, FirstName) + "', '" + EncryptString(aesCSP, LastName) + "', '" + EncryptString(aesCSP, UserName) + "', '" + EncryptString(aesCSP, Password) + "', '" + AuthLevel + "', '" + EncryptString(aesCSP, DoB.ToString()) + "');";
                 if (con.Insert(insertString) != 0)
                 {
                     con.CloseConnection();
@@ -126,6 +161,34 @@ namespace SoftwareEngineeringAssignment
                 
             }
             
+            return false;
+        }
+
+
+        /// <summary>
+        /// Adds a patient and returns true if added
+        /// </summary>
+        /// <param name="FirstName"></param>
+        /// <param name="LastName"></param>
+        /// <param name="DoB"></param>
+        /// <param name="Religion"></param>
+        /// <returns></returns>
+        public bool addPatient(string FirstName, string LastName, string DoB, string Religion)
+        {
+            DbConection con = DbFactory.instance();
+            if (con.OpenConnection())
+            {
+                string insertString = "INSERT INTO patient (PatientID, PerscriptionID, AddressID, FirstName, LastName, DateOfBirth, Religeon) VALUES (NULL, NULL, '1', '" + EncryptString(aesCSP, FirstName) + "', '" + EncryptString(aesCSP, LastName) + "', '" + EncryptString(aesCSP, DoB) + "', '" + EncryptString(aesCSP, Religion) + "');";
+                if (con.Insert(insertString) != 0)
+                {
+                    con.CloseConnection();
+
+                    return true;
+                }
+
+
+            }
+
             return false;
         }
 
@@ -199,5 +262,7 @@ namespace SoftwareEngineeringAssignment
 
             return UnicodeEncoding.UTF32.GetString(outBlock);
         }
+
+
     }
 }

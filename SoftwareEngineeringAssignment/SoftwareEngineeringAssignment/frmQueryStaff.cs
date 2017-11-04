@@ -10,31 +10,18 @@ using System.Windows.Forms;
 
 namespace SoftwareEngineeringAssignment
 {
-    public partial class frmAdmin : Form
+    public partial class frmQueryStaff : Form
     {
-        public frmAdmin()
+        public frmQueryStaff()
         {
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
         }
 
-        private void frmAdmin_Load(object sender, EventArgs e)
+        private void frmQueryStaff_Load(object sender, EventArgs e)
         {
             this.MinimumSize = this.Size;
             this.MaximumSize = this.Size;
-        }
-
-        private void btnAddStaff_Click(object sender, EventArgs e)
-        {
-            frmAddStaff addStaff = new frmAddStaff();
-            this.Hide();
-            addStaff.ShowDialog();
-            this.Show();
-        }
-
-        private void btnFindStaff_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

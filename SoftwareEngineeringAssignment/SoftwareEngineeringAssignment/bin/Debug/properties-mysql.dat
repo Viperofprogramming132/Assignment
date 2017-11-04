@@ -1,0 +1,4 @@
+Provider=MySQL
+Server=localhost
+Database=programmingDatabase
+User=root

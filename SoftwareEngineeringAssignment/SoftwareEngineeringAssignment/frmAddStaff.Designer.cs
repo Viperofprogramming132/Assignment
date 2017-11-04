@@ -32,68 +32,125 @@
             this.txtLastName = new System.Windows.Forms.TextBox();
             this.txtUserName = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
-            this.txtAuthLevel = new System.Windows.Forms.TextBox();
             this.btnGo = new System.Windows.Forms.Button();
+            this.lblFirstName = new System.Windows.Forms.Label();
+            this.lblLastName = new System.Windows.Forms.Label();
+            this.lblUserName = new System.Windows.Forms.Label();
+            this.lblPassword = new System.Windows.Forms.Label();
+            this.lblAuthLevel = new System.Windows.Forms.Label();
+            this.cmbAuthLevel = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // txtFirstName
             // 
-            this.txtFirstName.Location = new System.Drawing.Point(13, 13);
+            this.txtFirstName.Location = new System.Drawing.Point(151, 6);
             this.txtFirstName.Name = "txtFirstName";
-            this.txtFirstName.Size = new System.Drawing.Size(100, 20);
+            this.txtFirstName.Size = new System.Drawing.Size(121, 20);
             this.txtFirstName.TabIndex = 0;
             // 
             // txtLastName
             // 
-            this.txtLastName.Location = new System.Drawing.Point(12, 39);
+            this.txtLastName.Location = new System.Drawing.Point(151, 32);
             this.txtLastName.Name = "txtLastName";
-            this.txtLastName.Size = new System.Drawing.Size(100, 20);
+            this.txtLastName.Size = new System.Drawing.Size(121, 20);
             this.txtLastName.TabIndex = 1;
             // 
             // txtUserName
             // 
-            this.txtUserName.Location = new System.Drawing.Point(13, 65);
+            this.txtUserName.Location = new System.Drawing.Point(151, 58);
             this.txtUserName.Name = "txtUserName";
-            this.txtUserName.Size = new System.Drawing.Size(100, 20);
+            this.txtUserName.Size = new System.Drawing.Size(121, 20);
             this.txtUserName.TabIndex = 2;
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(13, 91);
+            this.txtPassword.Location = new System.Drawing.Point(151, 84);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(100, 20);
+            this.txtPassword.Size = new System.Drawing.Size(121, 20);
             this.txtPassword.TabIndex = 3;
-            // 
-            // txtAuthLevel
-            // 
-            this.txtAuthLevel.Location = new System.Drawing.Point(12, 117);
-            this.txtAuthLevel.Name = "txtAuthLevel";
-            this.txtAuthLevel.Size = new System.Drawing.Size(100, 20);
-            this.txtAuthLevel.TabIndex = 4;
             // 
             // btnGo
             // 
-            this.btnGo.Location = new System.Drawing.Point(13, 154);
+            this.btnGo.Location = new System.Drawing.Point(197, 226);
             this.btnGo.Name = "btnGo";
             this.btnGo.Size = new System.Drawing.Size(75, 23);
             this.btnGo.TabIndex = 5;
-            this.btnGo.Text = "button1";
+            this.btnGo.Text = "Submit";
             this.btnGo.UseVisualStyleBackColor = true;
             this.btnGo.Click += new System.EventHandler(this.btnGo_Click);
+            // 
+            // lblFirstName
+            // 
+            this.lblFirstName.AutoSize = true;
+            this.lblFirstName.Location = new System.Drawing.Point(12, 9);
+            this.lblFirstName.Name = "lblFirstName";
+            this.lblFirstName.Size = new System.Drawing.Size(57, 13);
+            this.lblFirstName.TabIndex = 6;
+            this.lblFirstName.Text = "First Name";
+            // 
+            // lblLastName
+            // 
+            this.lblLastName.AutoSize = true;
+            this.lblLastName.Location = new System.Drawing.Point(12, 35);
+            this.lblLastName.Name = "lblLastName";
+            this.lblLastName.Size = new System.Drawing.Size(58, 13);
+            this.lblLastName.TabIndex = 7;
+            this.lblLastName.Text = "Last Name";
+            // 
+            // lblUserName
+            // 
+            this.lblUserName.AutoSize = true;
+            this.lblUserName.Location = new System.Drawing.Point(12, 61);
+            this.lblUserName.Name = "lblUserName";
+            this.lblUserName.Size = new System.Drawing.Size(60, 13);
+            this.lblUserName.TabIndex = 8;
+            this.lblUserName.Text = "User Name";
+            // 
+            // lblPassword
+            // 
+            this.lblPassword.AutoSize = true;
+            this.lblPassword.Location = new System.Drawing.Point(12, 87);
+            this.lblPassword.Name = "lblPassword";
+            this.lblPassword.Size = new System.Drawing.Size(53, 13);
+            this.lblPassword.TabIndex = 9;
+            this.lblPassword.Text = "Password";
+            // 
+            // lblAuthLevel
+            // 
+            this.lblAuthLevel.AutoSize = true;
+            this.lblAuthLevel.Location = new System.Drawing.Point(12, 113);
+            this.lblAuthLevel.Name = "lblAuthLevel";
+            this.lblAuthLevel.Size = new System.Drawing.Size(104, 13);
+            this.lblAuthLevel.TabIndex = 10;
+            this.lblAuthLevel.Text = "Authentication Level";
+            // 
+            // cmbAuthLevel
+            // 
+            this.cmbAuthLevel.FormattingEnabled = true;
+            this.cmbAuthLevel.Location = new System.Drawing.Point(151, 110);
+            this.cmbAuthLevel.Name = "cmbAuthLevel";
+            this.cmbAuthLevel.Size = new System.Drawing.Size(121, 21);
+            this.cmbAuthLevel.TabIndex = 11;
             // 
             // frmAddStaff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.cmbAuthLevel);
+            this.Controls.Add(this.lblAuthLevel);
+            this.Controls.Add(this.lblPassword);
+            this.Controls.Add(this.lblUserName);
+            this.Controls.Add(this.lblLastName);
+            this.Controls.Add(this.lblFirstName);
             this.Controls.Add(this.btnGo);
-            this.Controls.Add(this.txtAuthLevel);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtUserName);
             this.Controls.Add(this.txtLastName);
             this.Controls.Add(this.txtFirstName);
             this.Name = "frmAddStaff";
             this.Text = "frmAddStaff";
+            this.Load += new System.EventHandler(this.frmAddStaff_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -105,7 +162,12 @@
         private System.Windows.Forms.TextBox txtLastName;
         private System.Windows.Forms.TextBox txtUserName;
         private System.Windows.Forms.TextBox txtPassword;
-        private System.Windows.Forms.TextBox txtAuthLevel;
         private System.Windows.Forms.Button btnGo;
+        private System.Windows.Forms.Label lblFirstName;
+        private System.Windows.Forms.Label lblLastName;
+        private System.Windows.Forms.Label lblUserName;
+        private System.Windows.Forms.Label lblPassword;
+        private System.Windows.Forms.Label lblAuthLevel;
+        private System.Windows.Forms.ComboBox cmbAuthLevel;
     }
 }
