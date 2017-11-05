@@ -47,6 +47,9 @@
             this.btnSearchPatients = new System.Windows.Forms.Button();
             this.txtNhsNum = new System.Windows.Forms.TextBox();
             this.lblNhsNum = new System.Windows.Forms.Label();
+            this.btnSubmit = new System.Windows.Forms.Button();
+            this.txtDescription = new System.Windows.Forms.RichTextBox();
+            this.lblDescription = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // mclCalander
@@ -80,6 +83,7 @@
             this.cmbTimeslot.Name = "cmbTimeslot";
             this.cmbTimeslot.Size = new System.Drawing.Size(121, 21);
             this.cmbTimeslot.TabIndex = 5;
+            this.cmbTimeslot.SelectedValueChanged += new System.EventHandler(this.cmbTimeslot_SelectedValueChanged);
             // 
             // lblTimeslot
             // 
@@ -141,6 +145,7 @@
             this.cmbDay.Name = "cmbDay";
             this.cmbDay.Size = new System.Drawing.Size(40, 21);
             this.cmbDay.TabIndex = 11;
+            this.cmbDay.VisibleChanged += new System.EventHandler(this.cmbDay_VisibleChanged);
             // 
             // cmbMonth
             // 
@@ -214,11 +219,41 @@
             this.lblNhsNum.TabIndex = 18;
             this.lblNhsNum.Text = "NHS Number";
             // 
+            // btnSubmit
+            // 
+            this.btnSubmit.Location = new System.Drawing.Point(252, 269);
+            this.btnSubmit.Name = "btnSubmit";
+            this.btnSubmit.Size = new System.Drawing.Size(75, 23);
+            this.btnSubmit.TabIndex = 20;
+            this.btnSubmit.Text = "Submit";
+            this.btnSubmit.UseVisualStyleBackColor = true;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
+            // 
+            // txtDescription
+            // 
+            this.txtDescription.Location = new System.Drawing.Point(508, 29);
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.Size = new System.Drawing.Size(405, 189);
+            this.txtDescription.TabIndex = 21;
+            this.txtDescription.Text = "";
+            // 
+            // lblDescription
+            // 
+            this.lblDescription.AutoSize = true;
+            this.lblDescription.Location = new System.Drawing.Point(505, 13);
+            this.lblDescription.Name = "lblDescription";
+            this.lblDescription.Size = new System.Drawing.Size(60, 13);
+            this.lblDescription.TabIndex = 22;
+            this.lblDescription.Text = "Description";
+            // 
             // frmBook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1138, 457);
+            this.Controls.Add(this.lblDescription);
+            this.Controls.Add(this.txtDescription);
+            this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.txtNhsNum);
             this.Controls.Add(this.lblNhsNum);
             this.Controls.Add(this.btnSearchPatients);
@@ -267,5 +302,8 @@
         private System.Windows.Forms.Button btnSearchPatients;
         private System.Windows.Forms.TextBox txtNhsNum;
         private System.Windows.Forms.Label lblNhsNum;
+        private System.Windows.Forms.Button btnSubmit;
+        private System.Windows.Forms.RichTextBox txtDescription;
+        private System.Windows.Forms.Label lblDescription;
     }
 }

@@ -33,19 +33,19 @@ namespace SoftwareEngineeringAssignment
             {
                 authL = 1;
             }
-            if (cmbAuthLevel.Text == "Nurse")
+            else if(cmbAuthLevel.Text == "Nurse")
             {
                 authL = 2;
             }
-            if (cmbAuthLevel.Text == "Receptionist")
+            else if(cmbAuthLevel.Text == "Receptionist")
             {
                 authL = 3;
             }
-            if (cmbAuthLevel.Text == "General Staff")
+            else if(cmbAuthLevel.Text == "General Staff")
             {
                 authL = 4;
             }
-            if (cmbAuthLevel.Text == "Manager")
+            else if (cmbAuthLevel.Text == "Manager")
             {
                 authL = 5;
             }

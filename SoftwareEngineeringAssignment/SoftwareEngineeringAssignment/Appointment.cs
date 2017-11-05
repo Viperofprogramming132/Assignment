@@ -27,10 +27,6 @@ namespace SoftwareEngineeringAssignment
         public int patientID { get { return m_patientID; } set { m_patientID = value; } }
         public DateTime endTime { get { return m_endTime; } set { m_endTime = value; } }
 
-        public Appointment()
-        {
-        }
-
         
     }
 }

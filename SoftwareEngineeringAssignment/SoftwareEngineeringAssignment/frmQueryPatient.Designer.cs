@@ -232,6 +232,8 @@
             // lsvAppointments
             // 
             this.lsvAppointments.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.lsvAppointments.FullRowSelect = true;
+            this.lsvAppointments.GridLines = true;
             this.lsvAppointments.Location = new System.Drawing.Point(12, 361);
             this.lsvAppointments.Name = "lsvAppointments";
             this.lsvAppointments.Size = new System.Drawing.Size(586, 140);

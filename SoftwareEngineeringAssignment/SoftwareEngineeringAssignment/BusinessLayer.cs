@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
 using System.Diagnostics;
+using System.IO;
 
 namespace SoftwareEngineeringAssignment
 {
@@ -14,14 +15,14 @@ namespace SoftwareEngineeringAssignment
     {
         static private BusinessLayer m_instance = null;
         private StringBuilder sb = new StringBuilder();
-        AesCryptoServiceProvider aesCSP;
+        Aes aes = new AesManaged();
         private BusinessLayer()
         {
-            aesCSP = new AesCryptoServiceProvider();
+            //aesCSP = new AesCryptoServiceProvider();
 
-            aesCSP.Key = new byte[32] { 2, 254, 44, 83, 232, 130, 185, 243, 187, 155, 219, 136, 198, 231, 16, 214, 20, 237, 205, 166, 157, 82, 255, 242, 140, 191, 104, 55, 188, 69, 247, 114 };
-            aesCSP.IV = new byte[16] { 81, 117, 207, 183, 191, 235, 72, 140, 140, 2, 226, 123, 239, 207, 58, 113 };
-            aesCSP.Padding = PaddingMode.PKCS7;
+            aes.Key = new byte[32] { 2, 254, 44, 83, 232, 130, 185, 243, 187, 155, 219, 136, 198, 231, 16, 214, 20, 237, 205, 166, 157, 82, 255, 242, 140, 191, 104, 55, 188, 69, 247, 114 };
+            aes.IV = new byte[16] { 81, 117, 207, 183, 191, 235, 72, 140, 140, 2, 226, 123, 239, 207, 58, 113 };
+            aes.Padding = PaddingMode.PKCS7;
         }
 
         static public BusinessLayer instance()
@@ -50,11 +51,11 @@ namespace SoftwareEngineeringAssignment
                 while (dr.Read())
                 {
                     Patient patient = new Patient();
-                    patient.PatientID = dr.GetInt32(0).ToString();
-                    patient.FirstName = DecryptBytes(aesCSP, dr.GetString(1));
-                    patient.LastName = DecryptBytes(aesCSP, dr.GetString(2));
-                    patient.DoB = Convert.ToDateTime(DecryptBytes(aesCSP, dr.GetString(3)));
-                    patient.Religeon = DecryptBytes(aesCSP, dr.GetString(4));
+                    patient.PatientID = dr.GetInt32(0);
+                    patient.FirstName = DecryptBytes( dr.GetString(1));
+                    patient.LastName = DecryptBytes( dr.GetString(2));
+                    patient.DoB = Convert.ToDateTime(DecryptBytes( dr.GetString(3)));
+                    patient.Religeon = DecryptBytes( dr.GetString(4));
                     patients.Add(patient);
                 }
 
@@ -84,11 +85,11 @@ namespace SoftwareEngineeringAssignment
                 while (dr.Read())
                 {
                     Staff staff = new Staff();
-                    staff.StaffID = dr.GetInt32(0).ToString();
-                    staff.FName = DecryptBytes(aesCSP, dr.GetString(1));
-                    staff.LName = DecryptBytes(aesCSP, dr.GetString(2));
-                    staff.UserName = DecryptBytes(aesCSP, dr.GetString(3));
-                    staff.Password = DecryptBytes(aesCSP, dr.GetString(4));
+                    staff.StaffID = dr.GetInt32(0);
+                    staff.FName = DecryptBytes( dr.GetString(1));
+                    staff.LName = DecryptBytes( dr.GetString(2));
+                    staff.UserName = DecryptBytes( dr.GetString(3));
+                    staff.Password = DecryptBytes( dr.GetString(4));
                     staff.AuthLevel = dr.GetInt32(5);
                     staffs.Add(staff);
                 }
@@ -121,8 +122,8 @@ namespace SoftwareEngineeringAssignment
                     appointment.appointmentID = dr.GetInt32(0);
                     appointment.patientID = dr.GetInt32(1);
                     appointment.staffID = dr.GetInt32(2);
-                    appointment.appointmentTime = Convert.ToDateTime(DecryptBytes(aesCSP, dr.GetString(3)));
-                    appointment.endTime = Convert.ToDateTime(DecryptBytes(aesCSP, dr.GetString(4)));
+                    appointment.appointmentTime = Convert.ToDateTime(DecryptBytes( dr.GetString(3)));
+                    appointment.endTime = Convert.ToDateTime(DecryptBytes( dr.GetString(4)));
                     appointment.description = dr.GetString(5);
                     appointments.Add(appointment);
                 }
@@ -133,6 +134,36 @@ namespace SoftwareEngineeringAssignment
             }
 
             return appointments;
+        }
+
+        public List<Perscription> getPerscriptions()
+        {
+            List<Perscription> perscriptions = new List<Perscription>();
+
+            DbConection con = DbFactory.instance();
+            if (con.OpenConnection())
+            {
+                DbDataReader dr = con.Select("SELECT * FROM perscription;");
+
+                //Read the data and store them in the list
+                while (dr.Read())
+                {
+                    Perscription perscription = new Perscription();
+                    perscription.PerscriptionID = dr.GetInt32(0);
+                    perscription.PatientID = dr.GetInt32(1);
+                    perscription.DrugID = dr.GetInt32(2);
+                    perscription.StartDate = Convert.ToDateTime(DecryptBytes(dr.GetString(3)));
+                    perscription.EndDate = Convert.ToDateTime(DecryptBytes(dr.GetString(4)));
+                    perscription.description = dr.GetString(5);
+                    perscriptions.Add(perscription);
+                }
+
+                //close Data Reader
+                dr.Close();
+                con.CloseConnection();
+            }
+
+            return perscriptions;
         }
 
 
@@ -150,7 +181,7 @@ namespace SoftwareEngineeringAssignment
             DbConection con = DbFactory.instance();
             if(con.OpenConnection())
             {
-                string insertString = "INSERT INTO staff (StaffID, AddressID, FirstName, LastName, UserName, Password, authLevel,DoB) VALUES (NULL, '" + AddressID + "' ,'" + EncryptString(aesCSP, FirstName) + "', '" + EncryptString(aesCSP, LastName) + "', '" + EncryptString(aesCSP, UserName) + "', '" + EncryptString(aesCSP, Password) + "', '" + AuthLevel + "', '" + EncryptString(aesCSP, DoB.ToString()) + "');";
+                string insertString = "INSERT INTO staff (StaffID, AddressID, FirstName, LastName, UserName, Password, authLevel,DoB) VALUES (NULL, '" + AddressID + "' ,'" + EncryptString( FirstName) + "', '" + EncryptString( LastName) + "', '" + EncryptString( UserName) + "', '" + EncryptString( Password) + "', '" + AuthLevel + "', '" + EncryptString( DoB.ToString()) + "');";
                 if (con.Insert(insertString) != 0)
                 {
                     con.CloseConnection();
@@ -173,12 +204,12 @@ namespace SoftwareEngineeringAssignment
         /// <param name="DoB"></param>
         /// <param name="Religion"></param>
         /// <returns></returns>
-        public bool addPatient(string FirstName, string LastName, string DoB, string Religion)
+        public bool addPatient(string FirstName, string LastName, DateTime DoB, string Religion)
         {
             DbConection con = DbFactory.instance();
             if (con.OpenConnection())
             {
-                string insertString = "INSERT INTO patient (PatientID, PerscriptionID, AddressID, FirstName, LastName, DateOfBirth, Religeon) VALUES (NULL, NULL, '1', '" + EncryptString(aesCSP, FirstName) + "', '" + EncryptString(aesCSP, LastName) + "', '" + EncryptString(aesCSP, DoB) + "', '" + EncryptString(aesCSP, Religion) + "');";
+                string insertString = "INSERT INTO patient (PatientID, PerscriptionID, AddressID, FirstName, LastName, DateOfBirth, Religeon) VALUES (NULL, NULL, '1', '" + EncryptString( FirstName) + "', '" + EncryptString( LastName) + "', '" + EncryptString(DoB.ToString()) + "', '" + EncryptString( Religion) + "');";
                 if (con.Insert(insertString) != 0)
                 {
                     con.CloseConnection();
@@ -192,12 +223,12 @@ namespace SoftwareEngineeringAssignment
             return false;
         }
 
-        public bool addPatient(string FirstName, string LastName, string UserName, string Password, int AuthLevel)
+        public bool addAppointment(int PatientID, int StaffID, DateTime StartTime, DateTime EndTime, string Description)
         {
             DbConection con = DbFactory.instance();
             if (con.OpenConnection())
             {
-                string insertString = "INSERT INTO `staffmember` (`staffID`, `StaffFirstName`, `StaffLastName`, `UserName`, `Password`, `authLevel`) VALUES (NULL, '" + EncryptString(aesCSP, FirstName) + "', '" + EncryptString(aesCSP, LastName) + "', '" + EncryptString(aesCSP, UserName) + "', '" + EncryptString(aesCSP, Password) + "', '" + AuthLevel + "');";
+                string insertString = "INSERT INTO appointment (AppointmentID, PatientID, StaffID, StartTime, EndTime, Description) VALUES (NULL, '" + PatientID.ToString() + "', '" + StaffID.ToString() + "', '" + EncryptString(StartTime.ToString()) + "', '" + EncryptString(EndTime.ToString()) + "', '" + EncryptString(Description) + "');";
                 if (con.Insert(insertString) != 0)
                 {
                     con.CloseConnection();
@@ -211,6 +242,7 @@ namespace SoftwareEngineeringAssignment
             return false;
         }
 
+        //https://stackoverflow.com/questions/604210/padding-is-invalid-and-cannot-be-removed-using-aesmanaged
 
         /// <summary>
         /// encrypts the given string using the SymmetricAlgorithm given
@@ -218,19 +250,25 @@ namespace SoftwareEngineeringAssignment
         /// <param name="symAlg"></param>
         /// <param name="inString"></param>
         /// <returns></returns>
-        public string EncryptString(SymmetricAlgorithm symAlg, string inString)
+        public string EncryptString(string inString)
         {
             sb.Clear();
-            byte[] inBlock = UnicodeEncoding.UTF32.GetBytes(inString);
-            ICryptoTransform xfrm = symAlg.CreateEncryptor();
-            byte[] outBlock = xfrm.TransformFinalBlock(inBlock, 0, inBlock.Length);
-
-            foreach(byte i in outBlock)
+            byte[] rawPlaintext = Encoding.Unicode.GetBytes(inString);
+            using (MemoryStream ms = new MemoryStream())
             {
-                sb.Append(i + ",");
+                using (CryptoStream cs = new CryptoStream(ms, aes.CreateEncryptor(), CryptoStreamMode.Write))
+                {
+                    cs.Write(rawPlaintext, 0, rawPlaintext.Length);
+                    cs.FlushFinalBlock();
+                }
+
+                foreach (byte i in ms.ToArray())
+                {
+                    sb.Append(i + ",");
+                }
+                sb.Remove(sb.Length - 1, 1);
+                return sb.ToString();
             }
-            sb.Remove(sb.Length-1, 1);
-            return sb.ToString();
         }
 
 
@@ -240,9 +278,8 @@ namespace SoftwareEngineeringAssignment
         /// <param name="symAlg"></param>
         /// <param name="inString"></param>
         /// <returns></returns>
-        public string DecryptBytes(SymmetricAlgorithm symAlg, string inString)
+        public string DecryptBytes(string inString)
         {
-            byte[] outBlock = null;
             List<byte> inBytes = new List<byte>();
             List<string> inListString = new List<string>();
             inListString = inString.Split(',').ToList();
@@ -250,17 +287,14 @@ namespace SoftwareEngineeringAssignment
             {
                 inBytes.Add(Convert.ToByte(inListString[i]));
             }
-            ICryptoTransform xfrm = symAlg.CreateDecryptor();
-            try
+            using (MemoryStream ms = new MemoryStream())
             {
-                outBlock = xfrm.TransformFinalBlock(inBytes.ToArray(), 0, inBytes.Count);
+                using (CryptoStream cs = new CryptoStream(ms, aes.CreateDecryptor(), CryptoStreamMode.Write))
+                {
+                    cs.Write(inBytes.ToArray(), 0, inBytes.Count);
+                }
+                return UnicodeEncoding.Unicode.GetString(ms.ToArray());
             }
-            catch (Exception e)
-            {
-                throw new Exception("" + e);
-            }
-
-            return UnicodeEncoding.UTF32.GetString(outBlock);
         }
 
 

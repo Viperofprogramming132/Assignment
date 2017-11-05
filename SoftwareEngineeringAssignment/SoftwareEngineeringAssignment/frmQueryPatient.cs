@@ -16,6 +16,9 @@ namespace SoftwareEngineeringAssignment
 
         List<Patient> finP = new List<Patient>();
 
+        List<Appointment> aList = new List<Appointment>();
+        List<Perscription> pList = new List<Perscription>();
+
         frmBook m_FB;
         frmAddPerscription m_FAP;
 
@@ -64,11 +67,13 @@ namespace SoftwareEngineeringAssignment
         {
             BusinessLayer ml = BusinessLayer.instance();
 
+
             patients = ml.getPatients();
+            aList = ml.getAppointments();
             //database query this info
             foreach(Patient pa in patients)
             {
-                if(((txtFirstName.Text != "" || txtFirstName.Text == null) && pa.FirstName == txtFirstName.Text) || ((txtLastName.Text != "" || txtLastName.Text == null) && pa.LastName == txtLastName.Text) || ((txtID.Text != "" || txtID.Text == null) && pa.PatientID == txtID.Text)) 
+                if(((txtFirstName.Text != "" || txtFirstName.Text == null) && pa.FirstName == txtFirstName.Text) || ((txtLastName.Text != "" || txtLastName.Text == null) && pa.LastName == txtLastName.Text) || ((txtID.Text != "" || txtID.Text == null) && pa.PatientID.ToString() == txtID.Text)) 
                 {
                     finP.Add(pa);
                 }
@@ -93,11 +98,6 @@ namespace SoftwareEngineeringAssignment
             this.MinimumSize = this.Size;
             this.MaximumSize = this.Size;
         }
-
-        public void takePatient(List<Patient> p)
-        {
-            this.patients = p;
-        }
         private void populate(Patient patient)
         {
             showing = finP.IndexOf(patient);
@@ -106,27 +106,36 @@ namespace SoftwareEngineeringAssignment
 
             txtFirstName.Text = patient.FirstName;
             txtLastName.Text = patient.LastName;
-            txtID.Text = patient.PatientID;
+            txtID.Text = patient.PatientID.ToString();
 
             cmbDay.Text = patient.DoB.Day.ToString();
             cmbMonth.Text = patient.DoB.Month.ToString();
             cmbYear.Text = patient.DoB.Year.ToString();
 
 
-            foreach(Perscription per in patient.perscriptions)
+
+            foreach(Perscription per in pList)
             {
-                lsvPerscriptions.Items.Add(new ListViewItem(new string[] { per.DrugID, per.Name, per.StartDate.ToString(), per.EndDate.ToString(), per.description }));
+                if(patient.PatientID == per.PatientID)
+                lsvPerscriptions.Items.Add(new ListViewItem(new string[] { per.DrugID.ToString(), per.Name, per.StartDate.ToString(), per.EndDate.ToString(), per.description }));
             }
+
             int i = 0;
-            foreach (Appointment app in patient.appoinments)
+            foreach (Appointment app in aList)
             {
-                lsvAppointments.Items.Add(new ListViewItem(new string[] { patient.PatientID, patient.FirstName, patient.LastName, app.appointmentTime.ToString() }));
-                if (app.canceled)
+                if (patient.PatientID == app.patientID)
                 {
-                    lsvAppointments.Items[i].BackColor = Color.Red;
+                    lsvAppointments.Items.Add(new ListViewItem(new string[] { patient.PatientID.ToString(), patient.FirstName, patient.LastName, app.appointmentTime.ToString() }));
+                    if (app.canceled)
+                    {
+                        lsvAppointments.Items[i].BackColor = Color.Red;
+                    }
+
+                    i++;
                 }
-                i++;
             }
+            ResizeListViewColumns(lsvAppointments);
+            ResizeListViewColumns(lsvPerscriptions);
         }
 
         private void drawLSV()
@@ -181,13 +190,21 @@ namespace SoftwareEngineeringAssignment
 
         private void frmQueryPatient_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(finP != null || finP.Count == 0)
+            if(finP.Count != 0)
             {
                 m_FB.takePatient(finP[showing]);
             }
             else
             {
                 MessageBox.Show("No user was selected. Returning to Booking");
+            }
+        }
+
+        private void ResizeListViewColumns(ListView lv)
+        {
+            foreach (ColumnHeader column in lv.Columns)
+            {
+                column.Width = -2;
             }
         }
     }
