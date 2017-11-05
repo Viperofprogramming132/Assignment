@@ -70,6 +70,7 @@ namespace SoftwareEngineeringAssignment
 
             patients = ml.GetPatients();
             aList = ml.GetAppointments();
+            pList = ml.GetPerscriptions();
             //database query this info
             foreach(Patient pa in patients)
             {
@@ -117,7 +118,10 @@ namespace SoftwareEngineeringAssignment
             foreach(Perscription per in pList)
             {
                 if(patient.PatientID == per.PatientID)
-                lsvPerscriptions.Items.Add(new ListViewItem(new string[] { per.DrugID.ToString(), per.Name, per.StartDate.ToString(), per.EndDate.ToString(), per.description }));
+                {
+                    lsvPerscriptions.Items.Add(new ListViewItem(new string[] { per.DrugID.ToString(), per.Name, per.StartDate.ToString(), per.EndDate.ToString(), per.description }));
+                }
+                
             }
 
             int i = 0;
@@ -128,9 +132,12 @@ namespace SoftwareEngineeringAssignment
                     lsvAppointments.Items.Add(new ListViewItem(new string[] { patient.PatientID.ToString(), patient.FirstName, patient.LastName, app.appointmentTime.ToString() }));
                     if (app.canceled)
                     {
+                        lsvAppointments.Items[i].BackColor = Color.Orange;
+                    }
+                    if (app.attended)
+                    {
                         lsvAppointments.Items[i].BackColor = Color.Red;
                     }
-
                     i++;
                 }
             }

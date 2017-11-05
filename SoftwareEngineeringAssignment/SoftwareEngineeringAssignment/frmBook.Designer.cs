@@ -198,7 +198,7 @@
             this.btnSearchPatients.Name = "btnSearchPatients";
             this.btnSearchPatients.Size = new System.Drawing.Size(75, 37);
             this.btnSearchPatients.TabIndex = 17;
-            this.btnSearchPatients.Text = "Search Patients";
+            this.btnSearchPatients.Text = "Search For Patients";
             this.btnSearchPatients.UseVisualStyleBackColor = true;
             this.btnSearchPatients.Click += new System.EventHandler(this.btnSearchPatients_Click);
             // 

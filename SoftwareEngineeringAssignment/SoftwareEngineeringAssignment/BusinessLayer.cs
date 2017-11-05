@@ -102,6 +102,8 @@ namespace SoftwareEngineeringAssignment
             return staffs;
         }
 
+
+
         /// <summary>
         /// 
         /// </summary>
@@ -194,6 +196,7 @@ namespace SoftwareEngineeringAssignment
         }
 
 
+
         /// <summary>
         /// Adds a staff member and returns true if it added the member
         /// </summary>
@@ -222,6 +225,24 @@ namespace SoftwareEngineeringAssignment
             return false;
         }
 
+        public bool AddPerscription(int PatientID, int DrugID, DateTime StartDate, DateTime EndDate, string Description)
+        {
+            DbConection con = DbFactory.instance();
+            if (con.OpenConnection())
+            {
+                string insertString = "INSERT INTO perscription (PerscriptionID, PatientID, DrugID, StartDate, EndDate, Description) VALUES (NULL,'" + PatientID + "', '" + DrugID + "', '" + EncryptString(StartDate.ToString()) + "', '" + EncryptString(EndDate.ToString()) + "', '" + EncryptString(Description) + "');";
+                if (con.Insert(insertString) != 0)
+                {
+                    con.CloseConnection();
+
+                    return true;
+                }
+
+
+            }
+
+            return false;
+        }
 
         /// <summary>
         /// Adds a patient and returns true if added
