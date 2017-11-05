@@ -114,6 +114,12 @@
     <Compile Include="frmQueryStaff.Designer.cs">
       <DependentUpon>frmQueryStaff.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmTimetable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTimetable.Designer.cs">
+      <DependentUpon>frmTimetable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Patient.cs" />
     <Compile Include="Perscription.cs" />
     <Compile Include="Program.cs" />
@@ -154,6 +160,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmQueryStaff.resx">
       <DependentUpon>frmQueryStaff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTimetable.resx">
+      <DependentUpon>frmTimetable.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

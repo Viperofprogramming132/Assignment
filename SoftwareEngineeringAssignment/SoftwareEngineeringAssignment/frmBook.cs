@@ -81,6 +81,7 @@ namespace SoftwareEngineeringAssignment
                 //checks the availible staff off a timeslot
                 else
                 {
+                    fillTime();
                     checkTimeSlot(a);
                 }
             }
@@ -169,7 +170,15 @@ namespace SoftwareEngineeringAssignment
         /// <returns></returns>
         private DateTime getTime(string timeSlot)
         {
-           return DateTime.ParseExact(timeSlot, "HH:mm:ss", CultureInfo.InvariantCulture);
+            if(timeSlot != "")
+            {
+                DateTime date = mclCalander.SelectionStart;
+                DateTime time = DateTime.ParseExact(timeSlot, "HH:mm:ss", CultureInfo.InvariantCulture);
+
+                DateTime dateTime = date.AddHours(time.Hour).AddMinutes(time.Minute);
+                return dateTime;
+            }
+            return DateTime.Now;
         }
 
 
@@ -179,7 +188,9 @@ namespace SoftwareEngineeringAssignment
         /// </summary>
         private void fillTime()
         {
-            
+            cmbTimeslot.Items.Clear();
+            cmbTimeslot.ResetText();
+            timeList.Clear();
             DateTime startTime = mclCalander.SelectionStart.AddHours(9);
             DateTime endTime = mclCalander.SelectionStart.AddHours(11);
 

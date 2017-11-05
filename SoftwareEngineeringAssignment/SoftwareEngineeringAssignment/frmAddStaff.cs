@@ -12,6 +12,7 @@ namespace SoftwareEngineeringAssignment
 {
     public partial class frmAddStaff : Form
     {
+        BackgroundWorker worker = new BackgroundWorker();
         public frmAddStaff()
         {
             InitializeComponent();
@@ -21,7 +22,21 @@ namespace SoftwareEngineeringAssignment
             cmbAuthLevel.Items.Add("Receptionist");
             cmbAuthLevel.Items.Add("General Staff");
             cmbAuthLevel.Items.Add("Manager");
+
+            worker.DoWork += new DoWorkEventHandler(worker_DoWork);
+            worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(worker_RunWorkerCompleted);
+            worker.WorkerSupportsCancellation = true;
             this.WindowState = FormWindowState.Maximized;
+        }
+
+        private void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void worker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void btnGo_Click(object sender, EventArgs e)

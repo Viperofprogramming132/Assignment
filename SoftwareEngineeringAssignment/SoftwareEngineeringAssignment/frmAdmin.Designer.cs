@@ -52,6 +52,7 @@
             this.btnTimetable.TabIndex = 1;
             this.btnTimetable.Text = "Timetable Staff Member";
             this.btnTimetable.UseVisualStyleBackColor = true;
+            this.btnTimetable.Click += new System.EventHandler(this.btnTimetable_Click);
             // 
             // btnFindStaff
             // 

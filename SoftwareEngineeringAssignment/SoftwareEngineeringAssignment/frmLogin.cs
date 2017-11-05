@@ -23,7 +23,6 @@ namespace SoftwareEngineeringAssignment
             this.WindowState = FormWindowState.Maximized;
             worker.DoWork += new DoWorkEventHandler(worker_DoWork);
             worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(worker_RunWorkerCompleted);
-            worker.WorkerReportsProgress = true;
             worker.WorkerSupportsCancellation = true;
         }
 
@@ -50,7 +49,6 @@ namespace SoftwareEngineeringAssignment
 
         private void worker_DoWork(object sender, DoWorkEventArgs e)
         {
-            double per;
             BusinessLayer ml = BusinessLayer.Instance();
             m_staff = ml.GetStaff();
 
@@ -66,7 +64,6 @@ namespace SoftwareEngineeringAssignment
                 if (worker.CancellationPending)
                 {
                     e.Cancel = true;
-                    worker.ReportProgress(100);
                     return;
                 }
             }
@@ -107,12 +104,6 @@ namespace SoftwareEngineeringAssignment
             {
                 this.KeyDown += btnSubmit_Click;
             }
-        }
-
-        private void report()
-        {                
-
-            
         }
     }
 }

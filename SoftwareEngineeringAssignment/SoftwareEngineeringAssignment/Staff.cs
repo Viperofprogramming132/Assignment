@@ -10,6 +10,7 @@ namespace SoftwareEngineeringAssignment
     {
         int m_AuthLevel, m_StaffID;
         string m_FName, m_LName, m_UserName, m_Password;
+        DateTime m_DoB;
 
         public string FName { get { return m_FName; } set { m_FName = value; } }
         public string LName { get { return m_LName; } set { m_LName = value; } }
@@ -17,6 +18,7 @@ namespace SoftwareEngineeringAssignment
         public string UserName { get { return m_UserName; } set { m_UserName = value; } }
         public int AuthLevel { get { return m_AuthLevel; } set { m_AuthLevel = value; } }
         public string Password { get { return m_Password; } set { m_Password = value; } }
+        public DateTime DoB { get { return m_DoB; } set { m_DoB = value; } }
 
         public override string ToString()
         {
