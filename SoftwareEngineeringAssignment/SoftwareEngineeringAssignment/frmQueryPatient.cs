@@ -65,11 +65,11 @@ namespace SoftwareEngineeringAssignment
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            BusinessLayer ml = BusinessLayer.instance();
+            BusinessLayer ml = BusinessLayer.Instance();
 
 
-            patients = ml.getPatients();
-            aList = ml.getAppointments();
+            patients = ml.GetPatients();
+            aList = ml.GetAppointments();
             //database query this info
             foreach(Patient pa in patients)
             {
@@ -190,13 +190,27 @@ namespace SoftwareEngineeringAssignment
 
         private void frmQueryPatient_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(finP.Count != 0)
+            if (m_FB != null)
             {
-                m_FB.takePatient(finP[showing]);
+                if (finP.Count != 0)
+                {
+                    m_FB.TakePatient(finP[showing]);
+                }
+                else
+                {
+                    MessageBox.Show("No user was selected. Returning to Booking");
+                }
             }
-            else
+            else if (m_FAP != null)
             {
-                MessageBox.Show("No user was selected. Returning to Booking");
+                if (finP.Count != 0)
+                {
+                    m_FAP.TakePatient(finP[showing]);
+                }
+                else
+                {
+                    MessageBox.Show("No user was selected. Returning to Add Perscription");
+                }
             }
         }
 

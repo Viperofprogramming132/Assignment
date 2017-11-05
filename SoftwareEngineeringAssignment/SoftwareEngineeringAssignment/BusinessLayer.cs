@@ -25,7 +25,7 @@ namespace SoftwareEngineeringAssignment
             aes.Padding = PaddingMode.PKCS7;
         }
 
-        static public BusinessLayer instance()
+        static public BusinessLayer Instance()
         {
             if (null == m_instance)
             {
@@ -38,7 +38,7 @@ namespace SoftwareEngineeringAssignment
         /// Gets the infomation from the Patient table
         /// </summary>
         /// <returns></returns>
-        public List<Patient> getPatients()
+        public List<Patient> GetPatients()
         {
             List<Patient> patients = new List<Patient>();
 
@@ -72,7 +72,7 @@ namespace SoftwareEngineeringAssignment
         /// Gets the infomation from the staff table
         /// </summary>
         /// <returns></returns>
-        public List<Staff> getStaff()
+        public List<Staff> GetStaff()
         {
             List<Staff> staffs = new List<Staff>();
 
@@ -106,7 +106,7 @@ namespace SoftwareEngineeringAssignment
         /// 
         /// </summary>
         /// <returns></returns>
-        public List<Appointment> getAppointments()
+        public List<Appointment> GetAppointments()
         {
             List<Appointment> appointments = new List<Appointment>();
 
@@ -136,7 +136,7 @@ namespace SoftwareEngineeringAssignment
             return appointments;
         }
 
-        public List<Perscription> getPerscriptions()
+        public List<Perscription> GetPerscriptions()
         {
             List<Perscription> perscriptions = new List<Perscription>();
 
@@ -166,6 +166,33 @@ namespace SoftwareEngineeringAssignment
             return perscriptions;
         }
 
+        public List<Drug> GetDrugs()
+        {
+            List<Drug> drugs = new List<Drug>();
+
+            DbConection con = DbFactory.instance();
+            if (con.OpenConnection())
+            {
+                DbDataReader dr = con.Select("SELECT * FROM drug;");
+
+                //Read the data and store them in the list
+                while (dr.Read())
+                {
+                    Drug drug = new Drug();
+                    drug.DrugID = dr.GetInt32(0);
+                    drug.DrugName = dr.GetString(1);
+                    drug.Description = dr.GetString(2);
+                    drugs.Add(drug);
+                }
+
+                //close Data Reader
+                dr.Close();
+                con.CloseConnection();
+            }
+
+            return drugs;
+        }
+
 
         /// <summary>
         /// Adds a staff member and returns true if it added the member
@@ -176,7 +203,7 @@ namespace SoftwareEngineeringAssignment
         /// <param name="Password"></param>
         /// <param name="AuthLevel"></param>
         /// <returns></returns>
-        public bool addStaff(string FirstName, string LastName, string UserName, string Password, int AuthLevel, int AddressID, DateTime DoB)
+        public bool AddStaff(string FirstName, string LastName, string UserName, string Password, int AuthLevel, int AddressID, DateTime DoB)
         {
             DbConection con = DbFactory.instance();
             if(con.OpenConnection())
@@ -204,7 +231,7 @@ namespace SoftwareEngineeringAssignment
         /// <param name="DoB"></param>
         /// <param name="Religion"></param>
         /// <returns></returns>
-        public bool addPatient(string FirstName, string LastName, DateTime DoB, string Religion)
+        public bool AddPatient(string FirstName, string LastName, DateTime DoB, string Religion)
         {
             DbConection con = DbFactory.instance();
             if (con.OpenConnection())
@@ -223,7 +250,7 @@ namespace SoftwareEngineeringAssignment
             return false;
         }
 
-        public bool addAppointment(int PatientID, int StaffID, DateTime StartTime, DateTime EndTime, string Description)
+        public bool AddAppointment(int PatientID, int StaffID, DateTime StartTime, DateTime EndTime, string Description)
         {
             DbConection con = DbFactory.instance();
             if (con.OpenConnection())

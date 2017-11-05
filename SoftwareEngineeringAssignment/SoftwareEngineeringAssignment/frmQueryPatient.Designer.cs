@@ -56,7 +56,7 @@
             // btnSearch
             // 
             this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.btnSearch.Location = new System.Drawing.Point(109, 507);
+            this.btnSearch.Location = new System.Drawing.Point(114, 616);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(87, 37);
             this.btnSearch.TabIndex = 0;
@@ -188,7 +188,7 @@
             // btnReturn
             // 
             this.btnReturn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.btnReturn.Location = new System.Drawing.Point(7, 507);
+            this.btnReturn.Location = new System.Drawing.Point(12, 616);
             this.btnReturn.Name = "btnReturn";
             this.btnReturn.Size = new System.Drawing.Size(96, 37);
             this.btnReturn.TabIndex = 24;
@@ -209,9 +209,10 @@
             // lsvPerscriptions
             // 
             this.lsvPerscriptions.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.lsvPerscriptions.Location = new System.Drawing.Point(12, 231);
+            this.lsvPerscriptions.GridLines = true;
+            this.lsvPerscriptions.Location = new System.Drawing.Point(12, 228);
             this.lsvPerscriptions.Name = "lsvPerscriptions";
-            this.lsvPerscriptions.Size = new System.Drawing.Size(586, 88);
+            this.lsvPerscriptions.Size = new System.Drawing.Size(586, 382);
             this.lsvPerscriptions.TabIndex = 26;
             this.lsvPerscriptions.UseCompatibleStateImageBehavior = false;
             this.lsvPerscriptions.SelectedIndexChanged += new System.EventHandler(this.lsvPerscriptions_SelectedIndexChanged);
@@ -234,9 +235,9 @@
             this.lsvAppointments.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.lsvAppointments.FullRowSelect = true;
             this.lsvAppointments.GridLines = true;
-            this.lsvAppointments.Location = new System.Drawing.Point(12, 361);
+            this.lsvAppointments.Location = new System.Drawing.Point(629, 34);
             this.lsvAppointments.Name = "lsvAppointments";
-            this.lsvAppointments.Size = new System.Drawing.Size(586, 140);
+            this.lsvAppointments.Size = new System.Drawing.Size(586, 576);
             this.lsvAppointments.TabIndex = 29;
             this.lsvAppointments.UseCompatibleStateImageBehavior = false;
             // 
@@ -244,7 +245,7 @@
             // 
             this.lblAppointments.AutoSize = true;
             this.lblAppointments.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.lblAppointments.Location = new System.Drawing.Point(12, 330);
+            this.lblAppointments.Location = new System.Drawing.Point(624, 6);
             this.lblAppointments.Name = "lblAppointments";
             this.lblAppointments.Size = new System.Drawing.Size(132, 25);
             this.lblAppointments.TabIndex = 28;
@@ -254,7 +255,7 @@
             // 
             this.btnForward.Enabled = false;
             this.btnForward.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.btnForward.Location = new System.Drawing.Point(559, 507);
+            this.btnForward.Location = new System.Drawing.Point(564, 616);
             this.btnForward.Name = "btnForward";
             this.btnForward.Size = new System.Drawing.Size(40, 40);
             this.btnForward.TabIndex = 30;
@@ -266,7 +267,7 @@
             // 
             this.btnBack.Enabled = false;
             this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.btnBack.Location = new System.Drawing.Point(513, 507);
+            this.btnBack.Location = new System.Drawing.Point(518, 616);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(40, 40);
             this.btnBack.TabIndex = 31;
@@ -278,7 +279,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1132, 556);
+            this.ClientSize = new System.Drawing.Size(1230, 665);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnForward);
             this.Controls.Add(this.lsvAppointments);

@@ -53,6 +53,7 @@
     <Compile Include="Appointment.cs" />
     <Compile Include="BusinessLayer.cs" />
     <Compile Include="DbFactory.cs" />
+    <Compile Include="Drug.cs" />
     <Compile Include="frmAddPatient.cs">
       <SubType>Form</SubType>
     </Compile>

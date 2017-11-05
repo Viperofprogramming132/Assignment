@@ -26,9 +26,9 @@ namespace SoftwareEngineeringAssignment
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            BusinessLayer ml = BusinessLayer.instance();
+            BusinessLayer ml = BusinessLayer.Instance();
 
-            ml.addPatient(txtFirstname.Text, txtLastname.Text, Convert.ToDateTime(mclDoB.SelectionStart) , txtReligion.Text);
+            ml.AddPatient(txtFirstname.Text, txtLastname.Text, Convert.ToDateTime(mclDoB.SelectionStart) , txtReligion.Text);
         }
     }
 }

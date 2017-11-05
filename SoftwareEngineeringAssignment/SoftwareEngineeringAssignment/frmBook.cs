@@ -16,7 +16,7 @@ namespace SoftwareEngineeringAssignment
     {
         List<Staff> sList = new List<Staff>();
         List<Appointment> aList = new List<Appointment>();
-        BusinessLayer ml = BusinessLayer.instance();
+        BusinessLayer ml = BusinessLayer.Instance();
         Patient current;
         int inc = 5;
         List<DateTime> timeList = new List<DateTime>();
@@ -33,8 +33,8 @@ namespace SoftwareEngineeringAssignment
             writeTime();
 
             //Get the lists
-            sList = ml.getStaff();
-            aList = ml.getAppointments();
+            sList = ml.GetStaff();
+            aList = ml.GetAppointments();
 
 
             #region comboBoxs
@@ -71,9 +71,9 @@ namespace SoftwareEngineeringAssignment
             foreach(Appointment a in aList)
             {
                 //Searches staff appointments based off the staff member
-                if (getCurrent() != null)
+                if (GetCurrent() != null)
                 {
-                    if (a.staffID == getCurrent().StaffID)
+                    if (a.staffID == GetCurrent().StaffID)
                     {
                         timeList.Remove(a.appointmentTime);
                     }
@@ -108,7 +108,7 @@ namespace SoftwareEngineeringAssignment
         /// Takes a patient to display infomation on
         /// </summary>
         /// <param name="p"></param>
-        public void takePatient(Patient p)
+        public void TakePatient(Patient p)
         {
             current = p;
         }
@@ -139,14 +139,14 @@ namespace SoftwareEngineeringAssignment
         /// <param name="e"></param>
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            ml.addAppointment(current.PatientID, getCurrent().StaffID, getTime(cmbTimeslot.Text), getTime(cmbTimeslot.Text).AddMinutes(5), txtDescription.Text);
+            ml.AddAppointment(current.PatientID, GetCurrent().StaffID, getTime(cmbTimeslot.Text), getTime(cmbTimeslot.Text).AddMinutes(5), txtDescription.Text);
         }
 
         /// <summary>
         /// Gets the current Staff member
         /// </summary>
         /// <returns>Current Selected Staff</returns>
-        private Staff getCurrent()
+        private Staff GetCurrent()
         {
             if (cmbDoctor.Text != null || cmbDoctor.Text == "")
             {

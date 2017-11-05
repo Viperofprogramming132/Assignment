@@ -27,7 +27,7 @@ namespace SoftwareEngineeringAssignment
         private void btnGo_Click(object sender, EventArgs e)
         {
             int authL;
-            BusinessLayer bl = BusinessLayer.instance();
+            BusinessLayer bl = BusinessLayer.Instance();
 
             if (cmbAuthLevel.Text == "GP")
             {
@@ -54,7 +54,7 @@ namespace SoftwareEngineeringAssignment
                 authL = 4;
             }
 
-            bl.addStaff(txtFirstName.Text, txtLastName.Text, txtUserName.Text, txtPassword.Text, authL ,1,DateTime.Now);
+            bl.AddStaff(txtFirstName.Text, txtLastName.Text, txtUserName.Text, txtPassword.Text, authL ,1,DateTime.Now);
         }
 
         private void frmAddStaff_Load(object sender, EventArgs e)

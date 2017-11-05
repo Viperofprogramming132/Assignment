@@ -25,8 +25,8 @@ namespace SoftwareEngineeringAssignment
     
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            BusinessLayer ml = BusinessLayer.instance();
-            m_staff = ml.getStaff();
+            BusinessLayer ml = BusinessLayer.Instance();
+            m_staff = ml.GetStaff();
 
             //foreach(Staff s in m_staff)
             //{

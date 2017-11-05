@@ -12,7 +12,6 @@ namespace SoftwareEngineeringAssignment
         int m_PatientID, m_DrugID, m_PerscriptionID;
         DateTime m_StartDate, m_EndDate;
         string m_description;
-        Patient m_p;
 
         public int DrugID { get { return m_DrugID; } set { m_DrugID = value; } }
         public int PerscriptionID { get { return m_PerscriptionID; } set { m_PerscriptionID = value; } }
