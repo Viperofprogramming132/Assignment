@@ -15,7 +15,26 @@ namespace SoftwareEngineeringAssignment
 
         public int DrugID { get { return m_DrugID; } set { m_DrugID = value; } }
         public int PerscriptionID { get { return m_PerscriptionID; } set { m_PerscriptionID = value; } }
-        public string Name { get { return m_Name; } set { m_Name = value; } }
+        public string Name
+        {
+            get
+            {
+                BusinessLayer ml = BusinessLayer.Instance();
+                List<Drug> ds = ml.GetDrugs();
+                foreach(Drug d in ds)
+                {
+                    if(d.DrugID == m_DrugID)
+                    {
+                        m_Name = d.DrugName;
+                    }
+                }
+                return m_Name;
+            }
+            set
+            {
+                m_Name = value;
+            }
+        }
         public string description { get { return m_description; } set { m_description = value; } }
         public DateTime StartDate { get { return m_StartDate; } set { m_StartDate = value; } }
         public DateTime EndDate { get { return m_EndDate; } set { m_EndDate = value; } }

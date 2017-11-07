@@ -129,7 +129,7 @@ namespace SoftwareEngineeringAssignment
             {
                 if (patient.PatientID == app.patientID)
                 {
-                    lsvAppointments.Items.Add(new ListViewItem(new string[] { patient.PatientID.ToString(), patient.FirstName, patient.LastName, app.appointmentTime.ToString() }));
+                    lsvAppointments.Items.Add(new ListViewItem(new string[] { patient.PatientID.ToString(), patient.ToString(), app.staffID.ToString() , app.appointmentTime.ToString() }));
                     if (app.canceled)
                     {
                         lsvAppointments.Items[i].BackColor = Color.Orange;
@@ -160,7 +160,7 @@ namespace SoftwareEngineeringAssignment
 
             lsvAppointments.Columns.Add("NHS Number", -2, HorizontalAlignment.Left);
             lsvAppointments.Columns.Add("First Name", -2, HorizontalAlignment.Left);
-            lsvAppointments.Columns.Add("Last Name", -2, HorizontalAlignment.Left);
+            lsvAppointments.Columns.Add("StaffID", -2, HorizontalAlignment.Left);
             lsvAppointments.Columns.Add("Appointment Time", -2, HorizontalAlignment.Left);
         }
 
