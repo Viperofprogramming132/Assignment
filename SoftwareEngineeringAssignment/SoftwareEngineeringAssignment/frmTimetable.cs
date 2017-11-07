@@ -34,7 +34,7 @@ namespace SoftwareEngineeringAssignment
             List<Shift> sList = new List<Shift>();
             if(ml.AddShift(current.StaffID, getTime(cmbStartTime.Text), getTime(cmbEndTime.Text)))
             {
-                ml.GetShift()
+                //ml.GetShift();
             }
         }
 
