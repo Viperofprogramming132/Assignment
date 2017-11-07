@@ -105,5 +105,10 @@ namespace SoftwareEngineeringAssignment
                 this.KeyDown += btnSubmit_Click;
             }
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

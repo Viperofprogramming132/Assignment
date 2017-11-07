@@ -41,7 +41,7 @@
             this.lblFirstName = new System.Windows.Forms.Label();
             this.txtID = new System.Windows.Forms.TextBox();
             this.lblID = new System.Windows.Forms.Label();
-            this.btnFindUser = new System.Windows.Forms.Button();
+            this.btnReturn = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
             this.button1 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -156,14 +156,15 @@
             this.lblID.TabIndex = 24;
             this.lblID.Text = "Patient ID";
             // 
-            // btnFindUser
+            // btnReturn
             // 
-            this.btnFindUser.Location = new System.Drawing.Point(7, 261);
-            this.btnFindUser.Name = "btnFindUser";
-            this.btnFindUser.Size = new System.Drawing.Size(75, 23);
-            this.btnFindUser.TabIndex = 37;
-            this.btnFindUser.Text = "Return";
-            this.btnFindUser.UseVisualStyleBackColor = true;
+            this.btnReturn.Location = new System.Drawing.Point(7, 261);
+            this.btnReturn.Name = "btnReturn";
+            this.btnReturn.Size = new System.Drawing.Size(75, 23);
+            this.btnReturn.TabIndex = 37;
+            this.btnReturn.Text = "Return";
+            this.btnReturn.UseVisualStyleBackColor = true;
+            this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 
             // listView1
             // 
@@ -203,7 +204,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.listView1);
-            this.Controls.Add(this.btnFindUser);
+            this.Controls.Add(this.btnReturn);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label5);
@@ -241,7 +242,7 @@
         private System.Windows.Forms.Label lblFirstName;
         private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.Label lblID;
-        private System.Windows.Forms.Button btnFindUser;
+        private System.Windows.Forms.Button btnReturn;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox pictureBox1;

@@ -11,6 +11,7 @@ using System.Windows.Forms;
 namespace SoftwareEngineeringAssignment
 {
     public partial class frmMain : Form
+
     {
         public frmMain(Staff member)
         {
@@ -139,5 +140,8 @@ namespace SoftwareEngineeringAssignment
             this.MinimumSize = this.Size;
             this.MaximumSize = this.Size;
         }
+       
+
+
     }
 }

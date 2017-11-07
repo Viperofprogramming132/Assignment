@@ -50,6 +50,7 @@
             this.btnSubmit = new System.Windows.Forms.Button();
             this.txtDescription = new System.Windows.Forms.RichTextBox();
             this.lblDescription = new System.Windows.Forms.Label();
+            this.btnReturn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // mclCalander
@@ -246,11 +247,22 @@
             this.lblDescription.TabIndex = 22;
             this.lblDescription.Text = "Description";
             // 
+            // btnReturn
+            // 
+            this.btnReturn.Location = new System.Drawing.Point(155, 268);
+            this.btnReturn.Name = "btnReturn";
+            this.btnReturn.Size = new System.Drawing.Size(75, 23);
+            this.btnReturn.TabIndex = 23;
+            this.btnReturn.Text = "Return";
+            this.btnReturn.UseVisualStyleBackColor = true;
+            this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
+            // 
             // frmBook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1138, 457);
+            this.Controls.Add(this.btnReturn);
             this.Controls.Add(this.lblDescription);
             this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.btnSubmit);
@@ -305,5 +317,6 @@
         private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.RichTextBox txtDescription;
         private System.Windows.Forms.Label lblDescription;
+        private System.Windows.Forms.Button btnReturn;
     }
 }

@@ -45,5 +45,10 @@ namespace SoftwareEngineeringAssignment
             frmTimetable.ShowDialog();
             this.Show();
         }
+
+        private void btnMain_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
