@@ -43,14 +43,14 @@
     </TypeIdentifier>
   </Class>
   <Class Name="SoftwareEngineeringAssignment.frmLogin">
-    <Position X="2.25" Y="0.5" Width="1.5" />
+    <Position X="12.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>EAgAAEBAACASAAAABACAAAACIEAAIAEAApAAAEABAAg=</HashCode>
       <FileName>frmLogin.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SoftwareEngineeringAssignment.frmMain">
-    <Position X="11" Y="4.25" Width="1.5" />
+    <Position X="12.75" Y="6" Width="1.5" />
     <TypeIdentifier>
       <HashCode>QCBAIIAAACACBAIAAQLAAgAKAAAAAAIAAACACBBAIAA=</HashCode>
       <FileName>frmMain.cs</FileName>

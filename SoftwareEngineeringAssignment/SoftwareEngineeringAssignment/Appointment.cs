@@ -17,7 +17,6 @@ namespace SoftwareEngineeringAssignment
         int m_patientID;
         DateTime m_endTime;
 
-        //finish this Dan
         public bool attended { get { return m_attended; } set { m_attended = value; } }
         public bool canceled { get { return m_canceled; } set { m_canceled = value; } }
         public DateTime appointmentTime { get { return m_appointmentTime; } set { m_appointmentTime = value; } }

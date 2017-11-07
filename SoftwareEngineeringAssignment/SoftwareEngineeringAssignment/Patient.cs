@@ -21,8 +21,9 @@ namespace SoftwareEngineeringAssignment
 
         public DateTime DoB { get { return m_DoB; } set { m_DoB = value; } }
 
-        public Patient()
+        public override string ToString()
         {
+            return FirstName + " " + LastName;
         }
     }
 }
