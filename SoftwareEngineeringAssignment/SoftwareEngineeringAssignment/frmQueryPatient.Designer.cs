@@ -54,6 +54,8 @@
             this.txtReligion = new System.Windows.Forms.TextBox();
             this.lblAllergies = new System.Windows.Forms.Label();
             this.txtAllergies = new System.Windows.Forms.TextBox();
+            this.lblNextOfKin = new System.Windows.Forms.Label();
+            this.txtNextOfKin = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -204,7 +206,7 @@
             // 
             this.lblPerscriptions.AutoSize = true;
             this.lblPerscriptions.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.lblPerscriptions.Location = new System.Drawing.Point(12, 283);
+            this.lblPerscriptions.Location = new System.Drawing.Point(12, 351);
             this.lblPerscriptions.Name = "lblPerscriptions";
             this.lblPerscriptions.Size = new System.Drawing.Size(124, 25);
             this.lblPerscriptions.TabIndex = 25;
@@ -214,9 +216,9 @@
             // 
             this.lsvPerscriptions.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.lsvPerscriptions.GridLines = true;
-            this.lsvPerscriptions.Location = new System.Drawing.Point(12, 311);
+            this.lsvPerscriptions.Location = new System.Drawing.Point(12, 379);
             this.lsvPerscriptions.Name = "lsvPerscriptions";
-            this.lsvPerscriptions.Size = new System.Drawing.Size(586, 299);
+            this.lsvPerscriptions.Size = new System.Drawing.Size(586, 231);
             this.lsvPerscriptions.TabIndex = 26;
             this.lsvPerscriptions.UseCompatibleStateImageBehavior = false;
             this.lsvPerscriptions.SelectedIndexChanged += new System.EventHandler(this.lsvPerscriptions_SelectedIndexChanged);
@@ -315,11 +317,31 @@
             this.txtAllergies.Size = new System.Drawing.Size(100, 30);
             this.txtAllergies.TabIndex = 35;
             // 
+            // lblNextOfKin
+            // 
+            this.lblNextOfKin.AutoSize = true;
+            this.lblNextOfKin.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNextOfKin.Location = new System.Drawing.Point(12, 293);
+            this.lblNextOfKin.Name = "lblNextOfKin";
+            this.lblNextOfKin.Size = new System.Drawing.Size(112, 25);
+            this.lblNextOfKin.TabIndex = 36;
+            this.lblNextOfKin.Text = "Next Of Kin";
+            // 
+            // txtNextOfKin
+            // 
+            this.txtNextOfKin.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNextOfKin.Location = new System.Drawing.Point(139, 288);
+            this.txtNextOfKin.Name = "txtNextOfKin";
+            this.txtNextOfKin.Size = new System.Drawing.Size(100, 30);
+            this.txtNextOfKin.TabIndex = 37;
+            // 
             // frmQueryPatient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1230, 665);
+            this.Controls.Add(this.txtNextOfKin);
+            this.Controls.Add(this.lblNextOfKin);
             this.Controls.Add(this.txtAllergies);
             this.Controls.Add(this.lblAllergies);
             this.Controls.Add(this.txtReligion);
@@ -384,5 +406,7 @@
         private System.Windows.Forms.TextBox txtReligion;
         private System.Windows.Forms.Label lblAllergies;
         private System.Windows.Forms.TextBox txtAllergies;
+        private System.Windows.Forms.Label lblNextOfKin;
+        private System.Windows.Forms.TextBox txtNextOfKin;
     }
 }

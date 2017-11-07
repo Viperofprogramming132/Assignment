@@ -110,6 +110,7 @@ namespace SoftwareEngineeringAssignment
             txtID.Text = patient.PatientID.ToString();
             txtReligion.Text = patient.Religeon.ToString();
             txtAllergies.Text = patient.Allergies.ToString();
+            txtNextOfKin.Text = patient.NextOfKin.ToString();
 
             cmbDay.Text = patient.DoB.Day.ToString();
             cmbMonth.Text = patient.DoB.Month.ToString();
