@@ -150,7 +150,12 @@ namespace SoftwareEngineeringAssignment
 
         private void btnReturn_Click(object sender, EventArgs e)
         {
-            m_TimeTable.takeStaff(finS[showing]);
+            DialogResult dr = MessageBox.Show("Are you sure you wish to use" + finS[showing].ToString(), "Confirm", MessageBoxButtons.YesNo);
+
+            if (dr == DialogResult.Yes)
+            {
+                m_TimeTable.takeStaff(finS[showing]);
+            }
         }
     }
 }
