@@ -154,6 +154,12 @@ namespace SoftwareEngineeringAssignment
                 btnViewAppointments.Hide();
                 btnAddPerscription.Location = btnViewAppointments.Location;
             }
+            else if (member.AuthLevel == 2)
+            {
+                btnAdmin.Hide();
+                btnViewAppointments.Hide();
+                btnAddPerscription.Location = btnViewAppointments.Location;
+            }
         }
        
 
