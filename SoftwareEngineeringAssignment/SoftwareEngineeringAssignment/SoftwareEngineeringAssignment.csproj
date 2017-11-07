@@ -129,6 +129,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Shift.cs" />
     <Compile Include="SQLCon.cs" />
     <Compile Include="Staff.cs" />
     <EmbeddedResource Include="frmAddPatient.resx">

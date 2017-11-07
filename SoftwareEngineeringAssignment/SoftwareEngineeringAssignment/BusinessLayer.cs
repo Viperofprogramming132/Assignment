@@ -290,6 +290,25 @@ namespace SoftwareEngineeringAssignment
             return false;
         }
 
+        public bool AddShift(int StaffID, DateTime StartTime, DateTime EndTime)
+        {
+            DbConection con = DbFactory.instance();
+            if (con.OpenConnection())
+            {
+                string insertString = "INSERT INTO shift (ShiftID, StartTime, EndTime) VALUES (NULL, '" + StartTime.ToString() + "', '" + EndTime.ToString() + "');";
+                if (con.Insert(insertString) != 0)
+                {
+                    con.CloseConnection();
+
+                    return true;
+                }
+
+
+            }
+
+            return false;
+        }
+
         //https://stackoverflow.com/questions/604210/padding-is-invalid-and-cannot-be-removed-using-aesmanaged
 
         /// <summary>

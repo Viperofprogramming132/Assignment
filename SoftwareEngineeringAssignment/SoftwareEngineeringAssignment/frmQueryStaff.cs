@@ -20,7 +20,6 @@ namespace SoftwareEngineeringAssignment
         int showing = 0;
         public frmQueryStaff()
         {
-
             InitializeComponent();
 
             setupForm();
@@ -30,6 +29,7 @@ namespace SoftwareEngineeringAssignment
         {
             m_TimeTable = timetable;
             InitializeComponent();
+
             setupForm();
         }
 
@@ -150,7 +150,7 @@ namespace SoftwareEngineeringAssignment
 
         private void btnReturn_Click(object sender, EventArgs e)
         {
-
+            m_TimeTable.takeStaff(finS[showing]);
         }
     }
 }
