@@ -15,6 +15,7 @@ namespace SoftwareEngineeringAssignment
     {
         BackgroundWorker worker = new BackgroundWorker();
         Staff current = new Staff();
+        DateTime StartTime, EndTime;
         public frmTimetable()
         {
             InitializeComponent();
@@ -25,16 +26,17 @@ namespace SoftwareEngineeringAssignment
 
         private void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            throw new NotImplementedException();
+            MessageBox.Show("Added shift to the staff member {0}", current.ToString());
         }
 
         private void worker_DoWork(object sender, DoWorkEventArgs e)
         {
             BusinessLayer ml = BusinessLayer.Instance();
             List<Shift> sList = new List<Shift>();
-            if(ml.AddShift(current.StaffID, getTime(cmbStartTime.Text), getTime(cmbEndTime.Text)))
+            if(ml.AddShift(current.StaffID, StartTime, EndTime))
             {
-                //ml.GetShift();
+                sList = ml.GetShift();
+                ml.AddTimetable(current.StaffID, sList[sList.Count - 1].ShiftID);
             }
         }
 
@@ -87,6 +89,8 @@ namespace SoftwareEngineeringAssignment
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
+            StartTime = getTime(cmbStartTime.Text);
+            EndTime = getTime(cmbEndTime.Text);
             worker.RunWorkerAsync();
         }
 

@@ -67,11 +67,35 @@ namespace SoftwareEngineeringAssignment
             return patients;
         }
 
+        // retrieves information from the shift table
+        public List<Shift> GetShift()
+        {
+            List<Shift> shifts = new List<Shift>();
 
-        /// <summary>
-        /// Gets the infomation from the staff table
-        /// </summary>
-        /// <returns></returns>
+            DbConection con = DbFactory.instance();
+            if (con.OpenConnection())
+            {
+                DbDataReader dr = con.Select("SELECT * FROM shift;");
+
+                //Reads the data and store them in the list
+                while (dr.Read())
+                {
+                    Shift shift = new Shift();
+                    shift.ShiftID = dr.GetInt32(0);
+                    shift.StartTime = Convert.ToDateTime(DecryptBytes(dr.GetString(1)));
+                    shift.EndTime = Convert.ToDateTime(DecryptBytes(dr.GetString(2)));
+                    shifts.Add(shift);
+                }
+
+                //close Data Reader
+                dr.Close();
+                con.CloseConnection();
+            }
+
+            return shifts;
+        }
+       
+        /// Retrieves infomation from the staff table
         public List<Staff> GetStaff()
         {
             List<Staff> staffs = new List<Staff>();
@@ -271,6 +295,25 @@ namespace SoftwareEngineeringAssignment
             return false;
         }
 
+        public bool AddTimetable(int staffId , int shiftId)
+        {
+            DbConection con = DbFactory.instance();
+            if (con.OpenConnection())
+            {
+                string insertString = "INSERT INTO timetable (ShiftID, StaffID) VALUES ('" + shiftId + "', '" + staffId +"');";
+                if (con.Insert(insertString) != 0)
+                {
+                    con.CloseConnection();
+
+                    return true;
+                }
+
+
+            }
+
+            return false;
+        }
+
         public bool AddAppointment(int PatientID, int StaffID, DateTime StartTime, DateTime EndTime, string Description)
         {
             DbConection con = DbFactory.instance();
@@ -295,7 +338,7 @@ namespace SoftwareEngineeringAssignment
             DbConection con = DbFactory.instance();
             if (con.OpenConnection())
             {
-                string insertString = "INSERT INTO shift (ShiftID, StartTime, EndTime) VALUES (NULL, '" + StartTime.ToString() + "', '" + EndTime.ToString() + "');";
+                string insertString = "INSERT INTO shift (ShiftID, StartTime, EndTime) VALUES (NULL, '" + EncryptString(StartTime.ToString()) + "', '" + EncryptString(EndTime.ToString()) + "');";
                 if (con.Insert(insertString) != 0)
                 {
                     con.CloseConnection();

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SoftwareEngineeringAssignment
 {
-    class Shift
+    public class Shift
     {
         int m_ShiftID;
         DateTime m_StartTime, m_EndTime;
