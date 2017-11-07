@@ -26,7 +26,7 @@ namespace SoftwareEngineeringAssignment
 
         private void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            MessageBox.Show("Added shift to the staff member {0}", current.ToString());
+            MessageBox.Show("Added shift to the staff member "  +  current.ToString());
         }
 
         private void worker_DoWork(object sender, DoWorkEventArgs e)
