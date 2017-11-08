@@ -192,23 +192,5 @@ namespace SoftwareEngineeringAssignment
             return UnicodeEncoding.UTF32.GetString(outBlock);
         }
 
-        public bool addStaff(string FirstName, string LastName, string UserName, string Password, int AuthLevel)
-        {
-            DbConection con = DbFactory.instance();
-            if (con.OpenConnection())
-            {
-                string insertString = "INSERT INTO staff (staffID, FirstName, LastName, UserName, Password, authLevel) VALUES (NULL, '" + EncryptString(aesCSP, FirstName) + "', '" + EncryptString(aesCSP, LastName) + "', '" + EncryptString(aesCSP, UserName) + "', '" + EncryptString(aesCSP, Password) + "', '" + AuthLevel + "');";
-                if (con.Insert(insertString) != 0)
-                {
-                    con.CloseConnection();
-
-                    return true;
-                }
-
-
-            }
-
-            return false;
-        }
     }
 }
