@@ -41,35 +41,16 @@ namespace SoftwareEngineeringAssignment
 
         private void btnGo_Click(object sender, EventArgs e)
         {
-            int authL;
-            BusinessLayer bl = BusinessLayer.Instance();
 
-            if (cmbAuthLevel.Text == "GP")
+            BusinessLayer bl = BusinessLayer.Instance();
+            if (cmbAuthLevel.SelectedIndex != -1)
             {
-                authL = (int)Staff.AuthenticationLevel.GP;
-            }
-            else if(cmbAuthLevel.Text == "Nurse")
-            {
-                authL = (int)Staff.AuthenticationLevel.Nurse;
-            }
-            else if(cmbAuthLevel.Text == "Receptionist")
-            {
-                authL = (int)Staff.AuthenticationLevel.Receptionist;
-            }
-            else if(cmbAuthLevel.Text == "General Staff")
-            {
-                authL = (int)Staff.AuthenticationLevel.GeneralStaff;
-            }
-            else if (cmbAuthLevel.Text == "Manager")
-            {
-                authL = (int)Staff.AuthenticationLevel.Manager;
+                bl.AddStaff(txtFirstName.Text, txtLastName.Text, txtUserName.Text, txtPassword.Text, cmbAuthLevel.SelectedIndex, 1, DateTime.Now);
             }
             else
             {
-                authL = (int)Staff.AuthenticationLevel.GeneralStaff;
+                MessageBox.Show("Please select a Job");
             }
-
-            bl.AddStaff(txtFirstName.Text, txtLastName.Text, txtUserName.Text, txtPassword.Text, authL ,1,DateTime.Now);
         }
 
         private void frmAddStaff_Load(object sender, EventArgs e)
