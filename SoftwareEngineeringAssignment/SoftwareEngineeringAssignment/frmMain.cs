@@ -148,11 +148,9 @@ namespace SoftwareEngineeringAssignment
         private void loaded()
         {
 
-            if (member.AuthLevel == 1)
+            if (member.AuthLevel == (int)Staff.AuthenticationLevel.GP)
             {
                 btnAdmin.Hide();
-                btnViewAppointments.Hide();
-                btnAddPerscription.Location = btnViewAppointments.Location;
             }
             else if (member.AuthLevel == 2)
             {
