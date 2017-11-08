@@ -69,9 +69,9 @@ namespace SoftwareEngineeringAssignment
         /// <param name="e"></param>
         private void btnSeachPatients_Click(object sender, EventArgs e)
         {
-            frmAddStaff queryPatient = new frmAddStaff();
+            frmViewAppointments queryAppointments = new frmViewAppointments();
             this.Hide();
-            queryPatient.ShowDialog();
+            queryAppointments.ShowDialog();
             this.Show();
         }
 
