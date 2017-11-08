@@ -23,5 +23,12 @@ namespace SoftwareEngineeringAssignment
             this.MinimumSize = this.Size;
             this.MaximumSize = this.Size;
         }
+
+        private void btnSubmit_Click(object sender, EventArgs e)
+        {
+            BusinessLayer ml = BusinessLayer.Instance();
+
+            ml.AddPatient(txtFirstname.Text, txtLastname.Text, Convert.ToDateTime(mclDoB.SelectionStart) , txtReligion.Text);
+        }
     }
 }

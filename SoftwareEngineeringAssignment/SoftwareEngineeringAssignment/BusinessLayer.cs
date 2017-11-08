@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
 using System.Diagnostics;
+using System.IO;
 
 namespace SoftwareEngineeringAssignment
 {
@@ -14,18 +15,17 @@ namespace SoftwareEngineeringAssignment
     {
         static private BusinessLayer m_instance = null;
         private StringBuilder sb = new StringBuilder();
-        AesCryptoServiceProvider aesCSP;
+        Aes aes = new AesManaged();
         private BusinessLayer()
         {
-            aesCSP = new AesCryptoServiceProvider();
+            //aesCSP = new AesCryptoServiceProvider();
 
-            aesCSP.Key = new byte[32] { 2, 254, 44, 83, 232, 130, 185, 243, 187, 155, 219, 136, 198, 231, 16, 214, 20, 237, 205, 166, 157, 82, 255, 242, 140, 191, 104, 55, 188, 69, 247, 114 };
-            aesCSP.IV = new byte[16] { 81, 117, 207, 183, 191, 235, 72, 140, 140, 2, 226, 123, 239, 207, 58, 113 };
-
-
+            aes.Key = new byte[32] { 2, 254, 44, 83, 232, 130, 185, 243, 187, 155, 219, 136, 198, 231, 16, 214, 20, 237, 205, 166, 157, 82, 255, 242, 140, 191, 104, 55, 188, 69, 247, 114 };
+            aes.IV = new byte[16] { 81, 117, 207, 183, 191, 235, 72, 140, 140, 2, 226, 123, 239, 207, 58, 113 };
+            aes.Padding = PaddingMode.PKCS7;
         }
 
-        static public BusinessLayer instance()
+        static public BusinessLayer Instance()
         {
             if (null == m_instance)
             {
@@ -38,23 +38,24 @@ namespace SoftwareEngineeringAssignment
         /// Gets the infomation from the Patient table
         /// </summary>
         /// <returns></returns>
-        public List<Patient> getPatients()
+        public List<Patient> GetPatients()
         {
             List<Patient> patients = new List<Patient>();
 
             DbConection con = DbFactory.instance();
             if (con.OpenConnection())
             {
-                DbDataReader dr = con.Select("SELECT PatientID, FirstName, LastName, DateOfBirth FROM patient;");
+                DbDataReader dr = con.Select("SELECT PatientID, FirstName, LastName, DateOfBirth, Religeon FROM patient;");
 
                 //Read the data and store them in the list
                 while (dr.Read())
                 {
                     Patient patient = new Patient();
-                    patient.PatientID = dr.GetInt32(0).ToString();
-                    patient.FirstName = dr.GetString(1);
-                    patient.LastName = dr.GetString(2);
-                    patient.DoB = dr.GetDateTime(3);
+                    patient.PatientID = dr.GetInt32(0);
+                    patient.FirstName = DecryptBytes( dr.GetString(1));
+                    patient.LastName = DecryptBytes( dr.GetString(2));
+                    patient.DoB = Convert.ToDateTime(DecryptBytes( dr.GetString(3)));
+                    patient.Religeon = DecryptBytes( dr.GetString(4));
                     patients.Add(patient);
                 }
 
@@ -66,12 +67,36 @@ namespace SoftwareEngineeringAssignment
             return patients;
         }
 
+        // retrieves information from the shift table
+        public List<Shift> GetShift()
+        {
+            List<Shift> shifts = new List<Shift>();
 
-        /// <summary>
-        /// Gets the infomation from the staff table
-        /// </summary>
-        /// <returns></returns>
-        public List<Staff> getStaff()
+            DbConection con = DbFactory.instance();
+            if (con.OpenConnection())
+            {
+                DbDataReader dr = con.Select("SELECT * FROM shift;");
+
+                //Reads the data and store them in the list
+                while (dr.Read())
+                {
+                    Shift shift = new Shift();
+                    shift.ShiftID = dr.GetInt32(0);
+                    shift.StartTime = Convert.ToDateTime(DecryptBytes(dr.GetString(1)));
+                    shift.EndTime = Convert.ToDateTime(DecryptBytes(dr.GetString(2)));
+                    shifts.Add(shift);
+                }
+
+                //close Data Reader
+                dr.Close();
+                con.CloseConnection();
+            }
+
+            return shifts;
+        }
+       
+        /// Retrieves infomation from the staff table
+        public List<Staff> GetStaff()
         {
             List<Staff> staffs = new List<Staff>();
 
@@ -84,11 +109,11 @@ namespace SoftwareEngineeringAssignment
                 while (dr.Read())
                 {
                     Staff staff = new Staff();
-                    staff.StaffID = dr.GetInt32(0).ToString();
-                    staff.FName = DecryptBytes(aesCSP, dr.GetString(1));
-                    staff.LName = DecryptBytes(aesCSP, dr.GetString(2));
-                    staff.UserName = DecryptBytes(aesCSP, dr.GetString(3));
-                    staff.Password = DecryptBytes(aesCSP, dr.GetString(4));
+                    staff.StaffID = dr.GetInt32(0);
+                    staff.FName = DecryptBytes( dr.GetString(1));
+                    staff.LName = DecryptBytes( dr.GetString(2));
+                    staff.UserName = DecryptBytes( dr.GetString(3));
+                    staff.Password = DecryptBytes( dr.GetString(4));
                     staff.AuthLevel = dr.GetInt32(5);
                     staffs.Add(staff);
                 }
@@ -101,6 +126,101 @@ namespace SoftwareEngineeringAssignment
             return staffs;
         }
 
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public List<Appointment> GetAppointments()
+        {
+            List<Appointment> appointments = new List<Appointment>();
+
+            DbConection con = DbFactory.instance();
+            if (con.OpenConnection())
+            {
+                DbDataReader dr = con.Select("SELECT * FROM appointment;");
+
+                //Read the data and store them in the list
+                while (dr.Read())
+                {
+                    Appointment appointment = new Appointment();
+                    appointment.appointmentID = dr.GetInt32(0);
+                    appointment.patientID = dr.GetInt32(1);
+                    appointment.staffID = dr.GetInt32(2);
+                    appointment.appointmentTime = Convert.ToDateTime(DecryptBytes( dr.GetString(3)));
+                    appointment.endTime = Convert.ToDateTime(DecryptBytes( dr.GetString(4)));
+                    appointment.description = dr.GetString(5);
+                    appointments.Add(appointment);
+                }
+
+                //close Data Reader
+                dr.Close();
+                con.CloseConnection();
+            }
+
+            return appointments;
+        }
+
+        public List<Perscription> GetPerscriptions()
+        {
+            List<Perscription> perscriptions = new List<Perscription>();
+
+            DbConection con = DbFactory.instance();
+            if (con.OpenConnection())
+            {
+                DbDataReader dr = con.Select("SELECT * FROM perscription;");
+
+                //Read the data and store them in the list
+                while (dr.Read())
+                {
+                    Perscription perscription = new Perscription();
+                    perscription.PerscriptionID = dr.GetInt32(0);
+                    perscription.PatientID = dr.GetInt32(1);
+                    perscription.DrugID = dr.GetInt32(2);
+                    perscription.StartDate = Convert.ToDateTime(DecryptBytes(dr.GetString(3)));
+                    perscription.EndDate = Convert.ToDateTime(DecryptBytes(dr.GetString(4)));
+                    perscription.description = dr.GetString(5);
+                    perscriptions.Add(perscription);
+                }
+
+                //close Data Reader
+                dr.Close();
+                con.CloseConnection();
+            }
+
+            return perscriptions;
+        }
+
+        public List<Drug> GetDrugs()
+        {
+            List<Drug> drugs = new List<Drug>();
+
+            DbConection con = DbFactory.instance();
+            if (con.OpenConnection())
+            {
+                DbDataReader dr = con.Select("SELECT * FROM drug;");
+
+                //Read the data and store them in the list
+                while (dr.Read())
+                {
+                    Drug drug = new Drug();
+                    drug.DrugID = dr.GetInt32(0);
+                    drug.DrugName = dr.GetString(1);
+                    drug.Description = dr.GetString(2);
+                    drugs.Add(drug);
+                }
+
+                //close Data Reader
+                dr.Close();
+                con.CloseConnection();
+            }
+
+            return drugs;
+        }
+
+
+
         /// <summary>
         /// Adds a staff member and returns true if it added the member
         /// </summary>
@@ -110,12 +230,12 @@ namespace SoftwareEngineeringAssignment
         /// <param name="Password"></param>
         /// <param name="AuthLevel"></param>
         /// <returns></returns>
-        public bool addStaff(string FirstName, string LastName, string UserName, string Password, int AuthLevel, int AddressID, DateTime DoB)
+        public bool AddStaff(string FirstName, string LastName, string UserName, string Password, int AuthLevel, int AddressID, DateTime DoB)
         {
             DbConection con = DbFactory.instance();
             if(con.OpenConnection())
             {
-                string insertString = "INSERT INTO staff (StaffID, AddressID, FirstName, LastName, UserName, Password, authLevel,DoB) VALUES (NULL, '" + AddressID + "' ,'" + EncryptString(aesCSP, FirstName) + "', '" + EncryptString(aesCSP, LastName) + "', '" + EncryptString(aesCSP, UserName) + "', '" + EncryptString(aesCSP, Password) + "', '" + AuthLevel + "', '" + EncryptString(aesCSP, DoB.ToString()) + "');";
+                string insertString = "INSERT INTO staff (StaffID, AddressID, FirstName, LastName, UserName, Password, authLevel,DoB) VALUES (NULL, '" + AddressID + "' ,'" + EncryptString( FirstName) + "', '" + EncryptString( LastName) + "', '" + EncryptString( UserName) + "', '" + EncryptString( Password) + "', '" + AuthLevel + "', '" + EncryptString( DoB.ToString()) + "');";
                 if (con.Insert(insertString) != 0)
                 {
                     con.CloseConnection();
@@ -129,12 +249,12 @@ namespace SoftwareEngineeringAssignment
             return false;
         }
 
-        public bool addPatient(string FirstName, string LastName, string UserName, string Password, int AuthLevel)
+        public bool AddPerscription(int PatientID, int DrugID, DateTime StartDate, DateTime EndDate, string Description)
         {
             DbConection con = DbFactory.instance();
             if (con.OpenConnection())
             {
-                string insertString = "INSERT INTO `staff` (`staffID`, `StaffFirstName`, `StaffLastName`, `UserName`, `Password`, `authLevel`) VALUES (NULL, '" + EncryptString(aesCSP, FirstName) + "', '" + EncryptString(aesCSP, LastName) + "', '" + EncryptString(aesCSP, UserName) + "', '" + EncryptString(aesCSP, Password) + "', '" + AuthLevel + "');";
+                string insertString = "INSERT INTO perscription (PerscriptionID, PatientID, DrugID, StartDate, EndDate, Description) VALUES (NULL,'" + PatientID + "', '" + DrugID + "', '" + EncryptString(StartDate.ToString()) + "', '" + EncryptString(EndDate.ToString()) + "', '" + EncryptString(Description) + "');";
                 if (con.Insert(insertString) != 0)
                 {
                     con.CloseConnection();
@@ -148,6 +268,91 @@ namespace SoftwareEngineeringAssignment
             return false;
         }
 
+        /// <summary>
+        /// Adds a patient and returns true if added
+        /// </summary>
+        /// <param name="FirstName"></param>
+        /// <param name="LastName"></param>
+        /// <param name="DoB"></param>
+        /// <param name="Religion"></param>
+        /// <returns></returns>
+        public bool AddPatient(string FirstName, string LastName, DateTime DoB, string Religion)
+        {
+            DbConection con = DbFactory.instance();
+            if (con.OpenConnection())
+            {
+                string insertString = "INSERT INTO patient (PatientID, PerscriptionID, AddressID, FirstName, LastName, DateOfBirth, Religeon) VALUES (NULL, NULL, '1', '" + EncryptString( FirstName) + "', '" + EncryptString( LastName) + "', '" + EncryptString(DoB.ToString()) + "', '" + EncryptString( Religion) + "');";
+                if (con.Insert(insertString) != 0)
+                {
+                    con.CloseConnection();
+
+                    return true;
+                }
+
+
+            }
+
+            return false;
+        }
+
+        public bool AddTimetable(int staffId , int shiftId)
+        {
+            DbConection con = DbFactory.instance();
+            if (con.OpenConnection())
+            {
+                string insertString = "INSERT INTO timetable (ShiftID, StaffID) VALUES ('" + shiftId + "', '" + staffId +"');";
+                if (con.Insert(insertString) != 0)
+                {
+                    con.CloseConnection();
+
+                    return true;
+                }
+
+
+            }
+
+            return false;
+        }
+
+        public bool AddAppointment(int PatientID, int StaffID, DateTime StartTime, DateTime EndTime, string Description)
+        {
+            DbConection con = DbFactory.instance();
+            if (con.OpenConnection())
+            {
+                string insertString = "INSERT INTO appointment (AppointmentID, PatientID, StaffID, StartTime, EndTime, Description) VALUES (NULL, '" + PatientID.ToString() + "', '" + StaffID.ToString() + "', '" + EncryptString(StartTime.ToString()) + "', '" + EncryptString(EndTime.ToString()) + "', '" + EncryptString(Description) + "');";
+                if (con.Insert(insertString) != 0)
+                {
+                    con.CloseConnection();
+
+                    return true;
+                }
+
+
+            }
+
+            return false;
+        }
+
+        public bool AddShift(int StaffID, DateTime StartTime, DateTime EndTime)
+        {
+            DbConection con = DbFactory.instance();
+            if (con.OpenConnection())
+            {
+                string insertString = "INSERT INTO shift (ShiftID, StartTime, EndTime) VALUES (NULL, '" + EncryptString(StartTime.ToString()) + "', '" + EncryptString(EndTime.ToString()) + "');";
+                if (con.Insert(insertString) != 0)
+                {
+                    con.CloseConnection();
+
+                    return true;
+                }
+
+
+            }
+
+            return false;
+        }
+
+        //https://stackoverflow.com/questions/604210/padding-is-invalid-and-cannot-be-removed-using-aesmanaged
 
         /// <summary>
         /// encrypts the given string using the SymmetricAlgorithm given
@@ -155,19 +360,25 @@ namespace SoftwareEngineeringAssignment
         /// <param name="symAlg"></param>
         /// <param name="inString"></param>
         /// <returns></returns>
-        public string EncryptString(SymmetricAlgorithm symAlg, string inString)
+        public string EncryptString(string inString)
         {
             sb.Clear();
-            byte[] inBlock = UnicodeEncoding.UTF32.GetBytes(inString);
-            ICryptoTransform xfrm = symAlg.CreateEncryptor();
-            byte[] outBlock = xfrm.TransformFinalBlock(inBlock, 0, inBlock.Length);
-
-            foreach(byte i in outBlock)
+            byte[] rawPlaintext = Encoding.Unicode.GetBytes(inString);
+            using (MemoryStream ms = new MemoryStream())
             {
-                sb.Append(i + ",");
+                using (CryptoStream cs = new CryptoStream(ms, aes.CreateEncryptor(), CryptoStreamMode.Write))
+                {
+                    cs.Write(rawPlaintext, 0, rawPlaintext.Length);
+                    cs.FlushFinalBlock();
+                }
+
+                foreach (byte i in ms.ToArray())
+                {
+                    sb.Append(i + ",");
+                }
+                sb.Remove(sb.Length - 1, 1);
+                return sb.ToString();
             }
-            sb.Remove(sb.Length-1, 1);
-            return sb.ToString();
         }
 
 
@@ -177,7 +388,7 @@ namespace SoftwareEngineeringAssignment
         /// <param name="symAlg"></param>
         /// <param name="inString"></param>
         /// <returns></returns>
-        public string DecryptBytes(SymmetricAlgorithm symAlg, string inString)
+        public string DecryptBytes(string inString)
         {
             List<byte> inBytes = new List<byte>();
             List<string> inListString = new List<string>();
@@ -186,11 +397,16 @@ namespace SoftwareEngineeringAssignment
             {
                 inBytes.Add(Convert.ToByte(inListString[i]));
             }
-            ICryptoTransform xfrm = symAlg.CreateDecryptor();
-            byte[] outBlock = xfrm.TransformFinalBlock(inBytes.ToArray(), 0, inBytes.Count);
-
-            return UnicodeEncoding.UTF32.GetString(outBlock);
+            using (MemoryStream ms = new MemoryStream())
+            {
+                using (CryptoStream cs = new CryptoStream(ms, aes.CreateDecryptor(), CryptoStreamMode.Write))
+                {
+                    cs.Write(inBytes.ToArray(), 0, inBytes.Count);
+                }
+                return UnicodeEncoding.Unicode.GetString(ms.ToArray());
+            }
         }
+
 
     }
 }

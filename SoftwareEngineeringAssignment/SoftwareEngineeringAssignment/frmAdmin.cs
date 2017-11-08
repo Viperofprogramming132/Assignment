@@ -36,5 +36,19 @@ namespace SoftwareEngineeringAssignment
         {
 
         }
+
+        private void btnTimetable_Click(object sender, EventArgs e)
+        {
+            frmTimetable frmTimetable = new frmTimetable();
+
+            this.Hide();
+            frmTimetable.ShowDialog();
+            this.Show();
+        }
+
+        private void btnMain_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

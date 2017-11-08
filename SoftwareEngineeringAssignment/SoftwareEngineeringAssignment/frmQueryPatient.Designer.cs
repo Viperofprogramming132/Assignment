@@ -50,13 +50,19 @@
             this.lblAppointments = new System.Windows.Forms.Label();
             this.btnForward = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
+            this.lblReligion = new System.Windows.Forms.Label();
+            this.txtReligion = new System.Windows.Forms.TextBox();
+            this.lblAllergies = new System.Windows.Forms.Label();
+            this.txtAllergies = new System.Windows.Forms.TextBox();
+            this.lblNextOfKin = new System.Windows.Forms.Label();
+            this.txtNextOfKin = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSearch
             // 
             this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.btnSearch.Location = new System.Drawing.Point(109, 507);
+            this.btnSearch.Location = new System.Drawing.Point(114, 616);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(87, 37);
             this.btnSearch.TabIndex = 0;
@@ -188,7 +194,7 @@
             // btnReturn
             // 
             this.btnReturn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.btnReturn.Location = new System.Drawing.Point(7, 507);
+            this.btnReturn.Location = new System.Drawing.Point(12, 616);
             this.btnReturn.Name = "btnReturn";
             this.btnReturn.Size = new System.Drawing.Size(96, 37);
             this.btnReturn.TabIndex = 24;
@@ -200,7 +206,7 @@
             // 
             this.lblPerscriptions.AutoSize = true;
             this.lblPerscriptions.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.lblPerscriptions.Location = new System.Drawing.Point(12, 200);
+            this.lblPerscriptions.Location = new System.Drawing.Point(12, 351);
             this.lblPerscriptions.Name = "lblPerscriptions";
             this.lblPerscriptions.Size = new System.Drawing.Size(124, 25);
             this.lblPerscriptions.TabIndex = 25;
@@ -209,9 +215,10 @@
             // lsvPerscriptions
             // 
             this.lsvPerscriptions.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.lsvPerscriptions.Location = new System.Drawing.Point(12, 231);
+            this.lsvPerscriptions.GridLines = true;
+            this.lsvPerscriptions.Location = new System.Drawing.Point(12, 379);
             this.lsvPerscriptions.Name = "lsvPerscriptions";
-            this.lsvPerscriptions.Size = new System.Drawing.Size(586, 88);
+            this.lsvPerscriptions.Size = new System.Drawing.Size(586, 231);
             this.lsvPerscriptions.TabIndex = 26;
             this.lsvPerscriptions.UseCompatibleStateImageBehavior = false;
             this.lsvPerscriptions.SelectedIndexChanged += new System.EventHandler(this.lsvPerscriptions_SelectedIndexChanged);
@@ -232,9 +239,11 @@
             // lsvAppointments
             // 
             this.lsvAppointments.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.lsvAppointments.Location = new System.Drawing.Point(12, 361);
+            this.lsvAppointments.FullRowSelect = true;
+            this.lsvAppointments.GridLines = true;
+            this.lsvAppointments.Location = new System.Drawing.Point(629, 34);
             this.lsvAppointments.Name = "lsvAppointments";
-            this.lsvAppointments.Size = new System.Drawing.Size(586, 140);
+            this.lsvAppointments.Size = new System.Drawing.Size(586, 576);
             this.lsvAppointments.TabIndex = 29;
             this.lsvAppointments.UseCompatibleStateImageBehavior = false;
             // 
@@ -242,7 +251,7 @@
             // 
             this.lblAppointments.AutoSize = true;
             this.lblAppointments.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.lblAppointments.Location = new System.Drawing.Point(12, 330);
+            this.lblAppointments.Location = new System.Drawing.Point(624, 6);
             this.lblAppointments.Name = "lblAppointments";
             this.lblAppointments.Size = new System.Drawing.Size(132, 25);
             this.lblAppointments.TabIndex = 28;
@@ -252,7 +261,7 @@
             // 
             this.btnForward.Enabled = false;
             this.btnForward.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.btnForward.Location = new System.Drawing.Point(559, 507);
+            this.btnForward.Location = new System.Drawing.Point(564, 616);
             this.btnForward.Name = "btnForward";
             this.btnForward.Size = new System.Drawing.Size(40, 40);
             this.btnForward.TabIndex = 30;
@@ -264,7 +273,7 @@
             // 
             this.btnBack.Enabled = false;
             this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.btnBack.Location = new System.Drawing.Point(513, 507);
+            this.btnBack.Location = new System.Drawing.Point(518, 616);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(40, 40);
             this.btnBack.TabIndex = 31;
@@ -272,11 +281,71 @@
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
+            // lblReligion
+            // 
+            this.lblReligion.AutoSize = true;
+            this.lblReligion.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblReligion.Location = new System.Drawing.Point(12, 200);
+            this.lblReligion.Name = "lblReligion";
+            this.lblReligion.Size = new System.Drawing.Size(81, 25);
+            this.lblReligion.TabIndex = 32;
+            this.lblReligion.Text = "Religion";
+            // 
+            // txtReligion
+            // 
+            this.txtReligion.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtReligion.Location = new System.Drawing.Point(139, 200);
+            this.txtReligion.Name = "txtReligion";
+            this.txtReligion.Size = new System.Drawing.Size(100, 30);
+            this.txtReligion.TabIndex = 33;
+            // 
+            // lblAllergies
+            // 
+            this.lblAllergies.AutoSize = true;
+            this.lblAllergies.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAllergies.Location = new System.Drawing.Point(12, 245);
+            this.lblAllergies.Name = "lblAllergies";
+            this.lblAllergies.Size = new System.Drawing.Size(87, 25);
+            this.lblAllergies.TabIndex = 34;
+            this.lblAllergies.Text = "Allergies";
+            // 
+            // txtAllergies
+            // 
+            this.txtAllergies.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAllergies.Location = new System.Drawing.Point(139, 245);
+            this.txtAllergies.Name = "txtAllergies";
+            this.txtAllergies.Size = new System.Drawing.Size(100, 30);
+            this.txtAllergies.TabIndex = 35;
+            // 
+            // lblNextOfKin
+            // 
+            this.lblNextOfKin.AutoSize = true;
+            this.lblNextOfKin.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNextOfKin.Location = new System.Drawing.Point(12, 293);
+            this.lblNextOfKin.Name = "lblNextOfKin";
+            this.lblNextOfKin.Size = new System.Drawing.Size(112, 25);
+            this.lblNextOfKin.TabIndex = 36;
+            this.lblNextOfKin.Text = "Next Of Kin";
+            // 
+            // txtNextOfKin
+            // 
+            this.txtNextOfKin.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNextOfKin.Location = new System.Drawing.Point(139, 288);
+            this.txtNextOfKin.Name = "txtNextOfKin";
+            this.txtNextOfKin.Size = new System.Drawing.Size(100, 30);
+            this.txtNextOfKin.TabIndex = 37;
+            // 
             // frmQueryPatient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1132, 556);
+            this.ClientSize = new System.Drawing.Size(1230, 665);
+            this.Controls.Add(this.txtNextOfKin);
+            this.Controls.Add(this.lblNextOfKin);
+            this.Controls.Add(this.txtAllergies);
+            this.Controls.Add(this.lblAllergies);
+            this.Controls.Add(this.txtReligion);
+            this.Controls.Add(this.lblReligion);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnForward);
             this.Controls.Add(this.lsvAppointments);
@@ -333,5 +402,11 @@
         private System.Windows.Forms.Label lblAppointments;
         private System.Windows.Forms.Button btnForward;
         private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.Label lblReligion;
+        private System.Windows.Forms.TextBox txtReligion;
+        private System.Windows.Forms.Label lblAllergies;
+        private System.Windows.Forms.TextBox txtAllergies;
+        private System.Windows.Forms.Label lblNextOfKin;
+        private System.Windows.Forms.TextBox txtNextOfKin;
     }
 }

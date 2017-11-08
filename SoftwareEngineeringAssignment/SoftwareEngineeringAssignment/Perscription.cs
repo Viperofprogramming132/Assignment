@@ -8,23 +8,36 @@ namespace SoftwareEngineeringAssignment
 {
     public class Perscription
     {
-        string m_DrugID, m_Name;
+        string m_Name;
+        int m_PatientID, m_DrugID, m_PerscriptionID;
         DateTime m_StartDate, m_EndDate;
         string m_description;
-        Patient m_p;
 
-        public string DrugID { get { return m_DrugID; } }
-        public string Name { get { return m_Name; } }
-        public string description { get { return m_description; } }
-        public DateTime StartDate { get { return m_StartDate; } }
-        public DateTime EndDate { get { return m_EndDate; } }
-
-        public Perscription(DateTime StartDate, DateTime EndDate, string Desctiption, Patient p)
+        public int DrugID { get { return m_DrugID; } set { m_DrugID = value; } }
+        public int PerscriptionID { get { return m_PerscriptionID; } set { m_PerscriptionID = value; } }
+        public string Name
         {
-            this.m_StartDate = StartDate;
-            this.m_EndDate = EndDate;
-            this.m_description = Desctiption;
-            this.m_p = p;
+            get
+            {
+                BusinessLayer ml = BusinessLayer.Instance();
+                List<Drug> ds = ml.GetDrugs();
+                foreach(Drug d in ds)
+                {
+                    if(d.DrugID == m_DrugID)
+                    {
+                        m_Name = d.DrugName;
+                    }
+                }
+                return m_Name;
+            }
+            set
+            {
+                m_Name = value;
+            }
         }
+        public string description { get { return m_description; } set { m_description = value; } }
+        public DateTime StartDate { get { return m_StartDate; } set { m_StartDate = value; } }
+        public DateTime EndDate { get { return m_EndDate; } set { m_EndDate = value; } }
+        public int PatientID { get { return m_PatientID; } set { m_PatientID = value; } }
     }
 }

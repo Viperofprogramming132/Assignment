@@ -1,72 +1,72 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="SoftwareEngineeringAssignment.Database">
-    <Position X="2.25" Y="5.25" Width="1.5" />
+    <Position X="21.5" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAABAAAAAAAAAAUAgAAAAQAAAAQAAARAAAAAAAAEABA=</HashCode>
       <FileName>Database.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SoftwareEngineeringAssignment.frmAddPatient">
-    <Position X="5.75" Y="0.5" Width="1.5" />
+    <Position X="2.25" Y="6" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAACAAAAAAAACAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAABAAAACAAAAAAAACAAgACAABAIAEAAAAAAEAAAAA=</HashCode>
       <FileName>frmAddPatient.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SoftwareEngineeringAssignment.frmAddPerscription">
-    <Position X="7.5" Y="0.5" Width="1.5" />
+    <Position X="4" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAACAAAAAAAACAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>mACAIAAAACAAABAACIKBAAhCIABIRyEADAhACEAYhAY=</HashCode>
       <FileName>frmAddPerscription.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SoftwareEngineeringAssignment.frmAddStaff">
     <Position X="9.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAACAAAAAAAACAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>CAiAAABQQCAQAAAIBACBAAgCAABAAAAADgAAAAAAAAA=</HashCode>
       <FileName>frmAddStaff.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SoftwareEngineeringAssignment.frmAdmin">
     <Position X="11" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAACAAAAAAAACAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>ACAAAAAAACAIAAAAAADAAAQCGAAAAEAAIAAAAAAAAAA=</HashCode>
       <FileName>frmAdmin.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SoftwareEngineeringAssignment.frmBook">
     <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>BADAMAAAACAQABAAAICBAAgGIABABAAAAAAAAAAABAA=</HashCode>
+      <HashCode>BQDAMIAAACAQABAAAKSBAQgGoABIRAEAAAwgCEEIBQA=</HashCode>
       <FileName>frmBook.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SoftwareEngineeringAssignment.frmLogin">
-    <Position X="4" Y="0.5" Width="1.5" />
+    <Position X="12.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAgAAAAAACAAAAAAAACAAAACAEAAAAEAApAAAEAAAAA=</HashCode>
+      <HashCode>EAgAAEBAACASAAAABACAAAACIEAAIAEAApAAAEABAAg=</HashCode>
       <FileName>frmLogin.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SoftwareEngineeringAssignment.frmMain">
-    <Position X="11" Y="2.75" Width="1.5" />
+    <Position X="12.75" Y="6" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>QCBAAIAAACACBAIAAQKAAgAKAEAAAAIAAAAACBAAIAA=</HashCode>
+      <HashCode>QCBAIIAAACACBAIAAQLAAgAKAAAAAAIAAACACBBAIAA=</HashCode>
       <FileName>frmMain.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SoftwareEngineeringAssignment.frmQueryPatient">
-    <Position X="5.75" Y="2.75" Width="1.5" />
+    <Position X="5.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ACAAAACAMCAAABAAAICBAAgCIAAABAAgEAAAAIQABAI=</HashCode>
+      <HashCode>AACgAACAMCIRABAACICBAYgCIABkBghgAAAYAAzABkY=</HashCode>
       <FileName>frmQueryPatient.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SoftwareEngineeringAssignment.frmQueryPerscription">
-    <Position X="7.5" Y="2.75" Width="1.5" />
+    <Position X="7.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ACAAAACAICAAABAQAICBAAgCIAgABAAAEAAAAAAABAA=</HashCode>
+      <HashCode>ACIAAACAICAAABAAAICBAAgCIAgIBAAAEAAAAIBABAA=</HashCode>
       <FileName>frmQueryPerscription.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -78,7 +78,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="SoftwareEngineeringAssignment.programming_databaseDataSet">
-    <Position X="14.5" Y="0.5" Width="1.5" />
+    <Position X="21.5" Y="5" Width="1.5" />
     <NestedTypes>
       <Delegate Name="SoftwareEngineeringAssignment.programming_databaseDataSet.staffmembersRowChangeEventHandler" Collapsed="true">
         <TypeIdentifier />
@@ -98,20 +98,20 @@
     </TypeIdentifier>
   </Class>
   <Class Name="SoftwareEngineeringAssignment.Staff">
-    <Position X="9.25" Y="2.75" Width="1.5" />
+    <Position X="7.5" Y="6.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAAAQAAAAABAEAAAAAAAEAAAAAAAAAQIAAgAAAAA=</HashCode>
+      <HashCode>AgQAAAAQAAAAABAEAAAAAQAECAAAAIACAQIAAgAAAAA=</HashCode>
       <FileName>Staff.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SoftwareEngineeringAssignment.programming_databaseDataSetTableAdapters.staffmembersTableAdapter">
-    <Position X="12.75" Y="0.5" Width="1.5" />
+    <Position X="21.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>EACAAGAAEAAAAAcAIAAAAAAAACAICAAAAAAAAAAABBA=</HashCode>
     </TypeIdentifier>
   </Class>
   <Class Name="SoftwareEngineeringAssignment.programming_databaseDataSetTableAdapters.TableAdapterManager">
-    <Position X="2.25" Y="0.5" Width="1.5" />
+    <Position X="21.5" Y="4.5" Width="1.5" />
     <NestedTypes>
       <Enum Name="SoftwareEngineeringAssignment.programming_databaseDataSetTableAdapters.TableAdapterManager.UpdateOrderOption" Collapsed="true">
         <TypeIdentifier />
@@ -128,7 +128,7 @@
   <Class Name="SoftwareEngineeringAssignment.Properties.Resources" Collapsed="true">
     <Position X="21.5" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAEAAAAAAAAAAAAIA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAQQAAEAAAAAAAAAAAAoA=</HashCode>
     </TypeIdentifier>
   </Class>
   <Class Name="SoftwareEngineeringAssignment.Properties.Settings" Collapsed="true">

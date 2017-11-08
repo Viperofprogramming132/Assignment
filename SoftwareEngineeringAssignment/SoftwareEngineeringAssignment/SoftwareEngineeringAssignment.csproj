@@ -53,6 +53,7 @@
     <Compile Include="Appointment.cs" />
     <Compile Include="BusinessLayer.cs" />
     <Compile Include="DbFactory.cs" />
+    <Compile Include="Drug.cs" />
     <Compile Include="frmAddPatient.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,6 +114,12 @@
     <Compile Include="frmQueryStaff.Designer.cs">
       <DependentUpon>frmQueryStaff.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmTimetable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTimetable.Designer.cs">
+      <DependentUpon>frmTimetable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Patient.cs" />
     <Compile Include="Perscription.cs" />
     <Compile Include="Program.cs" />
@@ -122,6 +129,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Shift.cs" />
     <Compile Include="SQLCon.cs" />
     <Compile Include="Staff.cs" />
     <EmbeddedResource Include="frmAddPatient.resx">
@@ -153,6 +161,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmQueryStaff.resx">
       <DependentUpon>frmQueryStaff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTimetable.resx">
+      <DependentUpon>frmTimetable.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

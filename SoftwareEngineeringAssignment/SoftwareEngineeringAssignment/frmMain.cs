@@ -11,12 +11,16 @@ using System.Windows.Forms;
 namespace SoftwareEngineeringAssignment
 {
     public partial class frmMain : Form
+
     {
+        Staff member = new Staff();
         public frmMain(Staff member)
         {
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
+            this.member = member;
             lblWelcome.Text = "Welcome " + member.FName + " " + member.LName;
+            loaded();
         }
 
         #region button presses
@@ -138,6 +142,27 @@ namespace SoftwareEngineeringAssignment
         {
             this.MinimumSize = this.Size;
             this.MaximumSize = this.Size;
+
         }
+
+        private void loaded()
+        {
+
+            if (member.AuthLevel == 1)
+            {
+                btnAdmin.Hide();
+                btnViewAppointments.Hide();
+                btnAddPerscription.Location = btnViewAppointments.Location;
+            }
+            else if (member.AuthLevel == 2)
+            {
+                btnAdmin.Hide();
+                btnViewAppointments.Hide();
+                btnAddPerscription.Location = btnViewAppointments.Location;
+            }
+        }
+       
+
+
     }
 }
