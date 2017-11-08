@@ -148,17 +148,28 @@ namespace SoftwareEngineeringAssignment
         private void loaded()
         {
 
-            if (member.AuthLevel == 1)
+            if (member.AuthLevel == 0)
             {
                 btnAdmin.Hide();
-                btnViewAppointments.Hide();
-                btnAddPerscription.Location = btnViewAppointments.Location;
+                btnBookAppointment.Hide();
+                btnAddPerscription.Location = btnBookAppointment.Location;
+            }
+            else if (member.AuthLevel == 1)
+            {
+                btnAdmin.Hide();
+                btnBookAppointment.Hide();
+                btnAddPerscription.Location = btnBookAppointment.Location;
             }
             else if (member.AuthLevel == 2)
             {
                 btnAdmin.Hide();
-                btnViewAppointments.Hide();
-                btnAddPerscription.Location = btnViewAppointments.Location;
+                btnEditPerscription.Hide();
+                btnAddPerscription.Hide();
+            }
+            else if (member.AuthLevel == 3)
+            {
+                btnBookAppointment.Hide();
+                btnAdmin.Hide();
             }
         }
        
