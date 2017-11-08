@@ -148,7 +148,7 @@ namespace SoftwareEngineeringAssignment
         private void loaded()
         {
 
-            if (member.AuthLevel == 0)
+            if (member.AuthLevel == (int)Staff.AuthenticationLevel.GP)
             {
                 btnAdmin.Hide();
                 btnBookAppointment.Hide();
