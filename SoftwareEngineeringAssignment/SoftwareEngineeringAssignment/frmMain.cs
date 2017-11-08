@@ -154,22 +154,30 @@ namespace SoftwareEngineeringAssignment
                 btnBookAppointment.Hide();
                 btnAddPerscription.Location = btnBookAppointment.Location;
             }
-            else if (member.AuthLevel == 1)
+            else if (member.AuthLevel == (int)Staff.AuthenticationLevel.Nurse)
             {
                 btnAdmin.Hide();
                 btnBookAppointment.Hide();
                 btnAddPerscription.Location = btnBookAppointment.Location;
             }
-            else if (member.AuthLevel == 2)
+            else if (member.AuthLevel == (int)Staff.AuthenticationLevel.Receptionist)
             {
                 btnAdmin.Hide();
                 btnEditPerscription.Hide();
                 btnAddPerscription.Hide();
             }
-            else if (member.AuthLevel == 3)
+            else if (member.AuthLevel == (int)Staff.AuthenticationLevel.GeneralStaff)
             {
                 btnBookAppointment.Hide();
                 btnAdmin.Hide();
+            }
+            else if (member.AuthLevel == (int)Staff.AuthenticationLevel.Manager)
+            {
+                btnBookAppointment.Hide();
+                btnEditPerscription.Hide();
+                btnViewAppointments.Hide();
+                btnAddPerscription.Hide();
+                btnAdmin.Location = btnBookAppointment.Location;
             }
         }
        
