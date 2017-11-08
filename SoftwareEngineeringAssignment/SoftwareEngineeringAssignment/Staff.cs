@@ -6,11 +6,22 @@ using System.Threading.Tasks;
 
 namespace SoftwareEngineeringAssignment
 {
+    
     public class Staff
     {
+
+        public enum AuthenticationLevel
+        {
+            GP,
+            Nurse,
+            Receptionist, 
+            GeneralStaff,
+            Manager
+        };
         int m_AuthLevel, m_StaffID;
         string m_FName, m_LName, m_UserName, m_Password;
         DateTime m_DoB;
+
 
         public string FName { get { return m_FName; } set { m_FName = value; } }
         public string LName { get { return m_LName; } set { m_LName = value; } }
