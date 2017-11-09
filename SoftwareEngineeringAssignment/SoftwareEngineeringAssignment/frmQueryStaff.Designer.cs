@@ -47,6 +47,7 @@
             this.btnBack = new System.Windows.Forms.Button();
             this.btnForward = new System.Windows.Forms.Button();
             this.btnReturn = new System.Windows.Forms.Button();
+            this.btnadd_staff = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblJob
@@ -233,11 +234,23 @@
             this.btnReturn.UseVisualStyleBackColor = true;
             this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 
+            // btnadd_staff
+            // 
+            this.btnadd_staff.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnadd_staff.Location = new System.Drawing.Point(319, 242);
+            this.btnadd_staff.Name = "btnadd_staff";
+            this.btnadd_staff.Size = new System.Drawing.Size(111, 37);
+            this.btnadd_staff.TabIndex = 46;
+            this.btnadd_staff.Text = "Add Staff";
+            this.btnadd_staff.UseVisualStyleBackColor = true;
+            this.btnadd_staff.Click += new System.EventHandler(this.btnadd_staff_Click);
+            // 
             // frmQueryStaff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(522, 385);
+            this.Controls.Add(this.btnadd_staff);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnForward);
             this.Controls.Add(this.btnReturn);
@@ -286,5 +299,6 @@
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Button btnForward;
         private System.Windows.Forms.Button btnReturn;
+        private System.Windows.Forms.Button btnadd_staff;
     }
 }

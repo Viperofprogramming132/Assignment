@@ -157,5 +157,13 @@ namespace SoftwareEngineeringAssignment
                 m_TimeTable.takeStaff(finS[showing]);
             }
         }
+
+        private void btnadd_staff_Click(object sender, EventArgs e)
+        {
+            frmAddStaff addStaff = new frmAddStaff();
+            this.Hide();
+            addStaff.ShowDialog();
+            this.Show();
+        }
     }
 }
