@@ -45,17 +45,21 @@ namespace SoftwareEngineeringAssignment
             DbConection con = DbFactory.instance();
             if (con.OpenConnection())
             {
-                DbDataReader dr = con.Select("SELECT PatientID, FirstName, LastName, DateOfBirth, Religeon FROM patient;");
+                DbDataReader dr = con.Select("SELECT * FROM patient;");
 
                 //Read the data and store them in the list
                 while (dr.Read())
                 {
                     Patient patient = new Patient();
                     patient.PatientID = dr.GetInt32(0);
-                    patient.FirstName = DecryptBytes( dr.GetString(1));
-                    patient.LastName = DecryptBytes( dr.GetString(2));
-                    patient.DoB = Convert.ToDateTime(DecryptBytes( dr.GetString(3)));
-                    patient.Religeon = DecryptBytes( dr.GetString(4));
+                    patient.AddressID = dr.GetInt32(1);
+                    patient.FirstName = DecryptBytes( dr.GetString(2));
+                    patient.LastName = DecryptBytes( dr.GetString(3));
+                    patient.DoB = Convert.ToDateTime(DecryptBytes( dr.GetString(4)));
+                    patient.Religeon = DecryptBytes( dr.GetString(5));
+                    patient.Allergies = DecryptBytes(dr.GetString(6));
+                    patient.NextOfKin = DecryptBytes(dr.GetString(7));
+                    patient.NoKTelephone = DecryptBytes(dr.GetString(8));
                     patients.Add(patient);
                 }
 
@@ -150,7 +154,7 @@ namespace SoftwareEngineeringAssignment
                     appointment.staffID = dr.GetInt32(2);
                     appointment.appointmentTime = Convert.ToDateTime(DecryptBytes( dr.GetString(3)));
                     appointment.endTime = Convert.ToDateTime(DecryptBytes( dr.GetString(4)));
-                    appointment.description = dr.GetString(5);
+                    appointment.description = DecryptBytes(dr.GetString(5));
                     appointments.Add(appointment);
                 }
 
@@ -276,12 +280,12 @@ namespace SoftwareEngineeringAssignment
         /// <param name="DoB"></param>
         /// <param name="Religion"></param>
         /// <returns></returns>
-        public bool AddPatient(string FirstName, string LastName, DateTime DoB, string Religion)
+        public bool AddPatient(string FirstName, string LastName, DateTime DoB, string Religion, string Allergies, string NextOfKin, string NoKtele)
         {
             DbConection con = DbFactory.instance();
             if (con.OpenConnection())
             {
-                string insertString = "INSERT INTO patient (PatientID, PerscriptionID, AddressID, FirstName, LastName, DateOfBirth, Religeon) VALUES (NULL, NULL, '1', '" + EncryptString( FirstName) + "', '" + EncryptString( LastName) + "', '" + EncryptString(DoB.ToString()) + "', '" + EncryptString( Religion) + "');";
+                string insertString = "INSERT INTO patient (PatientID, AddressID, FirstName, LastName, DateOfBirth, Religeon, Allergies, NextOfKin, NoKTelephone) VALUES (NULL, '1', '" + EncryptString(FirstName) + "', '" + EncryptString(LastName) + "', '" + EncryptString(DoB.ToString()) + "', '" + EncryptString(Religion) + "', '" + EncryptString(Allergies) + "', '" + EncryptString(NextOfKin) + "', '" + EncryptString(NoKtele) + "');";
                 if (con.Insert(insertString) != 0)
                 {
                     con.CloseConnection();

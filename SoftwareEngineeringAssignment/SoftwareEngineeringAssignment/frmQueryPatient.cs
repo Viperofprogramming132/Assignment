@@ -101,6 +101,7 @@ namespace SoftwareEngineeringAssignment
         }
         private void populate(Patient patient)
         {
+            List<string> result = new List<string>();
             showing = finP.IndexOf(patient);
             drawLSV();
             buttonUpdate();
@@ -109,9 +110,15 @@ namespace SoftwareEngineeringAssignment
             txtLastName.Text = patient.LastName;
             txtID.Text = patient.PatientID.ToString();
             txtReligion.Text = patient.Religeon.ToString();
-            txtAllergies.Text = patient.Allergies.ToString();
-            txtNextOfKin.Text = patient.NextOfKin.ToString();
+            
+            result = finP[showing].Allergies.Split(',').ToList();
 
+            foreach (string s in result)
+            {
+                lsvAllergies.Items.Add(s);
+            }
+            txtNextOfKin.Text = patient.NextOfKin;
+            txtNoKTelephone.Text = patient.NoKTelephone;
             cmbDay.Text = patient.DoB.Day.ToString();
             cmbMonth.Text = patient.DoB.Month.ToString();
             cmbYear.Text = patient.DoB.Year.ToString();
@@ -230,6 +237,16 @@ namespace SoftwareEngineeringAssignment
             {
                 column.Width = -2;
             }
+        }
+
+        private void txtNextOfKin_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblNextOfKin_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
