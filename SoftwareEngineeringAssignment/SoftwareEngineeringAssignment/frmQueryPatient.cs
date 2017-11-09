@@ -248,5 +248,13 @@ namespace SoftwareEngineeringAssignment
         {
 
         }
+
+        private void btnAdd_patient_Click(object sender, EventArgs e)
+        {
+            frmAddPatient addPatient = new frmAddPatient();
+            this.Hide();
+            addPatient.ShowDialog();
+            this.Show();
+        }
     }
 }

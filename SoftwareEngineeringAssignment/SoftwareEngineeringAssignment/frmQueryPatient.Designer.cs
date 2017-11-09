@@ -56,6 +56,7 @@
             this.txtNextOfKin = new System.Windows.Forms.TextBox();
             this.lsvAllergies = new System.Windows.Forms.ListView();
             this.txtNoKTelephone = new System.Windows.Forms.TextBox();
+            this.btnAdd_patient = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnSearch
@@ -331,11 +332,23 @@
             this.txtNoKTelephone.Size = new System.Drawing.Size(126, 30);
             this.txtNoKTelephone.TabIndex = 39;
             // 
+            // btnAdd_patient
+            // 
+            this.btnAdd_patient.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd_patient.Location = new System.Drawing.Point(208, 616);
+            this.btnAdd_patient.Name = "btnAdd_patient";
+            this.btnAdd_patient.Size = new System.Drawing.Size(207, 37);
+            this.btnAdd_patient.TabIndex = 40;
+            this.btnAdd_patient.Text = "Add New Patient";
+            this.btnAdd_patient.UseVisualStyleBackColor = true;
+            this.btnAdd_patient.Click += new System.EventHandler(this.btnAdd_patient_Click);
+            // 
             // frmQueryPatient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1230, 665);
+            this.Controls.Add(this.btnAdd_patient);
             this.Controls.Add(this.txtNoKTelephone);
             this.Controls.Add(this.lsvAllergies);
             this.Controls.Add(this.txtNextOfKin);
@@ -403,5 +416,6 @@
         private System.Windows.Forms.TextBox txtNextOfKin;
         private System.Windows.Forms.ListView lsvAllergies;
         private System.Windows.Forms.TextBox txtNoKTelephone;
+        private System.Windows.Forms.Button btnAdd_patient;
     }
 }
