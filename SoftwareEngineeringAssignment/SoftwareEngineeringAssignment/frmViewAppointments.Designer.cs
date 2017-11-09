@@ -58,6 +58,7 @@
             this.lblAppointmentTime = new System.Windows.Forms.Label();
             this.lsvAllergies = new System.Windows.Forms.ListView();
             this.txtNoKTelephone = new System.Windows.Forms.TextBox();
+            this.btnbook_New_Appointment = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtNextOfKin
@@ -367,12 +368,24 @@
             this.txtNoKTelephone.Size = new System.Drawing.Size(205, 30);
             this.txtNoKTelephone.TabIndex = 69;
             // 
+            // btnbook_New_Appointment
+            // 
+            this.btnbook_New_Appointment.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.btnbook_New_Appointment.Location = new System.Drawing.Point(208, 943);
+            this.btnbook_New_Appointment.Name = "btnbook_New_Appointment";
+            this.btnbook_New_Appointment.Size = new System.Drawing.Size(255, 37);
+            this.btnbook_New_Appointment.TabIndex = 70;
+            this.btnbook_New_Appointment.Text = "Book New Appointment";
+            this.btnbook_New_Appointment.UseVisualStyleBackColor = true;
+            this.btnbook_New_Appointment.Click += new System.EventHandler(this.btnbook_New_Appointment_Click);
+            // 
             // frmViewAppointments
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.Controls.Add(this.btnbook_New_Appointment);
             this.Controls.Add(this.txtNoKTelephone);
             this.Controls.Add(this.lsvAllergies);
             this.Controls.Add(this.lblAppointmentTime);
@@ -442,5 +455,6 @@
         private System.Windows.Forms.Label lblAppointmentTime;
         private System.Windows.Forms.ListView lsvAllergies;
         private System.Windows.Forms.TextBox txtNoKTelephone;
+        private System.Windows.Forms.Button btnbook_New_Appointment;
     }
 }

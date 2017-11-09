@@ -132,6 +132,14 @@ namespace SoftwareEngineeringAssignment
             }
         }
 
+        private void btnbook_New_Appointment_Click(object sender, EventArgs e)
+        {
+            frmBook book = new frmBook();
+            this.Hide();
+            book.ShowDialog();
+            this.Show();
+        }
+
         private void drawLSV()
         {
             lsvPerscriptions.Clear();
