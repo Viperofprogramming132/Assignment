@@ -50,5 +50,10 @@ namespace SoftwareEngineeringAssignment
         {
             this.Close();
         }
+
+        private void btnUI_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
