@@ -50,5 +50,10 @@ namespace SoftwareEngineeringAssignment
         {
             this.Close();
         }
+
+        private void frmAdmin_Load_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

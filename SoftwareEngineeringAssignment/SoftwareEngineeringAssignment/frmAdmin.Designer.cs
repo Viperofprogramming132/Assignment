@@ -96,6 +96,7 @@
             this.Controls.Add(this.btnAddStaff);
             this.Name = "frmAdmin";
             this.Text = "frmAdmin";
+            this.Load += new System.EventHandler(this.frmAdmin_Load_1);
             this.ResumeLayout(false);
 
         }
