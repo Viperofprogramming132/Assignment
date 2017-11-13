@@ -89,6 +89,7 @@
             // lblTimeslot
             // 
             this.lblTimeslot.AutoSize = true;
+            this.lblTimeslot.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.lblTimeslot.Location = new System.Drawing.Point(253, 52);
             this.lblTimeslot.Name = "lblTimeslot";
             this.lblTimeslot.Size = new System.Drawing.Size(89, 13);

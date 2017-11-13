@@ -46,27 +46,27 @@ namespace SoftwareEngineeringAssignment
 
             if (cmbAuthLevel.Text == "GP")
             {
-                authL = 1;
+                authL = (int)Staff.AuthenticationLevel.GP;
             }
             else if(cmbAuthLevel.Text == "Nurse")
             {
-                authL = 2;
+                authL = (int)Staff.AuthenticationLevel.Nurse;
             }
             else if(cmbAuthLevel.Text == "Receptionist")
             {
-                authL = 3;
+                authL = (int)Staff.AuthenticationLevel.Receptionist;
             }
             else if(cmbAuthLevel.Text == "General Staff")
             {
-                authL = 4;
+                authL = (int)Staff.AuthenticationLevel.GeneralStaff;
             }
             else if (cmbAuthLevel.Text == "Manager")
             {
-                authL = 5;
+                authL = (int)Staff.AuthenticationLevel.Manager;
             }
             else
             {
-                authL = 4;
+                authL = (int)Staff.AuthenticationLevel.GeneralStaff;
             }
 
             bl.AddStaff(txtFirstName.Text, txtLastName.Text, txtUserName.Text, txtPassword.Text, authL ,1,DateTime.Now);
@@ -76,6 +76,11 @@ namespace SoftwareEngineeringAssignment
         {
             this.MinimumSize = this.Size;
             this.MaximumSize = this.Size;
+        }
+
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -69,9 +69,9 @@ namespace SoftwareEngineeringAssignment
         /// <param name="e"></param>
         private void btnSeachPatients_Click(object sender, EventArgs e)
         {
-            frmAddStaff queryPatient = new frmAddStaff();
+            frmViewAppointments queryAppointments = new frmViewAppointments(member);
             this.Hide();
-            queryPatient.ShowDialog();
+            queryAppointments.ShowDialog();
             this.Show();
         }
 
@@ -148,17 +148,36 @@ namespace SoftwareEngineeringAssignment
         private void loaded()
         {
 
-            if (member.AuthLevel == 1)
+            if (member.AuthLevel == (int)Staff.AuthenticationLevel.GP)
             {
                 btnAdmin.Hide();
-                btnViewAppointments.Hide();
-                btnAddPerscription.Location = btnViewAppointments.Location;
+                btnBookAppointment.Hide();
+                btnAddPerscription.Location = btnBookAppointment.Location;
             }
-            else if (member.AuthLevel == 2)
+            else if (member.AuthLevel == (int)Staff.AuthenticationLevel.Nurse)
             {
                 btnAdmin.Hide();
+                btnBookAppointment.Hide();
+                btnAddPerscription.Location = btnBookAppointment.Location;
+            }
+            else if (member.AuthLevel == (int)Staff.AuthenticationLevel.Receptionist)
+            {
+                btnAdmin.Hide();
+                btnEditPerscription.Hide();
+                btnAddPerscription.Hide();
+            }
+            else if (member.AuthLevel == (int)Staff.AuthenticationLevel.GeneralStaff)
+            {
+                btnBookAppointment.Hide();
+                btnAdmin.Hide();
+            }
+            else if (member.AuthLevel == (int)Staff.AuthenticationLevel.Manager)
+            {
+                btnBookAppointment.Hide();
+                btnEditPerscription.Hide();
                 btnViewAppointments.Hide();
-                btnAddPerscription.Location = btnViewAppointments.Location;
+                btnAddPerscription.Hide();
+                btnAdmin.Location = btnBookAppointment.Location;
             }
         }
        

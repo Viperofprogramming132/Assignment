@@ -28,7 +28,7 @@ namespace SoftwareEngineeringAssignment
         {
             BusinessLayer ml = BusinessLayer.Instance();
 
-            ml.AddPatient(txtFirstname.Text, txtLastname.Text, Convert.ToDateTime(mclDoB.SelectionStart) , txtReligion.Text);
+            ml.AddPatient(txtFirstname.Text, txtLastname.Text, Convert.ToDateTime(mclDoB.SelectionStart) , txtReligion.Text,txtAllergies.Text,txtNextOfKin.Text,txtNoKTele.Text);
         }
     }
 }
