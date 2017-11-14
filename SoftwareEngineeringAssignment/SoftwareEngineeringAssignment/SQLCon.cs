@@ -147,9 +147,11 @@ namespace SoftwareEngineeringAssignment
             return dr;
         }
 
-        public void Update()
+        public int Update(string updateString)
         {
-            throw new NotImplementedException();
+            MySqlCommand cmd = new MySqlCommand(updateString, connection);
+            int i = cmd.ExecuteNonQuery();
+            return i;
         }
     }
 }

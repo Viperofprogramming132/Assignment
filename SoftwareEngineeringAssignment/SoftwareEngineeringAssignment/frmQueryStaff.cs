@@ -100,6 +100,7 @@ namespace SoftwareEngineeringAssignment
             txtFirstName.Text = s.FName;
             txtLastName.Text = s.LName;
             txtID.Text = s.StaffID.ToString();
+            txtUserName.Text = s.UserName;
 
             cmbDay.Text = s.DoB.Day.ToString();
             cmbMonth.Text = s.DoB.Month.ToString();
@@ -164,6 +165,22 @@ namespace SoftwareEngineeringAssignment
             this.Hide();
             addStaff.ShowDialog();
             this.Show();
+        }
+
+        private void frmQueryStaff_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (finS[showing].FName != txtFirstName.Text || finS[showing].LName != txtLastName.Text || finS[showing].DoB.Day.ToString() != cmbDay.Text || finS[showing].DoB.Month.ToString() != cmbYear.Text || finS[showing].DoB.Year.ToString() != cmbYear.Text || finS[showing].UserName != txtUserName.Text)
+            {
+
+                DialogResult dr = MessageBox.Show("Are you sure you wish to use" + finS[showing].ToString(), "Confirm", MessageBoxButtons.YesNo);
+
+                if (dr == DialogResult.Yes)
+                {
+                    BusinessLayer ml = BusinessLayer.Instance();
+                    ml.UpdateStafffrm( finS[showing].FName, finS[showing].LName, finS[showing].DoB, finS[showing].UserName);
+
+                }
+            }
         }
     }
 }

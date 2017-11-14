@@ -53,10 +53,10 @@ namespace SoftwareEngineeringAssignment
                     Patient patient = new Patient();
                     patient.PatientID = dr.GetInt32(0);
                     patient.AddressID = dr.GetInt32(1);
-                    patient.FirstName = DecryptBytes( dr.GetString(2));
-                    patient.LastName = DecryptBytes( dr.GetString(3));
-                    patient.DoB = Convert.ToDateTime(DecryptBytes( dr.GetString(4)));
-                    patient.Religeon = DecryptBytes( dr.GetString(5));
+                    patient.FirstName = DecryptBytes(dr.GetString(2));
+                    patient.LastName = DecryptBytes(dr.GetString(3));
+                    patient.DoB = Convert.ToDateTime(DecryptBytes(dr.GetString(4)));
+                    patient.Religeon = DecryptBytes(dr.GetString(5));
                     patient.Allergies = DecryptBytes(dr.GetString(6));
                     patient.NextOfKin = DecryptBytes(dr.GetString(7));
                     patient.NoKTelephone = DecryptBytes(dr.GetString(8));
@@ -98,7 +98,7 @@ namespace SoftwareEngineeringAssignment
 
             return shifts;
         }
-       
+
         /// Retrieves infomation from the staff table
         public List<Staff> GetStaff()
         {
@@ -114,10 +114,10 @@ namespace SoftwareEngineeringAssignment
                 {
                     Staff staff = new Staff();
                     staff.StaffID = dr.GetInt32(0);
-                    staff.FName = DecryptBytes( dr.GetString(1));
-                    staff.LName = DecryptBytes( dr.GetString(2));
-                    staff.UserName = DecryptBytes( dr.GetString(3));
-                    staff.Password = DecryptBytes( dr.GetString(4));
+                    staff.FName = DecryptBytes(dr.GetString(1));
+                    staff.LName = DecryptBytes(dr.GetString(2));
+                    staff.UserName = DecryptBytes(dr.GetString(3));
+                    staff.Password = DecryptBytes(dr.GetString(4));
                     staff.AuthLevel = dr.GetInt32(5);
                     staffs.Add(staff);
                 }
@@ -126,7 +126,7 @@ namespace SoftwareEngineeringAssignment
                 dr.Close();
                 con.CloseConnection();
             }
-            
+
             return staffs;
         }
 
@@ -152,8 +152,8 @@ namespace SoftwareEngineeringAssignment
                     appointment.appointmentID = dr.GetInt32(0);
                     appointment.patientID = dr.GetInt32(1);
                     appointment.staffID = dr.GetInt32(2);
-                    appointment.appointmentTime = Convert.ToDateTime(DecryptBytes( dr.GetString(3)));
-                    appointment.endTime = Convert.ToDateTime(DecryptBytes( dr.GetString(4)));
+                    appointment.appointmentTime = Convert.ToDateTime(DecryptBytes(dr.GetString(3)));
+                    appointment.endTime = Convert.ToDateTime(DecryptBytes(dr.GetString(4)));
                     appointment.description = DecryptBytes(dr.GetString(5));
                     appointments.Add(appointment);
                 }
@@ -237,19 +237,19 @@ namespace SoftwareEngineeringAssignment
         public bool AddStaff(string FirstName, string LastName, string UserName, string Password, int AuthLevel, int AddressID, DateTime DoB)
         {
             DbConection con = DbFactory.instance();
-            if(con.OpenConnection())
+            if (con.OpenConnection())
             {
-                string insertString = "INSERT INTO staff (StaffID, AddressID, FirstName, LastName, UserName, Password, authLevel,DoB) VALUES (NULL, '" + AddressID + "' ,'" + EncryptString( FirstName) + "', '" + EncryptString( LastName) + "', '" + EncryptString( UserName) + "', '" + EncryptString( Password) + "', '" + AuthLevel + "', '" + EncryptString( DoB.ToString()) + "');";
+                string insertString = "INSERT INTO staff (StaffID, AddressID, FirstName, LastName, UserName, Password, authLevel,DoB) VALUES (NULL, '" + AddressID + "' ,'" + EncryptString(FirstName) + "', '" + EncryptString(LastName) + "', '" + EncryptString(UserName) + "', '" + EncryptString(Password) + "', '" + AuthLevel + "', '" + EncryptString(DoB.ToString()) + "');";
                 if (con.Insert(insertString) != 0)
                 {
                     con.CloseConnection();
-                    
+
                     return true;
                 }
-                
-                
+
+
             }
-            
+
             return false;
         }
 
@@ -299,12 +299,12 @@ namespace SoftwareEngineeringAssignment
             return false;
         }
 
-        public bool AddTimetable(int staffId , int shiftId)
+        public bool AddTimetable(int staffId, int shiftId)
         {
             DbConection con = DbFactory.instance();
             if (con.OpenConnection())
             {
-                string insertString = "INSERT INTO timetable (ShiftID, StaffID) VALUES ('" + shiftId + "', '" + staffId +"');";
+                string insertString = "INSERT INTO timetable (ShiftID, StaffID) VALUES ('" + shiftId + "', '" + staffId + "');";
                 if (con.Insert(insertString) != 0)
                 {
                     con.CloseConnection();
@@ -356,6 +356,18 @@ namespace SoftwareEngineeringAssignment
             return false;
         }
 
+
+        public int UpdateStafffrm(string firstName, string lastName, DateTime DoB, string userName)
+        {
+            int i = 0;
+            DbConection con = DbFactory.instance();
+            if (con.OpenConnection())
+            {
+                string SqlCommand = "'update staff set FirstName='" + EncryptString(firstName) + "',LastName='" + EncryptString(lastName) + "',DoB='" + EncryptString(DoB.ToString()) + "',UserName='" + EncryptString(lastName);
+            }
+            return i;
+        }
+
         //https://stackoverflow.com/questions/604210/padding-is-invalid-and-cannot-be-removed-using-aesmanaged
 
         /// <summary>
@@ -397,7 +409,7 @@ namespace SoftwareEngineeringAssignment
             List<byte> inBytes = new List<byte>();
             List<string> inListString = new List<string>();
             inListString = inString.Split(',').ToList();
-            for (int i = 0;i<inListString.Count; i++)
+            for (int i = 0; i < inListString.Count; i++)
             {
                 inBytes.Add(Convert.ToByte(inListString[i]));
             }

@@ -96,7 +96,7 @@ namespace SoftwareEngineeringAssignment
         //Insert statement
         int Insert(string insertString); 
         //Update statement
-        void Update();
+        int Update(string updateString);
         //Delete statement
         void Delete();
         

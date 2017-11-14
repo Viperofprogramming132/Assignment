@@ -34,7 +34,7 @@ namespace SoftwareEngineeringAssignment
 
         private void btnFindStaff_Click(object sender, EventArgs e)
         {
-
+            new frmQueryStaff().Show();
         }
 
         private void btnTimetable_Click(object sender, EventArgs e)
