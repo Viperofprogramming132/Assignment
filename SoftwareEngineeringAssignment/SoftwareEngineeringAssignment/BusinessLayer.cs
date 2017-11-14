@@ -130,6 +130,11 @@ namespace SoftwareEngineeringAssignment
             return staffs;
         }
 
+        internal void AddAppointment(int patientID, DateTime dateTime1, DateTime dateTime2, string text)
+        {
+            throw new NotImplementedException();
+        }
+
 
 
         /// <summary>
@@ -318,12 +323,12 @@ namespace SoftwareEngineeringAssignment
             return false;
         }
 
-        public bool AddAppointment(int PatientID, int StaffID, DateTime StartTime, DateTime EndTime, string Description)
+        public bool AddAppointment(int AppointmentID, int StaffID, DateTime StartTime, DateTime EndTime, string Description)
         {
             DbConection con = DbFactory.instance();
             if (con.OpenConnection())
             {
-                string insertString = "INSERT INTO appointment (AppointmentID, PatientID, StaffID, StartTime, EndTime, Description) VALUES (NULL, '" + PatientID.ToString() + "', '" + StaffID.ToString() + "', '" + EncryptString(StartTime.ToString()) + "', '" + EncryptString(EndTime.ToString()) + "', '" + EncryptString(Description) + "');";
+                string insertString = "INSERT INTO appointment (AppointmentID, PatientID, StaffID, StartTime, EndTime, Description) VALUES (NULL, '" + AppointmentID.ToString() + "', '" + StaffID.ToString() + "', '" + EncryptString(StartTime.ToString()) + "', '" + EncryptString(EndTime.ToString()) + "', '" + EncryptString(Description) + "');";
                 if (con.Insert(insertString) != 0)
                 {
                     con.CloseConnection();

@@ -305,7 +305,6 @@
             this.lblNextOfKin.Size = new System.Drawing.Size(112, 25);
             this.lblNextOfKin.TabIndex = 36;
             this.lblNextOfKin.Text = "Next Of Kin";
-            this.lblNextOfKin.Click += new System.EventHandler(this.lblNextOfKin_Click);
             // 
             // txtNextOfKin
             // 
@@ -314,7 +313,6 @@
             this.txtNextOfKin.Name = "txtNextOfKin";
             this.txtNextOfKin.Size = new System.Drawing.Size(126, 30);
             this.txtNextOfKin.TabIndex = 37;
-            this.txtNextOfKin.TextChanged += new System.EventHandler(this.txtNextOfKin_TextChanged);
             // 
             // lsvAllergies
             // 

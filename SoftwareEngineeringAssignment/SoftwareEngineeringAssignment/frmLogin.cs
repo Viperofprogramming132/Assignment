@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Net.Mail;
 
 
 namespace SoftwareEngineeringAssignment
@@ -17,24 +18,54 @@ namespace SoftwareEngineeringAssignment
         BackgroundWorker worker = new BackgroundWorker();
         List<Staff> m_staff;
         Staff staffMember;
+
+        /// <summary>
+        /// Constructor for login form
+        /// </summary>
         public frmLogin()
         {
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
+            
+            //Sets up the worker
             worker.DoWork += new DoWorkEventHandler(worker_DoWork);
             worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(worker_RunWorkerCompleted);
             worker.WorkerSupportsCancellation = true;
         }
 
-    
+        /// <summary>
+        /// Starts the worker
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             if (!worker.IsBusy)
             {
                 worker.RunWorkerAsync();
             }
+            MailMessage mail = new MailMessage();
+            /*SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+            mail.From = new MailAddress("you_address@gmail.com");
+            mail.To.Add("to_address@gmail.com");
+            mail.Subject = "Test Mail - 1";
+            mail.Body = "Appointment booking";
+
+
+            
+            SmtpServer.Port = 587;
+            SmtpServer.Credentials = new System.Net.NetworkCredential("callumwarden96@gmail.com", "infamous");
+            SmtpServer.EnableSsl = true;
+
+            SmtpServer.Send(mail);
+            MessageBox.Show("mail Sent");*/
         }
 
+        /// <summary>
+        /// Opens the main menu form if there was a user found
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             if (e.Cancelled)
@@ -46,7 +77,11 @@ namespace SoftwareEngineeringAssignment
             }
         }
 
-
+        /// <summary>
+        /// Checks all user data with the inputed data to see if there is a successfull login
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void worker_DoWork(object sender, DoWorkEventArgs e)
         {
             BusinessLayer ml = BusinessLayer.Instance();
@@ -69,19 +104,35 @@ namespace SoftwareEngineeringAssignment
             }
         }
 
+
+        /// <summary>
+        /// On load sets the form to full screen
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmLogin_Load(object sender, EventArgs e)
         {
             this.MinimumSize = this.Size;
             this.MaximumSize = this.Size;
         }
 
-
+        /// <summary>
+        /// Clears the text boxes on show
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmLogin_VisibleChanged(object sender, EventArgs e)
         {
             txtPassword.Clear();
             txtUsername.Clear();
         }
 
+
+        /// <summary>
+        /// Enter button key check
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtUsername_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -90,6 +141,12 @@ namespace SoftwareEngineeringAssignment
             }
         }
 
+
+        /// <summary>
+        /// Enter button key check
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtPassword_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -98,6 +155,11 @@ namespace SoftwareEngineeringAssignment
             }
         }
 
+        /// <summary>
+        /// Enter button key check
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmLogin_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -106,6 +168,12 @@ namespace SoftwareEngineeringAssignment
             }
         }
 
+
+        /// <summary>
+        /// Closes the program
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnClose_Click(object sender, EventArgs e)
         {
             Application.Exit();
