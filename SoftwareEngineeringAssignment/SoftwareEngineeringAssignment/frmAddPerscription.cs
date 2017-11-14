@@ -17,6 +17,10 @@ namespace SoftwareEngineeringAssignment
         Patient currentP = new Patient();
         Drug currentD = new Drug();
 
+
+        /// <summary>
+        /// Constructor for the add perscription form
+        /// </summary>
         public frmAddPerscription()
         {
             BusinessLayer ml = BusinessLayer.Instance();
@@ -24,6 +28,7 @@ namespace SoftwareEngineeringAssignment
             dList = ml.GetDrugs();
             pList = ml.GetPatients();
 
+            //Order the drugs alphabeticly
             List<Drug> temp = dList.OrderBy(x => x.DrugName).ToList();
             int i = 0;
             foreach(Drug d in temp)
@@ -35,6 +40,7 @@ namespace SoftwareEngineeringAssignment
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
 
+            //Populate the drugs
             for(i=1;i<=dList.Count;i++)
             {
                 cmbDrugID.Items.Add(i);
@@ -49,12 +55,24 @@ namespace SoftwareEngineeringAssignment
             mclEndDate.SelectionEnd = mclStartDate.SelectionEnd.AddDays(7);
         }
 
+
+        /// <summary>
+        /// Sets form full screen on load
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmAddPerscription_Load(object sender, EventArgs e)
         {
             this.MinimumSize = this.Size;
             this.MaximumSize = this.Size;
         }
 
+
+        /// <summary>
+        /// Updates the drug infomation on a drug being selected
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmbDrugName_SelectedValueChanged(object sender, EventArgs e)
         {
             foreach (Drug d in dList)
@@ -67,6 +85,9 @@ namespace SoftwareEngineeringAssignment
             }
         }
 
+        /// <summary>
+        /// Populates the drug infomation
+        /// </summary>
         private void Populate()
         {
             cmbDrugID.Text = currentD.DrugID.ToString();
@@ -74,6 +95,11 @@ namespace SoftwareEngineeringAssignment
             txtDrugDescription.Text = currentD.Description;
         }
 
+
+        /// <summary>
+        /// Updates the patient infomation with the given patient
+        /// </summary>
+        /// <param name="p"></param>
         private void Populate(Patient p)
         {
             txtFirstName.Text = p.FirstName;
@@ -85,6 +111,11 @@ namespace SoftwareEngineeringAssignment
             cmbYear.Text = p.DoB.Year.ToString();
         }
 
+        /// <summary>
+        /// Updates the drug infomation on a drug being selected
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmbDrugID_SelectedValueChanged(object sender, EventArgs e)
         {
             foreach(Drug d in dList)
@@ -98,11 +129,21 @@ namespace SoftwareEngineeringAssignment
             
         }
 
+        /// <summary>
+        /// Takes a patient from the query patient form
+        /// </summary>
+        /// <param name="p"></param>
         public void TakePatient(Patient p)
         {
             currentP = p;
         }
 
+
+        /// <summary>
+        /// Opens the query patients form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSearchPatients_Click(object sender, EventArgs e)
         {
             frmQueryPatient queryPatient = new frmQueryPatient(this);
@@ -114,6 +155,11 @@ namespace SoftwareEngineeringAssignment
             Populate(currentP);
         }
 
+        /// <summary>
+        /// Checks if a patient is selected and a drug is selected then sends it to the database
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             if(currentD == null)

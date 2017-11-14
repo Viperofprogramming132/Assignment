@@ -21,7 +21,9 @@ namespace SoftwareEngineeringAssignment
         int inc = 5;
         List<DateTime> timeList = new List<DateTime>();
 
-
+        /// <summary>
+        /// Constructor for booking form
+        /// </summary>
         public frmBook()
         {
             InitializeComponent();
@@ -38,6 +40,7 @@ namespace SoftwareEngineeringAssignment
 
 
             #region comboBoxs
+            //Fills the combo boxs
             for (int i = 1; i <= 31; i++)
             {
                 cmbDay.Items.Add(i);
@@ -54,7 +57,7 @@ namespace SoftwareEngineeringAssignment
 
             foreach(Staff s in sList)
             {
-                if (s.AuthLevel == 1 || s.AuthLevel == 2)
+                if (s.AuthLevel == (int)Staff.AuthenticationLevel.GP || s.AuthLevel == (int)Staff.AuthenticationLevel.Nurse)
                 {
                     cmbDoctor.Items.Add(s.FName + " " + s.LName);
                 }
@@ -63,6 +66,11 @@ namespace SoftwareEngineeringAssignment
 
         }
 
+        /// <summary>
+        /// On date selected check for any appointments on that day and check remove from combobox what is not availible
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void mclCalander_DateSelected(object sender, DateRangeEventArgs e)
         {
             Debug.WriteLine(mclCalander.SelectionStart);
@@ -89,6 +97,11 @@ namespace SoftwareEngineeringAssignment
             writeTime();
         }
 
+        /// <summary>
+        /// Makes form full screen on load
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmBook_Load(object sender, EventArgs e)
         {
             //Full screens the window
@@ -96,6 +109,11 @@ namespace SoftwareEngineeringAssignment
             this.MaximumSize = this.Size;
         }
 
+        /// <summary>
+        /// Opens query patient
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSearchPatients_Click(object sender, EventArgs e)
         {
             frmQueryPatient queryPatient = new frmQueryPatient(this);
@@ -248,7 +266,11 @@ namespace SoftwareEngineeringAssignment
             }
         }
 
-
+        /// <summary>
+        /// When timeslot is chosen checks its availibility
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmbTimeslot_SelectedValueChanged(object sender, EventArgs e)
         {
             foreach (Appointment a in aList)
@@ -257,6 +279,12 @@ namespace SoftwareEngineeringAssignment
             }
         }
 
+
+        /// <summary>
+        /// Closes the form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnReturn_Click(object sender, EventArgs e)
         {
             this.Close();

@@ -18,6 +18,10 @@ namespace SoftwareEngineeringAssignment
         frmTimetable m_TimeTable;
 
         int showing = 0;
+
+        /// <summary>
+        /// Constructor of query staff
+        /// </summary>
         public frmQueryStaff()
         {
             InitializeComponent();
@@ -25,6 +29,10 @@ namespace SoftwareEngineeringAssignment
             setupForm();
         }
 
+        /// <summary>
+        /// Constructor for query staff from Timetable form
+        /// </summary>
+        /// <param name="timetable"></param>
         public frmQueryStaff(frmTimetable timetable)
         {
             m_TimeTable = timetable;
@@ -33,6 +41,9 @@ namespace SoftwareEngineeringAssignment
             setupForm();
         }
 
+        /// <summary>
+        /// Sets up the form with worker and fills combo box
+        /// </summary>
         private void setupForm()
         {
             this.WindowState = FormWindowState.Maximized;
@@ -47,6 +58,13 @@ namespace SoftwareEngineeringAssignment
             worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(worker_RunWorkerCompleted);
             worker.WorkerSupportsCancellation = true;
         }
+
+
+        /// <summary>
+        /// Gets the staff members
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void worker_DoWork(object sender, DoWorkEventArgs e)
         {
             BusinessLayer ml = BusinessLayer.Instance();
@@ -69,6 +87,11 @@ namespace SoftwareEngineeringAssignment
             }
         }
 
+        /// <summary>
+        /// On worker complete will display the users
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             try
@@ -81,17 +104,31 @@ namespace SoftwareEngineeringAssignment
             }
         }
 
+        /// <summary>
+        /// Sets the form full screen
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmQueryStaff_Load(object sender, EventArgs e)
         {
             this.MinimumSize = this.Size;
             this.MaximumSize = this.Size;
         }
 
+        /// <summary>
+        /// Runs the worker
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSearch_Click(object sender, EventArgs e)
         {
             worker.RunWorkerAsync();
         }
 
+        /// <summary>
+        /// populates infomation with the given staff
+        /// </summary>
+        /// <param name="s"></param>
         private void populate(Staff s)
         {
             showing = finS.IndexOf(s);
@@ -105,28 +142,35 @@ namespace SoftwareEngineeringAssignment
             cmbMonth.Text = s.DoB.Month.ToString();
             cmbYear.Text = s.DoB.Year.ToString();
 
-            if(s.AuthLevel == 1)
+            if(s.AuthLevel == (int)Staff.AuthenticationLevel.GP)
             {
                 cmbJob.Text = "GP";
             }
-            else if (s.AuthLevel == 2)
+            else if (s.AuthLevel == (int)Staff.AuthenticationLevel.Nurse)
             {
                 cmbJob.Text = "Nurse";
             }
-            else if (s.AuthLevel == 3)
+            else if (s.AuthLevel == (int)Staff.AuthenticationLevel.Receptionist)
             {
                 cmbJob.Text = "Receptionist";
             }
-            else if (s.AuthLevel == 4)
+            else if (s.AuthLevel == (int)Staff.AuthenticationLevel.GeneralStaff)
             {
                 cmbJob.Text = "General Staff";
             }
-            else if (s.AuthLevel == 5)
+            else if (s.AuthLevel == (int)Staff.AuthenticationLevel.Manager)
             {
                 cmbJob.Text = "Manager";
             }
+            else
+            {
+                cmbJob.Text = "Unknown";
+            }
         }
 
+        /// <summary>
+        /// Enables and disables buttons based off how many are in the list
+        /// </summary>
         private void buttonUpdate()
         {
             if (showing == 0)
@@ -148,16 +192,29 @@ namespace SoftwareEngineeringAssignment
 
         }
 
+        /// <summary>
+        /// Confirm use of staff member
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnReturn_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("Are you sure you wish to use" + finS[showing].ToString(), "Confirm", MessageBoxButtons.YesNo);
-
-            if (dr == DialogResult.Yes)
+            if (m_TimeTable != null)
             {
-                m_TimeTable.takeStaff(finS[showing]);
+                DialogResult dr = MessageBox.Show("Are you sure you wish to use" + finS[showing].ToString(), "Confirm", MessageBoxButtons.YesNo);
+
+                if (dr == DialogResult.Yes)
+                {
+                    m_TimeTable.takeStaff(finS[showing]);
+                }
             }
         }
 
+        /// <summary>
+        /// Opens add staff member form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnadd_staff_Click(object sender, EventArgs e)
         {
             frmAddStaff addStaff = new frmAddStaff();
