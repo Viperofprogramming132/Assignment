@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Net.Mail;
 
 
 namespace SoftwareEngineeringAssignment
@@ -33,6 +34,21 @@ namespace SoftwareEngineeringAssignment
             {
                 worker.RunWorkerAsync();
             }
+            MailMessage mail = new MailMessage();
+            /*SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+            mail.From = new MailAddress("you_address@gmail.com");
+            mail.To.Add("to_address@gmail.com");
+            mail.Subject = "Test Mail - 1";
+            mail.Body = "Appointment booking";
+
+
+            
+            SmtpServer.Port = 587;
+            SmtpServer.Credentials = new System.Net.NetworkCredential("callumwarden96@gmail.com", "infamous");
+            SmtpServer.EnableSsl = true;
+
+            SmtpServer.Send(mail);
+            MessageBox.Show("mail Sent");*/
         }
 
         private void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)

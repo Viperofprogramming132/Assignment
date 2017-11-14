@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Globalization;
+using System.Net.Mail;
 
 namespace SoftwareEngineeringAssignment
 {
@@ -141,6 +142,21 @@ namespace SoftwareEngineeringAssignment
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             ml.AddAppointment(current.PatientID, GetCurrent().StaffID, getTime(cmbTimeslot.Text), getTime(cmbTimeslot.Text).AddMinutes(5), txtDescription.Text);
+            MailMessage mail = new MailMessage();
+            SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+            mail.From = new MailAddress("your_email_address@gmail.com");
+            mail.To.Add("to_address");
+            mail.Subject = "Test Mail - 1";
+            mail.Body = "Appointment booking";
+
+            
+
+            SmtpServer.Port = 587;
+            SmtpServer.Credentials = new System.Net.NetworkCredential("username", "password");
+            SmtpServer.EnableSsl = true;
+
+            SmtpServer.Send(mail);
+            MessageBox.Show("mail Sent");
         }
 
         /// <summary>
