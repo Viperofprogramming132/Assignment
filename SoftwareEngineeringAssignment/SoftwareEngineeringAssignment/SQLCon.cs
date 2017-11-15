@@ -34,7 +34,7 @@ namespace SoftwareEngineeringAssignment
             server = m_properties["Server"];
             database = m_properties["Database"];
             uid = m_properties["User"];
-
+            password = m_properties["Password"];
             setConection();
         }
 
@@ -42,7 +42,7 @@ namespace SoftwareEngineeringAssignment
         {
             string connectionString;
             connectionString = "server=" + server + ";" + "database=" +
-            database + ";" + "uid=" + uid + ";";
+            database + ";" + "uid=" + uid + ";" + "password=" + password + ";";
             connection = new MySqlConnection(connectionString);
         }
 
