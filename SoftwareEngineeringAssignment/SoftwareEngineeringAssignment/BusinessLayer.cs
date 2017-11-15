@@ -362,13 +362,17 @@ namespace SoftwareEngineeringAssignment
         }
 
 
-        public int UpdateStafffrm(string firstName, string lastName, DateTime DoB, string userName)
+        public int UpdateStafffrm(string firstName, string lastName, DateTime DoB, string userName, int ID)
         {
             int i = 0;
             DbConection con = DbFactory.instance();
             if (con.OpenConnection())
             {
-                string SqlCommand = "'update staff set FirstName='" + EncryptString(firstName) + "',LastName='" + EncryptString(lastName) + "',DoB='" + EncryptString(DoB.ToString()) + "',UserName='" + EncryptString(lastName);
+                string SqlCommand = "update staff set FirstName='" + EncryptString(firstName) + "',LastName='" + EncryptString(lastName) + "',DoB='" + EncryptString(DoB.ToString()) + "',UserName='" + EncryptString(userName) + "' WHERE StaffID=" + ID + ";";
+
+                con.Update(SqlCommand);
+
+                con.CloseConnection();
             }
             return i;
         }

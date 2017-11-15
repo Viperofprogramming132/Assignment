@@ -257,6 +257,7 @@
             this.btnUpdate.TabIndex = 47;
             this.btnUpdate.Text = "Update Changes";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // txtUserName
             // 

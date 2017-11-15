@@ -209,6 +209,7 @@ namespace SoftwareEngineeringAssignment
                     m_TimeTable.takeStaff(finS[showing]);
                 }
             }
+            this.Close();
         }
 
         /// <summary>
@@ -229,15 +230,20 @@ namespace SoftwareEngineeringAssignment
             if (finS[showing].FName != txtFirstName.Text || finS[showing].LName != txtLastName.Text || finS[showing].DoB.Day.ToString() != cmbDay.Text || finS[showing].DoB.Month.ToString() != cmbYear.Text || finS[showing].DoB.Year.ToString() != cmbYear.Text || finS[showing].UserName != txtUserName.Text)
             {
 
-                DialogResult dr = MessageBox.Show("Are you sure you wish to use" + finS[showing].ToString(), "Confirm", MessageBoxButtons.YesNo);
+                DialogResult dr = MessageBox.Show("Do you want to save changes to " + finS[showing].ToString(), "Confirm", MessageBoxButtons.YesNo);
 
                 if (dr == DialogResult.Yes)
                 {
                     BusinessLayer ml = BusinessLayer.Instance();
-                    ml.UpdateStafffrm( finS[showing].FName, finS[showing].LName, finS[showing].DoB, finS[showing].UserName);
+                    ml.UpdateStafffrm( txtFirstName.Text, txtLastName.Text, finS[showing].DoB, txtUserName.Text, finS[showing].StaffID);
 
                 }
             }
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
