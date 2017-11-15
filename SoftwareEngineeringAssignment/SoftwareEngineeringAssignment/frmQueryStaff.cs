@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -53,6 +54,20 @@ namespace SoftwareEngineeringAssignment
             cmbJob.Items.Add("Receptionist");
             cmbJob.Items.Add("General Staff");
             cmbJob.Items.Add("Manager");
+
+            for (int i = 1; i <= 31; i++)
+            {
+                cmbDay.Items.Add(i);
+            }
+
+            for (int i = 1; i <= 12; i++)
+            {
+                cmbMonth.Items.Add(i);
+            }
+            for (int i = 1900; i <= DateTime.Now.Year; i++)
+            {
+                cmbYear.Items.Add(i);
+            }
 
             worker.DoWork += new DoWorkEventHandler(worker_DoWork);
             worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(worker_RunWorkerCompleted);
@@ -202,7 +217,7 @@ namespace SoftwareEngineeringAssignment
         {
             if (m_TimeTable != null)
             {
-                DialogResult dr = MessageBox.Show("Are you sure you wish to use" + finS[showing].ToString(), "Confirm", MessageBoxButtons.YesNo);
+                DialogResult dr = MessageBox.Show("Are you sure you wish to use " + finS[showing].ToString(), "Confirm", MessageBoxButtons.YesNo);
 
                 if (dr == DialogResult.Yes)
                 {
@@ -235,10 +250,26 @@ namespace SoftwareEngineeringAssignment
                 if (dr == DialogResult.Yes)
                 {
                     BusinessLayer ml = BusinessLayer.Instance();
-                    ml.UpdateStafffrm( txtFirstName.Text, txtLastName.Text, finS[showing].DoB, txtUserName.Text, finS[showing].StaffID);
+                    MessageBox.Show(ml.UpdateStafffrm( txtFirstName.Text, txtLastName.Text, getTime(cmbDay.Text + "/" + cmbMonth.Text + "/" + cmbYear.Text), txtUserName.Text, finS[showing].StaffID) + " Number of entries updated");
 
                 }
             }
+        }
+
+        /// <summary>
+        /// Gets the time from a string
+        /// </summary>
+        /// <param name="timeSlot"></param>
+        /// <returns></returns>
+        private DateTime getTime(string timeSlot)
+        {
+            if (timeSlot != "")
+            {
+                DateTime dateofbirth = Convert.ToDateTime(timeSlot + " 00:00:00.00");
+
+                return dateofbirth;
+            }
+            return DateTime.Now;
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
