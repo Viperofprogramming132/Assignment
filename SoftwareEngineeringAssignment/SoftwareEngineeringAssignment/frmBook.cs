@@ -160,21 +160,31 @@ namespace SoftwareEngineeringAssignment
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             ml.AddAppointment(current.PatientID, GetCurrent().StaffID, getTime(cmbTimeslot.Text), getTime(cmbTimeslot.Text).AddMinutes(5), txtDescription.Text);
-            MailMessage mail = new MailMessage();
-            SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
-            mail.From = new MailAddress("you_address@gmail.com");
-            mail.To.Add("to_address@gmail.com");
-            mail.Subject = "Test Mail - 1";
-            mail.Body = "Appointment booking";
+            try
+            {
+                MailMessage mail = new MailMessage();
+                SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+                mail.From = new MailAddress("you_address@gmail.com");
+                mail.To.Add("to_address@gmail.com");
+                mail.Subject = "Test Mail - 1";
+                mail.Body = "Appointment booking";
 
 
+
+                SmtpServer.Port = 587;
+                SmtpServer.Credentials = new System.Net.NetworkCredential("callumwarden96@gmail.com", "infamous");
+                SmtpServer.EnableSsl = true;
+
+                SmtpServer.Send(mail);
+
+
+                MessageBox.Show("Message Sent");
+            }
+            catch
+            {
+                MessageBox.Show("Message not sent");
+            }
             
-            SmtpServer.Port = 587;
-            SmtpServer.Credentials = new System.Net.NetworkCredential("callumwarden96@gmail.com", "infamous");
-            SmtpServer.EnableSsl = true;
-
-            SmtpServer.Send(mail);
-            MessageBox.Show("mail Sent");
         }
 
         /// <summary>
