@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -202,7 +203,7 @@ namespace SoftwareEngineeringAssignment
         {
             if (m_TimeTable != null)
             {
-                DialogResult dr = MessageBox.Show("Are you sure you wish to use" + finS[showing].ToString(), "Confirm", MessageBoxButtons.YesNo);
+                DialogResult dr = MessageBox.Show("Are you sure you wish to use " + finS[showing].ToString(), "Confirm", MessageBoxButtons.YesNo);
 
                 if (dr == DialogResult.Yes)
                 {
@@ -238,6 +239,22 @@ namespace SoftwareEngineeringAssignment
 
                 }
             }
+        }
+
+        /// <summary>
+        /// Gets the time from a string
+        /// </summary>
+        /// <param name="timeSlot"></param>
+        /// <returns></returns>
+        private DateTime getTime(string timeSlot)
+        {
+            if (timeSlot != "")
+            {
+                DateTime time = DateTime.ParseExact(timeSlot, "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+
+                return time;
+            }
+            return DateTime.Now;
         }
     }
 }

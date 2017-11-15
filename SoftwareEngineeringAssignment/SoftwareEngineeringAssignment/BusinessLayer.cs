@@ -57,9 +57,10 @@ namespace SoftwareEngineeringAssignment
                     patient.LastName = DecryptBytes(dr.GetString(3));
                     patient.DoB = Convert.ToDateTime(DecryptBytes(dr.GetString(4)));
                     patient.Religeon = DecryptBytes(dr.GetString(5));
-                    patient.Allergies = DecryptBytes(dr.GetString(6));
-                    patient.NextOfKin = DecryptBytes(dr.GetString(7));
-                    patient.NoKTelephone = DecryptBytes(dr.GetString(8));
+                    patient.Email = DecryptBytes(dr.GetString(6));
+                    patient.Allergies = DecryptBytes(dr.GetString(7));
+                    patient.NextOfKin = DecryptBytes(dr.GetString(8));
+                    patient.NoKTelephone = DecryptBytes(dr.GetString(9));
                     patients.Add(patient);
                 }
 
