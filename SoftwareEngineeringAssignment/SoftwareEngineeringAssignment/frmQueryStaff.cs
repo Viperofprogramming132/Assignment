@@ -55,6 +55,20 @@ namespace SoftwareEngineeringAssignment
             cmbJob.Items.Add("General Staff");
             cmbJob.Items.Add("Manager");
 
+            for (int i = 1; i <= 31; i++)
+            {
+                cmbDay.Items.Add(i);
+            }
+
+            for (int i = 1; i <= 12; i++)
+            {
+                cmbMonth.Items.Add(i);
+            }
+            for (int i = 1900; i <= DateTime.Now.Year; i++)
+            {
+                cmbYear.Items.Add(i);
+            }
+
             worker.DoWork += new DoWorkEventHandler(worker_DoWork);
             worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(worker_RunWorkerCompleted);
             worker.WorkerSupportsCancellation = true;
@@ -236,7 +250,7 @@ namespace SoftwareEngineeringAssignment
                 if (dr == DialogResult.Yes)
                 {
                     BusinessLayer ml = BusinessLayer.Instance();
-                    ml.UpdateStafffrm( txtFirstName.Text, txtLastName.Text, finS[showing].DoB, txtUserName.Text, finS[showing].StaffID);
+                    MessageBox.Show(ml.UpdateStafffrm( txtFirstName.Text, txtLastName.Text, getTime(cmbDay.Text + "/" + cmbMonth.Text + "/" + cmbYear.Text), txtUserName.Text, finS[showing].StaffID) + " Number of entries updated");
 
                 }
             }
@@ -251,9 +265,9 @@ namespace SoftwareEngineeringAssignment
         {
             if (timeSlot != "")
             {
-                DateTime time = DateTime.ParseExact(timeSlot, "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+                DateTime dateofbirth = Convert.ToDateTime(timeSlot + " 00:00:00.00");
 
-                return time;
+                return dateofbirth;
             }
             return DateTime.Now;
         }

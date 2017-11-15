@@ -371,7 +371,7 @@ namespace SoftwareEngineeringAssignment
             {
                 string SqlCommand = "update staff set FirstName='" + EncryptString(firstName) + "',LastName='" + EncryptString(lastName) + "',DoB='" + EncryptString(DoB.ToString()) + "',UserName='" + EncryptString(userName) + "' WHERE StaffID=" + ID + ";";
 
-                con.Update(SqlCommand);
+                i = con.Update(SqlCommand);
 
                 con.CloseConnection();
             }
