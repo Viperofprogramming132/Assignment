@@ -45,7 +45,6 @@
             this.btnReturn = new System.Windows.Forms.Button();
             this.lblPerscriptions = new System.Windows.Forms.Label();
             this.lsvPerscriptions = new System.Windows.Forms.ListView();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lsvAppointments = new System.Windows.Forms.ListView();
             this.lblAppointments = new System.Windows.Forms.Label();
             this.btnForward = new System.Windows.Forms.Button();
@@ -53,10 +52,11 @@
             this.lblReligion = new System.Windows.Forms.Label();
             this.txtReligion = new System.Windows.Forms.TextBox();
             this.lblAllergies = new System.Windows.Forms.Label();
-            this.txtAllergies = new System.Windows.Forms.TextBox();
             this.lblNextOfKin = new System.Windows.Forms.Label();
             this.txtNextOfKin = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.lsvAllergies = new System.Windows.Forms.ListView();
+            this.txtNoKTelephone = new System.Windows.Forms.TextBox();
+            this.btnAdd_patient = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnSearch
@@ -85,7 +85,7 @@
             this.txtID.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.txtID.Location = new System.Drawing.Point(139, 6);
             this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(100, 30);
+            this.txtID.Size = new System.Drawing.Size(126, 30);
             this.txtID.TabIndex = 2;
             // 
             // txtFirstName
@@ -93,7 +93,7 @@
             this.txtFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.txtFirstName.Location = new System.Drawing.Point(139, 45);
             this.txtFirstName.Name = "txtFirstName";
-            this.txtFirstName.Size = new System.Drawing.Size(100, 30);
+            this.txtFirstName.Size = new System.Drawing.Size(126, 30);
             this.txtFirstName.TabIndex = 4;
             // 
             // lblFirstName
@@ -111,7 +111,7 @@
             this.txtLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.txtLastName.Location = new System.Drawing.Point(139, 88);
             this.txtLastName.Name = "txtLastName";
-            this.txtLastName.Size = new System.Drawing.Size(100, 30);
+            this.txtLastName.Size = new System.Drawing.Size(126, 30);
             this.txtLastName.TabIndex = 6;
             // 
             // lblLastName
@@ -223,19 +223,6 @@
             this.lsvPerscriptions.UseCompatibleStateImageBehavior = false;
             this.lsvPerscriptions.SelectedIndexChanged += new System.EventHandler(this.lsvPerscriptions_SelectedIndexChanged);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.pictureBox1.ErrorImage = global::SoftwareEngineeringAssignment.Properties.Resources.nhs;
-            this.pictureBox1.Image = global::SoftwareEngineeringAssignment.Properties.Resources.nhs;
-            this.pictureBox1.InitialImage = global::SoftwareEngineeringAssignment.Properties.Resources.nhs;
-            this.pictureBox1.Location = new System.Drawing.Point(379, 6);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(219, 219);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 27;
-            this.pictureBox1.TabStop = false;
-            // 
             // lsvAppointments
             // 
             this.lsvAppointments.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
@@ -303,46 +290,69 @@
             // 
             this.lblAllergies.AutoSize = true;
             this.lblAllergies.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAllergies.Location = new System.Drawing.Point(12, 245);
+            this.lblAllergies.Location = new System.Drawing.Point(364, 6);
             this.lblAllergies.Name = "lblAllergies";
             this.lblAllergies.Size = new System.Drawing.Size(87, 25);
             this.lblAllergies.TabIndex = 34;
             this.lblAllergies.Text = "Allergies";
             // 
-            // txtAllergies
-            // 
-            this.txtAllergies.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAllergies.Location = new System.Drawing.Point(139, 245);
-            this.txtAllergies.Name = "txtAllergies";
-            this.txtAllergies.Size = new System.Drawing.Size(100, 30);
-            this.txtAllergies.TabIndex = 35;
-            // 
             // lblNextOfKin
             // 
             this.lblNextOfKin.AutoSize = true;
             this.lblNextOfKin.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNextOfKin.Location = new System.Drawing.Point(12, 293);
+            this.lblNextOfKin.Location = new System.Drawing.Point(12, 249);
             this.lblNextOfKin.Name = "lblNextOfKin";
             this.lblNextOfKin.Size = new System.Drawing.Size(112, 25);
             this.lblNextOfKin.TabIndex = 36;
             this.lblNextOfKin.Text = "Next Of Kin";
+            this.lblNextOfKin.Click += new System.EventHandler(this.lblNextOfKin_Click);
             // 
             // txtNextOfKin
             // 
             this.txtNextOfKin.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNextOfKin.Location = new System.Drawing.Point(139, 288);
+            this.txtNextOfKin.Location = new System.Drawing.Point(139, 244);
             this.txtNextOfKin.Name = "txtNextOfKin";
-            this.txtNextOfKin.Size = new System.Drawing.Size(100, 30);
+            this.txtNextOfKin.Size = new System.Drawing.Size(126, 30);
             this.txtNextOfKin.TabIndex = 37;
+            this.txtNextOfKin.TextChanged += new System.EventHandler(this.txtNextOfKin_TextChanged);
+            // 
+            // lsvAllergies
+            // 
+            this.lsvAllergies.Location = new System.Drawing.Point(369, 35);
+            this.lsvAllergies.Name = "lsvAllergies";
+            this.lsvAllergies.Size = new System.Drawing.Size(229, 239);
+            this.lsvAllergies.TabIndex = 38;
+            this.lsvAllergies.UseCompatibleStateImageBehavior = false;
+            // 
+            // txtNoKTelephone
+            // 
+            this.txtNoKTelephone.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNoKTelephone.Location = new System.Drawing.Point(139, 280);
+            this.txtNoKTelephone.Name = "txtNoKTelephone";
+            this.txtNoKTelephone.Size = new System.Drawing.Size(126, 30);
+            this.txtNoKTelephone.TabIndex = 39;
+            // 
+            // btnAdd_patient
+            // 
+            this.btnAdd_patient.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd_patient.Location = new System.Drawing.Point(208, 616);
+            this.btnAdd_patient.Name = "btnAdd_patient";
+            this.btnAdd_patient.Size = new System.Drawing.Size(207, 37);
+            this.btnAdd_patient.TabIndex = 40;
+            this.btnAdd_patient.Text = "Add New Patient";
+            this.btnAdd_patient.UseVisualStyleBackColor = true;
+            this.btnAdd_patient.Click += new System.EventHandler(this.btnAdd_patient_Click);
             // 
             // frmQueryPatient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1230, 665);
+            this.Controls.Add(this.btnAdd_patient);
+            this.Controls.Add(this.txtNoKTelephone);
+            this.Controls.Add(this.lsvAllergies);
             this.Controls.Add(this.txtNextOfKin);
             this.Controls.Add(this.lblNextOfKin);
-            this.Controls.Add(this.txtAllergies);
             this.Controls.Add(this.lblAllergies);
             this.Controls.Add(this.txtReligion);
             this.Controls.Add(this.lblReligion);
@@ -350,7 +360,6 @@
             this.Controls.Add(this.btnForward);
             this.Controls.Add(this.lsvAppointments);
             this.Controls.Add(this.lblAppointments);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lsvPerscriptions);
             this.Controls.Add(this.lblPerscriptions);
             this.Controls.Add(this.btnReturn);
@@ -372,7 +381,6 @@
             this.Text = "frmQueryPatient";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmQueryPatient_FormClosing);
             this.Load += new System.EventHandler(this.frmQueryPatient_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -397,7 +405,6 @@
         private System.Windows.Forms.Button btnReturn;
         private System.Windows.Forms.Label lblPerscriptions;
         private System.Windows.Forms.ListView lsvPerscriptions;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ListView lsvAppointments;
         private System.Windows.Forms.Label lblAppointments;
         private System.Windows.Forms.Button btnForward;
@@ -405,8 +412,10 @@
         private System.Windows.Forms.Label lblReligion;
         private System.Windows.Forms.TextBox txtReligion;
         private System.Windows.Forms.Label lblAllergies;
-        private System.Windows.Forms.TextBox txtAllergies;
         private System.Windows.Forms.Label lblNextOfKin;
         private System.Windows.Forms.TextBox txtNextOfKin;
+        private System.Windows.Forms.ListView lsvAllergies;
+        private System.Windows.Forms.TextBox txtNoKTelephone;
+        private System.Windows.Forms.Button btnAdd_patient;
     }
 }

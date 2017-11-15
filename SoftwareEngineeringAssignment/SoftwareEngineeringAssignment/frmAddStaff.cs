@@ -58,5 +58,10 @@ namespace SoftwareEngineeringAssignment
             this.MinimumSize = this.Size;
             this.MaximumSize = this.Size;
         }
+
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

@@ -73,6 +73,7 @@
             this.btnUI.TabIndex = 3;
             this.btnUI.Text = "Change the User Interface";
             this.btnUI.UseVisualStyleBackColor = true;
+            this.btnUI.Click += new System.EventHandler(this.btnUI_Click);
             // 
             // btnMain
             // 
@@ -96,6 +97,7 @@
             this.Controls.Add(this.btnAddStaff);
             this.Name = "frmAdmin";
             this.Text = "frmAdmin";
+            this.Load += new System.EventHandler(this.frmAdmin_Load_1);
             this.ResumeLayout(false);
 
         }

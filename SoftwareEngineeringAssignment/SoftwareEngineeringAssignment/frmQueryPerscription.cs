@@ -28,5 +28,13 @@ namespace SoftwareEngineeringAssignment
         {
             this.Close();
         }
+
+        private void btn_add_Click(object sender, EventArgs e)
+        {
+            frmAddPerscription addPerscription = new frmAddPerscription();
+            this.Hide();
+            addPerscription.ShowDialog();
+            this.Show();
+        }
     }
 }
