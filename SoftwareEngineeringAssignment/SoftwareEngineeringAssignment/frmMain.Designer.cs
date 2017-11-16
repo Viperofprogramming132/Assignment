@@ -37,6 +37,7 @@
             this.btnLogOff = new System.Windows.Forms.Button();
             this.lblWelcome = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnTimeTable = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -92,7 +93,7 @@
             // 
             // btnAdmin
             // 
-            this.btnAdmin.Location = new System.Drawing.Point(80, 237);
+            this.btnAdmin.Location = new System.Drawing.Point(15, 237);
             this.btnAdmin.Name = "btnAdmin";
             this.btnAdmin.Size = new System.Drawing.Size(124, 42);
             this.btnAdmin.TabIndex = 7;
@@ -132,12 +133,23 @@
             this.pictureBox1.TabIndex = 30;
             this.pictureBox1.TabStop = false;
             // 
+            // btnTimeTable
+            // 
+            this.btnTimeTable.Location = new System.Drawing.Point(145, 237);
+            this.btnTimeTable.Name = "btnTimeTable";
+            this.btnTimeTable.Size = new System.Drawing.Size(124, 42);
+            this.btnTimeTable.TabIndex = 31;
+            this.btnTimeTable.Text = "View Your Timetable";
+            this.btnTimeTable.UseVisualStyleBackColor = true;
+            this.btnTimeTable.Click += new System.EventHandler(this.btnTimeTable_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1137, 450);
+            this.Controls.Add(this.btnTimeTable);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lblWelcome);
             this.Controls.Add(this.btnAdmin);
@@ -167,5 +179,6 @@
         private System.Windows.Forms.Button btnLogOff;
         private System.Windows.Forms.Label lblWelcome;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btnTimeTable;
     }
 }

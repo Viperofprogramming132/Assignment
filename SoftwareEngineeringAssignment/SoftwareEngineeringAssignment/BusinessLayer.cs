@@ -73,9 +73,35 @@ namespace SoftwareEngineeringAssignment
         }
 
         /// retrieves information from the shift table
-        public List<Shift> GetShift()
+        public List<Shift> GetTimeTable(int i)
         {
             List<Shift> shifts = new List<Shift>();
+
+            DbConection con = DbFactory.instance();
+            if (con.OpenConnection())
+            {
+                DbDataReader dr = con.Select("SELECT * FROM timetable WHERE StaffID='" + i + "';");
+
+                //Reads the data and store them in the list
+                while (dr.Read())
+                {
+                    Shift shift = new Shift();
+                    shift.ShiftID = dr.GetInt32(0);
+                    shift.StaffID = dr.GetInt32(1);
+                    shifts.Add(shift);
+                }
+
+                //close Data Reader
+                dr.Close();
+                con.CloseConnection();
+            }
+
+            return shifts;
+        }
+
+        public List<TimeTable> GetShift()
+        {
+            List<TimeTable> shifts = new List<TimeTable>();
 
             DbConection con = DbFactory.instance();
             if (con.OpenConnection())
@@ -85,7 +111,7 @@ namespace SoftwareEngineeringAssignment
                 //Reads the data and store them in the list
                 while (dr.Read())
                 {
-                    Shift shift = new Shift();
+                    TimeTable shift = new TimeTable();
                     shift.ShiftID = dr.GetInt32(0);
                     shift.StartTime = Convert.ToDateTime(DecryptBytes(dr.GetString(1)));
                     shift.EndTime = Convert.ToDateTime(DecryptBytes(dr.GetString(2)));
@@ -99,6 +125,33 @@ namespace SoftwareEngineeringAssignment
 
             return shifts;
         }
+
+        public TimeTable GetShift(int i)
+        {
+            TimeTable shift = new TimeTable();
+            DbConection con = DbFactory.instance();
+            if (con.OpenConnection())
+            {
+                DbDataReader dr = con.Select("SELECT * FROM shift WHERE ShiftID=" + i + ";");
+
+                //Reads the data and store them in the list
+                while (dr.Read())
+                {
+
+                    shift.ShiftID = dr.GetInt32(0);
+                    shift.StartTime = Convert.ToDateTime(DecryptBytes(dr.GetString(1)));
+                    shift.EndTime = Convert.ToDateTime(DecryptBytes(dr.GetString(2)));
+                }
+
+                //close Data Reader
+                dr.Close();
+                con.CloseConnection();
+            }
+
+            return shift;
+        }
+
+
 
         /// <summary>
         /// |StaffID|AddressID|FirstName|LastName|DoB|authLevel|UserName|Password|
@@ -136,6 +189,11 @@ namespace SoftwareEngineeringAssignment
         }
 
         internal void AddAppointment(int patientID, DateTime dateTime1, DateTime dateTime2, string text)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void GetPatients(string emailAddress)
         {
             throw new NotImplementedException();
         }
@@ -290,12 +348,12 @@ namespace SoftwareEngineeringAssignment
         /// <param name="DoB"></param>
         /// <param name="Religion"></param>
         /// <returns></returns>
-        public bool AddPatient(string FirstName, string LastName, DateTime DoB, string Religion, string Allergies, string NextOfKin, string NoKtele)
+        public bool AddPatient(string FirstName, string LastName, DateTime DoB, string Religion, string Allergies, string NextOfKin, string NoKtele, string Email)
         {
             DbConection con = DbFactory.instance();
             if (con.OpenConnection())
             {
-                string insertString = "INSERT INTO patient (PatientID, AddressID, FirstName, LastName, DateOfBirth, Religeon, Allergies, NextOfKin, NoKTelephone) VALUES (NULL, '1', '" + EncryptString(FirstName) + "', '" + EncryptString(LastName) + "', '" + EncryptString(DoB.ToString()) + "', '" + EncryptString(Religion) + "', '" + EncryptString(Allergies) + "', '" + EncryptString(NextOfKin) + "', '" + EncryptString(NoKtele) + "');";
+                string insertString = "INSERT INTO patient (PatientID, AddressID, FirstName, LastName, DateOfBirth, Religeon, Allergies, NextOfKin, NoKTelephone, Email) VALUES (NULL, '1', '" + EncryptString(FirstName) + "', '" + EncryptString(LastName) + "', '" + EncryptString(DoB.ToString()) + "', '" + EncryptString(Religion) + "', '" + EncryptString(Allergies) + "', '" + EncryptString(NextOfKin) + "', '" + EncryptString(NoKtele) + "', '" + EncryptString(Email) + "');";
                 if (con.Insert(insertString) != 0)
                 {
                     con.CloseConnection();

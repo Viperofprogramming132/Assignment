@@ -58,6 +58,8 @@
             this.txtNoKTelephone = new System.Windows.Forms.TextBox();
             this.btnAdd_patient = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
+            this.lblEmailAddress = new System.Windows.Forms.Label();
+            this.txtEmailAddress = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnSearch
@@ -353,12 +355,32 @@
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
+            // lblEmailAddress
+            // 
+            this.lblEmailAddress.AutoSize = true;
+            this.lblEmailAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmailAddress.Location = new System.Drawing.Point(-2, 317);
+            this.lblEmailAddress.Name = "lblEmailAddress";
+            this.lblEmailAddress.Size = new System.Drawing.Size(138, 25);
+            this.lblEmailAddress.TabIndex = 41;
+            this.lblEmailAddress.Text = "Email Address";
+            // 
+            // txtEmailAddress
+            // 
+            this.txtEmailAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmailAddress.Location = new System.Drawing.Point(139, 317);
+            this.txtEmailAddress.Name = "txtEmailAddress";
+            this.txtEmailAddress.Size = new System.Drawing.Size(205, 30);
+            this.txtEmailAddress.TabIndex = 42;
+            // 
             // frmQueryPatient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1230, 665);
             this.Controls.Add(this.btnUpdate);
+            this.Controls.Add(this.txtEmailAddress);
+            this.Controls.Add(this.lblEmailAddress);
             this.Controls.Add(this.btnAdd_patient);
             this.Controls.Add(this.txtNoKTelephone);
             this.Controls.Add(this.lsvAllergies);
@@ -429,5 +451,7 @@
         private System.Windows.Forms.TextBox txtNoKTelephone;
         private System.Windows.Forms.Button btnAdd_patient;
         private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Label lblEmailAddress;
+        private System.Windows.Forms.TextBox txtEmailAddress;
     }
 }
