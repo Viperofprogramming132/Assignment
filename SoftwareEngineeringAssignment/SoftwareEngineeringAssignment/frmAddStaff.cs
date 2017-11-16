@@ -13,7 +13,8 @@ namespace SoftwareEngineeringAssignment
     public partial class frmAddStaff : Form
     {
         BackgroundWorker worker = new BackgroundWorker();
-
+        DateTime DoB = DateTime.Now;
+        int selectedLevel;
         /// <summary>
         /// Constructor for the add staff
         /// </summary>
@@ -54,7 +55,7 @@ namespace SoftwareEngineeringAssignment
         {
             BusinessLayer bl = BusinessLayer.Instance();
 
-            bl.AddStaff(txtFirstName.Text, txtLastName.Text, txtUserName.Text, txtPassword.Text, cmbAuthLevel.SelectedIndex, 1, DateTime.Now);
+            bl.AddStaff(txtFirstName.Text, txtLastName.Text, txtUserName.Text, txtPassword.Text, selectedLevel, 1, DoB);
         }
 
         /// <summary>
@@ -87,6 +88,16 @@ namespace SoftwareEngineeringAssignment
         private void btnReturn_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void mclDoB_DateChanged(object sender, DateRangeEventArgs e)
+        {
+            DoB = mclDoB.SelectionStart;
+        }
+
+        private void cmbAuthLevel_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            selectedLevel = cmbAuthLevel.SelectedIndex;
         }
     }
 }

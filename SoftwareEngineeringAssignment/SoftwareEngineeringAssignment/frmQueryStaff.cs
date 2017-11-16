@@ -82,6 +82,9 @@ namespace SoftwareEngineeringAssignment
         /// <param name="e"></param>
         private void worker_DoWork(object sender, DoWorkEventArgs e)
         {
+            sList = null;
+            finS.Clear();
+
             BusinessLayer ml = BusinessLayer.Instance();
 
             sList = ml.GetStaff();
@@ -137,7 +140,10 @@ namespace SoftwareEngineeringAssignment
         /// <param name="e"></param>
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            worker.RunWorkerAsync();
+            if (!worker.IsBusy)
+            {
+                worker.RunWorkerAsync();
+            }
         }
 
         /// <summary>
@@ -275,6 +281,20 @@ namespace SoftwareEngineeringAssignment
         private void btnUpdate_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnForward_Click(object sender, EventArgs e)
+        {
+            showing++;
+            buttonUpdate();
+            populate(finS[showing]);
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            showing--;
+            buttonUpdate();
+            populate(finS[showing]);
         }
     }
 }

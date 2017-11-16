@@ -40,6 +40,7 @@
             this.lblAuthLevel = new System.Windows.Forms.Label();
             this.cmbAuthLevel = new System.Windows.Forms.ComboBox();
             this.btnReturn = new System.Windows.Forms.Button();
+            this.mclDoB = new System.Windows.Forms.MonthCalendar();
             this.SuspendLayout();
             // 
             // txtFirstName
@@ -132,6 +133,7 @@
             this.cmbAuthLevel.Name = "cmbAuthLevel";
             this.cmbAuthLevel.Size = new System.Drawing.Size(121, 21);
             this.cmbAuthLevel.TabIndex = 11;
+            this.cmbAuthLevel.SelectedIndexChanged += new System.EventHandler(this.cmbAuthLevel_SelectedIndexChanged);
             // 
             // btnReturn
             // 
@@ -143,11 +145,19 @@
             this.btnReturn.UseVisualStyleBackColor = true;
             this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 
+            // mclDoB
+            // 
+            this.mclDoB.Location = new System.Drawing.Point(279, 6);
+            this.mclDoB.Name = "mclDoB";
+            this.mclDoB.TabIndex = 13;
+            this.mclDoB.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.mclDoB_DateChanged);
+            // 
             // frmAddStaff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(514, 258);
+            this.Controls.Add(this.mclDoB);
             this.Controls.Add(this.btnReturn);
             this.Controls.Add(this.cmbAuthLevel);
             this.Controls.Add(this.lblAuthLevel);
@@ -182,5 +192,6 @@
         private System.Windows.Forms.Label lblAuthLevel;
         private System.Windows.Forms.ComboBox cmbAuthLevel;
         private System.Windows.Forms.Button btnReturn;
+        private System.Windows.Forms.MonthCalendar mclDoB;
     }
 }

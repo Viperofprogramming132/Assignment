@@ -72,7 +72,7 @@ namespace SoftwareEngineeringAssignment
             return patients;
         }
 
-        // retrieves information from the shift table
+        /// retrieves information from the shift table
         public List<Shift> GetShift()
         {
             List<Shift> shifts = new List<Shift>();
@@ -100,7 +100,10 @@ namespace SoftwareEngineeringAssignment
             return shifts;
         }
 
-        /// Retrieves infomation from the staff table
+        /// <summary>
+        /// |StaffID|AddressID|FirstName|LastName|DoB|authLevel|UserName|Password|
+        /// </summary>
+        /// <returns></returns>
         public List<Staff> GetStaff()
         {
             List<Staff> staffs = new List<Staff>();
@@ -108,7 +111,7 @@ namespace SoftwareEngineeringAssignment
             DbConection con = DbFactory.instance();
             if (con.OpenConnection())
             {
-                DbDataReader dr = con.Select("SELECT StaffID, FirstName, LastName, UserName, Password, authLevel FROM staff;");
+                DbDataReader dr = con.Select("SELECT StaffID, FirstName, LastName, UserName, Password, authLevel, DoB FROM staff;");
 
                 //Read the data and store them in the list
                 while (dr.Read())
@@ -120,6 +123,7 @@ namespace SoftwareEngineeringAssignment
                     staff.UserName = DecryptBytes(dr.GetString(3));
                     staff.Password = DecryptBytes(dr.GetString(4));
                     staff.AuthLevel = dr.GetInt32(5);
+                    staff.DoB = Convert.ToDateTime(DecryptBytes(dr.GetString(6)));
                     staffs.Add(staff);
                 }
 
