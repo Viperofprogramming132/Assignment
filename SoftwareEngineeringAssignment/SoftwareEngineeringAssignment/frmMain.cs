@@ -189,8 +189,14 @@ namespace SoftwareEngineeringAssignment
                 btnAdmin.Location = btnBookAppointment.Location;
             }
         }
-       
 
+        private void btnTimeTable_Click(object sender, EventArgs e)
+        {
+            frmViewTimetable timetables = new frmViewTimetable(member);
 
+            this.Hide();
+            timetables.ShowDialog();
+            this.Show();
+        }
     }
 }

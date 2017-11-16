@@ -34,7 +34,7 @@ namespace SoftwareEngineeringAssignment
         private void worker_DoWork(object sender, DoWorkEventArgs e)
         {
             BusinessLayer ml = BusinessLayer.Instance();
-            List<Shift> sList = new List<Shift>();
+            List<TimeTable> sList = new List<TimeTable>();
             if(ml.AddShift(current.StaffID, StartTime, EndTime))
             {
                 sList = ml.GetShift();
