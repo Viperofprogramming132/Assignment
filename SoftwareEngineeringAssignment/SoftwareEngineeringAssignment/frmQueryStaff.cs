@@ -54,7 +54,7 @@ namespace SoftwareEngineeringAssignment
             cmbJob.Items.Add("Receptionist");
             cmbJob.Items.Add("General Staff");
             cmbJob.Items.Add("Manager");
-
+            
             for (int i = 1; i <= 31; i++)
             {
                 cmbDay.Items.Add(i);
@@ -248,18 +248,7 @@ namespace SoftwareEngineeringAssignment
 
         private void frmQueryStaff_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (finS[showing].FName != txtFirstName.Text || finS[showing].LName != txtLastName.Text || finS[showing].DoB.Day.ToString() != cmbDay.Text || finS[showing].DoB.Month.ToString() != cmbYear.Text || finS[showing].DoB.Year.ToString() != cmbYear.Text || finS[showing].UserName != txtUserName.Text)
-            {
-
-                DialogResult dr = MessageBox.Show("Do you want to save changes to " + finS[showing].ToString(), "Confirm", MessageBoxButtons.YesNo);
-
-                if (dr == DialogResult.Yes)
-                {
-                    BusinessLayer ml = BusinessLayer.Instance();
-                    MessageBox.Show(ml.UpdateStafffrm( txtFirstName.Text, txtLastName.Text, getTime(cmbDay.Text + "/" + cmbMonth.Text + "/" + cmbYear.Text), txtUserName.Text, finS[showing].StaffID) + " Number of entries updated");
-
-                }
-            }
+            Update();
         }
 
         /// <summary>
@@ -280,7 +269,7 @@ namespace SoftwareEngineeringAssignment
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-
+            Update();
         }
 
         private void btnForward_Click(object sender, EventArgs e)
@@ -295,6 +284,21 @@ namespace SoftwareEngineeringAssignment
             showing--;
             buttonUpdate();
             populate(finS[showing]);
+        }
+        private void Update()
+        {
+            if (finS[showing].FName != txtFirstName.Text || finS[showing].LName != txtLastName.Text || finS[showing].DoB.Day.ToString() != cmbDay.Text || finS[showing].DoB.Month.ToString() != cmbYear.Text || finS[showing].DoB.Year.ToString() != cmbYear.Text || finS[showing].UserName != txtUserName.Text)
+            {
+
+                DialogResult dr = MessageBox.Show("Do you want to save changes to " + finS[showing].ToString(), "Confirm", MessageBoxButtons.YesNo);
+
+                if (dr == DialogResult.Yes)
+                {
+                    BusinessLayer ml = BusinessLayer.Instance();
+                    MessageBox.Show(ml.UpdateStafffrm(txtFirstName.Text, txtLastName.Text, getTime(cmbDay.Text + "/" + cmbMonth.Text + "/" + cmbYear.Text), txtUserName.Text, finS[showing].StaffID) + " Number of entries updated");
+
+                }
+            }
         }
     }
 }

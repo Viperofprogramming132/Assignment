@@ -226,7 +226,16 @@ namespace SoftwareEngineeringAssignment
             populate(finP[showing + 1]);
         }
 
+        private DateTime getTime(string timeSlot)
+        {
+            if (timeSlot != "")
+            {
+                DateTime dateofbirth = Convert.ToDateTime(timeSlot + " 00:00:00.00");
 
+                return dateofbirth;
+            }
+            return DateTime.Now;
+        }
         /// <summary>
         /// Enables and disables forward a backwards button as needed
         /// </summary>
@@ -315,6 +324,25 @@ namespace SoftwareEngineeringAssignment
             this.Hide();
             addPatient.ShowDialog();
             this.Show();
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            
+            {
+                if (finP[showing].FirstName != txtFirstName.Text || finP[showing].LastName != txtLastName.Text || finP[showing].DoB.Day.ToString() != cmbDay.Text || finP[showing].DoB.Month.ToString() != cmbYear.Text || finP[showing].DoB.Year.ToString() != cmbYear.Text || finP[showing].PatientID.ToString() != txtID.Text || finP[showing].Religeon != txtReligion.Text || finP[showing].NextOfKin != txtNextOfKin.Text || finP[showing].NoKTelephone != txtNoKTelephone.Text)
+                {
+
+                    DialogResult dr = MessageBox.Show("Do you want to save changes to " + finP[showing].ToString(), "Confirm", MessageBoxButtons.YesNo);
+
+                    if (dr == DialogResult.Yes)
+                    {
+                        BusinessLayer ml = BusinessLayer.Instance();
+                        MessageBox.Show(ml.UpdatePatientfrm(txtFirstName.Text, txtLastName.Text, getTime(cmbDay.Text + "/" + cmbMonth.Text + "/" + cmbYear.Text), txtID.Text, finP[showing].NextOfKin, finP[showing].NoKTelephone, finP[showing].PatientID) + " Number of entries updated");
+
+                    }
+                }
+            }
         }
     }
 }

@@ -57,6 +57,7 @@
             this.lsvAllergies = new System.Windows.Forms.ListView();
             this.txtNoKTelephone = new System.Windows.Forms.TextBox();
             this.btnAdd_patient = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnSearch
@@ -248,7 +249,7 @@
             // 
             this.btnForward.Enabled = false;
             this.btnForward.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.btnForward.Location = new System.Drawing.Point(564, 616);
+            this.btnForward.Location = new System.Drawing.Point(688, 616);
             this.btnForward.Name = "btnForward";
             this.btnForward.Size = new System.Drawing.Size(40, 40);
             this.btnForward.TabIndex = 30;
@@ -260,7 +261,7 @@
             // 
             this.btnBack.Enabled = false;
             this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.btnBack.Location = new System.Drawing.Point(518, 616);
+            this.btnBack.Location = new System.Drawing.Point(642, 616);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(40, 40);
             this.btnBack.TabIndex = 31;
@@ -325,7 +326,7 @@
             // txtNoKTelephone
             // 
             this.txtNoKTelephone.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNoKTelephone.Location = new System.Drawing.Point(139, 280);
+            this.txtNoKTelephone.Location = new System.Drawing.Point(139, 289);
             this.txtNoKTelephone.Name = "txtNoKTelephone";
             this.txtNoKTelephone.Size = new System.Drawing.Size(126, 30);
             this.txtNoKTelephone.TabIndex = 39;
@@ -341,11 +342,23 @@
             this.btnAdd_patient.UseVisualStyleBackColor = true;
             this.btnAdd_patient.Click += new System.EventHandler(this.btnAdd_patient_Click);
             // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.btnUpdate.Location = new System.Drawing.Point(421, 616);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(203, 37);
+            this.btnUpdate.TabIndex = 48;
+            this.btnUpdate.Text = "Update Changes";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
             // frmQueryPatient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1230, 665);
+            this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnAdd_patient);
             this.Controls.Add(this.txtNoKTelephone);
             this.Controls.Add(this.lsvAllergies);
@@ -415,5 +428,6 @@
         private System.Windows.Forms.ListView lsvAllergies;
         private System.Windows.Forms.TextBox txtNoKTelephone;
         private System.Windows.Forms.Button btnAdd_patient;
+        private System.Windows.Forms.Button btnUpdate;
     }
 }

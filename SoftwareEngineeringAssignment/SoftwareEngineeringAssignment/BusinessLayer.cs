@@ -382,6 +382,21 @@ namespace SoftwareEngineeringAssignment
             return i;
         }
 
+        public int UpdatePatientfrm(string firstName, string lastName, DateTime DateOfBirth, string Religion, string NextOfKin, string NoKTelephone, int PatientID)
+        {
+            int i = 0;
+            DbConection con = DbFactory.instance();
+            if (con.OpenConnection())
+            {
+                string SqlCommand = "update patient set FirstName='" + EncryptString(firstName) + "' ,LastName='" + EncryptString(lastName) + "',DateOfBirth='" + EncryptString(DateOfBirth.ToString()) + "',Religeon='" + EncryptString(Religion) + "',NextOfKin='" + EncryptString(NextOfKin) + "',NoKTelephone='" + EncryptString(NoKTelephone) + "' WHERE PatientID=" + PatientID + ";";
+
+                i = con.Update(SqlCommand);
+
+                con.CloseConnection();
+            }
+            return i;
+        }
+
         //https://stackoverflow.com/questions/604210/padding-is-invalid-and-cannot-be-removed-using-aesmanaged
 
         /// <summary>
