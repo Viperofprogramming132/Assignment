@@ -157,6 +157,7 @@ namespace SoftwareEngineeringAssignment
             }
             txtNextOfKin.Text = patient.NextOfKin;
             txtNoKTelephone.Text = patient.NoKTelephone;
+            txtEmailAddress.Text = patient.Email;
             cmbDay.Text = patient.DoB.Day.ToString();
             cmbMonth.Text = patient.DoB.Month.ToString();
             cmbYear.Text = patient.DoB.Year.ToString();

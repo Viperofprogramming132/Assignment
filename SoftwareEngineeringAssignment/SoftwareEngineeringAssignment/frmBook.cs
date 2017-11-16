@@ -162,17 +162,18 @@ namespace SoftwareEngineeringAssignment
             ml.AddAppointment(current.PatientID, GetCurrent().StaffID, getTime(cmbTimeslot.Text), getTime(cmbTimeslot.Text).AddMinutes(5), txtDescription.Text);
             try
             {
+                ml.GetPatients(current.Email);
                 MailMessage mail = new MailMessage();
                 SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
                 mail.From = new MailAddress("you_address@gmail.com");
-                mail.To.Add("to_address@gmail.com");
+                mail.To.Add("");
                 mail.Subject = "Test Mail - 1";
                 mail.Body = "Appointment booking";
 
 
 
                 SmtpServer.Port = 587;
-                SmtpServer.Credentials = new System.Net.NetworkCredential("callumwarden96@gmail.com", "infamous");
+                SmtpServer.Credentials = new System.Net.NetworkCredential("", "infamous");
                 SmtpServer.EnableSsl = true;
 
                 SmtpServer.Send(mail);

@@ -140,6 +140,11 @@ namespace SoftwareEngineeringAssignment
             throw new NotImplementedException();
         }
 
+        internal void GetPatients(string emailAddress)
+        {
+            throw new NotImplementedException();
+        }
+
 
 
         /// <summary>
@@ -290,12 +295,12 @@ namespace SoftwareEngineeringAssignment
         /// <param name="DoB"></param>
         /// <param name="Religion"></param>
         /// <returns></returns>
-        public bool AddPatient(string FirstName, string LastName, DateTime DoB, string Religion, string Allergies, string NextOfKin, string NoKtele)
+        public bool AddPatient(string FirstName, string LastName, DateTime DoB, string Religion, string Allergies, string NextOfKin, string NoKtele, string Email)
         {
             DbConection con = DbFactory.instance();
             if (con.OpenConnection())
             {
-                string insertString = "INSERT INTO patient (PatientID, AddressID, FirstName, LastName, DateOfBirth, Religeon, Allergies, NextOfKin, NoKTelephone) VALUES (NULL, '1', '" + EncryptString(FirstName) + "', '" + EncryptString(LastName) + "', '" + EncryptString(DoB.ToString()) + "', '" + EncryptString(Religion) + "', '" + EncryptString(Allergies) + "', '" + EncryptString(NextOfKin) + "', '" + EncryptString(NoKtele) + "');";
+                string insertString = "INSERT INTO patient (PatientID, AddressID, FirstName, LastName, DateOfBirth, Religeon, Allergies, NextOfKin, NoKTelephone, Email) VALUES (NULL, '1', '" + EncryptString(FirstName) + "', '" + EncryptString(LastName) + "', '" + EncryptString(DoB.ToString()) + "', '" + EncryptString(Religion) + "', '" + EncryptString(Allergies) + "', '" + EncryptString(NextOfKin) + "', '" + EncryptString(NoKtele) + "', '" + EncryptString(Email) + "');";
                 if (con.Insert(insertString) != 0)
                 {
                     con.CloseConnection();
