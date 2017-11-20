@@ -173,7 +173,7 @@ namespace SoftwareEngineeringAssignment
 
 
                 SmtpServer.Port = 587;
-                SmtpServer.Credentials = new System.Net.NetworkCredential("", "infamous");
+                SmtpServer.Credentials = new System.Net.NetworkCredential("","" );
                 SmtpServer.EnableSsl = true;
 
                 SmtpServer.Send(mail);
