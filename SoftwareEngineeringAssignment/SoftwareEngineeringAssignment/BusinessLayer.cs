@@ -16,6 +16,8 @@ namespace SoftwareEngineeringAssignment
         static private BusinessLayer m_instance = null;
         private StringBuilder sb = new StringBuilder();
         Aes aes = new AesManaged();
+        private object patientID;
+
         private BusinessLayer()
         {
             //aesCSP = new AesCryptoServiceProvider();
@@ -328,7 +330,7 @@ namespace SoftwareEngineeringAssignment
             DbConection con = DbFactory.instance();
             if (con.OpenConnection())
             {
-                string insertString = "INSERT INTO appointment (AppointmentID, PatientID, StaffID, StartTime, EndTime, Description) VALUES (NULL, '" + AppointmentID.ToString() + "', '" + StaffID.ToString() + "', '" + EncryptString(StartTime.ToString()) + "', '" + EncryptString(EndTime.ToString()) + "', '" + EncryptString(Description) + "');";
+                string insertString = "INSERT INTO appointment (AppointmentID, PatientID, StaffID, StartTime, EndTime, Description) VALUES (NULL, '" + patientID.ToString() + "', '" + StaffID.ToString() + "', '" + EncryptString(StartTime.ToString()) + "', '" + EncryptString(EndTime.ToString()) + "', '" + EncryptString(Description) + "');";
                 if (con.Insert(insertString) != 0)
                 {
                     con.CloseConnection();
