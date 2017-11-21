@@ -55,5 +55,22 @@ namespace SoftwareEngineeringAssignment
             addPerscription.ShowDialog();
             this.Show();
         }
-    }
+
+		private void printPrescriptions_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+		{
+			e.Graphics.DrawImage(bmp, 0, 0);
+		}
+
+		Bitmap bmp;
+
+		private void btnPrint_Click(object sender, EventArgs e)
+		{
+			Graphics g = this.CreateGraphics();
+			bmp = new Bitmap(this.Height, this.Width, g);
+			Graphics mg = Graphics.FromImage(bmp);
+			mg.CopyFromScreen(this.Location.X, this.Location.Y, 0, 0, this.Size);
+			printDialog1.ShowDialog();
+
+		}
+	}
 }
