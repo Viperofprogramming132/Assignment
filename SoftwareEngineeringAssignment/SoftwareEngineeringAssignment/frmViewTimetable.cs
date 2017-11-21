@@ -15,6 +15,7 @@ namespace SoftwareEngineeringAssignment
         Staff m_currentMember;
         BackgroundWorker worker = new BackgroundWorker();
         List<TimeTable> shift = new List<TimeTable>();
+        List<TimeTable> Rota = new List<TimeTable>();
         List<Shift> timetable = new List<Shift>();
 
         public frmViewTimetable(Staff s)
@@ -22,6 +23,8 @@ namespace SoftwareEngineeringAssignment
             m_currentMember = s;
             InitializeComponent();
 
+            monthCalendar1.SelectionStart = StartOfWeek(monthCalendar1.SelectionStart);
+            monthCalendar1.SelectionEnd = monthCalendar1.SelectionStart.AddDays(6);
 
             worker.DoWork += new DoWorkEventHandler(worker_DoWork);
             worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(worker_RunWorkerCompleted);
@@ -42,72 +45,96 @@ namespace SoftwareEngineeringAssignment
         private void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             List<string> items = new List<string>();
-            //Warning long if statment
-            foreach(TimeTable s in shift)
+            for(int i = 0; i<7;i++)
             {
-                //lsvTimeTable.Items.Add(s.StartTime + " - " + s.EndTime);
-
-                if(s.StartTime.DayOfWeek == DayOfWeek.Monday)
+                items.Add("-");
+            }
+            //Warning long if statment
+            foreach(TimeTable s in Rota)
+            {
+                //lsvTimeTable.Items.Add(s.StartTime + " --- " + s.EndTime);
+                if (s.StartTime.DayOfWeek == DayOfWeek.Monday)
                 {
-                    items.Add(s.StartTime.ToString());
+                    items.Insert(0, s.StartTime.TimeOfDay + " --- " + s.EndTime.TimeOfDay);
                 }
                 else
                 {
-                    items.Add("DO");
+                    if (items[0] == "-" || items[0] == "DO")
+                    {
+                        items[0] = "DO";
+                    }
                 }
                 if (s.StartTime.DayOfWeek == DayOfWeek.Tuesday)
                 {
-                    items.Add(s.StartTime.ToString());
+                    items.Insert(1, s.StartTime.TimeOfDay + " --- " + s.EndTime.TimeOfDay);
                 }
                 else
                 {
-                    items.Add("DO");
+                    if (items[1] == "DO" || items[1] == "-")
+                    {
+                        items[1] = "DO";
+                    }
                 }
                 if (s.StartTime.DayOfWeek == DayOfWeek.Wednesday)
                 {
-                    items.Add(s.StartTime.ToString());
+                    items.Insert(2, s.StartTime.TimeOfDay + " --- " + s.EndTime.TimeOfDay);
                 }
                 else
                 {
-                    items.Add("DO");
+                    if (items[2] == "DO" || items[2] == "-")
+                    {
+                        items[2] = "DO";
+                    }
                 }
                 if (s.StartTime.DayOfWeek == DayOfWeek.Thursday)
                 {
-                    items.Add(s.StartTime.ToString());
+                    items.Insert(3, s.StartTime.TimeOfDay + " --- " + s.EndTime.TimeOfDay);
                 }
                 else
                 {
-                    items.Add("DO");
+                    if (items[3] ==  "-" || items[3] == "DO")
+                    {
+                        items[3] = "DO";
+                    }
                 }
                 if (s.StartTime.DayOfWeek == DayOfWeek.Friday)
                 {
-                    items.Add(s.StartTime.ToString());
+                    items.Insert(4, s.StartTime.TimeOfDay + " --- " + s.EndTime.TimeOfDay);
                 }
                 else
                 {
-                    items.Add("DO");
+                    if (items[4] == "-" || items[4] == "DO")
+                    {
+                        items[4] = "DO";
+                    }
                 }
                 if (s.StartTime.DayOfWeek == DayOfWeek.Saturday)
                 {
-                    items.Add(s.StartTime.ToString());
+                    items.Insert(5, s.StartTime.TimeOfDay + " --- " + s.EndTime.TimeOfDay);
                 }
                 else
                 {
-                    items.Add("DO");
+                    if (items[5] == "-" || items[5] == "DO")
+                    {
+                        items[5] = "DO";
+                    }
                 }
                 if (s.StartTime.DayOfWeek == DayOfWeek.Sunday)
                 {
-                    items.Add(s.StartTime.ToString());
+                    items.Insert(6, s.StartTime.TimeOfDay + " --- " + s.EndTime.TimeOfDay);
                 }
                 else
                 {
-                    items.Add("DO");
+                    if (items[6] == "-" || items[6] == "DO")
+                    {
+                        items[6] = "DO";
+                    }
                 }
-                ListViewItem viewItem = lsvTimeTable.Items.Add(items[0]);
-                for (int i = 1; i < items.Count; i++)
-                {
-                    viewItem.SubItems.Add(items[i]);
-                }
+            }
+            ListViewItem viewItem = lsvTimeTable.Items.Add(items[0]);
+            for (int i = 1; i < items.Count; i++)
+            {
+                viewItem.SubItems.Add(items[i]);
             }
             ResizeListViewColumns(lsvTimeTable);
         }
@@ -116,11 +143,19 @@ namespace SoftwareEngineeringAssignment
         {
             BusinessLayer ml = BusinessLayer.Instance();
 
+            timetable.Clear();
+            shift.Clear();
+            Rota.Clear();
+
             timetable = ml.GetTimeTable(m_currentMember.StaffID);
 
             foreach(Shift s in timetable)
             {
                 shift.Add(ml.GetShift(s.ShiftID));
+            }
+            foreach(TimeTable t in shift)
+            {
+                getWeekRota(t);
             }
         }
 
@@ -130,6 +165,28 @@ namespace SoftwareEngineeringAssignment
             {
                 column.Width = -2;
             }
+        }
+
+        private void monthCalendar1_DateSelected(object sender, DateRangeEventArgs e)
+        {
+
+            monthCalendar1.SelectionStart = StartOfWeek(monthCalendar1.SelectionStart);
+            monthCalendar1.SelectionEnd = monthCalendar1.SelectionStart.AddDays(6);
+        }
+
+        private void getWeekRota(TimeTable t)
+        {
+            if (t.StartTime.DayOfYear >= monthCalendar1.SelectionStart.DayOfYear && t.EndTime.DayOfYear <= monthCalendar1.SelectionEnd.DayOfYear)
+            {
+                Rota.Add(t);
+            }
+        }
+
+        public DateTime StartOfWeek(DateTime dt)
+        {
+            System.Globalization.CultureInfo ci = System.Threading.Thread.CurrentThread.CurrentCulture;
+            DayOfWeek fdow = ci.DateTimeFormat.FirstDayOfWeek;
+            return dt.AddDays(-(dt.DayOfWeek - fdow));
         }
     }
 }
