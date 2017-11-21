@@ -14,6 +14,7 @@ namespace SoftwareEngineeringAssignment
 {
     public class DbFactory
     {
+        //TODO: Comment
         private static DbConection m_instance = null;
 
         Dictionary<string, string> m_properties;

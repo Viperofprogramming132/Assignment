@@ -29,23 +29,87 @@ namespace SoftwareEngineeringAssignment
 
             worker.RunWorkerAsync();
 
-            /*lsvTimeTable.View = View.Details;
+            lsvTimeTable.View = View.Details;
             lsvTimeTable.Columns.Add("Monday", -2, HorizontalAlignment.Left);
             lsvTimeTable.Columns.Add("Tuesday", -2, HorizontalAlignment.Left);
             lsvTimeTable.Columns.Add("Wednesday", -2, HorizontalAlignment.Left);
             lsvTimeTable.Columns.Add("Thursday", -2, HorizontalAlignment.Left);
             lsvTimeTable.Columns.Add("Friday", -2, HorizontalAlignment.Left);
             lsvTimeTable.Columns.Add("Saturday", -2, HorizontalAlignment.Left);
-            lsvTimeTable.Columns.Add("Sunday", -2, HorizontalAlignment.Left);*/
+            lsvTimeTable.Columns.Add("Sunday", -2, HorizontalAlignment.Left);
         }
 
         private void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            List<string> items = new List<string>();
+            //Warning long if statment
             foreach(TimeTable s in shift)
             {
-                lsvTimeTable.Items.Add(s.StartTime + " - " + s.EndTime);
+                //lsvTimeTable.Items.Add(s.StartTime + " - " + s.EndTime);
+
+                if(s.StartTime.DayOfWeek == DayOfWeek.Monday)
+                {
+                    items.Add(s.StartTime.ToString());
+                }
+                else
+                {
+                    items.Add("DO");
+                }
+                if (s.StartTime.DayOfWeek == DayOfWeek.Tuesday)
+                {
+                    items.Add(s.StartTime.ToString());
+                }
+                else
+                {
+                    items.Add("DO");
+                }
+                if (s.StartTime.DayOfWeek == DayOfWeek.Wednesday)
+                {
+                    items.Add(s.StartTime.ToString());
+                }
+                else
+                {
+                    items.Add("DO");
+                }
+                if (s.StartTime.DayOfWeek == DayOfWeek.Thursday)
+                {
+                    items.Add(s.StartTime.ToString());
+                }
+                else
+                {
+                    items.Add("DO");
+                }
+                if (s.StartTime.DayOfWeek == DayOfWeek.Friday)
+                {
+                    items.Add(s.StartTime.ToString());
+                }
+                else
+                {
+                    items.Add("DO");
+                }
+                if (s.StartTime.DayOfWeek == DayOfWeek.Saturday)
+                {
+                    items.Add(s.StartTime.ToString());
+                }
+                else
+                {
+                    items.Add("DO");
+                }
+                if (s.StartTime.DayOfWeek == DayOfWeek.Sunday)
+                {
+                    items.Add(s.StartTime.ToString());
+                }
+                else
+                {
+                    items.Add("DO");
+                }
+                ListViewItem viewItem = lsvTimeTable.Items.Add(items[0]);
+                for (int i = 1; i < items.Count; i++)
+                {
+                    viewItem.SubItems.Add(items[i]);
+                }
             }
-            
+            ResizeListViewColumns(lsvTimeTable);
         }
 
         private void worker_DoWork(object sender, DoWorkEventArgs e)

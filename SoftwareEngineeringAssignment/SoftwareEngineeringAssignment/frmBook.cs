@@ -82,9 +82,9 @@ namespace SoftwareEngineeringAssignment
                 //Searches staff appointments based off the staff member
                 if (GetCurrent() != null)
                 {
-                    if (a.staffID == GetCurrent().StaffID)
+                    if (a.StaffID == GetCurrent().StaffID)
                     {
-                        timeList.Remove(a.appointmentTime);
+                        timeList.Remove(a.AppointmentTime);
                     }
                 }
                 //checks the availible staff off a timeslot
@@ -162,7 +162,9 @@ namespace SoftwareEngineeringAssignment
             ml.AddAppointment(current.PatientID, GetCurrent().StaffID, getTime(cmbTimeslot.Text), getTime(cmbTimeslot.Text).AddMinutes(5), txtDescription.Text);
             try
             {
-                ml.GetPatients(current.Email);
+                //TODO: change the email system currently crashes every run
+
+                //ml.GetPatients(current.Email);
                 MailMessage mail = new MailMessage();
                 SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
                 mail.From = new MailAddress("you_address@gmail.com");
@@ -285,7 +287,7 @@ namespace SoftwareEngineeringAssignment
         {
             foreach (Staff s in sList)
             {
-                if (a.appointmentTime.TimeOfDay == getTime(cmbTimeslot.Text).TimeOfDay)
+                if (a.AppointmentTime.TimeOfDay == getTime(cmbTimeslot.Text).TimeOfDay)
                 {
                     cmbDoctor.Items.Remove(s.ToString());
                 }

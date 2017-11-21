@@ -285,7 +285,7 @@ namespace SoftwareEngineeringAssignment
             buttonUpdate();
             populate(finS[showing]);
         }
-        private void Update()
+        private void UpdatePerson()
         {
             if (finS[showing].FName != txtFirstName.Text || finS[showing].LName != txtLastName.Text || finS[showing].DoB.Day.ToString() != cmbDay.Text || finS[showing].DoB.Month.ToString() != cmbYear.Text || finS[showing].DoB.Year.ToString() != cmbYear.Text || finS[showing].UserName != txtUserName.Text)
             {

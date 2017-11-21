@@ -35,7 +35,7 @@ namespace SoftwareEngineeringAssignment
         {
             BusinessLayer ml = BusinessLayer.Instance();
             List<TimeTable> sList = new List<TimeTable>();
-            if(ml.AddShift(current.StaffID, StartTime, EndTime))
+            if(ml.AddShift(StartTime, EndTime))
             {
                 sList = ml.GetShift();
                 ml.AddTimetable(current.StaffID, sList[sList.Count - 1].ShiftID);

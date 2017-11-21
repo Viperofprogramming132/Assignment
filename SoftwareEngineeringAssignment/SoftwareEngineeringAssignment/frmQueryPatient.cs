@@ -177,14 +177,14 @@ namespace SoftwareEngineeringAssignment
             //Gets appointments and shows if they are cancled or not attended
             foreach (Appointment app in aList)
             {
-                if (patient.PatientID == app.patientID)
+                if (patient.PatientID == app.PatientID)
                 {
-                    lsvAppointments.Items.Add(new ListViewItem(new string[] { patient.PatientID.ToString(), patient.ToString(), app.staffID.ToString() , app.appointmentTime.ToString() }));
-                    if (app.canceled)
+                    lsvAppointments.Items.Add(new ListViewItem(new string[] { patient.PatientID.ToString(), patient.ToString(), app.StaffID.ToString() , app.AppointmentTime.ToString() }));
+                    if (app.Canceled)
                     {
                         lsvAppointments.Items[i].BackColor = Color.Orange;
                     }
-                    if (app.attended)
+                    if (app.Attended)
                     {
                         lsvAppointments.Items[i].BackColor = Color.Red;
                     }
