@@ -96,6 +96,12 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmQueryAppointment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmQueryAppointment.Designer.cs">
+      <DependentUpon>frmQueryAppointment.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmQueryPatient.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,6 +171,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmQueryAppointment.resx">
+      <DependentUpon>frmQueryAppointment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmQueryPatient.resx">
       <DependentUpon>frmQueryPatient.cs</DependentUpon>

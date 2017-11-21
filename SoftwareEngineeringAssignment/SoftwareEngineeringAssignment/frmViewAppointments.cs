@@ -235,6 +235,13 @@ namespace SoftwareEngineeringAssignment
             lblInfomation.Visible = false;
         }
 
+        private void frmViewAppointments_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        
+
         private void buttonUpdate()
         {
             if(selectedAppointment == 0)

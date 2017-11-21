@@ -337,6 +337,7 @@
             this.btnSearch.TabIndex = 38;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
+            
             // 
             // txtAppointmentTime
             // 
@@ -476,6 +477,7 @@
             this.Controls.Add(this.btnSearch);
             this.Name = "frmViewAppointments";
             this.Text = "frmViewAppointments";
+            this.Load += new System.EventHandler(this.frmViewAppointments_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

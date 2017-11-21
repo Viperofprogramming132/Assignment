@@ -60,6 +60,7 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.lblEmailAddress = new System.Windows.Forms.Label();
             this.txtEmailAddress = new System.Windows.Forms.TextBox();
+            this.lbltelephone = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnSearch
@@ -328,7 +329,7 @@
             // txtNoKTelephone
             // 
             this.txtNoKTelephone.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNoKTelephone.Location = new System.Drawing.Point(139, 289);
+            this.txtNoKTelephone.Location = new System.Drawing.Point(198, 281);
             this.txtNoKTelephone.Name = "txtNoKTelephone";
             this.txtNoKTelephone.Size = new System.Drawing.Size(126, 30);
             this.txtNoKTelephone.TabIndex = 39;
@@ -373,11 +374,22 @@
             this.txtEmailAddress.Size = new System.Drawing.Size(205, 30);
             this.txtEmailAddress.TabIndex = 42;
             // 
+            // lbltelephone
+            // 
+            this.lbltelephone.AutoSize = true;
+            this.lbltelephone.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbltelephone.Location = new System.Drawing.Point(12, 283);
+            this.lbltelephone.Name = "lbltelephone";
+            this.lbltelephone.Size = new System.Drawing.Size(180, 25);
+            this.lbltelephone.TabIndex = 49;
+            this.lbltelephone.Text = "Telephone Number";
+            // 
             // frmQueryPatient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1230, 665);
+            this.Controls.Add(this.lbltelephone);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.txtEmailAddress);
             this.Controls.Add(this.lblEmailAddress);
@@ -453,5 +465,6 @@
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Label lblEmailAddress;
         private System.Windows.Forms.TextBox txtEmailAddress;
+        private System.Windows.Forms.Label lbltelephone;
     }
 }
