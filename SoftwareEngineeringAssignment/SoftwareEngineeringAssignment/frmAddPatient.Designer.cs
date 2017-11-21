@@ -42,6 +42,8 @@
             this.txtNextOfKin = new System.Windows.Forms.TextBox();
             this.txtNoKTele = new System.Windows.Forms.TextBox();
             this.lblNoKTele = new System.Windows.Forms.Label();
+            this.lblEmailAddress = new System.Windows.Forms.Label();
+            this.txtEmailAddress = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // txtFirstname
@@ -156,11 +158,29 @@
             this.lblNoKTele.TabIndex = 13;
             this.lblNoKTele.Text = "Next Of Kin Telephone";
             // 
+            // lblEmailAddress
+            // 
+            this.lblEmailAddress.AutoSize = true;
+            this.lblEmailAddress.Location = new System.Drawing.Point(66, 165);
+            this.lblEmailAddress.Name = "lblEmailAddress";
+            this.lblEmailAddress.Size = new System.Drawing.Size(73, 13);
+            this.lblEmailAddress.TabIndex = 14;
+            this.lblEmailAddress.Text = "Email Address";
+            // 
+            // txtEmailAddress
+            // 
+            this.txtEmailAddress.Location = new System.Drawing.Point(145, 165);
+            this.txtEmailAddress.Name = "txtEmailAddress";
+            this.txtEmailAddress.Size = new System.Drawing.Size(100, 20);
+            this.txtEmailAddress.TabIndex = 15;
+            // 
             // frmAddPatient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(410, 376);
+            this.Controls.Add(this.txtEmailAddress);
+            this.Controls.Add(this.lblEmailAddress);
             this.Controls.Add(this.lblNoKTele);
             this.Controls.Add(this.txtNoKTele);
             this.Controls.Add(this.lblNextOfKin);
@@ -199,5 +219,7 @@
         private System.Windows.Forms.TextBox txtNextOfKin;
         private System.Windows.Forms.TextBox txtNoKTele;
         private System.Windows.Forms.Label lblNoKTele;
+        private System.Windows.Forms.Label lblEmailAddress;
+        private System.Windows.Forms.TextBox txtEmailAddress;
     }
 }

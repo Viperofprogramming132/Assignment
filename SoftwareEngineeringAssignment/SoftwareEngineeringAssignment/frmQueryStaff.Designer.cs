@@ -48,6 +48,9 @@
             this.btnForward = new System.Windows.Forms.Button();
             this.btnReturn = new System.Windows.Forms.Button();
             this.btnadd_staff = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.txtUserName = new System.Windows.Forms.TextBox();
+            this.lblUserName = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblJob
@@ -64,7 +67,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label3.Location = new System.Drawing.Point(273, 170);
+            this.label3.Location = new System.Drawing.Point(271, 205);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 25);
             this.label3.TabIndex = 38;
@@ -74,7 +77,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label4.Location = new System.Drawing.Point(200, 170);
+            this.label4.Location = new System.Drawing.Point(198, 205);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(67, 25);
             this.label4.TabIndex = 37;
@@ -84,7 +87,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label5.Location = new System.Drawing.Point(141, 170);
+            this.label5.Location = new System.Drawing.Point(134, 205);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(47, 25);
             this.label5.TabIndex = 36;
@@ -94,7 +97,7 @@
             // 
             this.cmbYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.cmbYear.FormattingEnabled = true;
-            this.cmbYear.Location = new System.Drawing.Point(271, 198);
+            this.cmbYear.Location = new System.Drawing.Point(271, 233);
             this.cmbYear.Name = "cmbYear";
             this.cmbYear.Size = new System.Drawing.Size(73, 33);
             this.cmbYear.TabIndex = 35;
@@ -103,7 +106,7 @@
             // 
             this.cmbMonth.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.cmbMonth.FormattingEnabled = true;
-            this.cmbMonth.Location = new System.Drawing.Point(202, 198);
+            this.cmbMonth.Location = new System.Drawing.Point(202, 233);
             this.cmbMonth.Name = "cmbMonth";
             this.cmbMonth.Size = new System.Drawing.Size(63, 33);
             this.cmbMonth.TabIndex = 34;
@@ -112,7 +115,7 @@
             // 
             this.cmbDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.cmbDay.FormattingEnabled = true;
-            this.cmbDay.Location = new System.Drawing.Point(139, 198);
+            this.cmbDay.Location = new System.Drawing.Point(136, 233);
             this.cmbDay.Name = "cmbDay";
             this.cmbDay.Size = new System.Drawing.Size(57, 33);
             this.cmbDay.TabIndex = 33;
@@ -121,7 +124,7 @@
             // 
             this.lblDoB.AutoSize = true;
             this.lblDoB.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.lblDoB.Location = new System.Drawing.Point(12, 201);
+            this.lblDoB.Location = new System.Drawing.Point(12, 236);
             this.lblDoB.Name = "lblDoB";
             this.lblDoB.Size = new System.Drawing.Size(118, 25);
             this.lblDoB.TabIndex = 32;
@@ -193,7 +196,7 @@
             // btnSearch
             // 
             this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.btnSearch.Location = new System.Drawing.Point(17, 242);
+            this.btnSearch.Location = new System.Drawing.Point(12, 273);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(101, 37);
             this.btnSearch.TabIndex = 41;
@@ -205,28 +208,30 @@
             // 
             this.btnBack.Enabled = false;
             this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.btnBack.Location = new System.Drawing.Point(227, 242);
+            this.btnBack.Location = new System.Drawing.Point(225, 273);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(40, 37);
             this.btnBack.TabIndex = 45;
             this.btnBack.Text = "<";
             this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // btnForward
             // 
             this.btnForward.Enabled = false;
             this.btnForward.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.btnForward.Location = new System.Drawing.Point(273, 242);
+            this.btnForward.Location = new System.Drawing.Point(271, 273);
             this.btnForward.Name = "btnForward";
             this.btnForward.Size = new System.Drawing.Size(40, 37);
             this.btnForward.TabIndex = 44;
             this.btnForward.Text = ">";
             this.btnForward.UseVisualStyleBackColor = true;
+            this.btnForward.Click += new System.EventHandler(this.btnForward_Click);
             // 
             // btnReturn
             // 
             this.btnReturn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.btnReturn.Location = new System.Drawing.Point(124, 242);
+            this.btnReturn.Location = new System.Drawing.Point(119, 273);
             this.btnReturn.Name = "btnReturn";
             this.btnReturn.Size = new System.Drawing.Size(96, 37);
             this.btnReturn.TabIndex = 43;
@@ -237,7 +242,7 @@
             // btnadd_staff
             // 
             this.btnadd_staff.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnadd_staff.Location = new System.Drawing.Point(319, 242);
+            this.btnadd_staff.Location = new System.Drawing.Point(12, 359);
             this.btnadd_staff.Name = "btnadd_staff";
             this.btnadd_staff.Size = new System.Drawing.Size(111, 37);
             this.btnadd_staff.TabIndex = 46;
@@ -245,11 +250,43 @@
             this.btnadd_staff.UseVisualStyleBackColor = true;
             this.btnadd_staff.Click += new System.EventHandler(this.btnadd_staff_Click);
             // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.btnUpdate.Location = new System.Drawing.Point(12, 316);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(203, 37);
+            this.btnUpdate.TabIndex = 47;
+            this.btnUpdate.Text = "Update Changes";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // txtUserName
+            // 
+            this.txtUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.txtUserName.Location = new System.Drawing.Point(139, 166);
+            this.txtUserName.Name = "txtUserName";
+            this.txtUserName.Size = new System.Drawing.Size(135, 30);
+            this.txtUserName.TabIndex = 48;
+            // 
+            // lblUserName
+            // 
+            this.lblUserName.AutoSize = true;
+            this.lblUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUserName.Location = new System.Drawing.Point(13, 166);
+            this.lblUserName.Name = "lblUserName";
+            this.lblUserName.Size = new System.Drawing.Size(105, 25);
+            this.lblUserName.TabIndex = 49;
+            this.lblUserName.Text = "UserName";
+            // 
             // frmQueryStaff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(522, 385);
+            this.Controls.Add(this.lblUserName);
+            this.Controls.Add(this.txtUserName);
+            this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnadd_staff);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnForward);
@@ -272,6 +309,7 @@
             this.Controls.Add(this.lblID);
             this.Name = "frmQueryStaff";
             this.Text = "frmQueryStaff";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmQueryStaff_FormClosing);
             this.Load += new System.EventHandler(this.frmQueryStaff_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -300,5 +338,8 @@
         private System.Windows.Forms.Button btnForward;
         private System.Windows.Forms.Button btnReturn;
         private System.Windows.Forms.Button btnadd_staff;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.TextBox txtUserName;
+        private System.Windows.Forms.Label lblUserName;
     }
 }

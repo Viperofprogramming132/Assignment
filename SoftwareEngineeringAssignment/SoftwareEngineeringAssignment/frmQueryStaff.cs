@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -53,6 +54,20 @@ namespace SoftwareEngineeringAssignment
             cmbJob.Items.Add("Receptionist");
             cmbJob.Items.Add("General Staff");
             cmbJob.Items.Add("Manager");
+            
+            for (int i = 1; i <= 31; i++)
+            {
+                cmbDay.Items.Add(i);
+            }
+
+            for (int i = 1; i <= 12; i++)
+            {
+                cmbMonth.Items.Add(i);
+            }
+            for (int i = 1900; i <= DateTime.Now.Year; i++)
+            {
+                cmbYear.Items.Add(i);
+            }
 
             worker.DoWork += new DoWorkEventHandler(worker_DoWork);
             worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(worker_RunWorkerCompleted);
@@ -67,6 +82,9 @@ namespace SoftwareEngineeringAssignment
         /// <param name="e"></param>
         private void worker_DoWork(object sender, DoWorkEventArgs e)
         {
+            sList = null;
+            finS.Clear();
+
             BusinessLayer ml = BusinessLayer.Instance();
 
             sList = ml.GetStaff();
@@ -122,7 +140,10 @@ namespace SoftwareEngineeringAssignment
         /// <param name="e"></param>
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            worker.RunWorkerAsync();
+            if (!worker.IsBusy)
+            {
+                worker.RunWorkerAsync();
+            }
         }
 
         /// <summary>
@@ -137,6 +158,7 @@ namespace SoftwareEngineeringAssignment
             txtFirstName.Text = s.FName;
             txtLastName.Text = s.LName;
             txtID.Text = s.StaffID.ToString();
+            txtUserName.Text = s.UserName;
 
             cmbDay.Text = s.DoB.Day.ToString();
             cmbMonth.Text = s.DoB.Month.ToString();
@@ -201,13 +223,14 @@ namespace SoftwareEngineeringAssignment
         {
             if (m_TimeTable != null)
             {
-                DialogResult dr = MessageBox.Show("Are you sure you wish to use" + finS[showing].ToString(), "Confirm", MessageBoxButtons.YesNo);
+                DialogResult dr = MessageBox.Show("Are you sure you wish to use " + finS[showing].ToString(), "Confirm", MessageBoxButtons.YesNo);
 
                 if (dr == DialogResult.Yes)
                 {
                     m_TimeTable.takeStaff(finS[showing]);
                 }
             }
+            this.Close();
         }
 
         /// <summary>
@@ -221,6 +244,61 @@ namespace SoftwareEngineeringAssignment
             this.Hide();
             addStaff.ShowDialog();
             this.Show();
+        }
+
+        private void frmQueryStaff_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Update();
+        }
+
+        /// <summary>
+        /// Gets the time from a string
+        /// </summary>
+        /// <param name="timeSlot"></param>
+        /// <returns></returns>
+        private DateTime getTime(string timeSlot)
+        {
+            if (timeSlot != "")
+            {
+                DateTime dateofbirth = Convert.ToDateTime(timeSlot + " 00:00:00.00");
+
+                return dateofbirth;
+            }
+            return DateTime.Now;
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            Update();
+        }
+
+        private void btnForward_Click(object sender, EventArgs e)
+        {
+            showing++;
+            buttonUpdate();
+            populate(finS[showing]);
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            showing--;
+            buttonUpdate();
+            populate(finS[showing]);
+        }
+        private void UpdatePerson()
+        {
+            if (finS[showing].FName != txtFirstName.Text || finS[showing].LName != txtLastName.Text || finS[showing].DoB.Day.ToString() != cmbDay.Text || finS[showing].DoB.Month.ToString() != cmbYear.Text || finS[showing].DoB.Year.ToString() != cmbYear.Text || finS[showing].UserName != txtUserName.Text)
+            {
+
+                DialogResult dr = MessageBox.Show("Do you want to save changes to " + finS[showing].ToString(), "Confirm", MessageBoxButtons.YesNo);
+
+                if (dr == DialogResult.Yes)
+                {
+                    BusinessLayer ml = BusinessLayer.Instance();
+                    MessageBox.Show(ml.UpdateStafffrm(txtFirstName.Text, txtLastName.Text, getTime(cmbDay.Text + "/" + cmbMonth.Text + "/" + cmbYear.Text), txtUserName.Text, finS[showing].StaffID) + " Number of entries updated");
+
+                }
+            }
         }
     }
 }

@@ -82,9 +82,9 @@ namespace SoftwareEngineeringAssignment
                 //Searches staff appointments based off the staff member
                 if (GetCurrent() != null)
                 {
-                    if (a.staffID == GetCurrent().StaffID)
+                    if (a.StaffID == GetCurrent().StaffID)
                     {
-                        timeList.Remove(a.appointmentTime);
+                        timeList.Remove(a.AppointmentTime);
                     }
                 }
                 //checks the availible staff off a timeslot
@@ -160,21 +160,34 @@ namespace SoftwareEngineeringAssignment
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             ml.AddAppointment(current.PatientID, GetCurrent().StaffID, getTime(cmbTimeslot.Text), getTime(cmbTimeslot.Text).AddMinutes(5), txtDescription.Text);
-            MailMessage mail = new MailMessage();
-            SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
-            mail.From = new MailAddress("your_email_address@gmail.com");
-            mail.To.Add("to_address");
-            mail.Subject = "Test Mail - 1";
-            mail.Body = "Appointment booking";
+            try
+            {
+                //TODO: change the email system currently crashes every run
 
+                //ml.GetPatients(current.Email);
+                MailMessage mail = new MailMessage();
+                SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+                mail.From = new MailAddress("you_address@gmail.com");
+                mail.To.Add("");
+                mail.Subject = "Test Mail - 1";
+                mail.Body = "Appointment booking";
+
+
+
+                SmtpServer.Port = 587;
+                SmtpServer.Credentials = new System.Net.NetworkCredential("","" );
+                SmtpServer.EnableSsl = true;
+
+                SmtpServer.Send(mail);
+
+
+                MessageBox.Show("Message Sent");
+            }
+            catch
+            {
+                MessageBox.Show("Message not sent");
+            }
             
-
-            SmtpServer.Port = 587;
-            SmtpServer.Credentials = new System.Net.NetworkCredential("username", "password");
-            SmtpServer.EnableSsl = true;
-
-            SmtpServer.Send(mail);
-            MessageBox.Show("mail Sent");
         }
 
         /// <summary>
@@ -274,7 +287,7 @@ namespace SoftwareEngineeringAssignment
         {
             foreach (Staff s in sList)
             {
-                if (a.appointmentTime.TimeOfDay == getTime(cmbTimeslot.Text).TimeOfDay)
+                if (a.AppointmentTime.TimeOfDay == getTime(cmbTimeslot.Text).TimeOfDay)
                 {
                     cmbDoctor.Items.Remove(s.ToString());
                 }

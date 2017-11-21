@@ -14,6 +14,7 @@ namespace SoftwareEngineeringAssignment
 {
     public class DbFactory
     {
+        //TODO: Comment
         private static DbConection m_instance = null;
 
         Dictionary<string, string> m_properties;
@@ -96,7 +97,7 @@ namespace SoftwareEngineeringAssignment
         //Insert statement
         int Insert(string insertString); 
         //Update statement
-        void Update();
+        int Update(string updateString);
         //Delete statement
         void Delete();
         

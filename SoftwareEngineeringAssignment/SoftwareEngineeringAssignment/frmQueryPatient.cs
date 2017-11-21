@@ -157,6 +157,7 @@ namespace SoftwareEngineeringAssignment
             }
             txtNextOfKin.Text = patient.NextOfKin;
             txtNoKTelephone.Text = patient.NoKTelephone;
+            txtEmailAddress.Text = patient.Email;
             cmbDay.Text = patient.DoB.Day.ToString();
             cmbMonth.Text = patient.DoB.Month.ToString();
             cmbYear.Text = patient.DoB.Year.ToString();
@@ -176,14 +177,14 @@ namespace SoftwareEngineeringAssignment
             //Gets appointments and shows if they are cancled or not attended
             foreach (Appointment app in aList)
             {
-                if (patient.PatientID == app.patientID)
+                if (patient.PatientID == app.PatientID)
                 {
-                    lsvAppointments.Items.Add(new ListViewItem(new string[] { patient.PatientID.ToString(), patient.ToString(), app.staffID.ToString() , app.appointmentTime.ToString() }));
-                    if (app.canceled)
+                    lsvAppointments.Items.Add(new ListViewItem(new string[] { patient.PatientID.ToString(), patient.ToString(), app.StaffID.ToString() , app.AppointmentTime.ToString() }));
+                    if (app.Canceled)
                     {
                         lsvAppointments.Items[i].BackColor = Color.Orange;
                     }
-                    if (app.attended)
+                    if (app.Attended)
                     {
                         lsvAppointments.Items[i].BackColor = Color.Red;
                     }
@@ -226,7 +227,16 @@ namespace SoftwareEngineeringAssignment
             populate(finP[showing + 1]);
         }
 
+        private DateTime getTime(string timeSlot)
+        {
+            if (timeSlot != "")
+            {
+                DateTime dateofbirth = Convert.ToDateTime(timeSlot + " 00:00:00.00");
 
+                return dateofbirth;
+            }
+            return DateTime.Now;
+        }
         /// <summary>
         /// Enables and disables forward a backwards button as needed
         /// </summary>
@@ -315,6 +325,25 @@ namespace SoftwareEngineeringAssignment
             this.Hide();
             addPatient.ShowDialog();
             this.Show();
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            
+            {
+                if (finP[showing].FirstName != txtFirstName.Text || finP[showing].LastName != txtLastName.Text || finP[showing].DoB.Day.ToString() != cmbDay.Text || finP[showing].DoB.Month.ToString() != cmbYear.Text || finP[showing].DoB.Year.ToString() != cmbYear.Text || finP[showing].PatientID.ToString() != txtID.Text || finP[showing].Religeon != txtReligion.Text || finP[showing].NextOfKin != txtNextOfKin.Text || finP[showing].NoKTelephone != txtNoKTelephone.Text)
+                {
+
+                    DialogResult dr = MessageBox.Show("Do you want to save changes to " + finP[showing].ToString(), "Confirm", MessageBoxButtons.YesNo);
+
+                    if (dr == DialogResult.Yes)
+                    {
+                        BusinessLayer ml = BusinessLayer.Instance();
+                        MessageBox.Show(ml.UpdatePatientfrm(txtFirstName.Text, txtLastName.Text, getTime(cmbDay.Text + "/" + cmbMonth.Text + "/" + cmbYear.Text), txtID.Text, finP[showing].NextOfKin, finP[showing].NoKTelephone, finP[showing].PatientID) + " Number of entries updated");
+
+                    }
+                }
+            }
         }
     }
 }
