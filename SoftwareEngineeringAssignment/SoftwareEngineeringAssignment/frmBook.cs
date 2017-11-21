@@ -117,7 +117,7 @@ namespace SoftwareEngineeringAssignment
         /// <param name="e"></param>
         private void btnSearchPatients_Click(object sender, EventArgs e)
         {
-            frmQueryPatient queryPatient = new frmQueryPatient(this);
+            Patient queryPatient = new Patient(this);
 
             this.Hide();
             queryPatient.ShowDialog();
@@ -160,14 +160,19 @@ namespace SoftwareEngineeringAssignment
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             ml.AddAppointment(current.PatientID, GetCurrent().StaffID, getTime(cmbTimeslot.Text), getTime(cmbTimeslot.Text).AddMinutes(5), txtDescription.Text);
+            
+            
+        }
+        private void sendEmail(string message)
+        {
             try
             {
                 //TODO: change the email system currently crashes every run
+                
 
-                //ml.GetPatients(current.Email);
                 MailMessage mail = new MailMessage();
                 SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
-                mail.From = new MailAddress("you_address@gmail.com");
+                mail.From = new MailAddress("donotreply.surgery@gmail.com");
                 mail.To.Add("");
                 mail.Subject = "Test Mail - 1";
                 mail.Body = "Appointment booking";
@@ -175,20 +180,31 @@ namespace SoftwareEngineeringAssignment
 
 
                 SmtpServer.Port = 587;
-                SmtpServer.Credentials = new System.Net.NetworkCredential("","" );
+                SmtpServer.Credentials = System.Net.CredentialCache.DefaultNetworkCredentials;
+                SmtpServer.Credentials = new System.Net.NetworkCredential("donotreply.surgery@gmail.com", "pass12345");
                 SmtpServer.EnableSsl = true;
+
 
                 SmtpServer.Send(mail);
 
 
                 MessageBox.Show("Message Sent");
+                {
+
+                    
+                    SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
+                    smtp.EnableSsl = true;
+                    smtp.Timeout = 10000;
+                    smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                    smtp.UseDefaultCredentials = false;
+                    smtp.Credentials = new System.Net.NetworkCredential("markfenech27@gmail.com", "mypassword");
+                }
             }
             catch
             {
                 MessageBox.Show("Message not sent");
             }
-            
-        }
+}
 
         /// <summary>
         /// Gets the current Staff member

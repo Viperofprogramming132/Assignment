@@ -13,10 +13,9 @@ namespace SoftwareEngineeringAssignment
 {
     public class BusinessLayer
     {
-        static private BusinessLayer m_instance = null;
-        private StringBuilder sb = new StringBuilder();
-        Aes aes = new AesManaged();
-        private object patientID;
+        static private BusinessLayer m_Instance = null;
+        private StringBuilder m_SB = new StringBuilder();
+        Aes m_AES = new AesManaged();
 
         private BusinessLayer()
         {
@@ -436,7 +435,7 @@ namespace SoftwareEngineeringAssignment
             if (m_con.OpenConnection())
             {
                 string insertString = "INSERT INTO appointment (AppointmentID, PatientID, StaffID, StartTime, EndTime, Description) VALUES (NULL, '" + AppointmentID.ToString() + "', '" + StaffID.ToString() + "', '" + EncryptString(StartTime.ToString()) + "', '" + EncryptString(EndTime.ToString()) + "', '" + EncryptString(Description) + "');";
-                if (con.Insert(insertString) != 0)
+                if (m_con.Insert(insertString) != 0)
                 {
                     m_con.CloseConnection();
 

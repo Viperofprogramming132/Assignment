@@ -1,6 +1,6 @@
 ﻿namespace SoftwareEngineeringAssignment
 {
-    partial class frmQueryPatient
+    partial class Patient
     {
         /// <summary>
         /// Required designer variable.

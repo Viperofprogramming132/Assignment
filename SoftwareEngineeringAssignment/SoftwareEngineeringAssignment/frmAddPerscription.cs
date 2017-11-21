@@ -146,7 +146,7 @@ namespace SoftwareEngineeringAssignment
         /// <param name="e"></param>
         private void btnSearchPatients_Click(object sender, EventArgs e)
         {
-            frmQueryPatient queryPatient = new frmQueryPatient(this);
+            Patient queryPatient = new Patient(this);
 
             this.Hide();
             queryPatient.ShowDialog();

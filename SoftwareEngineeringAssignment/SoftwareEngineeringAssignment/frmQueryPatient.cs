@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace SoftwareEngineeringAssignment
 {
-    public partial class frmQueryPatient : Form
+    public partial class Patient : Form
     {
         List<Patient> patients = new List<Patient>();
 
@@ -28,7 +28,7 @@ namespace SoftwareEngineeringAssignment
         /// Constructor for query patient taking frmBook form
         /// </summary>
         /// <param name="f"></param>
-        public frmQueryPatient(frmBook f)
+        public Patient(frmBook f)
         {
             InitializeComponent();
             this.m_FB = f;
@@ -39,7 +39,7 @@ namespace SoftwareEngineeringAssignment
         /// Constructor for query patient taking frmAddPerscription form
         /// </summary>
         /// <param name="f"></param>
-        public frmQueryPatient(frmAddPerscription f)
+        public Patient(frmAddPerscription f)
         {
             InitializeComponent();
             this.m_FAP = f;
