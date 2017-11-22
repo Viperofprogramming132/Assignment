@@ -164,13 +164,13 @@ namespace SoftwareEngineeringAssignment
             {
                 //TODO: change the email system currently crashes every run
 
-                //ml.GetPatients(current.Email);
+                
                 MailMessage mail = new MailMessage();
                 SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
-                mail.From = new MailAddress("you_address@gmail.com");
-                mail.To.Add("");
-                mail.Subject = "Test Mail - 1";
-                mail.Body = "Appointment booking";
+                mail.From = new MailAddress("email@gmail.com");
+                mail.To.Add(current.Email);
+                mail.Subject = "Appointment";
+                mail.Body = "Appointment booked for";
 
 
 
@@ -181,11 +181,11 @@ namespace SoftwareEngineeringAssignment
                 SmtpServer.Send(mail);
 
 
-                MessageBox.Show("Message Sent");
+                MessageBox.Show("Email Sent");
             }
             catch
             {
-                MessageBox.Show("Message not sent");
+                MessageBox.Show("Email not sent");
             }
             
         }

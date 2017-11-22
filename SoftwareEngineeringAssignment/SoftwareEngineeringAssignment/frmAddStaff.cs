@@ -75,7 +75,7 @@ namespace SoftwareEngineeringAssignment
             {
                 MessageBox.Show("Please select a Job");
             }
-        }
+        
 
             worker.RunWorkerAsync();
  

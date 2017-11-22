@@ -84,6 +84,7 @@ namespace SoftwareEngineeringAssignment
         }
 
         private void frmAdmin_Load_1(object sender, EventArgs e)
+        { }
         /// <summary>
         /// Opens the UI form
         /// </summary>

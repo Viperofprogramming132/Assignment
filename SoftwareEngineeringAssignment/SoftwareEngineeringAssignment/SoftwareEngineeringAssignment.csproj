@@ -132,6 +132,12 @@
     <Compile Include="frmViewAppointments.Designer.cs">
       <DependentUpon>frmViewAppointments.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmViewTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmViewTest.Designer.cs">
+      <DependentUpon>frmViewTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmViewTimetable.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -189,6 +195,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmViewAppointments.resx">
       <DependentUpon>frmViewAppointments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmViewTest.resx">
+      <DependentUpon>frmViewTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmViewTimetable.resx">
       <DependentUpon>frmViewTimetable.cs</DependentUpon>
