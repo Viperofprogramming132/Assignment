@@ -76,7 +76,6 @@
             // lblFirstName
             // 
             this.lblFirstName.AutoSize = true;
-            this.lblFirstName.Enabled = false;
             this.lblFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.lblFirstName.Location = new System.Drawing.Point(12, 53);
             this.lblFirstName.Name = "lblFirstName";
@@ -87,7 +86,6 @@
             // lblLastName
             // 
             this.lblLastName.AutoSize = true;
-            this.lblLastName.Enabled = false;
             this.lblLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.lblLastName.Location = new System.Drawing.Point(12, 91);
             this.lblLastName.Name = "lblLastName";
@@ -98,7 +96,6 @@
             // lblDoB
             // 
             this.lblDoB.AutoSize = true;
-            this.lblDoB.Enabled = false;
             this.lblDoB.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.lblDoB.Location = new System.Drawing.Point(12, 155);
             this.lblDoB.Name = "lblDoB";
@@ -152,7 +149,6 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Enabled = false;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.label5.Location = new System.Drawing.Point(136, 127);
             this.label5.Name = "label5";
@@ -163,7 +159,6 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Enabled = false;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.label4.Location = new System.Drawing.Point(199, 127);
             this.label4.Name = "label4";
@@ -174,7 +169,6 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Enabled = false;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.label3.Location = new System.Drawing.Point(272, 127);
             this.label3.Name = "label3";
@@ -227,6 +221,7 @@
             this.btnSearch.TabIndex = 59;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click_1);
             // 
             // mclAppointmentDay
             // 
