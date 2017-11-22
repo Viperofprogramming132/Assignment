@@ -96,6 +96,12 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmQueryAppointment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmQueryAppointment.Designer.cs">
+      <DependentUpon>frmQueryAppointment.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmQueryPatient.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +132,12 @@
     <Compile Include="frmViewAppointments.Designer.cs">
       <DependentUpon>frmViewAppointments.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmViewTimetable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmViewTimetable.Designer.cs">
+      <DependentUpon>frmViewTimetable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Patient.cs" />
     <Compile Include="Perscription.cs" />
     <Compile Include="Program.cs" />
@@ -136,6 +148,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Shift.cs" />
+    <Compile Include="TimeTable.cs" />
     <Compile Include="SQLCon.cs" />
     <Compile Include="Staff.cs" />
     <EmbeddedResource Include="frmAddPatient.resx">
@@ -159,6 +172,9 @@
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmQueryAppointment.resx">
+      <DependentUpon>frmQueryAppointment.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmQueryPatient.resx">
       <DependentUpon>frmQueryPatient.cs</DependentUpon>
     </EmbeddedResource>
@@ -173,6 +189,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmViewAppointments.resx">
       <DependentUpon>frmViewAppointments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmViewTimetable.resx">
+      <DependentUpon>frmViewTimetable.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

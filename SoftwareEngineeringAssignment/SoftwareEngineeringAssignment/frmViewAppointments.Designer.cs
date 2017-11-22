@@ -59,6 +59,11 @@
             this.lsvAllergies = new System.Windows.Forms.ListView();
             this.txtNoKTelephone = new System.Windows.Forms.TextBox();
             this.btnbook_New_Appointment = new System.Windows.Forms.Button();
+            this.txtReason = new System.Windows.Forms.RichTextBox();
+            this.lblReason = new System.Windows.Forms.Label();
+            this.btnNewDate = new System.Windows.Forms.Button();
+            this.mclAppointmentDay = new System.Windows.Forms.MonthCalendar();
+            this.lblInfomation = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtNextOfKin
@@ -121,6 +126,7 @@
             this.btnBack.TabIndex = 59;
             this.btnBack.Text = "<";
             this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // btnForward
             // 
@@ -131,6 +137,7 @@
             this.btnForward.TabIndex = 58;
             this.btnForward.Text = ">";
             this.btnForward.UseVisualStyleBackColor = true;
+            this.btnForward.Click += new System.EventHandler(this.btnForward_Click);
             // 
             // lsvAppointments
             // 
@@ -330,6 +337,7 @@
             this.btnSearch.TabIndex = 38;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
+            
             // 
             // txtAppointmentTime
             // 
@@ -379,12 +387,63 @@
             this.btnbook_New_Appointment.UseVisualStyleBackColor = true;
             this.btnbook_New_Appointment.Click += new System.EventHandler(this.btnbook_New_Appointment_Click);
             // 
+            // txtReason
+            // 
+            this.txtReason.Location = new System.Drawing.Point(140, 46);
+            this.txtReason.Name = "txtReason";
+            this.txtReason.Size = new System.Drawing.Size(205, 131);
+            this.txtReason.TabIndex = 71;
+            this.txtReason.Text = "";
+            // 
+            // lblReason
+            // 
+            this.lblReason.AutoSize = true;
+            this.lblReason.Location = new System.Drawing.Point(61, 46);
+            this.lblReason.Name = "lblReason";
+            this.lblReason.Size = new System.Drawing.Size(44, 13);
+            this.lblReason.TabIndex = 72;
+            this.lblReason.Text = "Reason";
+            // 
+            // btnNewDate
+            // 
+            this.btnNewDate.Location = new System.Drawing.Point(1802, 12);
+            this.btnNewDate.Name = "btnNewDate";
+            this.btnNewDate.Size = new System.Drawing.Size(90, 76);
+            this.btnNewDate.TabIndex = 73;
+            this.btnNewDate.Text = "Select a new Date";
+            this.btnNewDate.UseVisualStyleBackColor = true;
+            this.btnNewDate.Click += new System.EventHandler(this.btnNewDate_Click);
+            // 
+            // mclAppointmentDay
+            // 
+            this.mclAppointmentDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.mclAppointmentDay.Location = new System.Drawing.Point(1491, 12);
+            this.mclAppointmentDay.Name = "mclAppointmentDay";
+            this.mclAppointmentDay.TabIndex = 74;
+            this.mclAppointmentDay.Visible = false;
+            this.mclAppointmentDay.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.mclAppointmentDay_DateSelected);
+            // 
+            // lblInfomation
+            // 
+            this.lblInfomation.AutoSize = true;
+            this.lblInfomation.Location = new System.Drawing.Point(1488, 183);
+            this.lblInfomation.Name = "lblInfomation";
+            this.lblInfomation.Size = new System.Drawing.Size(35, 13);
+            this.lblInfomation.TabIndex = 75;
+            this.lblInfomation.Text = "label1";
+            this.lblInfomation.Visible = false;
+            // 
             // frmViewAppointments
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.Controls.Add(this.lblInfomation);
+            this.Controls.Add(this.mclAppointmentDay);
+            this.Controls.Add(this.btnNewDate);
+            this.Controls.Add(this.lblReason);
+            this.Controls.Add(this.txtReason);
             this.Controls.Add(this.btnbook_New_Appointment);
             this.Controls.Add(this.txtNoKTelephone);
             this.Controls.Add(this.lsvAllergies);
@@ -418,6 +477,7 @@
             this.Controls.Add(this.btnSearch);
             this.Name = "frmViewAppointments";
             this.Text = "frmViewAppointments";
+            this.Load += new System.EventHandler(this.frmViewAppointments_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -456,5 +516,10 @@
         private System.Windows.Forms.ListView lsvAllergies;
         private System.Windows.Forms.TextBox txtNoKTelephone;
         private System.Windows.Forms.Button btnbook_New_Appointment;
+        private System.Windows.Forms.RichTextBox txtReason;
+        private System.Windows.Forms.Label lblReason;
+        private System.Windows.Forms.Button btnNewDate;
+        private System.Windows.Forms.MonthCalendar mclAppointmentDay;
+        private System.Windows.Forms.Label lblInfomation;
     }
 }

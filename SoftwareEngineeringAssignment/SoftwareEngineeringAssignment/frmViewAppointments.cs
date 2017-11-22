@@ -13,10 +13,13 @@ namespace SoftwareEngineeringAssignment
     public partial class frmViewAppointments : Form
     {
         List<Appointment> aList = new List<Appointment>();
+        List<Appointment> FullAppointmentList = new List<Appointment>();
         List<Patient> pList = new List<Patient>();
         List<Perscription> perList = new List<Perscription>();
         Staff LoggedInStaff;
         int selectedAppointment, selectedPatient;
+        DateTime selectedDate;
+        bool goodData = true;
         public frmViewAppointments(Staff current)
         {
             InitializeComponent();
@@ -24,8 +27,12 @@ namespace SoftwareEngineeringAssignment
             drawLSV();
             selectedPatient = 0;
             selectedAppointment = 0;
+            selectedDate = DateTime.Now;
             getInfomation();
-            populate();
+            if (goodData)
+            {
+                populate();
+            }
         }
 
         private void getInfomation()
@@ -33,15 +40,16 @@ namespace SoftwareEngineeringAssignment
             BusinessLayer ml = BusinessLayer.Instance();
 
             aList = ml.GetAppointments();
+            FullAppointmentList = ml.GetAppointments();
             List<Patient> tempPList = ml.GetPatients();
 
-            sortAppointments();
+            sortAppointments(selectedDate);
 
             if (aList.Count > 0)
             {
                 foreach (Patient p in tempPList)
                 {
-                    if (aList[selectedAppointment].patientID == p.PatientID)
+                    if (aList[selectedAppointment].PatientID == p.PatientID)
                     {
                         pList.Add(p);
                     }
@@ -50,15 +58,39 @@ namespace SoftwareEngineeringAssignment
             else
             {
                 MessageBox.Show("You have no appointments for today");
+                goodData = false;
+                btnBack.Enabled = false;
+                btnForward.Enabled = false;
+                clearItems();
             }
         }
+        private void clearItems()
+        {
+            txtAppointmentTime.Clear();
+            txtFirstName.Clear();
+            txtID.Clear();
+            txtLastName.Clear();
+            txtNextOfKin.Clear();
+            txtNoKTelephone.Clear();
+            txtReason.Clear();
+            txtReligion.Clear();
+            lsvAllergies.Clear();
+            lsvAppointments.Clear();
+            lsvPerscriptions.Clear();
+            cmbDay.Text = "";
+            cmbMonth.Text = "";
+            cmbYear.Text = "";
 
+            drawLSV();
+        }
         private void populate()
         {
+            lsvAllergies.Clear();
+            drawLSV();
             List<string> result = new List<string>();
-            txtAppointmentTime.Text = aList[selectedAppointment].appointmentTime.TimeOfDay.ToString();
+            txtAppointmentTime.Text = aList[selectedAppointment].AppointmentTime.TimeOfDay.ToString();
 
-            txtID.Text = aList[selectedAppointment].patientID.ToString();
+            txtID.Text = aList[selectedAppointment].PatientID.ToString();
             txtFirstName.Text = pList[selectedPatient].FirstName;
             txtLastName.Text = pList[selectedPatient].LastName;
             cmbDay.Text = pList[selectedPatient].DoB.Day.ToString();
@@ -68,10 +100,11 @@ namespace SoftwareEngineeringAssignment
 
             txtNextOfKin.Text = pList[selectedPatient].NextOfKin;
             txtNoKTelephone.Text = pList[selectedPatient].NoKTelephone;
+            txtReason.Text = aList[selectedAppointment].Description;
 
             result = pList[selectedPatient].Allergies.Split(',').ToList();
 
-            foreach(string s in result)
+            foreach (string s in result)
             {
                 lsvAllergies.Items.Add(s);
             }
@@ -86,16 +119,16 @@ namespace SoftwareEngineeringAssignment
             }
 
             int i = 0;
-            foreach (Appointment app in aList)
+            foreach (Appointment app in FullAppointmentList)
             {
-                if (pList[selectedAppointment].PatientID == app.patientID)
+                if (pList[selectedPatient].PatientID == app.PatientID)
                 {
-                    lsvAppointments.Items.Add(new ListViewItem(new string[] { pList[selectedAppointment].PatientID.ToString(), pList[selectedAppointment].ToString(), app.staffID.ToString(), app.appointmentTime.ToString() }));
-                    if (app.canceled)
+                    lsvAppointments.Items.Add(new ListViewItem(new string[] { pList[selectedPatient].PatientID.ToString(), pList[selectedPatient].ToString(), app.StaffID.ToString(), app.AppointmentTime.ToString() }));
+                    if (app.Canceled)
                     {
                         lsvAppointments.Items[i].BackColor = Color.Orange;
                     }
-                    if (app.attended)
+                    if (app.Attended)
                     {
                         lsvAppointments.Items[i].BackColor = Color.Red;
                     }
@@ -104,19 +137,31 @@ namespace SoftwareEngineeringAssignment
             }
             ResizeListViewColumns(lsvAppointments);
             ResizeListViewColumns(lsvPerscriptions);
+            ResizeListViewColumns(lsvAllergies);
+            buttonUpdate();
         }
 
-        private void sortAppointments()
+        private void sortAppointments(DateTime date)
         {
             List<Appointment> temp = new List<Appointment>();
+            List<Appointment> temp2 = new List<Appointment>();
             foreach (Appointment a in aList)
             {
-                if (a.staffID == LoggedInStaff.StaffID)
+                if (a.StaffID == LoggedInStaff.StaffID)
                 {
                     temp.Add(a);
+                    temp2.Add(a);
                 }
             }
-            List<Appointment> SortedList = temp.OrderBy(o => o.appointmentTime).ToList();
+
+            foreach (Appointment a in temp)
+            {
+                if (a.AppointmentTime.DayOfYear != date.DayOfYear)
+                {
+                    temp2.Remove(a);
+                }
+            }
+            List<Appointment> SortedList = temp2.OrderBy(o => o.AppointmentTime).ToList();
             aList.Clear();
             foreach (Appointment a in SortedList)
             {
@@ -140,6 +185,18 @@ namespace SoftwareEngineeringAssignment
             this.Show();
         }
 
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            selectedAppointment--;
+            populate();
+        }
+
+        private void btnForward_Click(object sender, EventArgs e)
+        {
+            selectedAppointment++;
+            populate();
+        }
+
         private void drawLSV()
         {
             lsvPerscriptions.Clear();
@@ -157,6 +214,53 @@ namespace SoftwareEngineeringAssignment
             lsvAppointments.Columns.Add("First Name", -2, HorizontalAlignment.Left);
             lsvAppointments.Columns.Add("StaffID", -2, HorizontalAlignment.Left);
             lsvAppointments.Columns.Add("Appointment Time", -2, HorizontalAlignment.Left);
+        }
+
+        private void btnNewDate_Click(object sender, EventArgs e)
+        {
+            mclAppointmentDay.Visible = true;
+            lblInfomation.Visible = true;
+            lblInfomation.Text = "Please select a date";
+        }
+
+        private void mclAppointmentDay_DateSelected(object sender, DateRangeEventArgs e)
+        {
+            selectedDate = mclAppointmentDay.SelectionStart;
+            getInfomation();
+            if (goodData)
+            {
+                populate();
+            }
+            mclAppointmentDay.Visible = false;
+            lblInfomation.Visible = false;
+        }
+
+        private void frmViewAppointments_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        
+
+        private void buttonUpdate()
+        {
+            if(selectedAppointment == 0)
+            {
+                btnBack.Enabled = false;
+            }
+            else
+            {
+                btnBack.Enabled = true;
+            }
+
+            if (aList.Count == selectedAppointment + 1)
+            {
+                btnForward.Enabled = false;
+            }
+            else
+            {
+                btnForward.Enabled = true;
+            }
         }
     }
 }

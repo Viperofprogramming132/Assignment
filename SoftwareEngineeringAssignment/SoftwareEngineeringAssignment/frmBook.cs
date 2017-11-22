@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Globalization;
+using System.Net.Mail;
 
 namespace SoftwareEngineeringAssignment
 {
@@ -21,7 +22,9 @@ namespace SoftwareEngineeringAssignment
         int inc = 5;
         List<DateTime> timeList = new List<DateTime>();
 
-
+        /// <summary>
+        /// Constructor for booking form
+        /// </summary>
         public frmBook()
         {
             InitializeComponent();
@@ -38,6 +41,7 @@ namespace SoftwareEngineeringAssignment
 
 
             #region comboBoxs
+            //Fills the combo boxs
             for (int i = 1; i <= 31; i++)
             {
                 cmbDay.Items.Add(i);
@@ -54,7 +58,7 @@ namespace SoftwareEngineeringAssignment
 
             foreach(Staff s in sList)
             {
-                if (s.AuthLevel == 1 || s.AuthLevel == 2)
+                if (s.AuthLevel == (int)Staff.AuthenticationLevel.GP || s.AuthLevel == (int)Staff.AuthenticationLevel.Nurse)
                 {
                     cmbDoctor.Items.Add(s.FName + " " + s.LName);
                 }
@@ -63,6 +67,11 @@ namespace SoftwareEngineeringAssignment
 
         }
 
+        /// <summary>
+        /// On date selected check for any appointments on that day and check remove from combobox what is not availible
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void mclCalander_DateSelected(object sender, DateRangeEventArgs e)
         {
             Debug.WriteLine(mclCalander.SelectionStart);
@@ -73,9 +82,9 @@ namespace SoftwareEngineeringAssignment
                 //Searches staff appointments based off the staff member
                 if (GetCurrent() != null)
                 {
-                    if (a.staffID == GetCurrent().StaffID)
+                    if (a.StaffID == GetCurrent().StaffID)
                     {
-                        timeList.Remove(a.appointmentTime);
+                        timeList.Remove(a.AppointmentTime);
                     }
                 }
                 //checks the availible staff off a timeslot
@@ -89,6 +98,11 @@ namespace SoftwareEngineeringAssignment
             writeTime();
         }
 
+        /// <summary>
+        /// Makes form full screen on load
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmBook_Load(object sender, EventArgs e)
         {
             //Full screens the window
@@ -96,6 +110,11 @@ namespace SoftwareEngineeringAssignment
             this.MaximumSize = this.Size;
         }
 
+        /// <summary>
+        /// Opens query patient
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSearchPatients_Click(object sender, EventArgs e)
         {
             frmQueryPatient queryPatient = new frmQueryPatient(this);
@@ -141,6 +160,34 @@ namespace SoftwareEngineeringAssignment
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             ml.AddAppointment(current.PatientID, GetCurrent().StaffID, getTime(cmbTimeslot.Text), getTime(cmbTimeslot.Text).AddMinutes(5), txtDescription.Text);
+            try
+            {
+                //TODO: change the email system currently crashes every run
+
+                //ml.GetPatients(current.Email);
+                MailMessage mail = new MailMessage();
+                SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+                mail.From = new MailAddress("you_address@gmail.com");
+                mail.To.Add("");
+                mail.Subject = "Test Mail - 1";
+                mail.Body = "Appointment booking";
+
+
+
+                SmtpServer.Port = 587;
+                SmtpServer.Credentials = new System.Net.NetworkCredential("","" );
+                SmtpServer.EnableSsl = true;
+
+                SmtpServer.Send(mail);
+
+
+                MessageBox.Show("Message Sent");
+            }
+            catch
+            {
+                MessageBox.Show("Message not sent");
+            }
+            
         }
 
         /// <summary>
@@ -240,7 +287,7 @@ namespace SoftwareEngineeringAssignment
         {
             foreach (Staff s in sList)
             {
-                if (a.appointmentTime.TimeOfDay == getTime(cmbTimeslot.Text).TimeOfDay)
+                if (a.AppointmentTime.TimeOfDay == getTime(cmbTimeslot.Text).TimeOfDay)
                 {
                     cmbDoctor.Items.Remove(s.ToString());
                 }
@@ -248,7 +295,11 @@ namespace SoftwareEngineeringAssignment
             }
         }
 
-
+        /// <summary>
+        /// When timeslot is chosen checks its availibility
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmbTimeslot_SelectedValueChanged(object sender, EventArgs e)
         {
             foreach (Appointment a in aList)
@@ -257,6 +308,12 @@ namespace SoftwareEngineeringAssignment
             }
         }
 
+
+        /// <summary>
+        /// Closes the form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnReturn_Click(object sender, EventArgs e)
         {
             this.Close();

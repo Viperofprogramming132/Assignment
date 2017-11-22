@@ -23,6 +23,11 @@ namespace SoftwareEngineeringAssignment
         frmAddPerscription m_FAP;
 
         int showing;
+
+        /// <summary>
+        /// Constructor for query patient taking frmBook form
+        /// </summary>
+        /// <param name="f"></param>
         public frmQueryPatient(frmBook f)
         {
             InitializeComponent();
@@ -30,6 +35,10 @@ namespace SoftwareEngineeringAssignment
             initializeForm();
         }
 
+        /// <summary>
+        /// Constructor for query patient taking frmAddPerscription form
+        /// </summary>
+        /// <param name="f"></param>
         public frmQueryPatient(frmAddPerscription f)
         {
             InitializeComponent();
@@ -37,6 +46,9 @@ namespace SoftwareEngineeringAssignment
             initializeForm();
         }
 
+        /// <summary>
+        /// Sets up the List views and combo boxs
+        /// </summary>
         private void initializeForm()
         {
             
@@ -58,11 +70,22 @@ namespace SoftwareEngineeringAssignment
                 cmbYear.Items.Add(i);
             }
         }
+
+        /// <summary>
+        /// Closes the form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnReturn_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        /// <summary>
+        /// Starts the worker to get the patient
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSearch_Click(object sender, EventArgs e)
         {
             BusinessLayer ml = BusinessLayer.Instance();
@@ -89,16 +112,31 @@ namespace SoftwareEngineeringAssignment
             }
         }
 
+        /// <summary>
+        /// Makes the full row selected
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lsvPerscriptions_SelectedIndexChanged(object sender, EventArgs e)
         {
             lsvPerscriptions.FullRowSelect = true;
         }
 
+        /// <summary>
+        /// Sets the form to full screen on load
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmQueryPatient_Load(object sender, EventArgs e)
         {
             this.MinimumSize = this.Size;
             this.MaximumSize = this.Size;
         }
+
+        /// <summary>
+        /// Populates the infomation with the given patient
+        /// </summary>
+        /// <param name="patient"></param>
         private void populate(Patient patient)
         {
             List<string> result = new List<string>();
@@ -119,12 +157,13 @@ namespace SoftwareEngineeringAssignment
             }
             txtNextOfKin.Text = patient.NextOfKin;
             txtNoKTelephone.Text = patient.NoKTelephone;
+            txtEmailAddress.Text = patient.Email;
             cmbDay.Text = patient.DoB.Day.ToString();
             cmbMonth.Text = patient.DoB.Month.ToString();
             cmbYear.Text = patient.DoB.Year.ToString();
 
 
-
+            //gets perscriptions
             foreach(Perscription per in pList)
             {
                 if(patient.PatientID == per.PatientID)
@@ -135,16 +174,17 @@ namespace SoftwareEngineeringAssignment
             }
 
             int i = 0;
+            //Gets appointments and shows if they are cancled or not attended
             foreach (Appointment app in aList)
             {
-                if (patient.PatientID == app.patientID)
+                if (patient.PatientID == app.PatientID)
                 {
-                    lsvAppointments.Items.Add(new ListViewItem(new string[] { patient.PatientID.ToString(), patient.ToString(), app.staffID.ToString() , app.appointmentTime.ToString() }));
-                    if (app.canceled)
+                    lsvAppointments.Items.Add(new ListViewItem(new string[] { patient.PatientID.ToString(), patient.ToString(), app.StaffID.ToString() , app.AppointmentTime.ToString() }));
+                    if (app.Canceled)
                     {
                         lsvAppointments.Items[i].BackColor = Color.Orange;
                     }
-                    if (app.attended)
+                    if (app.Attended)
                     {
                         lsvAppointments.Items[i].BackColor = Color.Red;
                     }
@@ -155,6 +195,9 @@ namespace SoftwareEngineeringAssignment
             ResizeListViewColumns(lsvPerscriptions);
         }
 
+        /// <summary>
+        /// Draws the collums for the list views
+        /// </summary>
         private void drawLSV()
         {
             lsvPerscriptions.Clear();
@@ -174,11 +217,29 @@ namespace SoftwareEngineeringAssignment
             lsvAppointments.Columns.Add("Appointment Time", -2, HorizontalAlignment.Left);
         }
 
+        /// <summary>
+        /// Goes forward 1 patient if it returns more than 1
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnForward_Click(object sender, EventArgs e)
         {
             populate(finP[showing + 1]);
         }
 
+        private DateTime getTime(string timeSlot)
+        {
+            if (timeSlot != "")
+            {
+                DateTime dateofbirth = Convert.ToDateTime(timeSlot + " 00:00:00.00");
+
+                return dateofbirth;
+            }
+            return DateTime.Now;
+        }
+        /// <summary>
+        /// Enables and disables forward a backwards button as needed
+        /// </summary>
         private void buttonUpdate()
         {
             if(showing == 0)
@@ -200,11 +261,21 @@ namespace SoftwareEngineeringAssignment
 
         }
 
+        /// <summary>
+        ///  Goes back 1 patient if it returns more than 1
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnBack_Click(object sender, EventArgs e)
         {
             populate(finP[showing - 1]);
         }
 
+        /// <summary>
+        /// Sends the patient back when the form is closing
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmQueryPatient_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (m_FB != null)
@@ -231,6 +302,10 @@ namespace SoftwareEngineeringAssignment
             }
         }
 
+        /// <summary>
+        /// Resizes the list view to fit all infomation
+        /// </summary>
+        /// <param name="lv"></param>
         private void ResizeListViewColumns(ListView lv)
         {
             foreach (ColumnHeader column in lv.Columns)
@@ -239,16 +314,11 @@ namespace SoftwareEngineeringAssignment
             }
         }
 
-        private void txtNextOfKin_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblNextOfKin_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// Shows the add patient form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAdd_patient_Click(object sender, EventArgs e)
         {
             frmAddPatient addPatient = new frmAddPatient();
@@ -256,5 +326,25 @@ namespace SoftwareEngineeringAssignment
             addPatient.ShowDialog();
             this.Show();
         }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            
+            {
+                if (finP[showing].FirstName != txtFirstName.Text || finP[showing].LastName != txtLastName.Text || finP[showing].DoB.Day.ToString() != cmbDay.Text || finP[showing].DoB.Month.ToString() != cmbYear.Text || finP[showing].DoB.Year.ToString() != cmbYear.Text || finP[showing].PatientID.ToString() != txtID.Text || finP[showing].Religeon != txtReligion.Text || finP[showing].NextOfKin != txtNextOfKin.Text || finP[showing].NoKTelephone != txtNoKTelephone.Text)
+                {
+
+                    DialogResult dr = MessageBox.Show("Do you want to save changes to " + finP[showing].ToString(), "Confirm", MessageBoxButtons.YesNo);
+
+                    if (dr == DialogResult.Yes)
+                    {
+                        BusinessLayer ml = BusinessLayer.Instance();
+                        MessageBox.Show(ml.UpdatePatientfrm(txtFirstName.Text, txtLastName.Text, getTime(cmbDay.Text + "/" + cmbMonth.Text + "/" + cmbYear.Text), txtID.Text, finP[showing].NextOfKin, finP[showing].NoKTelephone, finP[showing].PatientID) + " Number of entries updated");
+
+                    }
+                }
+            }
+        }
+
     }
 }

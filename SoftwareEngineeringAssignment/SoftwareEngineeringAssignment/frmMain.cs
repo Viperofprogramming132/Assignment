@@ -14,6 +14,11 @@ namespace SoftwareEngineeringAssignment
 
     {
         Staff member = new Staff();
+
+        /// <summary>
+        /// Constructor for the main menu reciving a staff member that you are logged in as
+        /// </summary>
+        /// <param name="member"></param>
         public frmMain(Staff member)
         {
             InitializeComponent();
@@ -37,6 +42,13 @@ namespace SoftwareEngineeringAssignment
             this.Show();
         }
 
+        private void btnChangeAppontments_Click(object sender, EventArgs e)
+        {
+            frmQueryAppointment change = new frmQueryAppointment();
+            this.Hide();
+            change.ShowDialog();
+            this.Show();
+        }
 
         /// <summary>
         /// Closes this form returning to login
@@ -133,11 +145,11 @@ namespace SoftwareEngineeringAssignment
 
         #endregion
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// Sets the form to full screen on load
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmMain_Load(object sender, EventArgs e)
         {
             this.MinimumSize = this.Size;
@@ -145,6 +157,10 @@ namespace SoftwareEngineeringAssignment
 
         }
 
+
+        /// <summary>
+        /// Sorts out the visability of the buttons based off the permission level
+        /// </summary>
         private void loaded()
         {
 
@@ -180,8 +196,15 @@ namespace SoftwareEngineeringAssignment
                 btnAdmin.Location = btnBookAppointment.Location;
             }
         }
-       
 
+        private void btnTimeTable_Click(object sender, EventArgs e)
+        {
+            frmViewTimetable timetables = new frmViewTimetable(member);
+
+            this.Hide();
+            timetables.ShowDialog();
+            this.Show();
+        }
 
     }
 }

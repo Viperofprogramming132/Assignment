@@ -57,6 +57,10 @@
             this.lsvAllergies = new System.Windows.Forms.ListView();
             this.txtNoKTelephone = new System.Windows.Forms.TextBox();
             this.btnAdd_patient = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.lblEmailAddress = new System.Windows.Forms.Label();
+            this.txtEmailAddress = new System.Windows.Forms.TextBox();
+            this.lbltelephone = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnSearch
@@ -248,7 +252,7 @@
             // 
             this.btnForward.Enabled = false;
             this.btnForward.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.btnForward.Location = new System.Drawing.Point(564, 616);
+            this.btnForward.Location = new System.Drawing.Point(688, 616);
             this.btnForward.Name = "btnForward";
             this.btnForward.Size = new System.Drawing.Size(40, 40);
             this.btnForward.TabIndex = 30;
@@ -260,7 +264,7 @@
             // 
             this.btnBack.Enabled = false;
             this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.btnBack.Location = new System.Drawing.Point(518, 616);
+            this.btnBack.Location = new System.Drawing.Point(642, 616);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(40, 40);
             this.btnBack.TabIndex = 31;
@@ -305,7 +309,6 @@
             this.lblNextOfKin.Size = new System.Drawing.Size(112, 25);
             this.lblNextOfKin.TabIndex = 36;
             this.lblNextOfKin.Text = "Next Of Kin";
-            this.lblNextOfKin.Click += new System.EventHandler(this.lblNextOfKin_Click);
             // 
             // txtNextOfKin
             // 
@@ -314,7 +317,6 @@
             this.txtNextOfKin.Name = "txtNextOfKin";
             this.txtNextOfKin.Size = new System.Drawing.Size(126, 30);
             this.txtNextOfKin.TabIndex = 37;
-            this.txtNextOfKin.TextChanged += new System.EventHandler(this.txtNextOfKin_TextChanged);
             // 
             // lsvAllergies
             // 
@@ -327,7 +329,7 @@
             // txtNoKTelephone
             // 
             this.txtNoKTelephone.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNoKTelephone.Location = new System.Drawing.Point(139, 280);
+            this.txtNoKTelephone.Location = new System.Drawing.Point(198, 281);
             this.txtNoKTelephone.Name = "txtNoKTelephone";
             this.txtNoKTelephone.Size = new System.Drawing.Size(126, 30);
             this.txtNoKTelephone.TabIndex = 39;
@@ -343,11 +345,54 @@
             this.btnAdd_patient.UseVisualStyleBackColor = true;
             this.btnAdd_patient.Click += new System.EventHandler(this.btnAdd_patient_Click);
             // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.btnUpdate.Location = new System.Drawing.Point(421, 616);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(203, 37);
+            this.btnUpdate.TabIndex = 48;
+            this.btnUpdate.Text = "Update Changes";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // lblEmailAddress
+            // 
+            this.lblEmailAddress.AutoSize = true;
+            this.lblEmailAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmailAddress.Location = new System.Drawing.Point(-2, 317);
+            this.lblEmailAddress.Name = "lblEmailAddress";
+            this.lblEmailAddress.Size = new System.Drawing.Size(138, 25);
+            this.lblEmailAddress.TabIndex = 41;
+            this.lblEmailAddress.Text = "Email Address";
+            // 
+            // txtEmailAddress
+            // 
+            this.txtEmailAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmailAddress.Location = new System.Drawing.Point(139, 317);
+            this.txtEmailAddress.Name = "txtEmailAddress";
+            this.txtEmailAddress.Size = new System.Drawing.Size(205, 30);
+            this.txtEmailAddress.TabIndex = 42;
+            // 
+            // lbltelephone
+            // 
+            this.lbltelephone.AutoSize = true;
+            this.lbltelephone.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbltelephone.Location = new System.Drawing.Point(12, 283);
+            this.lbltelephone.Name = "lbltelephone";
+            this.lbltelephone.Size = new System.Drawing.Size(180, 25);
+            this.lbltelephone.TabIndex = 49;
+            this.lbltelephone.Text = "Telephone Number";
+            // 
             // frmQueryPatient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1230, 665);
+            this.Controls.Add(this.lbltelephone);
+            this.Controls.Add(this.btnUpdate);
+            this.Controls.Add(this.txtEmailAddress);
+            this.Controls.Add(this.lblEmailAddress);
             this.Controls.Add(this.btnAdd_patient);
             this.Controls.Add(this.txtNoKTelephone);
             this.Controls.Add(this.lsvAllergies);
@@ -417,5 +462,9 @@
         private System.Windows.Forms.ListView lsvAllergies;
         private System.Windows.Forms.TextBox txtNoKTelephone;
         private System.Windows.Forms.Button btnAdd_patient;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Label lblEmailAddress;
+        private System.Windows.Forms.TextBox txtEmailAddress;
+        private System.Windows.Forms.Label lbltelephone;
     }
 }
