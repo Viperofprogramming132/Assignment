@@ -43,6 +43,11 @@
             this.lblDay = new System.Windows.Forms.Label();
             this.lblMonth = new System.Windows.Forms.Label();
             this.lblYear = new System.Windows.Forms.Label();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.btnPrint = new System.Windows.Forms.Button();
+            this.printTestHistory = new System.Drawing.Printing.PrintDocument();
+            this.printDialog1 = new System.Windows.Forms.PrintDialog();
+            this.btnReturn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblID
@@ -146,7 +151,7 @@
             // lblDay
             // 
             this.lblDay.AutoSize = true;
-            this.lblDay.Location = new System.Drawing.Point(100, 153);
+            this.lblDay.Location = new System.Drawing.Point(97, 169);
             this.lblDay.Name = "lblDay";
             this.lblDay.Size = new System.Drawing.Size(26, 13);
             this.lblDay.TabIndex = 12;
@@ -155,7 +160,7 @@
             // lblMonth
             // 
             this.lblMonth.AutoSize = true;
-            this.lblMonth.Location = new System.Drawing.Point(137, 153);
+            this.lblMonth.Location = new System.Drawing.Point(137, 169);
             this.lblMonth.Name = "lblMonth";
             this.lblMonth.Size = new System.Drawing.Size(37, 13);
             this.lblMonth.TabIndex = 13;
@@ -164,17 +169,58 @@
             // lblYear
             // 
             this.lblYear.AutoSize = true;
-            this.lblYear.Location = new System.Drawing.Point(186, 153);
+            this.lblYear.Location = new System.Drawing.Point(186, 169);
             this.lblYear.Name = "lblYear";
             this.lblYear.Size = new System.Drawing.Size(29, 13);
             this.lblYear.TabIndex = 14;
             this.lblYear.Text = "Year";
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(125, 248);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnSearch.TabIndex = 15;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.Location = new System.Drawing.Point(466, 248);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(75, 23);
+            this.btnPrint.TabIndex = 16;
+            this.btnPrint.Text = "Print";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
+            // printTestHistory
+            // 
+            this.printTestHistory.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printTestHistory_PrintPage);
+            // 
+            // printDialog1
+            // 
+            this.printDialog1.UseEXDialog = true;
+            // 
+            // btnReturn
+            // 
+            this.btnReturn.Location = new System.Drawing.Point(15, 248);
+            this.btnReturn.Name = "btnReturn";
+            this.btnReturn.Size = new System.Drawing.Size(75, 23);
+            this.btnReturn.TabIndex = 17;
+            this.btnReturn.Text = "Return";
+            this.btnReturn.UseVisualStyleBackColor = true;
+            this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click_1);
             // 
             // frmViewTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(586, 406);
+            this.Controls.Add(this.btnReturn);
+            this.Controls.Add(this.btnPrint);
+            this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.lblYear);
             this.Controls.Add(this.lblMonth);
             this.Controls.Add(this.lblDay);
@@ -214,5 +260,10 @@
         private System.Windows.Forms.Label lblDay;
         private System.Windows.Forms.Label lblMonth;
         private System.Windows.Forms.Label lblYear;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Button btnPrint;
+        private System.Drawing.Printing.PrintDocument printTestHistory;
+        private System.Windows.Forms.PrintDialog printDialog1;
+        private System.Windows.Forms.Button btnReturn;
     }
 }

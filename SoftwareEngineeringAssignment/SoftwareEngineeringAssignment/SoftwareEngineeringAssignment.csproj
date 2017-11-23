@@ -72,6 +72,12 @@
     <Compile Include="frmAddStaff.Designer.cs">
       <DependentUpon>frmAddStaff.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAddTestHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddTestHistory.Designer.cs">
+      <DependentUpon>frmAddTestHistory.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAdmin.cs">
       <SubType>Form</SubType>
     </Compile>

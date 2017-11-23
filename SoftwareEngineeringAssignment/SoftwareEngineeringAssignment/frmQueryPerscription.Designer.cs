@@ -46,7 +46,7 @@
 			this.button1 = new System.Windows.Forms.Button();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.btn_add = new System.Windows.Forms.Button();
-			this.printPrescriptions = new System.Drawing.Printing.PrintDocument();
+			this.printPrescriptions_PrintPage = new System.Drawing.Printing.PrintDocument();
 			this.printDialog1 = new System.Windows.Forms.PrintDialog();
 			this.btnPrint = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -212,11 +212,11 @@
 			// 
 			// printPrescriptions
 			// 
-			this.printPrescriptions.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printPrescriptions_PrintPage);
+			this.printPrescriptions_PrintPage.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.PrintPrescriptions_PrintPage);
 			// 
 			// printDialog1
 			// 
-			this.printDialog1.Document = this.printPrescriptions;
+			this.printDialog1.Document = this.printPrescriptions_PrintPage;
 			this.printDialog1.UseEXDialog = true;
 			// 
 			// btnPrint
@@ -282,7 +282,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btn_add;
-		private System.Drawing.Printing.PrintDocument printPrescriptions;
+		private System.Drawing.Printing.PrintDocument printPrescriptions_PrintPage;
 		private System.Windows.Forms.PrintDialog printDialog1;
 		private System.Windows.Forms.Button btnPrint;
 	}

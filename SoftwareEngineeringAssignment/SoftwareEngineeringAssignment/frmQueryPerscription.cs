@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing.Printing;
 
 namespace SoftwareEngineeringAssignment
 {
@@ -56,21 +57,30 @@ namespace SoftwareEngineeringAssignment
             this.Show();
         }
 
-		private void printPrescriptions_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+		private void PrintPrescriptions_PrintPage(object sender, PrintPageEventArgs e)
 		{
 			e.Graphics.DrawImage(bmp, 0, 0);
 		}
 
 		Bitmap bmp;
+        
+        private PrintDocument PrintPrescriptions = new PrintDocument();
 
-		private void btnPrint_Click(object sender, EventArgs e)
+
+
+        private void btnPrint_Click(object sender, EventArgs e)
 		{
-			Graphics g = this.CreateGraphics();
+            
+            PrintPrescriptions.PrintPage += new PrintPageEventHandler(PrintPrescriptions_PrintPage);
+            this.Controls.Add(btnPrint);
+            Graphics g = this.CreateGraphics();
 			bmp = new Bitmap(this.Height, this.Width, g);
 			Graphics mg = Graphics.FromImage(bmp);
 			mg.CopyFromScreen(this.Location.X, this.Location.Y, 0, 0, this.Size);
 			printDialog1.ShowDialog();
+            PrintPrescriptions.Print();
+            
 
-		}
+        }
 	}
 }

@@ -240,7 +240,10 @@ namespace SoftwareEngineeringAssignment
 
         }
 
-        
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+
+        }
 
         private void buttonUpdate()
         {
