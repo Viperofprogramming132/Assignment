@@ -238,6 +238,7 @@
             this.Controls.Add(this.lblID);
             this.Name = "frmViewTest";
             this.Text = "frmViewTest";
+            this.VisibleChanged += new System.EventHandler(this.frmViewTest_VisibleChanged);
             this.ResumeLayout(false);
             this.PerformLayout();
 

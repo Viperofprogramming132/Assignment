@@ -143,6 +143,19 @@ namespace SoftwareEngineeringAssignment
             this.Show();
         }
 
+        /// <summary>
+        /// Shows the test history form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnTestHistory_Click_1(object sender, EventArgs e)
+        {
+            frmViewTest test = new frmViewTest();
+            this.Hide();
+            test.ShowDialog();
+            this.Show();
+        }
+
         #endregion
 
         /// <summary>
@@ -206,5 +219,6 @@ namespace SoftwareEngineeringAssignment
             this.Show();
         }
 
+        
     }
 }
