@@ -16,11 +16,12 @@ namespace SoftwareEngineeringAssignment
         List<Appointment> FullAppointmentList = new List<Appointment>();
         List<Patient> finP = new List<Patient>();
         List<Patient> patients = new List<Patient>();
+        int selectedAppointment;
 
         public frmQueryAppointment()
         {
             InitializeComponent();
-
+            selectedAppointment = 0;
         }
 
         private void frmQueryAppointment_Load(object sender, EventArgs e)
@@ -29,10 +30,13 @@ namespace SoftwareEngineeringAssignment
             this.MaximumSize = this.Size;
         }
 
+
+
         private void populate(Patient patient)
         {
             List<string> result = new List<string>();
-
+            txtAppointmentTime.Text = aList[selectedAppointment].AppointmentTime.TimeOfDay.ToString();
+            txtReason.Text = aList[selectedAppointment].Description;
             txtFirstName.Text = patient.FirstName;
             txtLastName.Text = patient.LastName;
             txtID.Text = patient.PatientID.ToString();
@@ -63,16 +67,11 @@ namespace SoftwareEngineeringAssignment
             }
             catch
             {
-                MessageBox.Show("No Patients Found");
+                //MessageBox.Show("No Patients Found");
             }
 
-            
-
-                
-                FullAppointmentList = ml.GetAppointments();
-                List<Patient> tempPList = ml.GetPatients();
-
-
+            FullAppointmentList = ml.GetAppointments();
+            List<Patient> tempPList = ml.GetPatients();
 
             foreach (Appointment a in FullAppointmentList)
             {
@@ -81,11 +80,12 @@ namespace SoftwareEngineeringAssignment
                     aList.Add(a);
                 }
 
-
                 // MessageBox.Show("You have no appointments for today");
             }
-            
+
+
+
         }
     }
-    }
+}
 
