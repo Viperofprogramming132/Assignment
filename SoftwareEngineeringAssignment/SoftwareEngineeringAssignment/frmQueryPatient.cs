@@ -21,6 +21,7 @@ namespace SoftwareEngineeringAssignment
 
         frmBook m_FB;
         frmAddPerscription m_FAP;
+        frmViewTest m_FVT;
 
         int showing;
 
@@ -43,6 +44,13 @@ namespace SoftwareEngineeringAssignment
         {
             InitializeComponent();
             this.m_FAP = f;
+            initializeForm();
+        }
+
+        public frmQueryPatient(frmViewTest f)
+        {
+            InitializeComponent();
+            this.m_FVT = f;
             initializeForm();
         }
 
@@ -294,6 +302,17 @@ namespace SoftwareEngineeringAssignment
                 if (finP.Count != 0)
                 {
                     m_FAP.TakePatient(finP[showing]);
+                }
+                else
+                {
+                    MessageBox.Show("No user was selected. Returning to Add Perscription");
+                }
+            }
+            else if (m_FVT != null)
+            {
+                if (finP.Count != 0)
+                {
+                    m_FVT.TakePatient(finP[showing]);
                 }
                 else
                 {
