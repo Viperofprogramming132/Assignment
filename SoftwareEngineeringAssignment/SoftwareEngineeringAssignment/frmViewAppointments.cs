@@ -54,6 +54,7 @@ namespace SoftwareEngineeringAssignment
                         pList.Add(p);
                     }
                 }
+                goodData = true;
             }
             else
             {

@@ -27,5 +27,10 @@ namespace SoftwareEngineeringAssignment
         {
             return FirstName + " " + LastName;
         }
+
+        public Patient()
+        {
+
+        }
     }
 }
