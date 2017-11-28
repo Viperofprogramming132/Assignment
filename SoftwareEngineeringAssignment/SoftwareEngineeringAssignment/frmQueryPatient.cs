@@ -47,6 +47,10 @@ namespace SoftwareEngineeringAssignment
             initializeForm();
         }
 
+        /// <summary>
+        /// Constructor for query patient taking frmViewHistory form
+        /// </summary>
+        /// <param name="f"></param>
         public frmQueryPatient(frmViewTest f)
         {
             InitializeComponent();
@@ -316,7 +320,7 @@ namespace SoftwareEngineeringAssignment
                 }
                 else
                 {
-                    MessageBox.Show("No user was selected. Returning to Add Perscription");
+                    MessageBox.Show("No user was selected. Returning to view history");
                 }
             }
         }

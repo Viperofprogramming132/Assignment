@@ -18,6 +18,20 @@ namespace SoftwareEngineeringAssignment
         {
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
+
+            for (int i = 1; i <= 31; i++)
+            {
+                cmbDay.Items.Add(i);
+            }
+
+            for (int i = 1; i <= 12; i++)
+            {
+                cmbMonth.Items.Add(i);
+            }
+            for (int i = 1900; i <= DateTime.Now.Year; i++)
+            {
+                cmbYear.Items.Add(i);
+            }
         }
         private void frmViewTest_load(object sender, EventArgs e)
         {
@@ -40,6 +54,7 @@ namespace SoftwareEngineeringAssignment
         {
             current = p;
         }
+
         Bitmap bmp;
         private PrintDocument PrintPrescriptions = new PrintDocument();
         private void btnPrint_Click(object sender, EventArgs e)
