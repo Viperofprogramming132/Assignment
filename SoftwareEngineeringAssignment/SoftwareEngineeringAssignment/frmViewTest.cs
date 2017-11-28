@@ -38,18 +38,6 @@ namespace SoftwareEngineeringAssignment
             this.MinimumSize = this.Size;
             this.MaximumSize = this.Size;
         }
-        private void cmbDay_VisibleChanged(object sender, EventArgs e)
-        {
-            if (current != null)
-            {
-                txtID.Text = current.PatientID.ToString();
-                txtFirstName.Text = current.FirstName;
-                txtLastName.Text = current.LastName;
-                cmbDay.Text = current.DoB.Day.ToString();
-                cmbMonth.Text = current.DoB.Month.ToString();
-                cmbYear.Text = current.DoB.Year.ToString();
-            }
-        }
         public void TakePatient(Patient p)
         {
             current = p;
@@ -86,6 +74,19 @@ namespace SoftwareEngineeringAssignment
         private void btnReturn_Click_1(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void frmViewTest_VisibleChanged(object sender, EventArgs e)
+        {
+            if (current != null)
+            {
+                txtID.Text = current.PatientID.ToString();
+                txtFirstName.Text = current.FirstName;
+                txtLastName.Text = current.LastName;
+                cmbDay.Text = current.DoB.Day.ToString();
+                cmbMonth.Text = current.DoB.Month.ToString();
+                cmbYear.Text = current.DoB.Year.ToString();
+            }
         }
     }
 }
