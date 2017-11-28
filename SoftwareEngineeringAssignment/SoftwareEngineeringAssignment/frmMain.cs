@@ -42,6 +42,13 @@ namespace SoftwareEngineeringAssignment
             this.Show();
         }
 
+        private void btnChangeAppontments_Click(object sender, EventArgs e)
+        {
+            frmQueryAppointment change = new frmQueryAppointment();
+            this.Hide();
+            change.ShowDialog();
+            this.Show();
+        }
 
         /// <summary>
         /// Closes this form returning to login
@@ -198,5 +205,6 @@ namespace SoftwareEngineeringAssignment
             timetables.ShowDialog();
             this.Show();
         }
+
     }
 }
