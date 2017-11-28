@@ -109,6 +109,11 @@ namespace SoftwareEngineeringAssignment
             return m_shifts;
         }
 
+        internal string UpdateAppointment(string v)
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// retrieves information from the m_shift table
         /// </summary>
@@ -455,13 +460,28 @@ namespace SoftwareEngineeringAssignment
             return false;
         }
 
-        /// <summary>
-        /// Creates a shift
-        /// </summary>
-        /// <param name="StartTime"></param>
-        /// <param name="EndTime"></param>
-        /// <returns></returns>
-        public bool AddShift(DateTime StartTime, DateTime EndTime)
+        public bool UpdateAppointment( DateTime StartTime, DateTime EndTime, string Description, int appointmentID)
+        {
+            DbConection m_con = DbFactory.instance();
+            if (m_con.OpenConnection())
+            {
+                string insertString = "UPDATE appointment (StartTime, EndTime, Description) VALUES ('" + EncryptString(StartTime.ToString()) + "', '" + EncryptString(EndTime.ToString()) + "', '" + EncryptString(Description) + "' WHERE " + appointmentID + ");";
+                if (m_con.Insert(insertString) != 0)
+                {
+                    m_con.CloseConnection();
+
+                    return true;
+                }
+            }
+            return false;
+        }
+                /// <summary>
+                /// Creates a shift
+                /// </summary>
+                /// <param name="StartTime"></param>
+                /// <param name="EndTime"></param>
+                /// <returns></returns>
+                public bool AddShift(DateTime StartTime, DateTime EndTime)
         {
             DbConection m_con = DbFactory.instance();
             if (m_con.OpenConnection())
