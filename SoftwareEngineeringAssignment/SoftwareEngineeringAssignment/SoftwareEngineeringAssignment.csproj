@@ -160,6 +160,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Shift.cs" />
+    <Compile Include="Testing.cs" />
     <Compile Include="TimeTable.cs" />
     <Compile Include="SQLCon.cs" />
     <Compile Include="Staff.cs" />
@@ -171,6 +172,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmAddStaff.resx">
       <DependentUpon>frmAddStaff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAddTestHistory.resx">
+      <DependentUpon>frmAddTestHistory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAdmin.resx">
       <DependentUpon>frmAdmin.cs</DependentUpon>

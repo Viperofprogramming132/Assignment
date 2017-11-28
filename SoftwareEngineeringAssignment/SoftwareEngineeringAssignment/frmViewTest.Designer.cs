@@ -34,7 +34,6 @@
             this.txtFirstName = new System.Windows.Forms.TextBox();
             this.lblLastName = new System.Windows.Forms.Label();
             this.txtLastName = new System.Windows.Forms.TextBox();
-            this.lsvTestHistory = new System.Windows.Forms.ListView();
             this.lblTestHistory = new System.Windows.Forms.Label();
             this.lblDoB = new System.Windows.Forms.Label();
             this.cmbDay = new System.Windows.Forms.ComboBox();
@@ -48,6 +47,7 @@
             this.printTestHistory = new System.Drawing.Printing.PrintDocument();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.btnReturn = new System.Windows.Forms.Button();
+            this.txtTestHistory = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // lblID
@@ -97,14 +97,6 @@
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(100, 20);
             this.txtLastName.TabIndex = 5;
-            // 
-            // lsvTestHistory
-            // 
-            this.lsvTestHistory.Location = new System.Drawing.Point(246, 44);
-            this.lsvTestHistory.Name = "lsvTestHistory";
-            this.lsvTestHistory.Size = new System.Drawing.Size(295, 162);
-            this.lsvTestHistory.TabIndex = 6;
-            this.lsvTestHistory.UseCompatibleStateImageBehavior = false;
             // 
             // lblTestHistory
             // 
@@ -213,11 +205,20 @@
             this.btnReturn.UseVisualStyleBackColor = true;
             this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click_1);
             // 
+            // txtTestHistory
+            // 
+            this.txtTestHistory.Location = new System.Drawing.Point(252, 47);
+            this.txtTestHistory.Name = "txtTestHistory";
+            this.txtTestHistory.Size = new System.Drawing.Size(288, 158);
+            this.txtTestHistory.TabIndex = 18;
+            this.txtTestHistory.Text = "";
+            // 
             // frmViewTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(586, 406);
+            this.Controls.Add(this.txtTestHistory);
             this.Controls.Add(this.btnReturn);
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.btnSearch);
@@ -229,7 +230,6 @@
             this.Controls.Add(this.cmbDay);
             this.Controls.Add(this.lblDoB);
             this.Controls.Add(this.lblTestHistory);
-            this.Controls.Add(this.lsvTestHistory);
             this.Controls.Add(this.txtLastName);
             this.Controls.Add(this.lblLastName);
             this.Controls.Add(this.txtFirstName);
@@ -252,7 +252,6 @@
         private System.Windows.Forms.TextBox txtFirstName;
         private System.Windows.Forms.Label lblLastName;
         private System.Windows.Forms.TextBox txtLastName;
-        private System.Windows.Forms.ListView lsvTestHistory;
         private System.Windows.Forms.Label lblTestHistory;
         private System.Windows.Forms.Label lblDoB;
         private System.Windows.Forms.ComboBox cmbDay;
@@ -266,5 +265,6 @@
         private System.Drawing.Printing.PrintDocument printTestHistory;
         private System.Windows.Forms.PrintDialog printDialog1;
         private System.Windows.Forms.Button btnReturn;
+        private System.Windows.Forms.RichTextBox txtTestHistory;
     }
 }

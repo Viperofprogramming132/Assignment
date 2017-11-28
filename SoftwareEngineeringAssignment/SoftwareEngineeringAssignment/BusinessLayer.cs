@@ -76,6 +76,8 @@ namespace SoftwareEngineeringAssignment
             return m_patients;
         }
 
+        
+
         /// <summary>
         /// retrieves information from the timetable table
         /// </summary>
@@ -362,6 +364,11 @@ namespace SoftwareEngineeringAssignment
             }
 
             return false;
+        }
+
+        public bool AddTestHistory(int patientID, string test)
+        {
+            DbConection m_con = DbFactory.instance();
         }
 
         /// <summary>

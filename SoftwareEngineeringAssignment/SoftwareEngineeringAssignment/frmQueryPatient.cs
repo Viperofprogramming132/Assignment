@@ -22,8 +22,10 @@ namespace SoftwareEngineeringAssignment
         frmBook m_FB;
         frmAddPerscription m_FAP;
         frmViewTest m_FVT;
+        frmAddTestHistory m_FATH;
 
         int showing;
+        
 
         /// <summary>
         /// Constructor for query patient taking frmBook form
@@ -55,6 +57,13 @@ namespace SoftwareEngineeringAssignment
         {
             InitializeComponent();
             this.m_FVT = f;
+            initializeForm();
+        }
+
+        public frmQueryPatient(frmAddTestHistory f)
+        {
+            InitializeComponent();
+            this.m_FATH = f;
             initializeForm();
         }
 
@@ -317,6 +326,17 @@ namespace SoftwareEngineeringAssignment
                 if (finP.Count != 0)
                 {
                     m_FVT.TakePatient(finP[showing]);
+                }
+                else
+                {
+                    MessageBox.Show("No user was selected. Returning to view history");
+                }
+            }
+            else if (m_FATH != null)
+            {
+                if(finP.Count != 0)
+                {
+                    m_FATH.TakePatient(finP[showing]);
                 }
                 else
                 {

@@ -70,15 +70,22 @@ namespace SoftwareEngineeringAssignment
 
         private void btnPrint_Click(object sender, EventArgs e)
 		{
+            try
+            {
+                PrintPrescriptions.PrintPage += new PrintPageEventHandler(PrintPrescriptions_PrintPage);
+                this.Controls.Add(btnPrint);
+                Graphics g = this.CreateGraphics();
+                bmp = new Bitmap(this.Height, this.Width, g);
+                Graphics mg = Graphics.FromImage(bmp);
+                mg.CopyFromScreen(this.Location.X, this.Location.Y, 0, 0, this.Size);
+                printDialog1.ShowDialog();
+                PrintPrescriptions.Print();
+            }
+            catch
+            {
+                MessageBox.Show("Printer is'nt working");
+            }
             
-            PrintPrescriptions.PrintPage += new PrintPageEventHandler(PrintPrescriptions_PrintPage);
-            this.Controls.Add(btnPrint);
-            Graphics g = this.CreateGraphics();
-			bmp = new Bitmap(this.Height, this.Width, g);
-			Graphics mg = Graphics.FromImage(bmp);
-			mg.CopyFromScreen(this.Location.X, this.Location.Y, 0, 0, this.Size);
-			printDialog1.ShowDialog();
-            PrintPrescriptions.Print();
             
 
         }
