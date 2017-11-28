@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,7 @@ namespace SoftwareEngineeringAssignment
         List<Patient> finP = new List<Patient>();
         List<Patient> patients = new List<Patient>();
         int selectedAppointment;
+        int showing = 0;
 
         public frmQueryAppointment()
         {
@@ -34,6 +36,7 @@ namespace SoftwareEngineeringAssignment
 
         private void populate(Patient patient)
         {
+            showing = finP.IndexOf(patient);
             List<string> result = new List<string>();
             txtAppointmentTime.Text = aList[selectedAppointment].AppointmentTime.TimeOfDay.ToString();
             txtReason.Text = aList[selectedAppointment].Description;
@@ -83,8 +86,51 @@ namespace SoftwareEngineeringAssignment
                 // MessageBox.Show("You have no appointments for today");
             }
 
+            
 
 
+
+        }
+        private void UpdateAppointment()
+        {
+            if (aList[selectedAppointment].AppointmentTime.TimeOfDay.ToString() != txtAppointmentTime.Text || aList[selectedAppointment].Description != txtReason.Text)
+            {
+                DialogResult dr = MessageBox.Show("Do you want to save changes to " + finP[showing].ToString(), "Confirm", MessageBoxButtons.YesNo);
+
+                if (dr == DialogResult.Yes)
+                {
+                    BusinessLayer ml = BusinessLayer.Instance();
+                    MessageBox.Show(ml.UpdateAppointment(getTime(txtAppointmentTime.Text), getTime(txtAppointmentTime.Text).AddMinutes(5), txtReason.Text,aList[selectedAppointment].AppointmentID) + " Number of entries updated");
+                }
+            }
+        }
+
+        private DateTime getTime(string timeSlot)
+        {
+            if (timeSlot != "")
+            {
+                DateTime date = mclAppointmentDay.SelectionStart;
+                DateTime time = DateTime.ParseExact(timeSlot, "HH:mm:ss", CultureInfo.InvariantCulture);
+
+                DateTime dateTime = date.AddHours(time.Hour).AddMinutes(time.Minute);
+                return dateTime;
+            }
+            return DateTime.Now;
+        }
+
+        private void frmQueryAppointment_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            UpdateAppointment();
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnUpdate_Click_1(object sender, EventArgs e)
+        {
+            UpdateAppointment();
         }
     }
 }
