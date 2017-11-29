@@ -156,6 +156,14 @@ namespace SoftwareEngineeringAssignment
             this.Show();
         }
 
+        private void btnAddTestHistory_Click(object sender, EventArgs e)
+        {
+            frmAddTestHistory test = new frmAddTestHistory();
+            this.Hide();
+            test.ShowDialog();
+            this.Show();
+        }
+
         #endregion
 
         /// <summary>

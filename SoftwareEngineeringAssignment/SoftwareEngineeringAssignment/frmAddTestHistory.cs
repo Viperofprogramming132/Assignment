@@ -13,7 +13,6 @@ namespace SoftwareEngineeringAssignment
     public partial class frmAddTestHistory : Form
     {
         List<Testing> dList = new List<Testing>();
-        List<Patient> pList = new List<Patient>();
         Patient currentP = new Patient();
         Testing currentT = new Testing();
 
@@ -49,7 +48,39 @@ namespace SoftwareEngineeringAssignment
             currentP = p;
         }
 
-        private void btnSearchPatients_Click(object sender, EventArgs e)
+
+        private void btnSubmit_Click(object sender, EventArgs e)
+        {
+            if (currentT == null)
+            {
+                MessageBox.Show("Please add a test to patient's history");
+            }
+            if (currentP == null)
+            {
+                MessageBox.Show("Please Select a Patient to add a test to");
+            }
+            else
+            {
+                BusinessLayer ml = BusinessLayer.Instance();
+
+                ml.AddTestHistory(currentT.Test);
+            }
+        }
+
+        private void frmAddTestHistory_VisibleChanged(object sender, EventArgs e)
+        {
+            if (currentP != null)
+            {
+                txtID.Text = currentP.PatientID.ToString();
+                txtFirstName.Text = currentP.FirstName;
+                txtLastName.Text = currentP.LastName;
+                cmbDay.Text = currentP.DoB.Day.ToString();
+                cmbMonth.Text = currentP.DoB.Month.ToString();
+                cmbYear.Text = currentP.DoB.Year.ToString();
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
         {
             frmQueryPatient queryPatient = new frmQueryPatient(this);
 
@@ -58,24 +89,6 @@ namespace SoftwareEngineeringAssignment
             this.Show();
 
             Populate(currentP);
-        }
-
-        private void btnSubmit_Click(object sender, EventArgs e)
-        {
-            if (currentT == null)
-            {
-                MessageBox.Show("Please Select a Drug to perscribe");
-            }
-            if (currentP == null)
-            {
-                MessageBox.Show("Please Select a Patient to perscribe a drug to");
-            }
-            else
-            {
-                BusinessLayer ml = BusinessLayer.Instance();
-
-                ml.AddTestHistory(currentP.PatientID, currentT.Test);
-            }
         }
     }
 }
