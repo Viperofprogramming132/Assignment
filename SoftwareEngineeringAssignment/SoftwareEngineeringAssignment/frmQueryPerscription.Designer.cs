@@ -35,9 +35,9 @@
             this.cmbMonth = new System.Windows.Forms.ComboBox();
             this.cmbDay = new System.Windows.Forms.ComboBox();
             this.lblDoB = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtLastName = new System.Windows.Forms.TextBox();
             this.lblLastName = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtFirstName = new System.Windows.Forms.TextBox();
             this.lblFirstName = new System.Windows.Forms.Label();
             this.txtID = new System.Windows.Forms.TextBox();
             this.lblID = new System.Windows.Forms.Label();
@@ -49,6 +49,12 @@
             this.printPrescriptions_PrintPage = new System.Drawing.Printing.PrintDocument();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.btnPrint = new System.Windows.Forms.Button();
+            this.lblDrugID = new System.Windows.Forms.Label();
+            this.cmbDrugID = new System.Windows.Forms.ComboBox();
+            this.lblDrugName = new System.Windows.Forms.Label();
+            this.cmbDrugName = new System.Windows.Forms.ComboBox();
+            this.lblDrugDescription = new System.Windows.Forms.Label();
+            this.txtDrugDescription = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -112,12 +118,12 @@
             this.lblDoB.TabIndex = 30;
             this.lblDoB.Text = "Date of Birth";
             // 
-            // textBox2
+            // txtLastName
             // 
-            this.textBox2.Location = new System.Drawing.Point(78, 64);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(294, 20);
-            this.textBox2.TabIndex = 29;
+            this.txtLastName.Location = new System.Drawing.Point(78, 64);
+            this.txtLastName.Name = "txtLastName";
+            this.txtLastName.Size = new System.Drawing.Size(294, 20);
+            this.txtLastName.TabIndex = 29;
             // 
             // lblLastName
             // 
@@ -128,12 +134,12 @@
             this.lblLastName.TabIndex = 28;
             this.lblLastName.Text = "Last Name";
             // 
-            // textBox1
+            // txtFirstName
             // 
-            this.textBox1.Location = new System.Drawing.Point(78, 38);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(294, 20);
-            this.textBox1.TabIndex = 27;
+            this.txtFirstName.Location = new System.Drawing.Point(78, 38);
+            this.txtFirstName.Name = "txtFirstName";
+            this.txtFirstName.Size = new System.Drawing.Size(294, 20);
+            this.txtFirstName.TabIndex = 27;
             // 
             // lblFirstName
             // 
@@ -230,11 +236,69 @@
             this.btnPrint.UseVisualStyleBackColor = true;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
+            // lblDrugID
+            // 
+            this.lblDrugID.AutoSize = true;
+            this.lblDrugID.Location = new System.Drawing.Point(660, 15);
+            this.lblDrugID.Name = "lblDrugID";
+            this.lblDrugID.Size = new System.Drawing.Size(44, 13);
+            this.lblDrugID.TabIndex = 43;
+            this.lblDrugID.Text = "Drug ID";
+            // 
+            // cmbDrugID
+            // 
+            this.cmbDrugID.FormattingEnabled = true;
+            this.cmbDrugID.Location = new System.Drawing.Point(663, 31);
+            this.cmbDrugID.Name = "cmbDrugID";
+            this.cmbDrugID.Size = new System.Drawing.Size(121, 21);
+            this.cmbDrugID.TabIndex = 44;
+            // 
+            // lblDrugName
+            // 
+            this.lblDrugName.AutoSize = true;
+            this.lblDrugName.Location = new System.Drawing.Point(660, 64);
+            this.lblDrugName.Name = "lblDrugName";
+            this.lblDrugName.Size = new System.Drawing.Size(61, 13);
+            this.lblDrugName.TabIndex = 45;
+            this.lblDrugName.Text = "Drug Name";
+            // 
+            // cmbDrugName
+            // 
+            this.cmbDrugName.FormattingEnabled = true;
+            this.cmbDrugName.Location = new System.Drawing.Point(663, 80);
+            this.cmbDrugName.Name = "cmbDrugName";
+            this.cmbDrugName.Size = new System.Drawing.Size(390, 21);
+            this.cmbDrugName.TabIndex = 46;
+            // 
+            // lblDrugDescription
+            // 
+            this.lblDrugDescription.AutoSize = true;
+            this.lblDrugDescription.Location = new System.Drawing.Point(660, 115);
+            this.lblDrugDescription.Name = "lblDrugDescription";
+            this.lblDrugDescription.Size = new System.Drawing.Size(86, 13);
+            this.lblDrugDescription.TabIndex = 47;
+            this.lblDrugDescription.Text = "Drug Description";
+            // 
+            // txtDrugDescription
+            // 
+            this.txtDrugDescription.Enabled = false;
+            this.txtDrugDescription.Location = new System.Drawing.Point(663, 131);
+            this.txtDrugDescription.Name = "txtDrugDescription";
+            this.txtDrugDescription.Size = new System.Drawing.Size(390, 183);
+            this.txtDrugDescription.TabIndex = 48;
+            this.txtDrugDescription.Text = "";
+            // 
             // frmQueryPerscription
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1138, 442);
+            this.Controls.Add(this.txtDrugDescription);
+            this.Controls.Add(this.lblDrugDescription);
+            this.Controls.Add(this.cmbDrugName);
+            this.Controls.Add(this.lblDrugName);
+            this.Controls.Add(this.cmbDrugID);
+            this.Controls.Add(this.lblDrugID);
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.btn_add);
             this.Controls.Add(this.pictureBox1);
@@ -248,9 +312,9 @@
             this.Controls.Add(this.cmbMonth);
             this.Controls.Add(this.cmbDay);
             this.Controls.Add(this.lblDoB);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtLastName);
             this.Controls.Add(this.lblLastName);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtFirstName);
             this.Controls.Add(this.lblFirstName);
             this.Controls.Add(this.txtID);
             this.Controls.Add(this.lblID);
@@ -272,9 +336,9 @@
         private System.Windows.Forms.ComboBox cmbMonth;
         private System.Windows.Forms.ComboBox cmbDay;
         private System.Windows.Forms.Label lblDoB;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtLastName;
         private System.Windows.Forms.Label lblLastName;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtFirstName;
         private System.Windows.Forms.Label lblFirstName;
         private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.Label lblID;
@@ -286,5 +350,11 @@
 		private System.Drawing.Printing.PrintDocument printPrescriptions_PrintPage;
 		private System.Windows.Forms.PrintDialog printDialog1;
 		private System.Windows.Forms.Button btnPrint;
-	}
+        private System.Windows.Forms.Label lblDrugID;
+        private System.Windows.Forms.ComboBox cmbDrugID;
+        private System.Windows.Forms.Label lblDrugName;
+        private System.Windows.Forms.ComboBox cmbDrugName;
+        private System.Windows.Forms.Label lblDrugDescription;
+        private System.Windows.Forms.RichTextBox txtDrugDescription;
+    }
 }

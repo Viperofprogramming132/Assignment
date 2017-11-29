@@ -282,6 +282,34 @@ namespace SoftwareEngineeringAssignment
             return m_perscriptions;
         }
 
+        public List<Perscription> GetPerscriptions(int PID)
+        {
+            List<Perscription> m_perscriptions = new List<Perscription>();
+
+            DbConection m_con = DbFactory.instance();
+            if (m_con.OpenConnection())
+            {
+                DbDataReader m_dr = m_con.Select("SELECT * FROM perscription WHERE PatientID="+PID+";");
+
+                //Read the data and store them in the list
+                while (m_dr.Read())
+                {
+                    Perscription m_perscription = new Perscription();
+                    m_perscription.PerscriptionID = m_dr.GetInt32(0);
+                    m_perscription.PatientID = m_dr.GetInt32(1);
+                    m_perscription.DrugID = m_dr.GetInt32(2);
+                    m_perscription.description = m_dr.GetString(5);
+                    m_perscriptions.Add(m_perscription);
+                }
+
+                //close Data Reader
+                m_dr.Close();
+                m_con.CloseConnection();
+            }
+
+            return m_perscriptions;
+        }
+
         /// <summary>
         /// Gets the drugs from 
         /// </summary>
