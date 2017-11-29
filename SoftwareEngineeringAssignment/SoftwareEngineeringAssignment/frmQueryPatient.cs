@@ -23,6 +23,7 @@ namespace SoftwareEngineeringAssignment
         frmAddPerscription m_FAP;
         frmViewTest m_FVT;
         frmAddTestHistory m_FATH;
+        frmQueryPerscription m_FQP;
 
         int showing;
         
@@ -64,6 +65,13 @@ namespace SoftwareEngineeringAssignment
         {
             InitializeComponent();
             this.m_FATH = f;
+            initializeForm();
+        }
+
+        public frmQueryPatient(frmQueryPerscription f)
+        {
+            InitializeComponent();
+            this.m_FQP = f;
             initializeForm();
         }
 
@@ -341,6 +349,17 @@ namespace SoftwareEngineeringAssignment
                 else
                 {
                     MessageBox.Show("No user was selected. Returning to view history");
+                }
+            }
+            else if (m_FQP != null)
+            {
+                if (finP.Count != 0)
+                {
+                    m_FQP.TakePatient(finP[showing]);
+                }
+                else
+                {
+                    MessageBox.Show("No user was selected. Returning to Perscriptions");
                 }
             }
         }
