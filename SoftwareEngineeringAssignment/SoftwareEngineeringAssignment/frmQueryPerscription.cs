@@ -13,6 +13,7 @@ namespace SoftwareEngineeringAssignment
 {
     public partial class frmQueryPerscription : Form
     {
+        Patient current;
         /// <summary>
         /// Constructor for the query perscription form
         /// </summary>
@@ -89,5 +90,18 @@ namespace SoftwareEngineeringAssignment
             
 
         }
-	}
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            frmQueryPatient qp = new frmQueryPatient(this);
+            this.Hide();
+            qp.ShowDialog();
+            this.Show();
+        }
+
+        public void TakePatient(Patient p)
+        {
+            current = p;
+        }
+    }
 }
