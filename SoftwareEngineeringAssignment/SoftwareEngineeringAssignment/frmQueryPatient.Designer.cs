@@ -81,7 +81,7 @@
             this.lblID.Location = new System.Drawing.Point(12, 9);
             this.lblID.Name = "lblID";
             this.lblID.Size = new System.Drawing.Size(96, 25);
-            this.lblID.TabIndex = 1;
+            this.lblID.TabIndex = 0;
             this.lblID.Text = "Patient ID";
             // 
             // txtID
@@ -90,7 +90,7 @@
             this.txtID.Location = new System.Drawing.Point(139, 6);
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(126, 30);
-            this.txtID.TabIndex = 2;
+            this.txtID.TabIndex = 0;
             // 
             // txtFirstName
             // 
@@ -98,7 +98,7 @@
             this.txtFirstName.Location = new System.Drawing.Point(139, 45);
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(126, 30);
-            this.txtFirstName.TabIndex = 4;
+            this.txtFirstName.TabIndex = 1;
             // 
             // lblFirstName
             // 
@@ -116,7 +116,7 @@
             this.txtLastName.Location = new System.Drawing.Point(139, 88);
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(126, 30);
-            this.txtLastName.TabIndex = 6;
+            this.txtLastName.TabIndex = 2;
             // 
             // lblLastName
             // 
@@ -165,7 +165,7 @@
             this.cmbYear.Location = new System.Drawing.Point(271, 152);
             this.cmbYear.Name = "cmbYear";
             this.cmbYear.Size = new System.Drawing.Size(73, 33);
-            this.cmbYear.TabIndex = 20;
+            this.cmbYear.TabIndex = 5;
             // 
             // cmbMonth
             // 
@@ -174,7 +174,7 @@
             this.cmbMonth.Location = new System.Drawing.Point(202, 152);
             this.cmbMonth.Name = "cmbMonth";
             this.cmbMonth.Size = new System.Drawing.Size(63, 33);
-            this.cmbMonth.TabIndex = 19;
+            this.cmbMonth.TabIndex = 4;
             // 
             // cmbDay
             // 
@@ -183,7 +183,7 @@
             this.cmbDay.Location = new System.Drawing.Point(139, 152);
             this.cmbDay.Name = "cmbDay";
             this.cmbDay.Size = new System.Drawing.Size(57, 33);
-            this.cmbDay.TabIndex = 18;
+            this.cmbDay.TabIndex = 3;
             // 
             // lblDoB
             // 
@@ -223,7 +223,7 @@
             this.lsvPerscriptions.Location = new System.Drawing.Point(12, 379);
             this.lsvPerscriptions.Name = "lsvPerscriptions";
             this.lsvPerscriptions.Size = new System.Drawing.Size(586, 231);
-            this.lsvPerscriptions.TabIndex = 26;
+            this.lsvPerscriptions.TabIndex = 10;
             this.lsvPerscriptions.UseCompatibleStateImageBehavior = false;
             this.lsvPerscriptions.SelectedIndexChanged += new System.EventHandler(this.lsvPerscriptions_SelectedIndexChanged);
             // 
@@ -235,7 +235,7 @@
             this.lsvAppointments.Location = new System.Drawing.Point(629, 34);
             this.lsvAppointments.Name = "lsvAppointments";
             this.lsvAppointments.Size = new System.Drawing.Size(586, 576);
-            this.lsvAppointments.TabIndex = 29;
+            this.lsvAppointments.TabIndex = 12;
             this.lsvAppointments.UseCompatibleStateImageBehavior = false;
             // 
             // lblAppointments
@@ -288,7 +288,7 @@
             this.txtReligion.Location = new System.Drawing.Point(139, 200);
             this.txtReligion.Name = "txtReligion";
             this.txtReligion.Size = new System.Drawing.Size(100, 30);
-            this.txtReligion.TabIndex = 33;
+            this.txtReligion.TabIndex = 6;
             // 
             // lblAllergies
             // 
@@ -316,14 +316,14 @@
             this.txtNextOfKin.Location = new System.Drawing.Point(139, 244);
             this.txtNextOfKin.Name = "txtNextOfKin";
             this.txtNextOfKin.Size = new System.Drawing.Size(126, 30);
-            this.txtNextOfKin.TabIndex = 37;
+            this.txtNextOfKin.TabIndex = 7;
             // 
             // lsvAllergies
             // 
             this.lsvAllergies.Location = new System.Drawing.Point(369, 35);
             this.lsvAllergies.Name = "lsvAllergies";
             this.lsvAllergies.Size = new System.Drawing.Size(229, 239);
-            this.lsvAllergies.TabIndex = 38;
+            this.lsvAllergies.TabIndex = 11;
             this.lsvAllergies.UseCompatibleStateImageBehavior = false;
             // 
             // txtNoKTelephone
@@ -332,7 +332,7 @@
             this.txtNoKTelephone.Location = new System.Drawing.Point(198, 281);
             this.txtNoKTelephone.Name = "txtNoKTelephone";
             this.txtNoKTelephone.Size = new System.Drawing.Size(126, 30);
-            this.txtNoKTelephone.TabIndex = 39;
+            this.txtNoKTelephone.TabIndex = 8;
             // 
             // btnAdd_patient
             // 
@@ -372,7 +372,7 @@
             this.txtEmailAddress.Location = new System.Drawing.Point(139, 317);
             this.txtEmailAddress.Name = "txtEmailAddress";
             this.txtEmailAddress.Size = new System.Drawing.Size(205, 30);
-            this.txtEmailAddress.TabIndex = 42;
+            this.txtEmailAddress.TabIndex = 9;
             // 
             // lbltelephone
             // 
