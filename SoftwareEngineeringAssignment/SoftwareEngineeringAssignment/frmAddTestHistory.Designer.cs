@@ -41,11 +41,13 @@
             this.lblDay = new System.Windows.Forms.Label();
             this.lblMonth = new System.Windows.Forms.Label();
             this.lblYear = new System.Windows.Forms.Label();
-            this.lblTestHistory = new System.Windows.Forms.Label();
-            this.txtTestHistory = new System.Windows.Forms.RichTextBox();
+            this.lblTestResult = new System.Windows.Forms.Label();
+            this.txtTestResult = new System.Windows.Forms.RichTextBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnReturn = new System.Windows.Forms.Button();
             this.btnSubmit = new System.Windows.Forms.Button();
+            this.txtTestReason = new System.Windows.Forms.RichTextBox();
+            this.lblTestReason = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtID
@@ -156,22 +158,22 @@
             this.lblYear.TabIndex = 12;
             this.lblYear.Text = "Year";
             // 
-            // lblTestHistory
+            // lblTestResult
             // 
-            this.lblTestHistory.AutoSize = true;
-            this.lblTestHistory.Location = new System.Drawing.Point(293, 36);
-            this.lblTestHistory.Name = "lblTestHistory";
-            this.lblTestHistory.Size = new System.Drawing.Size(60, 13);
-            this.lblTestHistory.TabIndex = 13;
-            this.lblTestHistory.Text = "TestHistory";
+            this.lblTestResult.AutoSize = true;
+            this.lblTestResult.Location = new System.Drawing.Point(293, 138);
+            this.lblTestResult.Name = "lblTestResult";
+            this.lblTestResult.Size = new System.Drawing.Size(61, 13);
+            this.lblTestResult.TabIndex = 13;
+            this.lblTestResult.Text = "Test Result";
             // 
-            // txtTestHistory
+            // txtTestResult
             // 
-            this.txtTestHistory.Location = new System.Drawing.Point(296, 68);
-            this.txtTestHistory.Name = "txtTestHistory";
-            this.txtTestHistory.Size = new System.Drawing.Size(263, 173);
-            this.txtTestHistory.TabIndex = 14;
-            this.txtTestHistory.Text = "";
+            this.txtTestResult.Location = new System.Drawing.Point(296, 165);
+            this.txtTestResult.Name = "txtTestResult";
+            this.txtTestResult.Size = new System.Drawing.Size(263, 76);
+            this.txtTestResult.TabIndex = 14;
+            this.txtTestResult.Text = "";
             // 
             // btnSearch
             // 
@@ -202,16 +204,35 @@
             this.btnSubmit.UseVisualStyleBackColor = true;
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
+            // txtTestReason
+            // 
+            this.txtTestReason.Location = new System.Drawing.Point(296, 62);
+            this.txtTestReason.Name = "txtTestReason";
+            this.txtTestReason.Size = new System.Drawing.Size(263, 67);
+            this.txtTestReason.TabIndex = 18;
+            this.txtTestReason.Text = "";
+            // 
+            // lblTestReason
+            // 
+            this.lblTestReason.AutoSize = true;
+            this.lblTestReason.Location = new System.Drawing.Point(296, 35);
+            this.lblTestReason.Name = "lblTestReason";
+            this.lblTestReason.Size = new System.Drawing.Size(68, 13);
+            this.lblTestReason.TabIndex = 19;
+            this.lblTestReason.Text = "Test Reason";
+            // 
             // frmAddTestHistory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(595, 403);
+            this.Controls.Add(this.lblTestReason);
+            this.Controls.Add(this.txtTestReason);
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.btnReturn);
             this.Controls.Add(this.btnSearch);
-            this.Controls.Add(this.txtTestHistory);
-            this.Controls.Add(this.lblTestHistory);
+            this.Controls.Add(this.txtTestResult);
+            this.Controls.Add(this.lblTestResult);
             this.Controls.Add(this.lblYear);
             this.Controls.Add(this.lblMonth);
             this.Controls.Add(this.lblDay);
@@ -248,10 +269,12 @@
         private System.Windows.Forms.Label lblDay;
         private System.Windows.Forms.Label lblMonth;
         private System.Windows.Forms.Label lblYear;
-        private System.Windows.Forms.Label lblTestHistory;
-        private System.Windows.Forms.RichTextBox txtTestHistory;
+        private System.Windows.Forms.Label lblTestResult;
+        private System.Windows.Forms.RichTextBox txtTestResult;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btnReturn;
         private System.Windows.Forms.Button btnSubmit;
+        private System.Windows.Forms.RichTextBox txtTestReason;
+        private System.Windows.Forms.Label lblTestReason;
     }
 }

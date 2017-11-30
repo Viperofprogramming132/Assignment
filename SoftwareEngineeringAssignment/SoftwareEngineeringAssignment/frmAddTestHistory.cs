@@ -29,7 +29,8 @@ namespace SoftwareEngineeringAssignment
         }
         private void populate()
         {
-            txtTestHistory.Text = currentT.Test;
+            txtTestResult.Text = currentT.ReasonForTest.ToString();
+            txtTestReason.Text = currentT.Result.ToString();
         }
 
         private void Populate(Patient p)
@@ -63,7 +64,7 @@ namespace SoftwareEngineeringAssignment
             {
                 BusinessLayer ml = BusinessLayer.Instance();
 
-                ml.AddTestHistory(currentT.Test);
+                ml.AddTestHistory(txtTestReason.Text, txtTestResult.Text);
             }
         }
 
