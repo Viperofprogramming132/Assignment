@@ -15,8 +15,10 @@ namespace SoftwareEngineeringAssignment
     {
         Patient current;
         List<Drug> dList = new List<Drug>();
-        Drug currentD = new Drug();
+        List<Drug> drugList = new List<Drug>();
+        List<Drug> drugList2 = new List<Drug>();
         List<Perscription> perList = new List<Perscription>();
+        int selectedDrug;
         /// <summary>
         /// Constructor for the query perscription form
         /// </summary>
@@ -125,6 +127,30 @@ namespace SoftwareEngineeringAssignment
 
         }
 
+        private void buttonUpdate()
+        {
+            if (selectedDrug == 0)
+            {
+                btnBack.Enabled = false;
+            }
+            else
+            {
+                btnBack.Enabled = true;
+            }
+            if (selectedDrug == drugList2.Count - 1)
+            {
+                btnForward.Enabled = false;
+            }
+            else
+            {
+                btnForward.Enabled = true;
+            }
+
+        }
+
+
+
+
         private void button1_Click(object sender, EventArgs e)
         {
             frmQueryPatient qp = new frmQueryPatient(this);
@@ -132,12 +158,28 @@ namespace SoftwareEngineeringAssignment
             qp.ShowDialog();
             this.Show();
 
+            
             populate(current);
         }
 
         public void TakePatient(Patient p)
         {
             current = p;
+            BusinessLayer ml = BusinessLayer.Instance();
+
+            perList = ml.GetPerscriptions(current.PatientID);
+            drugList = ml.GetDrugs();
+            foreach (Perscription P in perList)
+            {
+                foreach (Drug d in drugList)
+                {
+                    if (P.DrugID == d.DrugID)
+                    {
+                        drugList2.Add(d);
+                    }
+
+                }
+            }
         }
 
         private void populate(Patient patient)
@@ -149,20 +191,32 @@ namespace SoftwareEngineeringAssignment
             cmbMonth.Text = current.DoB.Month.ToString();
             cmbYear.Text = current.DoB.Year.ToString();
 
-            BusinessLayer ml = BusinessLayer.Instance();
 
-            perList = ml.GetPerscriptions(current.PatientID);
 
-            cmbDrugID.Text = perList[0].DrugID.ToString();
-            cmbDrugName.Text = currentD.DrugName;
-            txtDrugDescription.Text = currentD.Description;
+            cmbDrugID.Text = drugList2[selectedDrug].DrugID.ToString();
+            cmbDrugName.Text = drugList2[selectedDrug].DrugName;
+            txtDrugDescription.Text = drugList2[selectedDrug].Description;
         }
 
-        private void Populate()
+        private void btnBack_Click(object sender, EventArgs e)
         {
-
+            selectedDrug--;
+            buttonUpdate();
+            populate(current);
         }
 
+        private void btnForward_Click(object sender, EventArgs e)
+        {
+            selectedDrug++;
+            buttonUpdate();
+            populate(current);
+        }
 
+        private void btnSubmit_Click(object sender, EventArgs e)
+        {
+            BusinessLayer ml = BusinessLayer.Instance();
+            //TODO: edit Perscription
+            //ml.EditPerscription();
+        }
     }
 }
