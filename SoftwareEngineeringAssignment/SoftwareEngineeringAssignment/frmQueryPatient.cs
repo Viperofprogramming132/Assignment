@@ -107,7 +107,16 @@ namespace SoftwareEngineeringAssignment
         /// <param name="e"></param>
         private void btnReturn_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if (m_FAP != null || m_FATH != null || m_FB != null || m_FQP != null || m_FVT != null)
+            {
+                DialogResult dr = MessageBox.Show("Are you sure you wish to use " + txtFirstName.Text + " " + txtLastName.Text, "Confirm", MessageBoxButtons.YesNo);
+
+                if (dr == DialogResult.Yes)
+                {
+                    this.Close();
+                }
+            }
+
         }
 
         /// <summary>
@@ -118,7 +127,9 @@ namespace SoftwareEngineeringAssignment
         private void btnSearch_Click(object sender, EventArgs e)
         {
             BusinessLayer ml = BusinessLayer.Instance();
-
+            finP.Clear();
+            patients.Clear();
+            pList.Clear();
 
             patients = ml.GetPatients();
             aList = ml.GetAppointments();

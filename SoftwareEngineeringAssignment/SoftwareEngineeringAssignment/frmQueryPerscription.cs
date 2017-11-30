@@ -118,7 +118,7 @@ namespace SoftwareEngineeringAssignment
             }
             catch
             {
-                MessageBox.Show("Printer is'nt working");
+                MessageBox.Show("Printer isn't working");
             }
 
 
@@ -153,7 +153,7 @@ namespace SoftwareEngineeringAssignment
 
             perList = ml.GetPerscriptions(current.PatientID);
 
-            cmbDrugID.Text = perList[].DrugID.ToString();
+            cmbDrugID.Text = perList[0].DrugID.ToString();
             cmbDrugName.Text = currentD.DrugName;
             txtDrugDescription.Text = currentD.Description;
         }

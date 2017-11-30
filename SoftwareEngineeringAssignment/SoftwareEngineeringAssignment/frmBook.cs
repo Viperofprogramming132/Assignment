@@ -159,33 +159,40 @@ namespace SoftwareEngineeringAssignment
         /// <param name="e"></param>
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            ml.AddAppointment(current.PatientID, GetCurrent().StaffID, getTime(cmbTimeslot.Text), getTime(cmbTimeslot.Text).AddMinutes(5), txtDescription.Text);
-            try
+            if (ml.AddAppointment(current.PatientID, GetCurrent().StaffID, getTime(cmbTimeslot.Text), getTime(cmbTimeslot.Text).AddMinutes(5), txtDescription.Text))
             {
-                //TODO: change the email system currently crashes every run
-
-                
-                MailMessage mail = new MailMessage();
-                SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
-                mail.From = new MailAddress("email@gmail.com");
-                mail.To.Add(current.Email);
-                mail.Subject = "Appointment";
-                mail.Body = "Appointment booked for";
+                MessageBox.Show("Appointment Added");
+                try
+                {
+                    //TODO: change the email system currently crashes every run
 
 
+                    MailMessage mail = new MailMessage();
+                    SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+                    mail.From = new MailAddress("email@gmail.com");
+                    mail.To.Add(current.Email);
+                    mail.Subject = "Appointment";
+                    mail.Body = "Appointment booked for";
 
-                SmtpServer.Port = 587;
-                SmtpServer.Credentials = new System.Net.NetworkCredential("","" );
-                SmtpServer.EnableSsl = true;
-
-                SmtpServer.Send(mail);
 
 
-                MessageBox.Show("Email Sent");
+                    SmtpServer.Port = 587;
+                    SmtpServer.Credentials = new System.Net.NetworkCredential("", "");
+                    SmtpServer.EnableSsl = true;
+
+                    SmtpServer.Send(mail);
+
+
+                    MessageBox.Show("Email Sent");
+                }
+                catch
+                {
+                    MessageBox.Show("Email not sent");
+                }
             }
-            catch
+            else
             {
-                MessageBox.Show("Email not sent");
+                MessageBox.Show("Appointment was not added");
             }
             
         }

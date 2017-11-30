@@ -61,6 +61,10 @@ namespace SoftwareEngineeringAssignment
                 Main.ShowDialog();
                 this.Show();
             }
+            else
+            {
+                MessageBox.Show("No user found with that username and password.\nPlease Try Again");
+            }
         }
 
         /// <summary>

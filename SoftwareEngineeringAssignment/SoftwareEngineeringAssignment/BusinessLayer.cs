@@ -270,7 +270,7 @@ namespace SoftwareEngineeringAssignment
                     m_perscription.DrugID = m_dr.GetInt32(2);
                     m_perscription.StartDate = Convert.ToDateTime(DecryptBytes(m_dr.GetString(3)));
                     m_perscription.EndDate = Convert.ToDateTime(DecryptBytes(m_dr.GetString(4)));
-                    m_perscription.description = m_dr.GetString(5);
+                    m_perscription.description = DecryptBytes(m_dr.GetString(5));
                     m_perscriptions.Add(m_perscription);
                 }
 
