@@ -181,6 +181,7 @@
             this.btnSearch.TabIndex = 15;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // btnReturn
             // 
@@ -226,6 +227,7 @@
             this.Controls.Add(this.txtID);
             this.Name = "frmAddTestHistory";
             this.Text = "frmAddTestHistory";
+            this.VisibleChanged += new System.EventHandler(this.frmAddTestHistory_VisibleChanged);
             this.ResumeLayout(false);
             this.PerformLayout();
 

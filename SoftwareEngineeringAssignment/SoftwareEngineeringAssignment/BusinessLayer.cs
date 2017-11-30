@@ -341,6 +341,29 @@ namespace SoftwareEngineeringAssignment
             return m_drugs;
         }
 
+        public List<Testing> GetTest()
+        {
+            List<Testing> m_Tests = new List<Testing>();
+            DbConection m_con = DbFactory.instance();
+            if (m_con.OpenConnection())
+            {
+                DbDataReader m_dr = m_con.Select("SELECT * FROM test;");
+
+                //Read the data and store them in the list
+                while (m_dr.Read())
+                {
+                    Testing m_Test = new Testing();
+                    m_Test.Test = m_dr.GetString(1);                    
+                    m_Tests.Add(m_Test);
+                }
+
+                //close Data Reader
+                m_dr.Close();
+                m_con.CloseConnection();
+            }
+
+            return m_Tests;
+        }
 
 
         /// <summary>
@@ -399,37 +422,35 @@ namespace SoftwareEngineeringAssignment
             return false;
         }
 
-        public bool AddTestHistory(int patientID, string test)
-        {
+        public bool AddTestHistory(string Test)
+        { 
             DbConection m_con = DbFactory.instance();
             if (m_con.OpenConnection())
             {
-                //string insertString = "INSERT INTO perscription (PerscriptionID, PatientID, DrugID, StartDate, EndDate, Description) VALUES (NULL,'" + PatientID + "', '" + DrugID + "', '" + EncryptString(StartDate.ToString()) + "', '" + EncryptString(EndDate.ToString()) + "', '" + EncryptString(Description) + "');";
-                //if (m_con.Insert(insertString) != 0)
+                string insertString = "INSERT INTO test (Test) VALUES ('" + EncryptString(Test) + "');";
+                if (m_con.Insert(insertString) != 0)
                 {
                     m_con.CloseConnection();
 
                     return true;
                 }
-
-
             }
-
             return false;
+
         }
 
-        /// <summary>
-        /// Adds a patient and returns true if added
-        /// </summary>
-        /// <param name="FirstName"></param>
-        /// <param name="LastName"></param>
-        /// <param name="DoB"></param>
-        /// <param name="Religion"></param>
-        /// <param name="Allergies"></param>
-        /// <param name="NextOfKin"></param>
-        /// <param name="NoKtele"></param>
-        /// <param name="Email"></param>
-        /// <returns></returns>
+/// <summary>
+/// Adds a patient and returns true if added
+/// </summary>
+/// <param name="FirstName"></param>
+/// <param name="LastName"></param>
+/// <param name="DoB"></param>
+/// <param name="Religion"></param>
+/// <param name="Allergies"></param>
+/// <param name="NextOfKin"></param>
+/// <param name="NoKtele"></param>
+/// <param name="Email"></param>
+/// <returns></returns>
         public bool AddPatient(string FirstName, string LastName, DateTime DoB, string Religion, string Allergies, string NextOfKin, string NoKtele, string Email)
         {
             DbConection m_con = DbFactory.instance();

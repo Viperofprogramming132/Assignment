@@ -40,6 +40,7 @@
             this.btnTimeTable = new System.Windows.Forms.Button();
             this.btnChangeAppontments = new System.Windows.Forms.Button();
             this.btnTestHistory = new System.Windows.Forms.Button();
+            this.btnAddTestHistory = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -165,12 +166,23 @@
             this.btnTestHistory.UseVisualStyleBackColor = true;
             this.btnTestHistory.Click += new System.EventHandler(this.btnTestHistory_Click_1);
             // 
+            // btnAddTestHistory
+            // 
+            this.btnAddTestHistory.Location = new System.Drawing.Point(15, 333);
+            this.btnAddTestHistory.Name = "btnAddTestHistory";
+            this.btnAddTestHistory.Size = new System.Drawing.Size(124, 41);
+            this.btnAddTestHistory.TabIndex = 34;
+            this.btnAddTestHistory.Text = "Add Test History";
+            this.btnAddTestHistory.UseVisualStyleBackColor = true;
+            this.btnAddTestHistory.Click += new System.EventHandler(this.btnAddTestHistory_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1137, 450);
+            this.Controls.Add(this.btnAddTestHistory);
             this.Controls.Add(this.btnTestHistory);
             this.Controls.Add(this.btnChangeAppontments);
             this.Controls.Add(this.btnTimeTable);
@@ -206,5 +218,6 @@
         private System.Windows.Forms.Button btnTimeTable;
         private System.Windows.Forms.Button btnChangeAppontments;
         private System.Windows.Forms.Button btnTestHistory;
+        private System.Windows.Forms.Button btnAddTestHistory;
     }
 }
