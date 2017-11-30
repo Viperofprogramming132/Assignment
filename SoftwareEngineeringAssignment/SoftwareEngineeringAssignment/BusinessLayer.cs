@@ -415,8 +415,23 @@ namespace SoftwareEngineeringAssignment
 
                     return true;
                 }
+            }
 
+            return false;
+        }
 
+        public bool EditPerscription(int PatientID, int DrugID, DateTime StartDate, DateTime EndDate, string Description)
+        {
+            DbConection m_con = DbFactory.instance();
+            if (m_con.OpenConnection())
+            {
+                string insertString = "INSERT INTO perscription (PerscriptionID, PatientID, DrugID, Description) VALUES (NULL,'" + PatientID + "', '" + DrugID + "', '" + EncryptString(Description) + "');";
+                if (m_con.Insert(insertString) != 0)
+                {
+                    m_con.CloseConnection();
+
+                    return true;
+                }
             }
 
             return false;

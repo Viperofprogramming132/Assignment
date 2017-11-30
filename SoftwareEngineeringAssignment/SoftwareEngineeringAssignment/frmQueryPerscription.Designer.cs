@@ -55,6 +55,9 @@
             this.cmbDrugName = new System.Windows.Forms.ComboBox();
             this.lblDrugDescription = new System.Windows.Forms.Label();
             this.txtDrugDescription = new System.Windows.Forms.RichTextBox();
+            this.btnBack = new System.Windows.Forms.Button();
+            this.btnForward = new System.Windows.Forms.Button();
+            this.btnSubmit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -228,7 +231,7 @@
             // 
             // btnPrint
             // 
-            this.btnPrint.Location = new System.Drawing.Point(311, 261);
+            this.btnPrint.Location = new System.Drawing.Point(275, 261);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(75, 23);
             this.btnPrint.TabIndex = 42;
@@ -288,11 +291,46 @@
             this.txtDrugDescription.TabIndex = 48;
             this.txtDrugDescription.Text = "";
             // 
+            // btnBack
+            // 
+            this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.btnBack.Location = new System.Drawing.Point(660, 327);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(40, 40);
+            this.btnBack.TabIndex = 60;
+            this.btnBack.Text = "<";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
+            // btnForward
+            // 
+            this.btnForward.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.btnForward.Location = new System.Drawing.Point(706, 327);
+            this.btnForward.Name = "btnForward";
+            this.btnForward.Size = new System.Drawing.Size(40, 40);
+            this.btnForward.TabIndex = 61;
+            this.btnForward.Text = ">";
+            this.btnForward.UseVisualStyleBackColor = true;
+            this.btnForward.Click += new System.EventHandler(this.btnForward_Click);
+            // 
+            // btnSubmit
+            // 
+            this.btnSubmit.Location = new System.Drawing.Point(356, 261);
+            this.btnSubmit.Name = "btnSubmit";
+            this.btnSubmit.Size = new System.Drawing.Size(135, 23);
+            this.btnSubmit.TabIndex = 62;
+            this.btnSubmit.Text = "Submit Perscription";
+            this.btnSubmit.UseVisualStyleBackColor = true;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
+            // 
             // frmQueryPerscription
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1138, 442);
+            this.Controls.Add(this.btnSubmit);
+            this.Controls.Add(this.btnForward);
+            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.txtDrugDescription);
             this.Controls.Add(this.lblDrugDescription);
             this.Controls.Add(this.cmbDrugName);
@@ -356,5 +394,8 @@
         private System.Windows.Forms.ComboBox cmbDrugName;
         private System.Windows.Forms.Label lblDrugDescription;
         private System.Windows.Forms.RichTextBox txtDrugDescription;
+        private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.Button btnForward;
+        private System.Windows.Forms.Button btnSubmit;
     }
 }
