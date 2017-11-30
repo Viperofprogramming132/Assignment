@@ -8,8 +8,14 @@ namespace SoftwareEngineeringAssignment
 {
     public class Testing
     {
-        string m_Test;
+        string m_ReasonForTest, m_Result;
 
-        public string Test { get { return m_Test; } set { m_Test = value; } }
+        public string ReasonForTest { get { return m_ReasonForTest; } set { m_ReasonForTest = value; } }
+        public string Result { get { return m_Result; } set { m_Result = value; } }
+
+        public override string ToString()
+        {
+            return ReasonForTest + " " + Result;
+        }
     }
 }

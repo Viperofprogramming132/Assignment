@@ -353,7 +353,7 @@ namespace SoftwareEngineeringAssignment
                 while (m_dr.Read())
                 {
                     Testing m_Test = new Testing();
-                    m_Test.Test = m_dr.GetString(1);                    
+                    m_Test.ReasonForTest = m_dr.GetString(1);                    
                     m_Tests.Add(m_Test);
                 }
 
@@ -437,15 +437,12 @@ namespace SoftwareEngineeringAssignment
             return false;
         }
 
-
-
-
-        public bool AddTestHistory(string Test)
+        public bool AddTestHistory(string ReasonForTest, string Result)
         { 
             DbConection m_con = DbFactory.instance();
             if (m_con.OpenConnection())
             {
-                string insertString = "INSERT INTO test (Test) VALUES ('" + EncryptString(Test) + "');";
+                string insertString = "INSERT INTO test (ReasonForTest, Result) VALUES ('" + EncryptString(ReasonForTest) + "', '" + EncryptString(Result) + "');";
                 if (m_con.Insert(insertString) != 0)
                 {
                     m_con.CloseConnection();

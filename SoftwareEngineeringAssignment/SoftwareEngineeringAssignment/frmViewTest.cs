@@ -44,17 +44,26 @@ namespace SoftwareEngineeringAssignment
         }
 
         Bitmap bmp;
-        private PrintDocument PrintPrescriptions = new PrintDocument();
+        private PrintDocument PrintTest = new PrintDocument();
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            PrintPrescriptions.PrintPage += new PrintPageEventHandler(printTestHistory_PrintPage);
-            this.Controls.Add(btnPrint);
-            Graphics g = this.CreateGraphics();
-            bmp = new Bitmap(this.Height, this.Width, g);
-            Graphics mg = Graphics.FromImage(bmp);
-            mg.CopyFromScreen(this.Location.X, this.Location.Y, 0, 0, this.Size);
-            printDialog1.ShowDialog();
-            PrintPrescriptions.Print();
+            try
+            {
+                PrintTest.PrintPage += new PrintPageEventHandler(printTestHistory_PrintPage);
+                this.Controls.Add(btnPrint);
+                Graphics g = this.CreateGraphics();
+                bmp = new Bitmap(this.Height, this.Width, g);
+                Graphics mg = Graphics.FromImage(bmp);
+                mg.CopyFromScreen(this.Location.X, this.Location.Y, 0, 0, this.Size);
+                printDialog1.ShowDialog();
+                
+                PrintTest.Print();
+            }
+            catch
+            {
+                
+                MessageBox.Show("You have not printed");
+            }
         }
 
         private void printTestHistory_PrintPage(object sender, PrintPageEventArgs e)
