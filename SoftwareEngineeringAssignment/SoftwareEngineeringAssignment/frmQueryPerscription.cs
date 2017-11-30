@@ -17,6 +17,7 @@ namespace SoftwareEngineeringAssignment
         List<Drug> dList = new List<Drug>();
         Drug currentD = new Drug();
         List<Perscription> perList = new List<Perscription>();
+        int selectedDrug;
         /// <summary>
         /// Constructor for the query perscription form
         /// </summary>
@@ -125,6 +126,30 @@ namespace SoftwareEngineeringAssignment
 
         }
 
+        private void buttonUpdate()
+        {
+            if (selectedDrug == 0)
+            {
+                btnBack.Enabled = false;
+            }
+            else
+            {
+                btnBack.Enabled = true;
+            }
+            if (selectedDrug == dList.Count - 1)
+            {
+                btnForward.Enabled = false;
+            }
+            else
+            {
+                btnForward.Enabled = true;
+            }
+
+        }
+
+
+
+
         private void button1_Click(object sender, EventArgs e)
         {
             frmQueryPatient qp = new frmQueryPatient(this);
@@ -153,7 +178,7 @@ namespace SoftwareEngineeringAssignment
 
             perList = ml.GetPerscriptions(current.PatientID);
 
-            cmbDrugID.Text = perList[].DrugID.ToString();
+            cmbDrugID.Text = perList[selectedDrug].DrugID.ToString();
             cmbDrugName.Text = currentD.DrugName;
             txtDrugDescription.Text = currentD.Description;
         }
