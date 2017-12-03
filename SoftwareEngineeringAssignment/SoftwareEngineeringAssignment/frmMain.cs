@@ -227,6 +227,22 @@ namespace SoftwareEngineeringAssignment
             this.Show();
         }
 
-        
+        private void btnAddAddress_Click(object sender, EventArgs e)
+        {
+            frmAddAddress addAddress = new frmAddAddress();
+
+            this.Hide();
+            addAddress.ShowDialog();
+            this.Show();
+        }
+
+        private void btnViewAddress_Click(object sender, EventArgs e)
+        {
+            frmQueryAddress frmQueryAddress = new frmQueryAddress();
+
+            this.Hide();
+            frmQueryAddress.ShowDialog();
+            this.Show();
+        }
     }
 }

@@ -25,6 +25,8 @@ namespace SoftwareEngineeringAssignment
             m_AES.Padding = PaddingMode.PKCS7;
         }
 
+
+
         /// <summary>
         /// Gets the intance of the singleton
         /// </summary>
@@ -76,7 +78,93 @@ namespace SoftwareEngineeringAssignment
             return m_patients;
         }
 
-        
+
+        public List<Address> GetAddress()
+        {
+            List<Address> m_addresses = new List<Address>();
+
+            DbConection m_con = DbFactory.instance();
+            if (m_con.OpenConnection())
+            {
+                DbDataReader m_dr = m_con.Select("SELECT * FROM address;");
+
+                //Reads the data and store them in the list
+                while (m_dr.Read())
+                {
+                    Address m_address = new Address();
+                    m_address.AddressID = m_dr.GetInt32(0);
+                    m_address.AddressLoc = DecryptBytes(m_dr.GetString(1));
+                    m_address.PostCode = DecryptBytes(m_dr.GetString(2));
+                    m_address.City = DecryptBytes(m_dr.GetString(3));
+                    m_address.POBox = DecryptBytes(m_dr.GetString(4));
+                    m_addresses.Add(m_address);
+                }
+
+                //close Data Reader
+                m_dr.Close();
+                m_con.CloseConnection();
+            }
+
+            return m_addresses;
+        }
+
+        public List<Address> GetAddress(int ID)
+        {
+            List<Address> m_addresses = new List<Address>();
+
+            DbConection m_con = DbFactory.instance();
+            if (m_con.OpenConnection())
+            {
+                DbDataReader m_dr = m_con.Select("SELECT * FROM address WHERE addressID="+ID+";");
+
+                //Reads the data and store them in the list
+                while (m_dr.Read())
+                {
+                    Address m_address = new Address();
+                    m_address.AddressID = m_dr.GetInt32(0);
+                    m_address.AddressLoc = DecryptBytes(m_dr.GetString(1));
+                    m_address.PostCode = DecryptBytes(m_dr.GetString(4));
+                    m_address.City = DecryptBytes(m_dr.GetString(2));
+                    m_address.POBox = DecryptBytes(m_dr.GetString(3));
+                    m_addresses.Add(m_address);
+                }
+
+                //close Data Reader
+                m_dr.Close();
+                m_con.CloseConnection();
+            }
+
+            return m_addresses;
+        }
+
+        public List<Address> GetAddress(string PostCode)
+        {
+            List<Address> m_addresses = new List<Address>();
+
+            DbConection m_con = DbFactory.instance();
+            if (m_con.OpenConnection())
+            {
+                DbDataReader m_dr = m_con.Select("SELECT * FROM address WHERE PostCode LIKE " + PostCode + ";");
+
+                //Reads the data and store them in the list
+                while (m_dr.Read())
+                {
+                    Address m_address = new Address();
+                    m_address.AddressID = m_dr.GetInt32(0);
+                    m_address.AddressLoc = DecryptBytes(m_dr.GetString(1));
+                    m_address.PostCode = DecryptBytes(m_dr.GetString(2));
+                    m_address.City = DecryptBytes(m_dr.GetString(3));
+                    m_address.POBox = DecryptBytes(m_dr.GetString(4));
+                    m_addresses.Add(m_address);
+                }
+
+                //close Data Reader
+                m_dr.Close();
+                m_con.CloseConnection();
+            }
+
+            return m_addresses;
+        }
 
         /// <summary>
         /// retrieves information from the timetable table
@@ -109,10 +197,6 @@ namespace SoftwareEngineeringAssignment
             return m_shifts;
         }
 
-        internal string UpdateAppointment(string v)
-        {
-            throw new NotImplementedException();
-        }
 
         /// <summary>
         /// retrieves information from the m_shift table
@@ -421,6 +505,25 @@ namespace SoftwareEngineeringAssignment
             return false;
         }
 
+        public bool AddAddress(string Address, string PostCode, string City, string POBox)
+        {
+            DbConection m_con = DbFactory.instance();
+            if (m_con.OpenConnection())
+            {
+                string insertString = "INSERT INTO address (AddressID, Address, PostCode, City, POBox) VALUES (NULL, '" + EncryptString(Address) + "' ,'" + EncryptString(PostCode) + "', '" + EncryptString(City) + "', '" + EncryptString(POBox) + "');";
+                if (m_con.Insert(insertString) != 0)
+                {
+                    m_con.CloseConnection();
+
+                    return true;
+                }
+
+
+            }
+
+            return false;
+        }
+
         /// <summary>
         /// Creates a Perscription
         /// </summary>
@@ -580,8 +683,24 @@ namespace SoftwareEngineeringAssignment
             }
             return false;
         }
-        
-        
+
+        public bool UpdateAddress(string address, string postcode, string city, string POBox, int AddressID)
+        {
+            DbConection m_con = DbFactory.instance();
+            if (m_con.OpenConnection())
+            {
+                string insertString = "UPDATE address (Address, PostCode, City, POBox) VALUES ('" + EncryptString(address) + "' ,'" + EncryptString(postcode) + "', '" + EncryptString(city) + "', '" + EncryptString(POBox) + "' WHERE AddressID=" + AddressID + ");";
+                if (m_con.Insert(insertString) != 0)
+                {
+                    m_con.CloseConnection();
+
+                    return true;
+                }
+            }
+            return false;
+        }
+
+
         /// <summary>
         /// 
         /// </summary>
@@ -616,13 +735,13 @@ namespace SoftwareEngineeringAssignment
         /// <param name="userName"></param>
         /// <param name="ID"></param>
         /// <returns></returns>
-        public int UpdateStafffrm(string firstName, string lastName, DateTime DoB, string userName, int ID)
+        public int UpdateStafffrm(string firstName, string lastName, DateTime DoB, string userName, int ID, int AddressID)
         {
             int i = 0;
             DbConection m_con = DbFactory.instance();
             if (m_con.OpenConnection())
             {
-                string SqlCommand = "update m_staff set FirstName='" + EncryptString(firstName) + "' ,LastName='" + EncryptString(lastName) + "',DoB='" + EncryptString(DoB.ToString()) + "',UserName='" + EncryptString(userName) + "' WHERE StaffID=" + ID + ";";
+                string SqlCommand = "update m_staff set FirstName='" + EncryptString(firstName) + "' ,LastName='" + EncryptString(lastName) + "',DoB='" + EncryptString(DoB.ToString()) + "',UserName='" + EncryptString(userName) + "',AddressID="+ AddressID +" WHERE StaffID=" + ID + ";";
 
                 i = m_con.Update(SqlCommand);
 

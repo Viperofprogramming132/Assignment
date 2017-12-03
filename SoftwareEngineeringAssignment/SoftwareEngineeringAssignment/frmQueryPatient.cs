@@ -12,9 +12,11 @@ namespace SoftwareEngineeringAssignment
 {
     public partial class frmQueryPatient : Form
     {
+        BusinessLayer ml = BusinessLayer.Instance();
         List<Patient> patients = new List<Patient>();
 
         List<Patient> finP = new List<Patient>();
+        Address currentAddress = new Address();
 
         List<Appointment> aList = new List<Appointment>();
         List<Perscription> pList = new List<Perscription>();
@@ -126,7 +128,7 @@ namespace SoftwareEngineeringAssignment
         /// <param name="e"></param>
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            BusinessLayer ml = BusinessLayer.Instance();
+            
             finP.Clear();
             patients.Clear();
             pList.Clear();
@@ -134,6 +136,7 @@ namespace SoftwareEngineeringAssignment
             patients = ml.GetPatients();
             aList = ml.GetAppointments();
             pList = ml.GetPerscriptions();
+            
             //database query this info
             foreach(Patient pa in patients)
             {
@@ -144,6 +147,8 @@ namespace SoftwareEngineeringAssignment
             }
             try
             {
+
+                currentAddress = ml.GetAddress(finP[0].AddressID)[0];
                 populate(finP[0]);
             }
             catch
@@ -202,6 +207,7 @@ namespace SoftwareEngineeringAssignment
             cmbMonth.Text = patient.DoB.Month.ToString();
             cmbYear.Text = patient.DoB.Year.ToString();
 
+            txtAddress.Text = currentAddress.ToString();
 
             //gets perscriptions
             foreach(Perscription per in pList)
@@ -264,7 +270,9 @@ namespace SoftwareEngineeringAssignment
         /// <param name="e"></param>
         private void btnForward_Click(object sender, EventArgs e)
         {
-            populate(finP[showing + 1]);
+            showing++;
+            currentAddress = ml.GetAddress(finP[showing].AddressID)[0];
+            populate(finP[showing]);
         }
 
         private DateTime getTime(string timeSlot)
@@ -308,7 +316,10 @@ namespace SoftwareEngineeringAssignment
         /// <param name="e"></param>
         private void btnBack_Click(object sender, EventArgs e)
         {
-            populate(finP[showing - 1]);
+            showing--;
+            currentAddress = ml.GetAddress(finP[showing].AddressID)[0];
+            populate(finP[showing]);
+
         }
 
         /// <summary>
@@ -412,12 +423,24 @@ namespace SoftwareEngineeringAssignment
                     if (dr == DialogResult.Yes)
                     {
                         BusinessLayer ml = BusinessLayer.Instance();
-                        MessageBox.Show(ml.UpdatePatientfrm(txtFirstName.Text, txtLastName.Text, getTime(cmbDay.Text + "/" + cmbMonth.Text + "/" + cmbYear.Text), txtID.Text, finP[showing].NextOfKin, finP[showing].NoKTelephone, finP[showing].PatientID) + " Number of entries updated");
+                        MessageBox.Show(ml.UpdatePatientfrm(txtFirstName.Text, txtLastName.Text, getTime(cmbDay.Text + "/" + cmbMonth.Text + "/" + cmbYear.Text), txtID.Text, finP[showing].NextOfKin, finP[showing].NoKTelephone, finP[showing].PatientID, currentAddress.AddressID) + " Number of entries updated");
 
                     }
                 }
             }
         }
 
+        private void btnAddress_Click(object sender, EventArgs e)
+        {
+            frmQueryAddress queryAddress = new frmQueryAddress(this);
+            this.Hide();
+            queryAddress.ShowDialog();
+            this.Show();
+        }
+
+        public void TakeAddress(Address a)
+        {
+            currentAddress = a;
+        }
     }
 }

@@ -61,6 +61,9 @@
             this.lblEmailAddress = new System.Windows.Forms.Label();
             this.txtEmailAddress = new System.Windows.Forms.TextBox();
             this.lbltelephone = new System.Windows.Forms.Label();
+            this.txtAddress = new System.Windows.Forms.RichTextBox();
+            this.lblAddress = new System.Windows.Forms.Label();
+            this.btnAddress = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnSearch
@@ -252,7 +255,7 @@
             // 
             this.btnForward.Enabled = false;
             this.btnForward.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.btnForward.Location = new System.Drawing.Point(688, 616);
+            this.btnForward.Location = new System.Drawing.Point(1175, 616);
             this.btnForward.Name = "btnForward";
             this.btnForward.Size = new System.Drawing.Size(40, 40);
             this.btnForward.TabIndex = 30;
@@ -264,7 +267,7 @@
             // 
             this.btnBack.Enabled = false;
             this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.btnBack.Location = new System.Drawing.Point(642, 616);
+            this.btnBack.Location = new System.Drawing.Point(1129, 616);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(40, 40);
             this.btnBack.TabIndex = 31;
@@ -322,7 +325,7 @@
             // 
             this.lsvAllergies.Location = new System.Drawing.Point(369, 35);
             this.lsvAllergies.Name = "lsvAllergies";
-            this.lsvAllergies.Size = new System.Drawing.Size(229, 239);
+            this.lsvAllergies.Size = new System.Drawing.Size(229, 150);
             this.lsvAllergies.TabIndex = 11;
             this.lsvAllergies.UseCompatibleStateImageBehavior = false;
             // 
@@ -337,7 +340,7 @@
             // btnAdd_patient
             // 
             this.btnAdd_patient.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd_patient.Location = new System.Drawing.Point(208, 616);
+            this.btnAdd_patient.Location = new System.Drawing.Point(707, 619);
             this.btnAdd_patient.Name = "btnAdd_patient";
             this.btnAdd_patient.Size = new System.Drawing.Size(207, 37);
             this.btnAdd_patient.TabIndex = 40;
@@ -348,7 +351,7 @@
             // btnUpdate
             // 
             this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.btnUpdate.Location = new System.Drawing.Point(421, 616);
+            this.btnUpdate.Location = new System.Drawing.Point(920, 619);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(203, 37);
             this.btnUpdate.TabIndex = 48;
@@ -384,11 +387,43 @@
             this.lbltelephone.TabIndex = 49;
             this.lbltelephone.Text = "Telephone Number";
             // 
+            // txtAddress
+            // 
+            this.txtAddress.Location = new System.Drawing.Point(369, 224);
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.Size = new System.Drawing.Size(229, 122);
+            this.txtAddress.TabIndex = 50;
+            this.txtAddress.Text = "";
+            // 
+            // lblAddress
+            // 
+            this.lblAddress.AutoSize = true;
+            this.lblAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAddress.Location = new System.Drawing.Point(364, 196);
+            this.lblAddress.Name = "lblAddress";
+            this.lblAddress.Size = new System.Drawing.Size(85, 25);
+            this.lblAddress.TabIndex = 51;
+            this.lblAddress.Text = "Address";
+            // 
+            // btnAddress
+            // 
+            this.btnAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddress.Location = new System.Drawing.Point(207, 616);
+            this.btnAddress.Name = "btnAddress";
+            this.btnAddress.Size = new System.Drawing.Size(194, 37);
+            this.btnAddress.TabIndex = 52;
+            this.btnAddress.Text = "Search for Address";
+            this.btnAddress.UseVisualStyleBackColor = true;
+            this.btnAddress.Click += new System.EventHandler(this.btnAddress_Click);
+            // 
             // frmQueryPatient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1230, 665);
+            this.Controls.Add(this.btnAddress);
+            this.Controls.Add(this.lblAddress);
+            this.Controls.Add(this.txtAddress);
             this.Controls.Add(this.lbltelephone);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.txtEmailAddress);
@@ -466,5 +501,8 @@
         private System.Windows.Forms.Label lblEmailAddress;
         private System.Windows.Forms.TextBox txtEmailAddress;
         private System.Windows.Forms.Label lbltelephone;
+        private System.Windows.Forms.RichTextBox txtAddress;
+        private System.Windows.Forms.Label lblAddress;
+        private System.Windows.Forms.Button btnAddress;
     }
 }

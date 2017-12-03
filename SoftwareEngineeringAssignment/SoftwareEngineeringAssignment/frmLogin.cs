@@ -18,6 +18,7 @@ namespace SoftwareEngineeringAssignment
         BackgroundWorker worker = new BackgroundWorker();
         List<Staff> m_staff;
         Staff staffMember;
+        int keyPressed;
 
         /// <summary>
         /// Constructor for login form
@@ -31,6 +32,9 @@ namespace SoftwareEngineeringAssignment
             worker.DoWork += new DoWorkEventHandler(worker_DoWork);
             worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(worker_RunWorkerCompleted);
             worker.WorkerSupportsCancellation = true;
+
+            this.KeyDown += btnSubmit_Click;
+            txtPassword.KeyDown += btnSubmit_Click;
         }
 
         /// <summary>
@@ -56,14 +60,21 @@ namespace SoftwareEngineeringAssignment
         {
             if (e.Cancelled)
             {
-                frmMain Main = new frmMain(staffMember);
-                this.Hide();
-                Main.ShowDialog();
-                this.Show();
+                if (keyPressed == (int)Keys.Enter)
+                {
+                    frmMain Main = new frmMain(staffMember);
+                    this.Hide();
+                    Main.ShowDialog();
+                    this.Show();
+                }
             }
             else
             {
-                MessageBox.Show("No user found with that username and password.\nPlease Try Again");
+                if (keyPressed == (int) Keys.Enter)
+                {
+                    MessageBox.Show("No user found with that username and password.\nPlease Try Again");
+                }
+                
             }
         }
 
@@ -125,10 +136,7 @@ namespace SoftwareEngineeringAssignment
         /// <param name="e"></param>
         private void txtUsername_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                txtUsername.KeyDown += btnSubmit_Click;
-            }
+            keyPressed = e.KeyValue;
         }
 
 
@@ -139,10 +147,7 @@ namespace SoftwareEngineeringAssignment
         /// <param name="e"></param>
         private void txtPassword_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                txtPassword.KeyDown += btnSubmit_Click;
-            }
+            keyPressed = e.KeyValue;
         }
 
         /// <summary>
@@ -152,10 +157,7 @@ namespace SoftwareEngineeringAssignment
         /// <param name="e"></param>
         private void frmLogin_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                this.KeyDown += btnSubmit_Click;
-            }
+            
         }
 
 

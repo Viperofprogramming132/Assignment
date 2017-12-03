@@ -50,6 +50,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmAddAddress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddAddress.Designer.cs">
+      <DependentUpon>frmAddAddress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Address.cs" />
     <Compile Include="Appointment.cs" />
     <Compile Include="BusinessLayer.cs" />
     <Compile Include="DbFactory.cs" />
@@ -101,6 +108,12 @@
     </Compile>
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmQueryAddress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmQueryAddress.Designer.cs">
+      <DependentUpon>frmQueryAddress.cs</DependentUpon>
     </Compile>
     <Compile Include="frmQueryAppointment.cs">
       <SubType>Form</SubType>
@@ -164,6 +177,9 @@
     <Compile Include="TimeTable.cs" />
     <Compile Include="SQLCon.cs" />
     <Compile Include="Staff.cs" />
+    <EmbeddedResource Include="frmAddAddress.resx">
+      <DependentUpon>frmAddAddress.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAddPatient.resx">
       <DependentUpon>frmAddPatient.cs</DependentUpon>
     </EmbeddedResource>
@@ -187,6 +203,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmQueryAddress.resx">
+      <DependentUpon>frmQueryAddress.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmQueryAppointment.resx">
       <DependentUpon>frmQueryAppointment.cs</DependentUpon>

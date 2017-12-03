@@ -41,6 +41,8 @@
             this.btnChangeAppontments = new System.Windows.Forms.Button();
             this.btnTestHistory = new System.Windows.Forms.Button();
             this.btnAddTestHistory = new System.Windows.Forms.Button();
+            this.btnAddAddress = new System.Windows.Forms.Button();
+            this.btnViewAddress = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -176,12 +178,34 @@
             this.btnAddTestHistory.UseVisualStyleBackColor = true;
             this.btnAddTestHistory.Click += new System.EventHandler(this.btnAddTestHistory_Click);
             // 
+            // btnAddAddress
+            // 
+            this.btnAddAddress.Location = new System.Drawing.Point(148, 333);
+            this.btnAddAddress.Name = "btnAddAddress";
+            this.btnAddAddress.Size = new System.Drawing.Size(124, 41);
+            this.btnAddAddress.TabIndex = 35;
+            this.btnAddAddress.Text = "Add Address";
+            this.btnAddAddress.UseVisualStyleBackColor = true;
+            this.btnAddAddress.Click += new System.EventHandler(this.btnAddAddress_Click);
+            // 
+            // btnViewAddress
+            // 
+            this.btnViewAddress.Location = new System.Drawing.Point(15, 380);
+            this.btnViewAddress.Name = "btnViewAddress";
+            this.btnViewAddress.Size = new System.Drawing.Size(124, 41);
+            this.btnViewAddress.TabIndex = 36;
+            this.btnViewAddress.Text = "View Address";
+            this.btnViewAddress.UseVisualStyleBackColor = true;
+            this.btnViewAddress.Click += new System.EventHandler(this.btnViewAddress_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1137, 450);
+            this.Controls.Add(this.btnViewAddress);
+            this.Controls.Add(this.btnAddAddress);
             this.Controls.Add(this.btnAddTestHistory);
             this.Controls.Add(this.btnTestHistory);
             this.Controls.Add(this.btnChangeAppontments);
@@ -219,5 +243,7 @@
         private System.Windows.Forms.Button btnChangeAppontments;
         private System.Windows.Forms.Button btnTestHistory;
         private System.Windows.Forms.Button btnAddTestHistory;
+        private System.Windows.Forms.Button btnAddAddress;
+        private System.Windows.Forms.Button btnViewAddress;
     }
 }
