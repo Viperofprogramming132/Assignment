@@ -41,17 +41,17 @@
             this.lblDay = new System.Windows.Forms.Label();
             this.lblMonth = new System.Windows.Forms.Label();
             this.lblYear = new System.Windows.Forms.Label();
-            this.lblTestResult = new System.Windows.Forms.Label();
-            this.txtTestResult = new System.Windows.Forms.RichTextBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnReturn = new System.Windows.Forms.Button();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.txtTestReason = new System.Windows.Forms.RichTextBox();
             this.lblTestReason = new System.Windows.Forms.Label();
+            this.mclDateOfTest = new System.Windows.Forms.MonthCalendar();
             this.SuspendLayout();
             // 
             // txtID
             // 
+            this.txtID.Enabled = false;
             this.txtID.Location = new System.Drawing.Point(78, 36);
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(100, 20);
@@ -68,6 +68,7 @@
             // 
             // txtFirstName
             // 
+            this.txtFirstName.Enabled = false;
             this.txtFirstName.Location = new System.Drawing.Point(78, 62);
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(100, 20);
@@ -84,6 +85,7 @@
             // 
             // txtLastName
             // 
+            this.txtLastName.Enabled = false;
             this.txtLastName.Location = new System.Drawing.Point(78, 89);
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(100, 20);
@@ -100,6 +102,7 @@
             // 
             // cmbDay
             // 
+            this.cmbDay.Enabled = false;
             this.cmbDay.FormattingEnabled = true;
             this.cmbDay.Location = new System.Drawing.Point(89, 148);
             this.cmbDay.Name = "cmbDay";
@@ -108,6 +111,7 @@
             // 
             // cmbMonth
             // 
+            this.cmbMonth.Enabled = false;
             this.cmbMonth.FormattingEnabled = true;
             this.cmbMonth.Location = new System.Drawing.Point(131, 148);
             this.cmbMonth.Name = "cmbMonth";
@@ -116,10 +120,11 @@
             // 
             // cmbYear
             // 
+            this.cmbYear.Enabled = false;
             this.cmbYear.FormattingEnabled = true;
             this.cmbYear.Location = new System.Drawing.Point(173, 148);
             this.cmbYear.Name = "cmbYear";
-            this.cmbYear.Size = new System.Drawing.Size(36, 21);
+            this.cmbYear.Size = new System.Drawing.Size(55, 21);
             this.cmbYear.TabIndex = 8;
             // 
             // lblDoB
@@ -158,36 +163,19 @@
             this.lblYear.TabIndex = 12;
             this.lblYear.Text = "Year";
             // 
-            // lblTestResult
-            // 
-            this.lblTestResult.AutoSize = true;
-            this.lblTestResult.Location = new System.Drawing.Point(293, 138);
-            this.lblTestResult.Name = "lblTestResult";
-            this.lblTestResult.Size = new System.Drawing.Size(61, 13);
-            this.lblTestResult.TabIndex = 13;
-            this.lblTestResult.Text = "Test Result";
-            // 
-            // txtTestResult
-            // 
-            this.txtTestResult.Location = new System.Drawing.Point(296, 165);
-            this.txtTestResult.Name = "txtTestResult";
-            this.txtTestResult.Size = new System.Drawing.Size(263, 76);
-            this.txtTestResult.TabIndex = 14;
-            this.txtTestResult.Text = "";
-            // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(134, 281);
+            this.btnSearch.Location = new System.Drawing.Point(184, 36);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnSearch.Size = new System.Drawing.Size(75, 36);
             this.btnSearch.TabIndex = 15;
-            this.btnSearch.Text = "Search";
+            this.btnSearch.Text = "Search For Patient";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // btnReturn
             // 
-            this.btnReturn.Location = new System.Drawing.Point(18, 281);
+            this.btnReturn.Location = new System.Drawing.Point(21, 368);
             this.btnReturn.Name = "btnReturn";
             this.btnReturn.Size = new System.Drawing.Size(75, 23);
             this.btnReturn.TabIndex = 16;
@@ -196,7 +184,7 @@
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Location = new System.Drawing.Point(296, 281);
+            this.btnSubmit.Location = new System.Drawing.Point(299, 368);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(75, 23);
             this.btnSubmit.TabIndex = 17;
@@ -221,18 +209,23 @@
             this.lblTestReason.TabIndex = 19;
             this.lblTestReason.Text = "Test Reason";
             // 
+            // mclDateOfTest
+            // 
+            this.mclDateOfTest.Location = new System.Drawing.Point(15, 181);
+            this.mclDateOfTest.Name = "mclDateOfTest";
+            this.mclDateOfTest.TabIndex = 20;
+            // 
             // frmAddTestHistory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(595, 403);
+            this.Controls.Add(this.mclDateOfTest);
             this.Controls.Add(this.lblTestReason);
             this.Controls.Add(this.txtTestReason);
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.btnReturn);
             this.Controls.Add(this.btnSearch);
-            this.Controls.Add(this.txtTestResult);
-            this.Controls.Add(this.lblTestResult);
             this.Controls.Add(this.lblYear);
             this.Controls.Add(this.lblMonth);
             this.Controls.Add(this.lblDay);
@@ -269,12 +262,11 @@
         private System.Windows.Forms.Label lblDay;
         private System.Windows.Forms.Label lblMonth;
         private System.Windows.Forms.Label lblYear;
-        private System.Windows.Forms.Label lblTestResult;
-        private System.Windows.Forms.RichTextBox txtTestResult;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btnReturn;
         private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.RichTextBox txtTestReason;
         private System.Windows.Forms.Label lblTestReason;
+        private System.Windows.Forms.MonthCalendar mclDateOfTest;
     }
 }

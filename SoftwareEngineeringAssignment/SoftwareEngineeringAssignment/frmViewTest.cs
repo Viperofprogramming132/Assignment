@@ -14,39 +14,47 @@ namespace SoftwareEngineeringAssignment
     public partial class frmViewTest : Form
     {        
         Patient current;
+        List<Testing> testList = new List<Testing>();
+        private int SelectedTest = 0;
+        Bitmap bmp;
+        private PrintDocument PrintTest = new PrintDocument();
+
         public frmViewTest()
         {
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
-
-            for (int i = 1; i <= 31; i++)
-            {
-                cmbDay.Items.Add(i);
-            }
-
-            for (int i = 1; i <= 12; i++)
-            {
-                cmbMonth.Items.Add(i);
-            }
-            for (int i = 1900; i <= DateTime.Now.Year; i++)
-            {
-                cmbYear.Items.Add(i);
-            }
         }
+
+        /// <summary>
+        /// Makes the form full screen
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmViewTest_load(object sender, EventArgs e)
         {
             this.MinimumSize = this.Size;
             this.MaximumSize = this.Size;
         }
+
+        /// <summary>
+        /// Takes the patient and adds it to the form
+        /// </summary>
+        /// <param name="p"></param>
         public void TakePatient(Patient p)
         {
             current = p;
         }
 
-        Bitmap bmp;
-        private PrintDocument PrintTest = new PrintDocument();
+
+        
+        /// <summary>
+        /// Prints the form as an image
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnPrint_Click(object sender, EventArgs e)
         {
+
             try
             {
                 PrintTest.PrintPage += new PrintPageEventHandler(printTestHistory_PrintPage);
@@ -71,6 +79,11 @@ namespace SoftwareEngineeringAssignment
             e.Graphics.DrawImage(bmp, 0, 0);
         }
 
+        /// <summary>
+        /// Opens Search for patient
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSearch_Click(object sender, EventArgs e)
         {
             frmQueryPatient queryPatient = new frmQueryPatient(this);
@@ -80,12 +93,37 @@ namespace SoftwareEngineeringAssignment
             this.Show();
         }      
 
+        /// <summary>
+        /// Closes the form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnReturn_Click_1(object sender, EventArgs e)
         {
             this.Close();
         }
 
+
+        /// <summary>
+        /// Gets the tests and updates the form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmViewTest_VisibleChanged(object sender, EventArgs e)
+        {
+            if (current != null)
+            {
+                BusinessLayer ml = BusinessLayer.Instance();
+
+                testList = ml.GetTest(current.PatientID);
+                populate();
+            }
+        }
+
+        /// <summary>
+        /// Updates the form with the information it has
+        /// </summary>
+        private void populate()
         {
             if (current != null)
             {
@@ -95,6 +133,76 @@ namespace SoftwareEngineeringAssignment
                 cmbDay.Text = current.DoB.Day.ToString();
                 cmbMonth.Text = current.DoB.Month.ToString();
                 cmbYear.Text = current.DoB.Year.ToString();
+
+                txtTestReason.Text = testList[SelectedTest].ReasonForTest;
+                txtTestResult.Text = testList[SelectedTest].Result;
+                mclDateOfTest.SelectionStart = testList[SelectedTest].Date;
+                mclDateOfTest.SelectionEnd = testList[SelectedTest].Date;
+
+                updateButtons();
+            }
+        }
+
+        /// <summary>
+        /// Shows the next test
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnForward_Click(object sender, EventArgs e)
+        {
+            SelectedTest++;
+            updateButtons();
+            populate();
+        }
+
+        /// <summary>
+        /// Disables and enables the buttons to stop a crash
+        /// </summary>
+        private void updateButtons()
+        {
+            if (SelectedTest == 0)
+            {
+                btnBack.Enabled = false;
+            }
+            else
+            {
+                btnBack.Enabled = true;
+            }
+            if (SelectedTest == testList.Count - 1)
+            {
+                btnForward.Enabled = false;
+            }
+            else
+            {
+                btnForward.Enabled = true;
+            }
+        }
+
+
+        /// <summary>
+        /// Shows the previous test
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            SelectedTest--;
+            updateButtons();
+            populate();
+        }
+
+        /// <summary>
+        /// Updates the test in the database
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            if (current != null)
+            {
+                BusinessLayer ml = BusinessLayer.Instance();
+
+                ml.UpdateTest(txtTestReason.Text, txtTestResult.Text, mclDateOfTest.SelectionStart, testList[SelectedTest].ID);
             }
         }
     }

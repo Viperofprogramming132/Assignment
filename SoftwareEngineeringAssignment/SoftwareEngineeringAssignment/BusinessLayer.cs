@@ -365,6 +365,33 @@ namespace SoftwareEngineeringAssignment
             return m_Tests;
         }
 
+        public List<Testing> GetTest(int pID)
+        {
+            List<Testing> m_Tests = new List<Testing>();
+            DbConection m_con = DbFactory.instance();
+            if (m_con.OpenConnection())
+            {
+                DbDataReader m_dr = m_con.Select("SELECT Result,ReasonForTest,Date,TestID FROM test WHERE PatientID=" + pID + ";");
+
+                //Read the data and store them in the list
+                while (m_dr.Read())
+                {
+                    Testing m_Test = new Testing();
+                    m_Test.Result = DecryptBytes(m_dr.GetString(0));
+                    m_Test.ReasonForTest = DecryptBytes(m_dr.GetString(1));
+                    m_Test.Date = Convert.ToDateTime(DecryptBytes(m_dr.GetString(2)));
+                    m_Test.ID = m_dr.GetInt32(3);
+                    m_Tests.Add(m_Test);
+                }
+
+                //close Data Reader
+                m_dr.Close();
+                m_con.CloseConnection();
+            }
+
+            return m_Tests;
+        }
+
 
         /// <summary>
         /// Adds a m_staff member and returns true if it added the member
@@ -437,12 +464,12 @@ namespace SoftwareEngineeringAssignment
             return false;
         }
 
-        public bool AddTestHistory(string ReasonForTest, string Result)
+        public bool AddTestHistory(int PatientID, string ReasonForTest, DateTime Date)
         { 
             DbConection m_con = DbFactory.instance();
             if (m_con.OpenConnection())
             {
-                string insertString = "INSERT INTO test (ReasonForTest, Result) VALUES ('" + EncryptString(ReasonForTest) + "', '" + EncryptString(Result) + "');";
+                string insertString = "INSERT INTO test (PatientID, ReasonForTest, Date) VALUES (" + PatientID + ",'" + EncryptString(ReasonForTest) + "', '" + EncryptString(Date.ToString()) + "');";
                 if (m_con.Insert(insertString) != 0)
                 {
                     m_con.CloseConnection();
@@ -454,18 +481,18 @@ namespace SoftwareEngineeringAssignment
 
         }
 
-/// <summary>
-/// Adds a patient and returns true if added
-/// </summary>
-/// <param name="FirstName"></param>
-/// <param name="LastName"></param>
-/// <param name="DoB"></param>
-/// <param name="Religion"></param>
-/// <param name="Allergies"></param>
-/// <param name="NextOfKin"></param>
-/// <param name="NoKtele"></param>
-/// <param name="Email"></param>
-/// <returns></returns>
+        /// <summary>
+        /// Adds a patient and returns true if added
+        /// </summary>
+        /// <param name="FirstName"></param>
+        /// <param name="LastName"></param>
+        /// <param name="DoB"></param>
+        /// <param name="Religion"></param>
+        /// <param name="Allergies"></param>
+        /// <param name="NextOfKin"></param>
+        /// <param name="NoKtele"></param>
+        /// <param name="Email"></param>
+        /// <returns></returns>
         public bool AddPatient(string FirstName, string LastName, DateTime DoB, string Religion, string Allergies, string NextOfKin, string NoKtele, string Email)
         {
             DbConection m_con = DbFactory.instance();
@@ -553,13 +580,15 @@ namespace SoftwareEngineeringAssignment
             }
             return false;
         }
-                /// <summary>
-                /// Creates a shift
-                /// </summary>
-                /// <param name="StartTime"></param>
-                /// <param name="EndTime"></param>
-                /// <returns></returns>
-                public bool AddShift(DateTime StartTime, DateTime EndTime)
+        
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="StartTime"></param>
+        /// <param name="EndTime"></param>
+        /// <returns></returns>
+        public bool AddShift(DateTime StartTime, DateTime EndTime)
         {
             DbConection m_con = DbFactory.instance();
             if (m_con.OpenConnection())
@@ -628,6 +657,21 @@ namespace SoftwareEngineeringAssignment
             return i;
         }
 
+        public int UpdateTest(string Reason, string Result, DateTime Date, int TestID)
+        {
+            int i = 0;
+            DbConection m_con = DbFactory.instance();
+            if (m_con.OpenConnection())
+            {
+                string SqlCommand = "update test set Result='" + EncryptString(Result) + "' ,ReasonForTest='" + EncryptString(Reason) + "',Date='" + EncryptString(Date.ToString()) + "' WHERE TestID=" + TestID + ";";
+
+                i = m_con.Update(SqlCommand);
+
+                m_con.CloseConnection();
+            }
+            return i;
+        }
+
         //https://stackoverflow.com/questions/604210/padding-is-invalid-and-cannot-be-removed-using-aesmanaged
 
         /// <summary>
@@ -666,21 +710,26 @@ namespace SoftwareEngineeringAssignment
         /// <returns></returns>
         public string DecryptBytes(string inString)
         {
-            List<byte> inBytes = new List<byte>();
-            List<string> inListString = new List<string>();
-            inListString = inString.Split(',').ToList();
-            for (int i = 0; i < inListString.Count; i++)
+            if (inString != "")
             {
-                inBytes.Add(Convert.ToByte(inListString[i]));
-            }
-            using (MemoryStream ms = new MemoryStream())
-            {
-                using (CryptoStream cs = new CryptoStream(ms, m_AES.CreateDecryptor(), CryptoStreamMode.Write))
+                List<byte> inBytes = new List<byte>();
+                List<string> inListString = new List<string>();
+                inListString = inString.Split(',').ToList();
+                for (int i = 0; i < inListString.Count; i++)
                 {
-                    cs.Write(inBytes.ToArray(), 0, inBytes.Count);
+                    inBytes.Add(Convert.ToByte(inListString[i]));
                 }
-                return UnicodeEncoding.Unicode.GetString(ms.ToArray());
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    using (CryptoStream cs = new CryptoStream(ms, m_AES.CreateDecryptor(), CryptoStreamMode.Write))
+                    {
+                        cs.Write(inBytes.ToArray(), 0, inBytes.Count);
+                    }
+                    return UnicodeEncoding.Unicode.GetString(ms.ToArray());
+                }
+
             }
+            return null;
         }
 
 
