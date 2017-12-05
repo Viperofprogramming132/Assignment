@@ -15,6 +15,7 @@ namespace SoftwareEngineeringAssignment
         BackgroundWorker worker = new BackgroundWorker();
         List<Address> addressList = new List<Address>();
         frmQueryPatient m_FQP;
+        frmAddStaff m_FAS;
 
         int showing = 0;
         public frmQueryAddress()
@@ -28,6 +29,13 @@ namespace SoftwareEngineeringAssignment
             InitializeComponent();
             setupForm();
             m_FQP = f;
+        }
+
+        public frmQueryAddress(frmAddStaff f)
+        {
+            InitializeComponent();
+            setupForm();
+            m_FAS = f;
         }
 
         /// <summary>
@@ -168,6 +176,10 @@ namespace SoftwareEngineeringAssignment
             if(m_FQP != null)
             {
                 m_FQP.TakeAddress(addressList[showing]);
+            }
+            if (m_FAS != null)
+            {
+                m_FAS.TakeAddress(addressList[showing]);
             }
         }
     }

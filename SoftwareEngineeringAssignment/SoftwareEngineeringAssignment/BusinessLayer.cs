@@ -272,7 +272,7 @@ namespace SoftwareEngineeringAssignment
             DbConection m_con = DbFactory.instance();
             if (m_con.OpenConnection())
             {
-                DbDataReader m_dr = m_con.Select("SELECT StaffID, FirstName, LastName, UserName, Password, authLevel, DoB FROM staff;");
+                DbDataReader m_dr = m_con.Select("SELECT StaffID, FirstName, LastName, UserName, Password, authLevel, DoB, AddressID FROM staff;");
 
                 //Read the data and store them in the list
                 while (m_dr.Read())
@@ -285,6 +285,7 @@ namespace SoftwareEngineeringAssignment
                     m_staff.Password = DecryptBytes(m_dr.GetString(4));
                     m_staff.AuthLevel = m_dr.GetInt32(5);
                     m_staff.DoB = Convert.ToDateTime(DecryptBytes(m_dr.GetString(6)));
+                    m_staff.AddressID = m_dr.GetInt32(7);
                     m_staffs.Add(m_staff);
                 }
 
@@ -761,13 +762,13 @@ namespace SoftwareEngineeringAssignment
         /// <param name="NoKTelephone"></param>
         /// <param name="PatientID"></param>
         /// <returns></returns>
-        public int UpdatePatientfrm(string firstName, string lastName, DateTime DateOfBirth, string Religion, string NextOfKin, string NoKTelephone, int PatientID)
+        public int UpdatePatientfrm(string firstName, string lastName, DateTime DateOfBirth, string Religion, string NextOfKin, string NoKTelephone, int PatientID, int AddressID)
         {
             int i = 0;
             DbConection m_con = DbFactory.instance();
             if (m_con.OpenConnection())
             {
-                string SqlCommand = "update patient set FirstName='" + EncryptString(firstName) + "' ,LastName='" + EncryptString(lastName) + "',DateOfBirth='" + EncryptString(DateOfBirth.ToString()) + "',Religeon='" + EncryptString(Religion) + "',NextOfKin='" + EncryptString(NextOfKin) + "',NoKTelephone='" + EncryptString(NoKTelephone) + "' WHERE PatientID=" + PatientID + ";";
+                string SqlCommand = "update patient set FirstName='" + EncryptString(firstName) + "' ,LastName='" + EncryptString(lastName) + "',DateOfBirth='" + EncryptString(DateOfBirth.ToString()) + "',Religeon='" + EncryptString(Religion) + "',NextOfKin='" + EncryptString(NextOfKin) + "',NoKTelephone='" + EncryptString(NoKTelephone) + "', AddressID=" + AddressID + " WHERE PatientID=" + PatientID + ";";
 
                 i = m_con.Update(SqlCommand);
 

@@ -18,7 +18,7 @@ namespace SoftwareEngineeringAssignment
             GeneralStaff,
             Manager
         };
-        int m_AuthLevel, m_StaffID;
+        int m_AuthLevel, m_StaffID, m_AddressID;
         string m_FName, m_LName, m_UserName, m_Password;
         DateTime m_DoB;
 
@@ -30,6 +30,7 @@ namespace SoftwareEngineeringAssignment
         public int AuthLevel { get { return m_AuthLevel; } set { m_AuthLevel = value; } }
         public string Password { get { return m_Password; } set { m_Password = value; } }
         public DateTime DoB { get { return m_DoB; } set { m_DoB = value; } }
+        public int AddressID { get { return m_AddressID; } set { m_AddressID = value; } }
 
         public override string ToString()
         {
