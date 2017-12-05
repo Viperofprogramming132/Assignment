@@ -742,7 +742,7 @@ namespace SoftwareEngineeringAssignment
             DbConection m_con = DbFactory.instance();
             if (m_con.OpenConnection())
             {
-                string SqlCommand = "update m_staff set FirstName='" + EncryptString(firstName) + "' ,LastName='" + EncryptString(lastName) + "',DoB='" + EncryptString(DoB.ToString()) + "',UserName='" + EncryptString(userName) + "',AddressID="+ AddressID +" WHERE StaffID=" + ID + ";";
+                string SqlCommand = "update staff set FirstName='" + EncryptString(firstName) + "' ,LastName='" + EncryptString(lastName) + "',DoB='" + EncryptString(DoB.ToString()) + "',UserName='" + EncryptString(userName) + "',AddressID="+ AddressID +" WHERE StaffID=" + ID + ";";
 
                 i = m_con.Update(SqlCommand);
 
