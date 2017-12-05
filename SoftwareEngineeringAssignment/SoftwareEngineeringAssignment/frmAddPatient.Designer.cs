@@ -45,7 +45,7 @@
             this.lblEmailAddress = new System.Windows.Forms.Label();
             this.txtEmailAddress = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.txtAddress = new System.Windows.Forms.RichTextBox();
             this.lblAddress = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -185,14 +185,15 @@
             this.button1.TabIndex = 16;
             this.button1.Text = "Find Address";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // richTextBox1
+            // txtAddress
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(251, 34);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(177, 96);
-            this.richTextBox1.TabIndex = 17;
-            this.richTextBox1.Text = "";
+            this.txtAddress.Location = new System.Drawing.Point(251, 34);
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.Size = new System.Drawing.Size(177, 96);
+            this.txtAddress.TabIndex = 17;
+            this.txtAddress.Text = "";
             // 
             // lblAddress
             // 
@@ -209,7 +210,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(440, 376);
             this.Controls.Add(this.lblAddress);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.txtAddress);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txtEmailAddress);
             this.Controls.Add(this.lblEmailAddress);
@@ -254,7 +255,7 @@
         private System.Windows.Forms.Label lblEmailAddress;
         private System.Windows.Forms.TextBox txtEmailAddress;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox txtAddress;
         private System.Windows.Forms.Label lblAddress;
     }
 }

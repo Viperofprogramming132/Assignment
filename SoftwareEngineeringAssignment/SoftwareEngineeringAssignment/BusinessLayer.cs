@@ -597,12 +597,12 @@ namespace SoftwareEngineeringAssignment
         /// <param name="NoKtele"></param>
         /// <param name="Email"></param>
         /// <returns></returns>
-        public bool AddPatient(string FirstName, string LastName, DateTime DoB, string Religion, string Allergies, string NextOfKin, string NoKtele, string Email)
+        public bool AddPatient(string FirstName, string LastName, DateTime DoB, string Religion, string Allergies, string NextOfKin, string NoKtele, string Email, int AddressID)
         {
             DbConection m_con = DbFactory.instance();
             if (m_con.OpenConnection())
             {
-                string insertString = "INSERT INTO patient (PatientID, AddressID, FirstName, LastName, DateOfBirth, Religeon, Allergies, NextOfKin, NoKTelephone, Email) VALUES (NULL, '1', '" + EncryptString(FirstName) + "', '" + EncryptString(LastName) + "', '" + EncryptString(DoB.ToString()) + "', '" + EncryptString(Religion) + "', '" + EncryptString(Allergies) + "', '" + EncryptString(NextOfKin) + "', '" + EncryptString(NoKtele) + "', '" + EncryptString(Email) + "');";
+                string insertString = "INSERT INTO patient (PatientID, AddressID, FirstName, LastName, DateOfBirth, Religeon, Allergies, NextOfKin, NoKTelephone, email) VALUES (NULL, " + AddressID + ", '" + EncryptString(FirstName) + "', '" + EncryptString(LastName) + "', '" + EncryptString(DoB.ToString()) + "', '" + EncryptString(Religion) + "', '" + EncryptString(Allergies) + "', '" + EncryptString(NextOfKin) + "', '" + EncryptString(NoKtele) + "', '" + EncryptString(Email) + "');";
                 if (m_con.Insert(insertString) != 0)
                 {
                     m_con.CloseConnection();

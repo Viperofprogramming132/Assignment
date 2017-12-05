@@ -12,6 +12,7 @@ namespace SoftwareEngineeringAssignment
 {
     public partial class frmAddPatient : Form
     {
+        Address currentAddress;
         /// <summary>
         /// Constructor for the add patient form
         /// </summary>
@@ -41,7 +42,22 @@ namespace SoftwareEngineeringAssignment
         {
             BusinessLayer ml = BusinessLayer.Instance();
 
-            ml.AddPatient(txtFirstname.Text, txtLastname.Text, Convert.ToDateTime(mclDoB.SelectionStart) , txtReligion.Text,txtAllergies.Text,txtNextOfKin.Text,txtNoKTele.Text,txtEmailAddress.Text);
+            ml.AddPatient(txtFirstname.Text, txtLastname.Text, Convert.ToDateTime(mclDoB.SelectionStart) , txtReligion.Text,txtAllergies.Text,txtNextOfKin.Text,txtNoKTele.Text,txtEmailAddress.Text, currentAddress.AddressID);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            frmQueryAddress queryAddress = new frmQueryAddress(this);
+            this.Hide();
+            queryAddress.ShowDialog();
+            this.Show();
+        }
+
+        public void TakeAddress(Address a)
+        {
+            currentAddress = a;
+
+            txtAddress.Text = a.ToString();
         }
     }
 }
