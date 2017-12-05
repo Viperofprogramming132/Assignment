@@ -254,7 +254,7 @@ namespace SoftwareEngineeringAssignment
 
         private void frmQueryStaff_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Update();
+            UpdatePerson();
         }
 
         /// <summary>
@@ -275,7 +275,7 @@ namespace SoftwareEngineeringAssignment
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            Update();
+            UpdatePerson();
         }
 
         private void btnForward_Click(object sender, EventArgs e)

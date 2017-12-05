@@ -70,7 +70,7 @@ namespace SoftwareEngineeringAssignment
             BusinessLayer bl = BusinessLayer.Instance();
             if (cmbAuthLevel.SelectedIndex != -1)
             {
-                bl.AddStaff(txtFirstName.Text, txtLastName.Text, txtUserName.Text, txtPassword.Text, cmbAuthLevel.SelectedIndex, 1, DateTime.Now);
+                worker.RunWorkerAsync();
             }
             else
             {
@@ -78,7 +78,7 @@ namespace SoftwareEngineeringAssignment
             }
         
 
-            worker.RunWorkerAsync();
+            
  
         }
 
@@ -124,6 +124,8 @@ namespace SoftwareEngineeringAssignment
         public void TakeAddress(Address a)
         {
             CurrentAddress = a;
+
+            txtAddress.Text = a.ToString();
         }
     }
 }

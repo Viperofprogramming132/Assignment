@@ -42,6 +42,8 @@
             this.btnReturn = new System.Windows.Forms.Button();
             this.mclDoB = new System.Windows.Forms.MonthCalendar();
             this.btnAddress = new System.Windows.Forms.Button();
+            this.txtAddress = new System.Windows.Forms.RichTextBox();
+            this.lblAddress = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtFirstName
@@ -74,7 +76,7 @@
             // 
             // btnGo
             // 
-            this.btnGo.Location = new System.Drawing.Point(197, 213);
+            this.btnGo.Location = new System.Drawing.Point(197, 269);
             this.btnGo.Name = "btnGo";
             this.btnGo.Size = new System.Drawing.Size(75, 36);
             this.btnGo.TabIndex = 5;
@@ -138,7 +140,7 @@
             // 
             // btnReturn
             // 
-            this.btnReturn.Location = new System.Drawing.Point(15, 213);
+            this.btnReturn.Location = new System.Drawing.Point(15, 269);
             this.btnReturn.Name = "btnReturn";
             this.btnReturn.Size = new System.Drawing.Size(75, 36);
             this.btnReturn.TabIndex = 12;
@@ -155,7 +157,7 @@
             // 
             // btnAddress
             // 
-            this.btnAddress.Location = new System.Drawing.Point(107, 213);
+            this.btnAddress.Location = new System.Drawing.Point(107, 269);
             this.btnAddress.Name = "btnAddress";
             this.btnAddress.Size = new System.Drawing.Size(75, 36);
             this.btnAddress.TabIndex = 14;
@@ -163,11 +165,30 @@
             this.btnAddress.UseVisualStyleBackColor = true;
             this.btnAddress.Click += new System.EventHandler(this.btnAddress_Click);
             // 
+            // txtAddress
+            // 
+            this.txtAddress.Location = new System.Drawing.Point(15, 161);
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.Size = new System.Drawing.Size(257, 96);
+            this.txtAddress.TabIndex = 15;
+            this.txtAddress.Text = "";
+            // 
+            // lblAddress
+            // 
+            this.lblAddress.AutoSize = true;
+            this.lblAddress.Location = new System.Drawing.Point(12, 145);
+            this.lblAddress.Name = "lblAddress";
+            this.lblAddress.Size = new System.Drawing.Size(45, 13);
+            this.lblAddress.TabIndex = 16;
+            this.lblAddress.Text = "Address";
+            // 
             // frmAddStaff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(514, 258);
+            this.ClientSize = new System.Drawing.Size(514, 317);
+            this.Controls.Add(this.lblAddress);
+            this.Controls.Add(this.txtAddress);
             this.Controls.Add(this.btnAddress);
             this.Controls.Add(this.mclDoB);
             this.Controls.Add(this.btnReturn);
@@ -206,5 +227,7 @@
         private System.Windows.Forms.Button btnReturn;
         private System.Windows.Forms.MonthCalendar mclDoB;
         private System.Windows.Forms.Button btnAddress;
+        private System.Windows.Forms.RichTextBox txtAddress;
+        private System.Windows.Forms.Label lblAddress;
     }
 }
