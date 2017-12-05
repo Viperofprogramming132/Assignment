@@ -41,6 +41,7 @@
             this.lblID = new System.Windows.Forms.Label();
             this.btnBack = new System.Windows.Forms.Button();
             this.btnForward = new System.Windows.Forms.Button();
+            this.btnReturn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnSubmit
@@ -156,11 +157,22 @@
             this.btnForward.Text = ">";
             this.btnForward.UseVisualStyleBackColor = true;
             // 
+            // btnReturn
+            // 
+            this.btnReturn.Location = new System.Drawing.Point(11, 231);
+            this.btnReturn.Name = "btnReturn";
+            this.btnReturn.Size = new System.Drawing.Size(77, 25);
+            this.btnReturn.TabIndex = 48;
+            this.btnReturn.Text = "Return";
+            this.btnReturn.UseVisualStyleBackColor = true;
+            this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
+            // 
             // frmQueryAddress
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(397, 338);
+            this.Controls.Add(this.btnReturn);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnForward);
             this.Controls.Add(this.txtID);
@@ -197,5 +209,6 @@
         private System.Windows.Forms.Label lblID;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Button btnForward;
+        private System.Windows.Forms.Button btnReturn;
     }
 }

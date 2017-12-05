@@ -195,5 +195,10 @@ namespace SoftwareEngineeringAssignment
                 frmAddPatient.TakeAddress(addressList[showing]);
             }
         }
+
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

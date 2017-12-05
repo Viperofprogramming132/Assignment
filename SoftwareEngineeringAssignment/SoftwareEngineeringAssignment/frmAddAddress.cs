@@ -26,5 +26,10 @@ namespace SoftwareEngineeringAssignment
                 ml.AddAddress(txtAddress.Text, txtCity.Text, txtPOBox.Text, txtPostCode.Text);
             }
         }
+
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

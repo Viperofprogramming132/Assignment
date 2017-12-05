@@ -37,6 +37,7 @@
             this.txtPOBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnSubmit = new System.Windows.Forms.Button();
+            this.btnReturn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtAddress
@@ -114,11 +115,22 @@
             this.btnSubmit.UseVisualStyleBackColor = true;
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
-            // AddAddress
+            // btnReturn
+            // 
+            this.btnReturn.Location = new System.Drawing.Point(241, 142);
+            this.btnReturn.Name = "btnReturn";
+            this.btnReturn.Size = new System.Drawing.Size(74, 19);
+            this.btnReturn.TabIndex = 9;
+            this.btnReturn.Text = "Return";
+            this.btnReturn.UseVisualStyleBackColor = true;
+            this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
+            // 
+            // frmAddAddress
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(468, 374);
+            this.Controls.Add(this.btnReturn);
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.txtPOBox);
             this.Controls.Add(this.label1);
@@ -128,7 +140,7 @@
             this.Controls.Add(this.lblPostCode);
             this.Controls.Add(this.lblAddress);
             this.Controls.Add(this.txtAddress);
-            this.Name = "AddAddress";
+            this.Name = "frmAddAddress";
             this.Text = "AddAddress";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -146,5 +158,6 @@
         private System.Windows.Forms.TextBox txtPOBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnSubmit;
+        private System.Windows.Forms.Button btnReturn;
     }
 }
