@@ -9,7 +9,7 @@ namespace SoftwareEngineeringAssignment
     public class Patient
     {
         int m_PatientID,m_AddressID;
-        string m_Address, m_PostCode, m_City, m_POBox, m_FirstName, m_LastName, m_Religeon, m_Allergies, m_NextOfKin, m_NoKTelephone, m_email;
+        string m_FirstName, m_LastName, m_Religeon, m_Allergies, m_NextOfKin, m_NoKTelephone, m_email;
         DateTime m_DoB;
 
         public int AddressID { get { return m_AddressID; } set { m_AddressID = value; } }
