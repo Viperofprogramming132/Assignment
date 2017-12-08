@@ -90,10 +90,12 @@ namespace SoftwareEngineeringAssignment
 
         public int Insert(string query)
         {
-            //Create Command
-            MySqlCommand cmd = new MySqlCommand(query, connection);
-            int i = cmd.ExecuteNonQuery();
-            return i;
+            
+                //Create Command
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                int i = cmd.ExecuteNonQuery();
+                return i;
+          
         }
 
         public bool OpenConnection()
