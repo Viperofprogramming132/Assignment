@@ -71,7 +71,7 @@
             this.btnUI.Name = "btnUI";
             this.btnUI.Size = new System.Drawing.Size(124, 40);
             this.btnUI.TabIndex = 3;
-            this.btnUI.Text = "Change the User Interface";
+            this.btnUI.Text = "Report a bug";
             this.btnUI.UseVisualStyleBackColor = true;
             this.btnUI.Click += new System.EventHandler(this.btnUI_Click);
             // 

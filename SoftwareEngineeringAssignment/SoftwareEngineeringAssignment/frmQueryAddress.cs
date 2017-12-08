@@ -12,11 +12,14 @@ namespace SoftwareEngineeringAssignment
 {
     public partial class frmQueryAddress : Form
     {
-        BackgroundWorker worker = new BackgroundWorker();
-        List<Address> addressList = new List<Address>();
-        frmQueryPatient m_FQP;
+        private BackgroundWorker worker = new BackgroundWorker();
+        private List<Address> addressList = new List<Address>();
+        private frmQueryPatient m_FQP;
+        private frmAddStaff m_FAS;
+        private frmAddPatient frmAddPatient;
+        private int showing = 0;
 
-        int showing = 0;
+
         public frmQueryAddress()
         {
             InitializeComponent();
@@ -28,6 +31,20 @@ namespace SoftwareEngineeringAssignment
             InitializeComponent();
             setupForm();
             m_FQP = f;
+        }
+
+        public frmQueryAddress(frmAddStaff f)
+        {
+            InitializeComponent();
+            setupForm();
+            m_FAS = f;
+        }
+
+        public frmQueryAddress(frmAddPatient frmAddPatient)
+        {
+            InitializeComponent();
+            setupForm();
+            this.frmAddPatient = frmAddPatient;
         }
 
         /// <summary>
@@ -169,6 +186,19 @@ namespace SoftwareEngineeringAssignment
             {
                 m_FQP.TakeAddress(addressList[showing]);
             }
+            if (m_FAS != null)
+            {
+                m_FAS.TakeAddress(addressList[showing]);
+            }
+            if (frmAddPatient != null)
+            {
+                frmAddPatient.TakeAddress(addressList[showing]);
+            }
+        }
+
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

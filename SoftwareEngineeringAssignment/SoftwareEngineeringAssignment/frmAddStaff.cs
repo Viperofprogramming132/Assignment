@@ -14,6 +14,7 @@ namespace SoftwareEngineeringAssignment
     {
         BackgroundWorker worker = new BackgroundWorker();
         DateTime DoB = DateTime.Now;
+        Address CurrentAddress;
         int selectedLevel;
         /// <summary>
         /// Constructor for the add staff
@@ -55,7 +56,7 @@ namespace SoftwareEngineeringAssignment
         {
             BusinessLayer bl = BusinessLayer.Instance();
 
-            bl.AddStaff(txtFirstName.Text, txtLastName.Text, txtUserName.Text, txtPassword.Text, selectedLevel, 1, DoB);
+            bl.AddStaff(txtFirstName.Text, txtLastName.Text, txtUserName.Text, txtPassword.Text, selectedLevel, CurrentAddress.AddressID, DoB);
         }
 
         /// <summary>
@@ -69,7 +70,7 @@ namespace SoftwareEngineeringAssignment
             BusinessLayer bl = BusinessLayer.Instance();
             if (cmbAuthLevel.SelectedIndex != -1)
             {
-                bl.AddStaff(txtFirstName.Text, txtLastName.Text, txtUserName.Text, txtPassword.Text, cmbAuthLevel.SelectedIndex, 1, DateTime.Now);
+                worker.RunWorkerAsync();
             }
             else
             {
@@ -77,7 +78,7 @@ namespace SoftwareEngineeringAssignment
             }
         
 
-            worker.RunWorkerAsync();
+            
  
         }
 
@@ -110,6 +111,21 @@ namespace SoftwareEngineeringAssignment
         private void cmbAuthLevel_SelectedIndexChanged(object sender, EventArgs e)
         {
             selectedLevel = cmbAuthLevel.SelectedIndex;
+        }
+
+        private void btnAddress_Click(object sender, EventArgs e)
+        {
+            frmQueryAddress queryAddress = new frmQueryAddress(this);
+            this.Hide();
+            queryAddress.ShowDialog();
+            this.Show();
+        }
+
+        public void TakeAddress(Address a)
+        {
+            CurrentAddress = a;
+
+            txtAddress.Text = a.ToString();
         }
     }
 }

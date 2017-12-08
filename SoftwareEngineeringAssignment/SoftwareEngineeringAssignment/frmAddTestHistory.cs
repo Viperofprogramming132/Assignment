@@ -71,5 +71,10 @@ namespace SoftwareEngineeringAssignment
             queryPatient.ShowDialog();
             this.Show();
         }
+
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

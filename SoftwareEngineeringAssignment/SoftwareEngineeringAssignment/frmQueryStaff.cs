@@ -16,6 +16,7 @@ namespace SoftwareEngineeringAssignment
         BackgroundWorker worker = new BackgroundWorker();
         List<Staff> sList = new List<Staff>();
         List<Staff> finS = new List<Staff>();
+        List<Address> m_AddressList = new List<Address>();
         frmTimetable m_TimeTable;
 
         int showing = 0;
@@ -84,6 +85,7 @@ namespace SoftwareEngineeringAssignment
         {
             sList = null;
             finS.Clear();
+            m_AddressList.Clear();
 
             BusinessLayer ml = BusinessLayer.Instance();
 
@@ -93,7 +95,9 @@ namespace SoftwareEngineeringAssignment
             {
                 if (((txtFirstName.Text != "" || txtFirstName.Text == null) && s.FName == txtFirstName.Text) || ((txtLastName.Text != "" || txtLastName.Text == null) && s.LName == txtLastName.Text) || ((txtID.Text != "" || txtID.Text == null) && s.StaffID.ToString() == txtID.Text))
                 {
+                    //Add staff to finished list and add the address to go with it
                     finS.Add(s);
+                    m_AddressList.Add(ml.GetAddress(s.AddressID)[0]);
                     worker.CancelAsync();
                 }
             }
@@ -163,6 +167,8 @@ namespace SoftwareEngineeringAssignment
             cmbDay.Text = s.DoB.Day.ToString();
             cmbMonth.Text = s.DoB.Month.ToString();
             cmbYear.Text = s.DoB.Year.ToString();
+
+            txtAddress.Text = m_AddressList[showing].ToString();
 
             if(s.AuthLevel == (int)Staff.AuthenticationLevel.GP)
             {
@@ -250,7 +256,7 @@ namespace SoftwareEngineeringAssignment
 
         private void frmQueryStaff_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Update();
+            UpdatePerson();
         }
 
         /// <summary>
@@ -271,7 +277,7 @@ namespace SoftwareEngineeringAssignment
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            Update();
+            UpdatePerson();
         }
 
         private void btnForward_Click(object sender, EventArgs e)
@@ -297,7 +303,7 @@ namespace SoftwareEngineeringAssignment
                 if (dr == DialogResult.Yes)
                 {
                     BusinessLayer ml = BusinessLayer.Instance();
-                    MessageBox.Show(ml.UpdateStafffrm(txtFirstName.Text, txtLastName.Text, getTime(cmbDay.Text + "/" + cmbMonth.Text + "/" + cmbYear.Text), txtUserName.Text, finS[showing].StaffID) + " Number of entries updated");
+                    MessageBox.Show(ml.UpdateStafffrm(txtFirstName.Text, txtLastName.Text, getTime(cmbDay.Text + "/" + cmbMonth.Text + "/" + cmbYear.Text), txtUserName.Text, finS[showing].StaffID, finS[showing].AddressID) + " Number of entries updated");
 
                 }
             }

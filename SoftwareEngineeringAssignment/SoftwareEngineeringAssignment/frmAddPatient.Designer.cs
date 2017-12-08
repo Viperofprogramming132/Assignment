@@ -44,6 +44,9 @@
             this.lblNoKTele = new System.Windows.Forms.Label();
             this.lblEmailAddress = new System.Windows.Forms.Label();
             this.txtEmailAddress = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.txtAddress = new System.Windows.Forms.RichTextBox();
+            this.lblAddress = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtFirstname
@@ -75,7 +78,7 @@
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Location = new System.Drawing.Point(253, 10);
+            this.btnSubmit.Location = new System.Drawing.Point(257, 335);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(75, 23);
             this.btnSubmit.TabIndex = 4;
@@ -174,11 +177,41 @@
             this.txtEmailAddress.Size = new System.Drawing.Size(100, 20);
             this.txtEmailAddress.TabIndex = 15;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(257, 291);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 38);
+            this.button1.TabIndex = 16;
+            this.button1.Text = "Find Address";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // txtAddress
+            // 
+            this.txtAddress.Location = new System.Drawing.Point(251, 34);
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.Size = new System.Drawing.Size(177, 96);
+            this.txtAddress.TabIndex = 17;
+            this.txtAddress.Text = "";
+            // 
+            // lblAddress
+            // 
+            this.lblAddress.AutoSize = true;
+            this.lblAddress.Location = new System.Drawing.Point(254, 13);
+            this.lblAddress.Name = "lblAddress";
+            this.lblAddress.Size = new System.Drawing.Size(45, 13);
+            this.lblAddress.TabIndex = 18;
+            this.lblAddress.Text = "Address";
+            // 
             // frmAddPatient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(410, 376);
+            this.ClientSize = new System.Drawing.Size(440, 376);
+            this.Controls.Add(this.lblAddress);
+            this.Controls.Add(this.txtAddress);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.txtEmailAddress);
             this.Controls.Add(this.lblEmailAddress);
             this.Controls.Add(this.lblNoKTele);
@@ -221,5 +254,8 @@
         private System.Windows.Forms.Label lblNoKTele;
         private System.Windows.Forms.Label lblEmailAddress;
         private System.Windows.Forms.TextBox txtEmailAddress;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.RichTextBox txtAddress;
+        private System.Windows.Forms.Label lblAddress;
     }
 }

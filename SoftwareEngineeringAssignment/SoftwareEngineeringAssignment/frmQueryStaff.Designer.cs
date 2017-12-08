@@ -51,6 +51,8 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.txtUserName = new System.Windows.Forms.TextBox();
             this.lblUserName = new System.Windows.Forms.Label();
+            this.txtAddress = new System.Windows.Forms.RichTextBox();
+            this.lblAddress = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblJob
@@ -279,11 +281,30 @@
             this.lblUserName.TabIndex = 49;
             this.lblUserName.Text = "UserName";
             // 
+            // txtAddress
+            // 
+            this.txtAddress.Location = new System.Drawing.Point(320, 34);
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.Size = new System.Drawing.Size(190, 121);
+            this.txtAddress.TabIndex = 50;
+            this.txtAddress.Text = "";
+            // 
+            // lblAddress
+            // 
+            this.lblAddress.AutoSize = true;
+            this.lblAddress.Location = new System.Drawing.Point(320, 13);
+            this.lblAddress.Name = "lblAddress";
+            this.lblAddress.Size = new System.Drawing.Size(45, 13);
+            this.lblAddress.TabIndex = 51;
+            this.lblAddress.Text = "Address";
+            // 
             // frmQueryStaff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(522, 385);
+            this.ClientSize = new System.Drawing.Size(522, 407);
+            this.Controls.Add(this.lblAddress);
+            this.Controls.Add(this.txtAddress);
             this.Controls.Add(this.lblUserName);
             this.Controls.Add(this.txtUserName);
             this.Controls.Add(this.btnUpdate);
@@ -341,5 +362,7 @@
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.TextBox txtUserName;
         private System.Windows.Forms.Label lblUserName;
+        private System.Windows.Forms.RichTextBox txtAddress;
+        private System.Windows.Forms.Label lblAddress;
     }
 }

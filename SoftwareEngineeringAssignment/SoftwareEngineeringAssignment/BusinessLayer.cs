@@ -272,7 +272,7 @@ namespace SoftwareEngineeringAssignment
             DbConection m_con = DbFactory.instance();
             if (m_con.OpenConnection())
             {
-                DbDataReader m_dr = m_con.Select("SELECT StaffID, FirstName, LastName, UserName, Password, authLevel, DoB FROM staff;");
+                DbDataReader m_dr = m_con.Select("SELECT StaffID, FirstName, LastName, UserName, Password, authLevel, DoB, AddressID FROM staff;");
 
                 //Read the data and store them in the list
                 while (m_dr.Read())
@@ -285,6 +285,7 @@ namespace SoftwareEngineeringAssignment
                     m_staff.Password = DecryptBytes(m_dr.GetString(4));
                     m_staff.AuthLevel = m_dr.GetInt32(5);
                     m_staff.DoB = Convert.ToDateTime(DecryptBytes(m_dr.GetString(6)));
+                    m_staff.AddressID = m_dr.GetInt32(7);
                     m_staffs.Add(m_staff);
                 }
 
@@ -596,12 +597,12 @@ namespace SoftwareEngineeringAssignment
         /// <param name="NoKtele"></param>
         /// <param name="Email"></param>
         /// <returns></returns>
-        public bool AddPatient(string FirstName, string LastName, DateTime DoB, string Religion, string Allergies, string NextOfKin, string NoKtele, string Email)
+        public bool AddPatient(string FirstName, string LastName, DateTime DoB, string Religion, string Allergies, string NextOfKin, string NoKtele, string Email, int AddressID)
         {
             DbConection m_con = DbFactory.instance();
             if (m_con.OpenConnection())
             {
-                string insertString = "INSERT INTO patient (PatientID, AddressID, FirstName, LastName, DateOfBirth, Religeon, Allergies, NextOfKin, NoKTelephone, Email) VALUES (NULL, '1', '" + EncryptString(FirstName) + "', '" + EncryptString(LastName) + "', '" + EncryptString(DoB.ToString()) + "', '" + EncryptString(Religion) + "', '" + EncryptString(Allergies) + "', '" + EncryptString(NextOfKin) + "', '" + EncryptString(NoKtele) + "', '" + EncryptString(Email) + "');";
+                string insertString = "INSERT INTO patient (PatientID, AddressID, FirstName, LastName, DateOfBirth, Religeon, Allergies, NextOfKin, NoKTelephone, email) VALUES (NULL, " + AddressID + ", '" + EncryptString(FirstName) + "', '" + EncryptString(LastName) + "', '" + EncryptString(DoB.ToString()) + "', '" + EncryptString(Religion) + "', '" + EncryptString(Allergies) + "', '" + EncryptString(NextOfKin) + "', '" + EncryptString(NoKtele) + "', '" + EncryptString(Email) + "');";
                 if (m_con.Insert(insertString) != 0)
                 {
                     m_con.CloseConnection();
@@ -741,7 +742,7 @@ namespace SoftwareEngineeringAssignment
             DbConection m_con = DbFactory.instance();
             if (m_con.OpenConnection())
             {
-                string SqlCommand = "update m_staff set FirstName='" + EncryptString(firstName) + "' ,LastName='" + EncryptString(lastName) + "',DoB='" + EncryptString(DoB.ToString()) + "',UserName='" + EncryptString(userName) + "',AddressID="+ AddressID +" WHERE StaffID=" + ID + ";";
+                string SqlCommand = "update staff set FirstName='" + EncryptString(firstName) + "' ,LastName='" + EncryptString(lastName) + "',DoB='" + EncryptString(DoB.ToString()) + "',UserName='" + EncryptString(userName) + "',AddressID="+ AddressID +" WHERE StaffID=" + ID + ";";
 
                 i = m_con.Update(SqlCommand);
 
@@ -761,13 +762,13 @@ namespace SoftwareEngineeringAssignment
         /// <param name="NoKTelephone"></param>
         /// <param name="PatientID"></param>
         /// <returns></returns>
-        public int UpdatePatientfrm(string firstName, string lastName, DateTime DateOfBirth, string Religion, string NextOfKin, string NoKTelephone, int PatientID)
+        public int UpdatePatientfrm(string firstName, string lastName, DateTime DateOfBirth, string Religion, string NextOfKin, string NoKTelephone, int PatientID, int AddressID)
         {
             int i = 0;
             DbConection m_con = DbFactory.instance();
             if (m_con.OpenConnection())
             {
-                string SqlCommand = "update patient set FirstName='" + EncryptString(firstName) + "' ,LastName='" + EncryptString(lastName) + "',DateOfBirth='" + EncryptString(DateOfBirth.ToString()) + "',Religeon='" + EncryptString(Religion) + "',NextOfKin='" + EncryptString(NextOfKin) + "',NoKTelephone='" + EncryptString(NoKTelephone) + "' WHERE PatientID=" + PatientID + ";";
+                string SqlCommand = "update patient set FirstName='" + EncryptString(firstName) + "' ,LastName='" + EncryptString(lastName) + "',DateOfBirth='" + EncryptString(DateOfBirth.ToString()) + "',Religeon='" + EncryptString(Religion) + "',NextOfKin='" + EncryptString(NextOfKin) + "',NoKTelephone='" + EncryptString(NoKTelephone) + "', AddressID=" + AddressID + " WHERE PatientID=" + PatientID + ";";
 
                 i = m_con.Update(SqlCommand);
 

@@ -92,7 +92,10 @@ namespace SoftwareEngineeringAssignment
         /// <param name="e"></param>
         private void btnUI_Click(object sender, EventArgs e)
         {
-
+            frmBugReport frmBugReport = new frmBugReport();
+            this.Hide();
+            frmBugReport.ShowDialog();
+            this.Show();
         }
     }
 }

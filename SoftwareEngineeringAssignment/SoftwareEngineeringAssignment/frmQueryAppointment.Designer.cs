@@ -53,6 +53,8 @@
             this.txtAppointmentTime = new System.Windows.Forms.TextBox();
             this.lblReason = new System.Windows.Forms.Label();
             this.txtReason = new System.Windows.Forms.RichTextBox();
+            this.btnBack = new System.Windows.Forms.Button();
+            this.btnForward = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtID
@@ -285,11 +287,37 @@
             this.txtReason.TabIndex = 81;
             this.txtReason.Text = "";
             // 
+            // btnBack
+            // 
+            this.btnBack.Enabled = false;
+            this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.btnBack.Location = new System.Drawing.Point(469, 324);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(40, 40);
+            this.btnBack.TabIndex = 83;
+            this.btnBack.Text = "<";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
+            // btnForward
+            // 
+            this.btnForward.Enabled = false;
+            this.btnForward.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.btnForward.Location = new System.Drawing.Point(515, 324);
+            this.btnForward.Name = "btnForward";
+            this.btnForward.Size = new System.Drawing.Size(40, 40);
+            this.btnForward.TabIndex = 82;
+            this.btnForward.Text = ">";
+            this.btnForward.UseVisualStyleBackColor = true;
+            this.btnForward.Click += new System.EventHandler(this.btnForward_Click);
+            // 
             // frmQueryAppointment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(839, 525);
+            this.Controls.Add(this.btnBack);
+            this.Controls.Add(this.btnForward);
             this.Controls.Add(this.txtReason);
             this.Controls.Add(this.lblReason);
             this.Controls.Add(this.txtAppointmentTime);
@@ -350,5 +378,7 @@
         private System.Windows.Forms.TextBox txtAppointmentTime;
         private System.Windows.Forms.Label lblReason;
         private System.Windows.Forms.RichTextBox txtReason;
+        private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.Button btnForward;
     }
 }
