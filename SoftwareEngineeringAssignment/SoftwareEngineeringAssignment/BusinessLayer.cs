@@ -500,7 +500,7 @@ namespace SoftwareEngineeringAssignment
                     return true;
                 }
 
-
+                m_con.CloseConnection();
             }
 
             return false;
@@ -519,7 +519,7 @@ namespace SoftwareEngineeringAssignment
                     return true;
                 }
 
-
+                m_con.CloseConnection();
             }
 
             return false;
@@ -546,6 +546,7 @@ namespace SoftwareEngineeringAssignment
 
                     return true;
                 }
+                m_con.CloseConnection();
             }
 
             return false;

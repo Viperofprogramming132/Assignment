@@ -52,6 +52,7 @@
     <Compile Include="Aidan.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Callum.cs" />
+    <Compile Include="Dan.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
