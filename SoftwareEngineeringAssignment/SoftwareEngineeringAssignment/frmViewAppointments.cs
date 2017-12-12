@@ -246,6 +246,20 @@ namespace SoftwareEngineeringAssignment
 
         }
 
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnSearch_Click_1(object sender, EventArgs e)
+        {
+            frmQueryPatient queryPatient = new frmQueryPatient(this);
+
+            this.Hide();
+            queryPatient.ShowDialog();
+            this.Show();
+        }
+
         private void buttonUpdate()
         {
             if(selectedAppointment == 0)
