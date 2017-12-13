@@ -48,9 +48,9 @@
             // 
             // btnBookAppointment
             // 
-            this.btnBookAppointment.Location = new System.Drawing.Point(15, 93);
+            this.btnBookAppointment.Location = new System.Drawing.Point(567, 260);
             this.btnBookAppointment.Name = "btnBookAppointment";
-            this.btnBookAppointment.Size = new System.Drawing.Size(124, 42);
+            this.btnBookAppointment.Size = new System.Drawing.Size(183, 67);
             this.btnBookAppointment.TabIndex = 0;
             this.btnBookAppointment.Text = "Book Appointment";
             this.btnBookAppointment.UseVisualStyleBackColor = true;
@@ -58,9 +58,9 @@
             // 
             // btnViewAppointments
             // 
-            this.btnViewAppointments.Location = new System.Drawing.Point(15, 141);
+            this.btnViewAppointments.Location = new System.Drawing.Point(975, 260);
             this.btnViewAppointments.Name = "btnViewAppointments";
-            this.btnViewAppointments.Size = new System.Drawing.Size(124, 42);
+            this.btnViewAppointments.Size = new System.Drawing.Size(183, 67);
             this.btnViewAppointments.TabIndex = 2;
             this.btnViewAppointments.Text = "View Appointments";
             this.btnViewAppointments.UseVisualStyleBackColor = true;
@@ -68,9 +68,9 @@
             // 
             // btnAddPatient
             // 
-            this.btnAddPatient.Location = new System.Drawing.Point(148, 141);
+            this.btnAddPatient.Location = new System.Drawing.Point(975, 354);
             this.btnAddPatient.Name = "btnAddPatient";
-            this.btnAddPatient.Size = new System.Drawing.Size(124, 42);
+            this.btnAddPatient.Size = new System.Drawing.Size(183, 67);
             this.btnAddPatient.TabIndex = 3;
             this.btnAddPatient.Text = "Add Patient";
             this.btnAddPatient.UseVisualStyleBackColor = true;
@@ -78,9 +78,9 @@
             // 
             // btnEditPerscription
             // 
-            this.btnEditPerscription.Location = new System.Drawing.Point(148, 189);
+            this.btnEditPerscription.Location = new System.Drawing.Point(975, 450);
             this.btnEditPerscription.Name = "btnEditPerscription";
-            this.btnEditPerscription.Size = new System.Drawing.Size(124, 42);
+            this.btnEditPerscription.Size = new System.Drawing.Size(183, 67);
             this.btnEditPerscription.TabIndex = 5;
             this.btnEditPerscription.Text = "Edit Perscription";
             this.btnEditPerscription.UseVisualStyleBackColor = true;
@@ -88,9 +88,9 @@
             // 
             // btnAddPerscription
             // 
-            this.btnAddPerscription.Location = new System.Drawing.Point(15, 237);
+            this.btnAddPerscription.Location = new System.Drawing.Point(567, 450);
             this.btnAddPerscription.Name = "btnAddPerscription";
-            this.btnAddPerscription.Size = new System.Drawing.Size(124, 42);
+            this.btnAddPerscription.Size = new System.Drawing.Size(183, 67);
             this.btnAddPerscription.TabIndex = 6;
             this.btnAddPerscription.Text = "Add Perscription";
             this.btnAddPerscription.UseVisualStyleBackColor = true;
@@ -98,9 +98,9 @@
             // 
             // btnAdmin
             // 
-            this.btnAdmin.Location = new System.Drawing.Point(15, 285);
+            this.btnAdmin.Location = new System.Drawing.Point(975, 751);
             this.btnAdmin.Name = "btnAdmin";
-            this.btnAdmin.Size = new System.Drawing.Size(124, 42);
+            this.btnAdmin.Size = new System.Drawing.Size(183, 67);
             this.btnAdmin.TabIndex = 8;
             this.btnAdmin.Text = "Admin";
             this.btnAdmin.UseVisualStyleBackColor = true;
@@ -108,9 +108,9 @@
             // 
             // btnLogOff
             // 
-            this.btnLogOff.Location = new System.Drawing.Point(148, 93);
+            this.btnLogOff.Location = new System.Drawing.Point(1325, 260);
             this.btnLogOff.Name = "btnLogOff";
-            this.btnLogOff.Size = new System.Drawing.Size(124, 42);
+            this.btnLogOff.Size = new System.Drawing.Size(183, 67);
             this.btnLogOff.TabIndex = 1;
             this.btnLogOff.Text = "Log Off";
             this.btnLogOff.UseVisualStyleBackColor = true;
@@ -120,7 +120,7 @@
             // 
             this.lblWelcome.AutoSize = true;
             this.lblWelcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWelcome.Location = new System.Drawing.Point(75, 29);
+            this.lblWelcome.Location = new System.Drawing.Point(735, 137);
             this.lblWelcome.Name = "lblWelcome";
             this.lblWelcome.Size = new System.Drawing.Size(137, 25);
             this.lblWelcome.TabIndex = 8;
@@ -132,17 +132,17 @@
             this.pictureBox1.ErrorImage = global::SoftwareEngineeringAssignment.Properties.Resources.nhs;
             this.pictureBox1.Image = global::SoftwareEngineeringAssignment.Properties.Resources.nhs;
             this.pictureBox1.InitialImage = global::SoftwareEngineeringAssignment.Properties.Resources.nhs;
-            this.pictureBox1.Location = new System.Drawing.Point(294, 60);
+            this.pictureBox1.Location = new System.Drawing.Point(1296, 549);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(219, 219);
+            this.pictureBox1.Size = new System.Drawing.Size(238, 205);
             this.pictureBox1.TabIndex = 30;
             this.pictureBox1.TabStop = false;
             // 
             // btnTimeTable
             // 
-            this.btnTimeTable.Location = new System.Drawing.Point(148, 237);
+            this.btnTimeTable.Location = new System.Drawing.Point(975, 549);
             this.btnTimeTable.Name = "btnTimeTable";
-            this.btnTimeTable.Size = new System.Drawing.Size(124, 42);
+            this.btnTimeTable.Size = new System.Drawing.Size(183, 67);
             this.btnTimeTable.TabIndex = 7;
             this.btnTimeTable.Text = "View Your Timetable";
             this.btnTimeTable.UseVisualStyleBackColor = true;
@@ -150,9 +150,9 @@
             // 
             // btnChangeAppontments
             // 
-            this.btnChangeAppontments.Location = new System.Drawing.Point(15, 189);
+            this.btnChangeAppontments.Location = new System.Drawing.Point(567, 354);
             this.btnChangeAppontments.Name = "btnChangeAppontments";
-            this.btnChangeAppontments.Size = new System.Drawing.Size(124, 42);
+            this.btnChangeAppontments.Size = new System.Drawing.Size(183, 67);
             this.btnChangeAppontments.TabIndex = 4;
             this.btnChangeAppontments.Text = "Change Appointments";
             this.btnChangeAppontments.UseVisualStyleBackColor = true;
@@ -160,9 +160,9 @@
             // 
             // btnTestHistory
             // 
-            this.btnTestHistory.Location = new System.Drawing.Point(148, 286);
+            this.btnTestHistory.Location = new System.Drawing.Point(567, 549);
             this.btnTestHistory.Name = "btnTestHistory";
-            this.btnTestHistory.Size = new System.Drawing.Size(124, 41);
+            this.btnTestHistory.Size = new System.Drawing.Size(183, 67);
             this.btnTestHistory.TabIndex = 9;
             this.btnTestHistory.Text = "View Test History";
             this.btnTestHistory.UseVisualStyleBackColor = true;
@@ -170,9 +170,9 @@
             // 
             // btnAddTestHistory
             // 
-            this.btnAddTestHistory.Location = new System.Drawing.Point(15, 333);
+            this.btnAddTestHistory.Location = new System.Drawing.Point(975, 647);
             this.btnAddTestHistory.Name = "btnAddTestHistory";
-            this.btnAddTestHistory.Size = new System.Drawing.Size(124, 41);
+            this.btnAddTestHistory.Size = new System.Drawing.Size(183, 67);
             this.btnAddTestHistory.TabIndex = 10;
             this.btnAddTestHistory.Text = "Add Test History";
             this.btnAddTestHistory.UseVisualStyleBackColor = true;
@@ -180,9 +180,9 @@
             // 
             // btnAddAddress
             // 
-            this.btnAddAddress.Location = new System.Drawing.Point(148, 333);
+            this.btnAddAddress.Location = new System.Drawing.Point(567, 647);
             this.btnAddAddress.Name = "btnAddAddress";
-            this.btnAddAddress.Size = new System.Drawing.Size(124, 41);
+            this.btnAddAddress.Size = new System.Drawing.Size(183, 67);
             this.btnAddAddress.TabIndex = 11;
             this.btnAddAddress.Text = "Add Address";
             this.btnAddAddress.UseVisualStyleBackColor = true;
@@ -190,9 +190,9 @@
             // 
             // btnViewAddress
             // 
-            this.btnViewAddress.Location = new System.Drawing.Point(15, 380);
+            this.btnViewAddress.Location = new System.Drawing.Point(567, 751);
             this.btnViewAddress.Name = "btnViewAddress";
-            this.btnViewAddress.Size = new System.Drawing.Size(124, 41);
+            this.btnViewAddress.Size = new System.Drawing.Size(183, 67);
             this.btnViewAddress.TabIndex = 12;
             this.btnViewAddress.Text = "View Address";
             this.btnViewAddress.UseVisualStyleBackColor = true;
@@ -203,7 +203,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1137, 450);
+            this.ClientSize = new System.Drawing.Size(1643, 893);
             this.Controls.Add(this.btnViewAddress);
             this.Controls.Add(this.btnAddAddress);
             this.Controls.Add(this.btnAddTestHistory);

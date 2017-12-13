@@ -40,9 +40,9 @@
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Location = new System.Drawing.Point(86, 126);
+            this.btnSubmit.Location = new System.Drawing.Point(862, 435);
             this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(95, 35);
+            this.btnSubmit.Size = new System.Drawing.Size(129, 66);
             this.btnSubmit.TabIndex = 2;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = true;
@@ -60,7 +60,7 @@
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
-            this.lblPassword.Location = new System.Drawing.Point(12, 90);
+            this.lblPassword.Location = new System.Drawing.Point(564, 293);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(53, 13);
             this.lblPassword.TabIndex = 2;
@@ -76,10 +76,10 @@
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(86, 88);
+            this.txtPassword.Location = new System.Drawing.Point(651, 293);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(100, 20);
+            this.txtPassword.Size = new System.Drawing.Size(217, 20);
             this.txtPassword.TabIndex = 1;
             this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyDown);
             // 
@@ -88,18 +88,18 @@
             this.picNHS.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.picNHS.Image = global::SoftwareEngineeringAssignment.Properties.Resources.nhs;
             this.picNHS.InitialImage = global::SoftwareEngineeringAssignment.Properties.Resources.nhs;
-            this.picNHS.Location = new System.Drawing.Point(178, 167);
+            this.picNHS.Location = new System.Drawing.Point(1184, 361);
             this.picNHS.Name = "picNHS";
-            this.picNHS.Size = new System.Drawing.Size(94, 82);
+            this.picNHS.Size = new System.Drawing.Size(239, 210);
             this.picNHS.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picNHS.TabIndex = 5;
             this.picNHS.TabStop = false;
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(13, 225);
+            this.btnClose.Location = new System.Drawing.Point(488, 435);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.Size = new System.Drawing.Size(129, 66);
             this.btnClose.TabIndex = 3;
             this.btnClose.Text = "Exit";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -110,7 +110,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(1643, 893);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.picNHS);
             this.Controls.Add(this.txtPassword);

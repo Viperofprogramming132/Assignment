@@ -33,9 +33,11 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public void test()
+        public void TestUpdateTest()
         {
-
+            BusinessLayer ml = BusinessLayer.Instance();
+            int success = ml.UpdateTest("it hurts", "Pain has decreased", DateTime.Now, 6);
+            Assert.AreEqual(true, success);
         }
         
     }
