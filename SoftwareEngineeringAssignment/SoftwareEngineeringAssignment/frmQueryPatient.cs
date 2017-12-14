@@ -31,7 +31,6 @@ namespace SoftwareEngineeringAssignment
         private frmViewAppointments frmViewAppointments;
         private frmQueryAppointment m_frmQueryAppointment;
 
-
         /// <summary>
         /// Constructor for query patient taking frmBook form
         /// </summary>
@@ -88,7 +87,9 @@ namespace SoftwareEngineeringAssignment
 
         public frmQueryPatient(frmViewAppointments frmViewAppointments)
         {
-            this.frmViewAppointments = frmViewAppointments;
+            InitializeComponent();
+            this.m_frmViewAppointments = frmViewAppointments;
+            initializeForm();
         }
 
         /// <summary>
