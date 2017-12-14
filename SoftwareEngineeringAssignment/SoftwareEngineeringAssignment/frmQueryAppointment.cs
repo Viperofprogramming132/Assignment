@@ -15,8 +15,10 @@ namespace SoftwareEngineeringAssignment
     {
         List<Appointment> aList = new List<Appointment>();
         List<Appointment> FullAppointmentList = new List<Appointment>();
-        Patient CurrentPatient;
-        int selectedAppointment = 0;
+        List<Patient> finP = new List<Patient>();
+        List<Patient> patients = new List<Patient>();
+        int selectedAppointment;
+        int showing = 0;
 
         public frmQueryAppointment()
         {
@@ -34,8 +36,9 @@ namespace SoftwareEngineeringAssignment
 
         private void populate(Patient patient)
         {
+            showing = finP.IndexOf(patient);
             List<string> result = new List<string>();
-            txtAppointmentTime.Text = aList[selectedAppointment].AppointmentTime.ToString();
+            txtAppointmentTime.Text = aList[selectedAppointment].AppointmentTime.TimeOfDay.ToString();
             txtReason.Text = aList[selectedAppointment].Description;
             txtFirstName.Text = patient.FirstName;
             txtLastName.Text = patient.LastName;
@@ -50,31 +53,49 @@ namespace SoftwareEngineeringAssignment
 
         private void btnSearch_Click_1(object sender, EventArgs e)
         {
-            frmQueryPatient frmQueryPatient = new frmQueryPatient(this);
-            this.Hide();
-            frmQueryPatient.ShowDialog();
-            this.Show();
-
-
             BusinessLayer ml = BusinessLayer.Instance();
-            FullAppointmentList = ml.GetAppointments();
 
-            foreach(Appointment a in FullAppointmentList)
+
+            patients = ml.GetPatients();
+            foreach (Patient p in patients)
             {
-                if(a.PatientID == CurrentPatient.PatientID)
+                if (((txtFirstName.Text != "" || txtFirstName.Text == null) && p.FirstName == txtFirstName.Text) || ((txtLastName.Text != "" || txtLastName.Text == null) && p.LastName == txtLastName.Text) || ((txtID.Text != "" || txtID.Text == null) && p.PatientID.ToString() == txtID.Text))
+                {
+                    finP.Add(p);
+                }
+            }
+            try
+            {
+                populate(finP[0]);
+            }
+            catch
+            {
+                //MessageBox.Show("No Patients Found");
+            }
+
+            FullAppointmentList = ml.GetAppointments();
+            List<Patient> tempPList = ml.GetPatients();
+
+            foreach (Appointment a in FullAppointmentList)
+            {
+                if (a.PatientID == finP[0].PatientID)
                 {
                     aList.Add(a);
                 }
+
+                // MessageBox.Show("You have no appointments for today");
             }
 
-            populate(CurrentPatient);
-            buttonUpdate();
+            
+
+
+
         }
         private void UpdateAppointment()
         {
             if (aList[selectedAppointment].AppointmentTime.TimeOfDay.ToString() != txtAppointmentTime.Text || aList[selectedAppointment].Description != txtReason.Text)
             {
-                DialogResult dr = MessageBox.Show("Do you want to save changes to " + CurrentPatient.ToString(), "Confirm", MessageBoxButtons.YesNo);
+                DialogResult dr = MessageBox.Show("Do you want to save changes to " + finP[showing].ToString(), "Confirm", MessageBoxButtons.YesNo);
 
                 if (dr == DialogResult.Yes)
                 {
@@ -110,48 +131,6 @@ namespace SoftwareEngineeringAssignment
         private void btnUpdate_Click_1(object sender, EventArgs e)
         {
             UpdateAppointment();
-        }
-
-        public void TakePatient(Patient p)
-        {
-            CurrentPatient = p;
-        }
-
-        private void btnForward_Click(object sender, EventArgs e)
-        {
-            selectedAppointment++;
-            populate(CurrentPatient);
-            buttonUpdate();
-        }
-
-        /// <summary>
-        /// Enables and disables forward a backwards button as needed
-        /// </summary>
-        private void buttonUpdate()
-        {
-            if (selectedAppointment == 0)
-            {
-                btnBack.Enabled = false;
-            }
-            else
-            {
-                btnBack.Enabled = true;
-            }
-            if (selectedAppointment == aList.Count - 1)
-            {
-                btnForward.Enabled = false;
-            }
-            else
-            {
-                btnForward.Enabled = true;
-            }
-        }
-
-        private void btnBack_Click(object sender, EventArgs e)
-        {
-            selectedAppointment--;
-            populate(CurrentPatient);
-            buttonUpdate();
         }
     }
 }

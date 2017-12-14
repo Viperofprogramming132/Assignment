@@ -22,15 +22,13 @@ namespace SoftwareEngineeringAssignment
         List<Perscription> pList = new List<Perscription>();
 
         frmBook m_FB;
-        private frmAddPerscription m_FAP;
-        private frmViewTest m_FVT;
-        private frmAddTestHistory m_FATH;
-        private frmQueryPerscription m_FQP;
-        private frmQueryAppointment m_frmQueryAppointment;
+        frmAddPerscription m_FAP;
+        frmViewTest m_FVT;
+        frmAddTestHistory m_FATH;
+        frmQueryPerscription m_FQP;
 
         int showing;
         private frmViewAppointments frmViewAppointments;
-
 
 
         /// <summary>
@@ -84,13 +82,6 @@ namespace SoftwareEngineeringAssignment
         {
             InitializeComponent();
             this.m_frmQueryAppointment = frmQueryAppointment;
-            initializeForm();
-        }
-
-        public frmQueryPatient(frmViewAppointments frmViewAppointments)
-        {
-            InitializeComponent();
-            this.frmViewAppointments = frmViewAppointments;
             initializeForm();
         }
 
@@ -399,17 +390,6 @@ namespace SoftwareEngineeringAssignment
                 else
                 {
                     MessageBox.Show("No user was selected. Returning to Perscriptions");
-                }
-            }
-            else if (m_frmQueryAppointment != null)
-            {
-                if (finP.Count != 0)
-                {
-                    m_frmQueryAppointment.TakePatient(finP[showing]);
-                }
-                else
-                {
-                    MessageBox.Show("No user was selected. Returning to Appointments");
                 }
             }
         }
