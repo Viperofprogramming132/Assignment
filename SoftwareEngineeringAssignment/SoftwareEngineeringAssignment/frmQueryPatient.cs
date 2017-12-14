@@ -29,6 +29,7 @@ namespace SoftwareEngineeringAssignment
 
         int showing;
         private frmViewAppointments frmViewAppointments;
+        private frmQueryAppointment m_frmQueryAppointment;
 
 
         /// <summary>
@@ -83,6 +84,11 @@ namespace SoftwareEngineeringAssignment
             InitializeComponent();
             this.m_frmQueryAppointment = frmQueryAppointment;
             initializeForm();
+        }
+
+        public frmQueryPatient(frmViewAppointments frmViewAppointments)
+        {
+            this.frmViewAppointments = frmViewAppointments;
         }
 
         /// <summary>

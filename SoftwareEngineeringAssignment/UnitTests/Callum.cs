@@ -37,7 +37,7 @@ namespace UnitTests
         {
             BusinessLayer ml = BusinessLayer.Instance();
             int success = ml.UpdateTest("it hurts", "Pain has decreased", DateTime.Now, 6);
-            Assert.AreEqual(true, success);
+            Assert.AreEqual(1, success);
         }
         
     }
