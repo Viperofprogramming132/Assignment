@@ -87,10 +87,10 @@ namespace SoftwareEngineeringAssignment
 
         public frmQueryPatient(frmViewAppointments frmViewAppointments)
         {
-            InitializeComponent();
-            this.m_frmViewAppointments = frmViewAppointments;
-            initializeForm();
+            this.frmViewAppointments = frmViewAppointments;
         }
+
+
 
         /// <summary>
         /// Sets up the List views and combo boxs
