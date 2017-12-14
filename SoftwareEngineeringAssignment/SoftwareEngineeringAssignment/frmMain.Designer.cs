@@ -36,14 +36,12 @@
             this.btnAdmin = new System.Windows.Forms.Button();
             this.btnLogOff = new System.Windows.Forms.Button();
             this.lblWelcome = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnTimeTable = new System.Windows.Forms.Button();
             this.btnChangeAppontments = new System.Windows.Forms.Button();
             this.btnTestHistory = new System.Windows.Forms.Button();
             this.btnAddTestHistory = new System.Windows.Forms.Button();
             this.btnAddAddress = new System.Windows.Forms.Button();
             this.btnViewAddress = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnBookAppointment
@@ -126,18 +124,6 @@
             this.lblWelcome.TabIndex = 8;
             this.lblWelcome.Text = "Home Menu";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.pictureBox1.ErrorImage = global::SoftwareEngineeringAssignment.Properties.Resources.nhs;
-            this.pictureBox1.Image = global::SoftwareEngineeringAssignment.Properties.Resources.nhs;
-            this.pictureBox1.InitialImage = global::SoftwareEngineeringAssignment.Properties.Resources.nhs;
-            this.pictureBox1.Location = new System.Drawing.Point(1296, 549);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(238, 205);
-            this.pictureBox1.TabIndex = 30;
-            this.pictureBox1.TabStop = false;
-            // 
             // btnTimeTable
             // 
             this.btnTimeTable.Location = new System.Drawing.Point(975, 549);
@@ -210,7 +196,6 @@
             this.Controls.Add(this.btnTestHistory);
             this.Controls.Add(this.btnChangeAppontments);
             this.Controls.Add(this.btnTimeTable);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lblWelcome);
             this.Controls.Add(this.btnAdmin);
             this.Controls.Add(this.btnLogOff);
@@ -222,7 +207,6 @@
             this.Name = "frmMain";
             this.Text = "frmMain";
             this.Load += new System.EventHandler(this.frmMain_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -238,7 +222,6 @@
         private System.Windows.Forms.Button btnAdmin;
         private System.Windows.Forms.Button btnLogOff;
         private System.Windows.Forms.Label lblWelcome;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnTimeTable;
         private System.Windows.Forms.Button btnChangeAppontments;
         private System.Windows.Forms.Button btnTestHistory;

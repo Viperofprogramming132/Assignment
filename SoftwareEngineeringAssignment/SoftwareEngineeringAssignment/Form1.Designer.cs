@@ -33,9 +33,7 @@
             this.lblPassword = new System.Windows.Forms.Label();
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
-            this.picNHS = new System.Windows.Forms.PictureBox();
             this.btnClose = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.picNHS)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSubmit
@@ -51,7 +49,7 @@
             // lblUsername
             // 
             this.lblUsername.AutoSize = true;
-            this.lblUsername.Location = new System.Drawing.Point(13, 46);
+            this.lblUsername.Location = new System.Drawing.Point(562, 226);
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(55, 13);
             this.lblUsername.TabIndex = 1;
@@ -68,9 +66,9 @@
             // 
             // txtUsername
             // 
-            this.txtUsername.Location = new System.Drawing.Point(86, 43);
+            this.txtUsername.Location = new System.Drawing.Point(651, 226);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(100, 20);
+            this.txtUsername.Size = new System.Drawing.Size(217, 20);
             this.txtUsername.TabIndex = 0;
             this.txtUsername.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtUsername_KeyDown);
             // 
@@ -82,18 +80,6 @@
             this.txtPassword.Size = new System.Drawing.Size(217, 20);
             this.txtPassword.TabIndex = 1;
             this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyDown);
-            // 
-            // picNHS
-            // 
-            this.picNHS.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.picNHS.Image = global::SoftwareEngineeringAssignment.Properties.Resources.nhs;
-            this.picNHS.InitialImage = global::SoftwareEngineeringAssignment.Properties.Resources.nhs;
-            this.picNHS.Location = new System.Drawing.Point(1184, 361);
-            this.picNHS.Name = "picNHS";
-            this.picNHS.Size = new System.Drawing.Size(239, 210);
-            this.picNHS.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picNHS.TabIndex = 5;
-            this.picNHS.TabStop = false;
             // 
             // btnClose
             // 
@@ -112,7 +98,6 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1643, 893);
             this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.picNHS);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.lblPassword);
@@ -125,7 +110,6 @@
             this.Load += new System.EventHandler(this.frmLogin_Load);
             this.VisibleChanged += new System.EventHandler(this.frmLogin_VisibleChanged);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmLogin_KeyDown);
-            ((System.ComponentModel.ISupportInitialize)(this.picNHS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -138,7 +122,6 @@
         private System.Windows.Forms.Label lblPassword;
         private System.Windows.Forms.TextBox txtUsername;
         private System.Windows.Forms.TextBox txtPassword;
-        private System.Windows.Forms.PictureBox picNHS;
         private System.Windows.Forms.Button btnClose;
     }
 }
