@@ -235,8 +235,10 @@ namespace SoftwareEngineeringAssignment
                 {
                     m_TimeTable.takeStaff(finS[showing]);
                 }
-            }
+            }                        
             this.Close();
+            
+            
         }
 
         /// <summary>
